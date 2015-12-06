@@ -1,0 +1,104 @@
+dl {
+  margin-top: 0.25em;
+}
+
+dt:after {
+  content: ": ";
+}
+
+dt {
+  color: #555;
+}
+
+dd {
+  margin-bottom: 0.5em;
+}
+
+h1, h2, h3, h4 {
+  margin: 0em;
+  margin-top: 1em;
+  color: #00578A;
+}
+
+h1, h2 {
+  margin-bottom: 0.25em;
+}
+
+
+p {
+  margin-top: 0em;
+}
+
+a {
+  color: #0588BC;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+}
+
+address {
+  width: 12em;
+  margin-left: 1em;
+  padding-right: 0.5em;
+}
+
+address h1 {
+  font-style: normal;
+}
+
+address .phone a {
+  text-decoration: none;
+  color: #000;
+}
+
+ul.skills {
+  margin: 0em;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+ul.skills li {
+  width: 20em;
+}
+
+address ul {
+  list-style: none;
+  padding: 0;
+}
+
+address li {
+  margin-bottom: 0.5em;
+}
+
+article {
+  max-width: 50em;
+}
+
+section {
+  border-bottom: solid 2px #00578A;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+section:first-child {
+  margin-top: 0;
+}
+
+section:last-child {
+  border: none;
+}
+
+.company-info {
+  display: flex;
+  margin-bottom: 1em;
+}
+
+.company-info p {
+  margin-left: 1em;
+}
+
+.location-date span:last-child {
+  margin-left: 8em;
+}
