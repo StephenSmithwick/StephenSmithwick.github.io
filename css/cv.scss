@@ -1,3 +1,7 @@
+---
+# CV Styles
+---
+
 dl {
   margin-top: 0.25em;
 }
@@ -53,14 +57,28 @@ address .phone a {
   color: #000;
 }
 
-ul.skills {
-  margin: 0em;
+section ul {
+  margin: 0em 0em 1em;
+  list-style: square;
+}
+
+ul.two-columns {
   display: flex;
   flex-wrap: wrap;
 }
 
-ul.skills li {
-  width: 20em;
+ul.two-columns li {
+  width: 21em;
+}
+
+ul.inline {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+}
+
+ul.inline li + li::before {
+  content: " - "
 }
 
 address ul {
