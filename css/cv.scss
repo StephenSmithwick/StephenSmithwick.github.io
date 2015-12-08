@@ -88,24 +88,19 @@ body.cv {
       }
     }
 
-    .projects>section {
+    .projects>section + section, .projects + section {
+      border-top: dashed 1px $light-blue;
       padding-top: 0.5em;
-      border-bottom: dashed 1px $light-blue;
     }
 
-    &>section  {
+    .experience>section + section {
+      border-top: solid 1px $dark-blue;
+      padding: 1em 0em;
+    }
+
+    &>section + section {
       border-top: solid 2px $dark-blue;
       padding: 1em 0em;
-
-      &:first-child {
-        border: none;
-        padding-top: 0;
-      }
-
-      &.jobs>section + section {
-        padding: 1em 0em;
-        border-top: solid 1px $dark-blue;
-      }
     }
 
     ul {
