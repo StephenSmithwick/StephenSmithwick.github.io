@@ -70,15 +70,12 @@ body.cv {
       margin-bottom: 0.5em;
 
       img {
-        max-height: 4em;
+        padding-right: 2em;
         max-width: 16em;
-        height: auto;
+        min-width: 16em;
+        max-height: 4em;
         width: auto;
-      }
-
-      p {
-        position: relative;
-        margin-left: 1em;
+        height: auto;
       }
     }
 
@@ -87,8 +84,7 @@ body.cv {
       margin-bottom: 1em;
 
       span {
-        margin-right: 1em;
-        width: 25em;
+        width: 18em;
       }
     }
 
