@@ -134,3 +134,10 @@ body.cv {
     }
   }
 }
+
+@media print {
+  address {
+    position: fixed;
+    top: 0;
+  }
+}
