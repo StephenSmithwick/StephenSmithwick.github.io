@@ -2,121 +2,144 @@
 # CV Styles
 ---
 
-dl {
-  margin-top: 0.25em;
-}
+@import url(fonts/open_sans.css);
 
-dt:after {
-  content: ": ";
-}
+$dark-blue: #00578A;
+$mid-blue: #0588BC;
+$light-blue: #CAE4F1;
+$green: #298F00;
 
-dt {
-  color: #555;
-}
-
-dd {
-  margin-bottom: 0.5em;
-}
-
-h1, h2, h3, h4 {
-  margin: 0em;
-  margin-top: 1em;
-  color: #00578A;
-}
-
-h1, h2 {
-  margin-bottom: 0.25em;
-}
-
-
-p {
-  margin-top: 0em;
-}
-
-a {
-  color: #0588BC;
-}
-
-body {
+body.cv {
   font-family: 'Open Sans', sans-serif;
   display: flex;
-}
 
-address {
-  width: 12em;
-  margin-left: 1em;
-  padding-right: 0.5em;
-}
+  dl {
+    margin-top: 0.25em;
+  }
 
-address h1 {
-  font-style: normal;
-}
+  dt {
+    color: #555;
 
-address .phone a {
-  text-decoration: none;
-  color: #000;
-}
+    &:after {
+      content: ": ";
+    }
+  }
 
-section ul {
-  margin: 0em 0em 1em;
-  list-style: square;
-}
+  dd {
+    margin-bottom: 0.5em;
+  }
 
-ul.two-columns {
-  display: flex;
-  flex-wrap: wrap;
-}
+  h1, h2, h3, h4, h5 {
+    margin: 0.5em 0em;
+    color: $dark-blue;
+  }
 
-ul.two-columns li {
-  width: 21em;
-}
+  p {
+    margin-top: 0em;
+  }
 
-ul.inline {
-  list-style: none;
-  padding-left: 0;
-  display: flex;
-}
+  a {
+    color: $mid-blue;
+  }
 
-ul.inline li + li::before {
-  content: " - "
-}
+  address {
+    width: 12em;
+    margin: 0em 1em;
 
-address ul {
-  list-style: none;
-  padding: 0;
-}
+      font-style: normal;
 
-address li {
-  margin-bottom: 0.5em;
-}
+    .phone a {
+      text-decoration: none;
+      color: #000;
+    }
 
-article {
-  max-width: 50em;
-}
+    ul {
+      list-style: none;
+      padding: 0;
+      li {
+        margin-bottom: 0.5em;
+      }
+    }
+  }
 
-section {
-  border-bottom: solid 2px #00578A;
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
+  article {
+    max-width: 50em;
 
-section:first-child {
-  margin-top: 0;
-}
+    .company-info {
+      display: flex;
+      margin-bottom: 0.5em;
 
-section:last-child {
-  border: none;
-}
+      img {
+        max-height: 4em;
+        max-width: 16em;
+        height: auto;
+        width: auto;
+      }
 
-.company-info {
-  display: flex;
-  margin-bottom: 1em;
-}
+      p {
+        position: relative;
+        margin-left: 1em;
+      }
+    }
 
-.company-info p {
-  margin-left: 1em;
-}
+    .location-date {
+      display: flex;
+      margin-bottom: 1em;
 
-.location-date span:last-child {
-  margin-left: 8em;
+      span {
+        margin-right: 1em;
+        width: 25em;
+      }
+    }
+
+    .projects>section {
+      padding-top: 0.5em;
+      border-bottom: dashed 1px $light-blue;
+    }
+
+    &>section  {
+      border-top: solid 2px $dark-blue;
+      padding: 1em 0em;
+
+      &:first-child {
+        border: none;
+        padding-top: 0;
+      }
+
+      &.jobs>section + section {
+        padding: 1em 0em;
+        border-top: solid 1px $dark-blue;
+      }
+    }
+
+    ul {
+      margin: 0em 0em 1em;
+      padding-left: 1.5em;
+      list-style: circle;
+
+      &.two-columns {
+        display: flex;
+        flex-wrap: wrap;
+
+        li {
+          padding-right: 1em;
+          width: 22em;
+        }
+      }
+
+      &.inline {
+        list-style: none;
+        padding-left: 0;
+        display: flex;
+        flex-wrap: wrap;
+
+        li + li::before {
+          content: "-";
+          margin: 0em 0.5em;
+          color: $dark-blue;
+          font-weight: bold;
+        }
+      }
+    }
+  }
 }
