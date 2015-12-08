@@ -10,6 +10,7 @@ $light-blue: #CAE4F1;
 $green: #298F00;
 
 body.cv {
+  font-size: 11pt;
   font-family: 'Open Sans', sans-serif;
   display: flex;
 
@@ -103,6 +104,10 @@ body.cv {
       padding: 1em 0em;
     }
 
+    p + ul {
+      margin-top: -0.5em;
+    }
+
     ul {
       margin: 0em 0em 1em;
       padding-left: 1.5em;
@@ -113,8 +118,8 @@ body.cv {
         flex-wrap: wrap;
 
         li {
-          padding-right: 1em;
-          width: 23em;
+          padding-right: 2em;
+          width: 22em;
         }
       }
 
@@ -136,8 +141,15 @@ body.cv {
 }
 
 @media print {
-  address {
-    position: fixed;
-    top: 0;
+  body.cv {
+    font-size: 10pt;
+    address {
+      position: fixed;
+      top: 0px;
+      left: 0px;
+    }
+    article {
+      margin-left: 12em;
+    }
   }
 }
