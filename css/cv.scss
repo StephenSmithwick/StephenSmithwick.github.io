@@ -62,14 +62,20 @@ body.cv {
 
   .location-date {
     display: flex;
+    margin: 0.5em 0 0;
 
     span {
       min-width: 18em;
     }
   }
 
-  h1, h2, h3, h4, h5 {
+  h1, h2, h3, h4, h5, h6 {
     color: $dark-blue;
+    margin: 0.5em 0em;
+  }
+
+  p {
+    margin: 0.5em 0em;
   }
 
   a {
@@ -111,33 +117,51 @@ body.cv {
 
     dt {
       color: $dark-blue;
-      width: 14em;
+      width: 30%;
     }
 
     dd {
-      padding-left: 0.5em;
-      width: 34em;
+      max-width: 65%;
       margin: 0em 0em 1em 0em;
     }
   }
 }
 
 @media print {
-  body.cv {
-    font-size: 10pt;
 
-    ul.two-columns>li {
-      width: 15em;
+  body.cv {
+    font-size: 8pt;
+
+    article {
+      margin-left: 12em;
+
+      .projects>section  {
+        page-break-inside: avoid;
+      }
     }
 
     address {
       position: fixed;
-      top: 0px;
-      left: 0px;
+      top: 1em;
+      left: 1em;
     }
 
-    article {
-      margin-left: 12em;
+    .company-info {
+      img {
+        max-width: 12em;
+      }
     }
+
+    .location-date>span {
+      min-width: 12em;
+      &:last-child {
+        padding-left: 2em;
+      }
+    }
+
+    ul.two-columns>li {
+      width: 40%;
+    }
+
   }
 }
