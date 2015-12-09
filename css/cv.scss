@@ -38,10 +38,12 @@ body.cv {
     .projects>section  {
     }
 
-    .experience>section  {
+    .experience>section + section {
+      margin-top: 2em;
     }
 
-    &>section {
+    &>section + section {
+      margin-top: 2.5em;
     }
   }
 
@@ -72,6 +74,10 @@ body.cv {
   h1, h2, h3, h4, h5, h6 {
     color: $dark-blue;
     margin: 0.5em 0em;
+
+    &:first-child {
+      margin-top: 0em;
+    }
   }
 
   p {
@@ -123,6 +129,10 @@ body.cv {
     dd {
       max-width: 65%;
       margin: 0em 0em 1em 0em;
+
+      &:last-child {
+          margin: 0em;
+      }
     }
   }
 }
@@ -133,17 +143,13 @@ body.cv {
     font-size: 8pt;
 
     article {
-      margin-left: 12em;
-
       .projects>section  {
         page-break-inside: avoid;
       }
-    }
 
-    address {
-      position: fixed;
-      top: 1em;
-      left: 1em;
+      >section:not(.experience) {
+        page-break-inside: avoid;
+      }
     }
 
     .company-info {
