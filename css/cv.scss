@@ -16,18 +16,20 @@ body.cv {
 
   dl {
     margin-top: 0.25em;
-  }
+    display: flex;
+    flex-wrap: wrap;
 
-  dt {
-    color: #555;
-
-    &:after {
-      content: ": ";
+    dt {
+      color: $dark-blue;
+      width: 14em;
     }
-  }
-
-  dd {
-    margin-bottom: 0.5em;
+    dd {
+      border-top: 1px solid $green;
+      border-left: 2px solid $green;
+      padding-left: 0.5em;
+      width: 34em;
+      margin: 0em 0em 1em 0em;
+    }
   }
 
   h1, h2, h3, h4, h5 {
@@ -85,7 +87,7 @@ body.cv {
       margin-bottom: 1em;
 
       span {
-        width: 18em;
+        min-width: 18em;
       }
     }
 
@@ -150,6 +152,10 @@ body.cv {
     }
     article {
       margin-left: 12em;
+
+      ul.two-columns>li {
+        width: 15em;
+      }
     }
   }
 }
