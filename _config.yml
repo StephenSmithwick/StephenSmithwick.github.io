@@ -1,14 +1,13 @@
 # Site settings
-title: Your awesome title
-email: your-email@domain.com
+title: Stephen Smithwick's Slightly Awesome Blog
+email: stephen.smithwick@domain.com
 description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://yourdomain.com" # the base hostname & protocol for your site
-twitter_username: jekyllrb
-github_username:  jekyll
+  A place to find out about Stephen Smithwick and to read his sporadic
+  musings on Software Development.
+baseurl: ""
+url: "https://StephenSmithwick.github.io" # the base hostname & protocol for your site
+twitter_username: S_Smithwick
+github_username:  StephenSmithwick
 
 # Build settings
 markdown: kramdown
