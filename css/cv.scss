@@ -7,15 +7,25 @@
 $dark-blue: #00578A;
 $mid-blue: #0588BC;
 $light-blue: #CAE4F1;
+$desk: #CCC;
+$paper: #FFF;
+
+html {
+  background-color: $desk;
+}
 
 body.cv {
-  font-size: 11pt;
+  font-size: .28cm;
   font-family: 'Open Sans', sans-serif;
   display: flex;
-  padding: 1em;
+  padding: 0.75cm;
+  width: 21cm;
+  margin: auto;
+  background-color: $paper;
 
   address {
-    width: 12em;
+    position: fixed;
+    width: 3cm;
     font-style: normal;
 
     .phone a {
@@ -33,7 +43,8 @@ body.cv {
   }
 
   article {
-    max-width: 50em;
+    margin-left: 3cm;
+    padding-left: 0.25cm;
 
     .projects>section  {
     }
@@ -140,8 +151,6 @@ body.cv {
 @media print {
 
   body.cv {
-    font-size: 8pt;
-
     article {
       .projects>section  {
         page-break-inside: avoid;
