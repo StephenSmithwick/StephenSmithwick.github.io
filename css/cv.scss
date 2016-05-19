@@ -9,6 +9,12 @@ $mid-blue: #0588BC;
 $light-blue: #CAE4F1;
 $desk: #CCC;
 $paper: #FFF;
+$sidebar-width: 3cm;
+$page-width: 21cm;
+$page-height: 26cm;
+$top-margin: 0.75cm;
+$inside-margin: 0.25cm;
+$outside-margin: 1cm;
 
 html {
   background-color: $desk;
@@ -18,15 +24,18 @@ body.cv {
   font-size: .28cm;
   font-family: 'Open Sans', sans-serif;
   display: flex;
-  padding: 0.75cm;
-  width: 21cm;
+  width: $page-width;
   margin: auto;
   background-color: $paper;
 
-  address {
-    position: fixed;
-    width: 3cm;
+  aside {
+    padding-right: $inside-margin;
+    width: $sidebar-width;
     font-style: normal;
+
+    address {
+      height: $page-height;
+    }
 
     .phone a {
       text-decoration: none;
@@ -43,8 +52,7 @@ body.cv {
   }
 
   article {
-    margin-left: 3cm;
-    padding-left: 0.25cm;
+    padding-left: $inside-margin;
 
     .projects>section  {
     }
@@ -69,7 +77,7 @@ body.cv {
     }
 
     span {
-      padding-left: 2em;
+      min-width: 18em;
     }
   }
 
@@ -109,7 +117,7 @@ body.cv {
 
       li {
         padding-right: 2em;
-        width: 22em;
+        width: 40%;
       }
     }
   }
@@ -134,7 +142,7 @@ body.cv {
 
     dt {
       color: $dark-blue;
-      width: 30%;
+      width: 18em;
     }
 
     dd {
@@ -148,9 +156,52 @@ body.cv {
   }
 }
 
-@media print {
-
+@media screen {
   body.cv {
+    padding: $top-margin $outside-margin;
+    
+    .for-printing {
+      display: none;
+    }
+
+    button {
+      left: calc(-2em - #{$outside-margin});
+      padding-left: 2em;
+      position: absolute;
+      background-color: $mid-blue;
+      color: #fff;
+      border: none;
+      border-radius: .5em 0 0 .5em
+    }
+
+    aside {
+        position: fixed;
+      button {
+        top: 0px;
+      }
+    }
+    article {
+      margin-left: $sidebar-width - $inside-margin;
+    }
+  }
+}
+
+@media print {
+  body.cv {
+    button {
+      display: none;
+    }
+
+    aside {
+      address {
+        page-break-after: always;
+        page-break-inside: avoid;
+        button {
+          display: none;
+        }
+      }
+    }
+
     article {
       .projects>section  {
         page-break-inside: avoid;
@@ -160,23 +211,5 @@ body.cv {
         page-break-inside: avoid;
       }
     }
-
-    .company-info {
-      img {
-        max-width: 12em;
-      }
-    }
-
-    .location-date>span {
-      min-width: 12em;
-      &:last-child {
-        padding-left: 2em;
-      }
-    }
-
-    ul.two-columns>li {
-      width: 40%;
-    }
-
   }
 }

@@ -5,24 +5,27 @@ date:   2015-12-07 08:15:58
 categories: cv
 ---
 
-<address>
-  <h1>Stephen Smithwick</h1>
-  <ul>
-    <li class="phone"><a href="tel:+61430704734">0430 704 734</a></li>
-    <li class="email"><a href="mailto:stephen.smithwick@gmail.com" subject="Job Offer:">stephen.smithwick<WBR>@gmail.com</a></li>
-    <li class="github"><a href="https://github.com/stephensmithwick">github.com/<WBR>stephensmithwick</a></li>
-  </ul>
-</address>
+<aside>
+  <button onclick="print_cv()">Print</button>
+  <address>
+    <h1>Stephen Smithwick</h1>
+    <ul>
+      <li class="phone"><a href="tel:+61430704734">0430 704 734</a></li>
+      <li class="email"><a href="mailto:stephen.smithwick@gmail.com" subject="Job Offer:">stephen.smithwick<WBR>@gmail.com</a></li>
+      <li class="github"><a href="https://github.com/stephensmithwick">github.com/<WBR>stephensmithwick</a></li>
+    </ul>
+  </address>
+</aside>
 
 <article>
   <section>
     <h2>Profile</h2>
-    <p>Engineering practice lead keen to find a leadership position with opportunities to stay involved in coding.</p>
-    <p>Significant experience with Ruby on Rails and Java.  Passionate about Agile methodologies and Test Driven Development. </p>
+    <p>Engineering practice lead passionate about continuos improvement.  Significant experience with Ruby on Rails and Java.</p>
+    <p>Enthusiastic about Agile methodologies and Test Driven Development. </p>
 
     <dl>
       <dt>Programming</dt>
-      <dd>Ruby on Rails, Sinatra, Spring MVC, Grails, Jquery, Angular, Vue.js, Node.js, Scala, C#, Clojure</dd>
+      <dd>Ruby on Rails, Sinatra, Spring MVC, Grails, Jquery, ReactJs, Vue.js, Node.js, Scala, C#, Clojure</dd>
 
       <dt>Technology management</dt>
       <dd>Business & technology strategy, technical architecture, infrastructure, application performance, TDD / BDD, code reviews</dd>
@@ -41,7 +44,7 @@ categories: cv
       <h3>Engineering Practice Lead, Qantas</h3>
 
       <div class="company-info">
-        <img src="images/qantas.png" alt="Qantas Logo">
+        <span><img src="images/qantas.png" alt="Qantas Logo"></span>
         <span>
           <a href="http://www.qantas.com">http://www.qantas.com</a><br>
           Qantas is Australia's leading domestic and international airline.
@@ -93,7 +96,7 @@ categories: cv
       <h3>Technical Director, RateCity</h3>
 
       <div class="company-info">
-        <img src="images/ratecity.png" onerror="this.src='images/ratecity.png';this.onerror=null;" alt="RateCity Logo">
+        <span><img src="images/ratecity.png" onerror="this.src='images/ratecity.png';this.onerror=null;" alt="RateCity Logo"></span>
         <span>
           <a href="http://www.ratecity.com.au">http://www.ratecity.com.au</a><br>
           RateCity is Australia's leading financial comparison website where users compare credit cards, loans, and investment products.
@@ -191,6 +194,7 @@ categories: cv
         <li>Ansible</li>
         <li>AWS</li>
         <li>jQuery</li>
+        <li>ReactJs</li>
         <li>Bootstrap</li>
         <li>Jira</li>
         <li>Confluence</li>
@@ -201,7 +205,7 @@ categories: cv
       <h3>Lead Developer / Senior Developer</h3>
 
       <div class="company-info">
-        <img src="images/dius.png" alt="DiUS Logo">
+        <span><img src="images/dius.png" alt="DiUS Logo"></span>
         <span>
           <a href="http://www.dius.com.au">http://www.dius.com.au</a><br>
           DiUS is an Agile consulting business which focuses on delivering products
@@ -315,7 +319,7 @@ categories: cv
       <h3>Software Development Engineer</h3>
 
       <div class="company-info">
-        <img src="images/foxsports.png" alt="Fox Sports Logo">
+        <span><img src="images/foxsports.png" alt="Fox Sports Logo"></span>
         <span>
           <a href="http://www.foxsports.com.au">http://www.foxsports.com.au</a><br>
           Foxsports is owned by Premier Media Group who also produces Fuel TV and How To.
@@ -391,9 +395,9 @@ categories: cv
       <h3>Java Developer</h3>
 
       <div class="company-info">
-        <div>
+        <span>
           <img src="images/hypertag.png" alt="Hypertag logo">
-        </div>
+        </span>
         <span>
           <a href="http://www.hypertag.com">http://www.hypertag.com</a><br>
           Hypertag develops Bluetooth and RFID content servers referred to as tags.
@@ -420,7 +424,7 @@ categories: cv
       <h3>Software Engineer</h3>
 
       <div class="company-info">
-        <img src="images/biowisdom.png" alt="BioWisdom Logo">
+        <span><img src="images/biowisdom.png" alt="BioWisdom Logo"></span>
         <span>
           <a href="http://www.biowisdom.com">http://www.biowisdom.com</a><br>
           BioWisdom builds ontologies around biomedical research in the form of graphs of assertion branching from concepts.
@@ -472,7 +476,7 @@ categories: cv
     <section>
       <h3>Founding Member and Organiser of Random Hacks of Kindness</h3>
       <div class="company-info">
-        <img src="images/rhok.png" alt="Random Hacks of Kindness Logo">
+        <span><img src="images/rhok.png" alt="Random Hacks of Kindness Logo"></span>
         <span>
           <a href="http://www.rhokaustralia.org">http://www.rhokaustralia.org</a><br>
           RHoK is a rapidly growing global initiative making the world a better place by developing practical, open source technology solutions to respond to some of the
@@ -484,10 +488,6 @@ categories: cv
         <span>Sydney</span>
         <span>Sydney	2011 - present</span>
       </div>
-
-      <p>
-
-      </p>
 
       <ul class="two-columns">
         <li>Set up and ran the first weekend hackathon (June 2011)</li>
@@ -538,3 +538,23 @@ categories: cv
     <p>Available upon request.</p>
   </section>
 </article>
+
+<script>
+  function print_cv() {
+    const sidebar = document.getElementsByTagName('aside')[0];
+    const address = sidebar.getElementsByTagName('address')[0];
+    const article = document.getElementsByTagName('article')[0];
+
+    const pages = article.clientHeight / address.clientHeight;
+
+    for(var i = 1; i < pages; i++) {
+      var next = address.cloneNode(true);
+      next.removeAttribute('id');
+      next.setAttribute('class', 'for-printing');
+      sidebar.insertBefore(next, null);
+      console.log({sidebar: document.getElementsByTagName('aside')[0].clientHeight, article: article.clientHeight})
+    }
+
+    window.print();
+  }
+</script>
