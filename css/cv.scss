@@ -104,10 +104,6 @@ body.cv {
   h1, h2, h3, h4, h5, h6 {
     color: $dark-blue;
     margin: 0.5em 0em;
-
-    &:first-child {
-      margin-top: 0em;
-    }
   }
 
   p {
