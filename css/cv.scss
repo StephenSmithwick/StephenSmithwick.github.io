@@ -9,12 +9,19 @@ $mid-blue: #0588BC;
 $light-blue: #CAE4F1;
 $desk: #CCC;
 $paper: #FFF;
+
 $sidebar-width: 3cm;
 $page-width: 21cm;
+$content-width: $page-width - $sidebar-width;
+
 $page-height: 26cm;
 $top-margin: 0.75cm;
 $inside-margin: 0.25cm;
 $outside-margin: 1cm;
+
+$left-header-width: 5cm;
+$li-left-padding: 1.5em;
+$li-right-padding: 2em;
 
 html {
   background-color: $desk;
@@ -53,8 +60,12 @@ body.cv {
 
   article {
     padding-left: $inside-margin;
+    width: $content-width;
 
     .projects>section  {
+    }
+
+    .roles>section {
     }
 
     .experience>section + section {
@@ -77,7 +88,7 @@ body.cv {
     }
 
     span {
-      min-width: 18em;
+      min-width: $left-header-width;
     }
   }
 
@@ -86,7 +97,7 @@ body.cv {
     margin: 0.5em 0 0;
 
     span {
-      min-width: 18em;
+      min-width: $left-header-width;
     }
   }
 
@@ -108,8 +119,8 @@ body.cv {
   }
 
   ul {
-    padding-left: 1.5em;
     list-style: circle;
+    padding-left: 1.5em;
 
     &.two-columns {
       display: flex;
@@ -117,7 +128,7 @@ body.cv {
 
       li {
         padding-right: 2em;
-        width: 40%;
+        width: calc(50% - 2em);
       }
     }
   }
@@ -142,11 +153,11 @@ body.cv {
 
     dt {
       color: $dark-blue;
-      width: 18em;
+      width: $left-header-width;
     }
 
     dd {
-      max-width: 65%;
+      width: $content-width - $left-header-width;
       margin: 0em 0em 1em 0em;
 
       &:last-child {
@@ -159,7 +170,7 @@ body.cv {
 @media screen {
   body.cv {
     padding: $top-margin $outside-margin;
-    
+
     .for-printing {
       display: none;
     }
