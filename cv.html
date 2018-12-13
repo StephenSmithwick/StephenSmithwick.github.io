@@ -9,8 +9,9 @@ categories: cv
   <button onclick="print_cv()">Print</button>
   <address>
     <h1>Stephen Smithwick</h1>
+
     <ul>
-      <li class="phone"><a href="tel:+61430704734">0430 704 734</a></li>
+      <li class="phone"><a href="tel:+61430704734">+61 430 704 734</a></li>
       <li class="email"><a href="mailto:stephen.smithwick@gmail.com" subject="Job Offer:">stephen.smithwick<WBR>@gmail.com</a></li>
       <li class="github"><a href="https://github.com/stephensmithwick">github.com/<WBR>stephensmithwick</a></li>
     </ul>
@@ -20,29 +21,133 @@ categories: cv
 <article>
   <section>
     <h2>Profile</h2>
-    <p>Principal Developer passionate about continuous improvement.</p>
-    <p>12 plus years in Java and Ruby on Rails.</p>
-    <p>Enthusiastic about and experienced implementer of Agile methodologies and Test Driven Development. </p>
-    <p>Built a number of large scale, high load distributed systems on AWS.</p>
+
+    <p>
+      Technical developer currently responsible for designing, implementing, monitoring, scaling and optimizing
+      software services within the Integration Domain at Qantas Airways. Have significant experience with stakeholder management and working with the
+      business to achieve shared goals. Enthusiastic implementer of Agile methodologies and Test Driven Development.
+      Passionate about continuous improvement. Built a number of large scale, high load distributed systems on AWS.
+    </p>
+  </section>
+
+  <section>
+    <h2>Key Skills</h2>
+
+    <ul class="two-columns">
+      <li>Technical leader</li>
+      <li>Product and technology ownership</li>
+      <li>Continuous improvement</li>
+      <li>Product security</li>
+      <li>Story definition, prioritization frameworks</li>
+      <li>Hiring, managing and mentoring developers</li>
+      <li>Business and technology strategy</li>
+      <li>Technical architecture</li>
+      <li>Infrastructure</li>
+      <li>Application performance</li>
+      <li>TDD/BDD</li>
+      <li>Code reviews</li>
+      <li>AWS</li>
+      <li>Agile SCRUM methodology</li>
+      <li>Kanban</li>
+      <li>Mentoring</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Tools and Techologies</h2>
 
     <dl>
-      <dt>Programming</dt>
-      <dd>Kotlin, Spring MVC, Ruby on Rails, Sinatra, ReactJs, Vue.js, Node.js, Jquery, Scala, C#, Clojure, Python</dd>
+      <dt>Java/JVM</dt>
+      <dd>
+        <ul class="inline">
+          <li>Java</li>
+          <li>Kotlin</li>
+          <li>Scala</li>
+          <li>Clojure</li>
+          <li>Grails</li>
+        </ul>
+        <ul class="inline">
+          <li>Hibernate</li>
+          <li>Play 2</li>
+          <li>Spring MVC</li>
+          <li>Spring Security</li>
+          <li>Tomcat</li>
+        </ul>
+      </dd>
 
-      <dt>Technology management</dt>
-      <dd>Business & technology strategy, technical architecture, infrastructure, application performance, TDD / BDD, code reviews, AWS</dd>
+      <dt>Web</dt>
+      <dd>
+        <ul class="inline">
+          <li>React</li>
+          <li>Angular</li>
+          <li>Vue.js</li>
+          <li>jQuery</li>
+          <li>Bootstrap</li>
+          <li>Sass</li>
+        </ul>
+      </dd>
 
-      <dt>Product management</dt>
-      <dd>Road maps, prioritization frameworks, backlog management</dd>
+      <dt>Ruby</dt>
+      <dd>
+        <ul class="inline">
+          <li>Ruby</li>
+          <li>Ruby on Rails</li>
+          <li>Sinatra</li>
+        </ul>
+      </dd>
 
-      <dt>Team management</dt>
-      <dd>Agile SCRUM, Kanban, standups, retrospectives</dd>
+      <dt>Operational</dt>
+      <dd>
+        <ul class="inline">
+          <li>AWS</li>
+          <li>Ansible</li>
+          <li>Bamboo</li>
+          <li>Vagrant</li>
+        </ul>
+      </dd>
+
+      <dt>Agile</dt>
+      <dd>
+        <ul class="inline">
+          <li>Confluence</li>
+          <li>Jira</li>
+        </ul>
+      </dd>
+
+      <dt>Testing</dt>
+      <dd>
+        <ul class="inline">
+          <li>Cucumber</li>
+          <li>Rspec</li>
+          <li>Selenium</li>
+          <li>jUnit</li>
+        </ul>
+      </dd>
+
+      <dt>Databases</dt>
+      <dd>
+        <ul class="inline">
+          <li>Elastic Search</li>
+          <li>Oracle</li>
+          <li>PostgreSQL</li>
+          <li>SqlServer</li>
+        </ul>
+      </dd>
+
+      <dt>Other</dt>
+      <dd>
+        <ul class="inline">
+          <li>Git</li>
+          <li>Python</li>
+        </ul>
+      </dd>
     </dl>
   </section>
 
-  <section class="experience">
-    <h2>Experience</h2>
-    <section>
+  <section>
+    <h2>Work Experience</h2>
+
+    <section class="company">
       <div class="company-info">
         <span><img src="images/qantas.png" alt="Qantas Logo"></span>
         <span>
@@ -53,7 +158,7 @@ categories: cv
 
       <section class="roles">
         <section class="role">
-          <h3>Principal Software Engineer, Qantas</h3>
+          <h3>Principal Software Engineer</h3>
 
           <div class="location-date">
             <span>Sydney, Australia</span>
@@ -61,43 +166,52 @@ categories: cv
           </div>
 
           <p>
-            A Principal Software Engineer in the Integration domain leads technical decisions and acts as the Product Owner for the Squad Products.
-            Additionally the Principal cooordinates with the other squads and the rest of the business.
+            This role is responsible for leading technical decisions and managing stakeholders within the
+            Integration domain. The Integration domain's main customers are other development teams.
+            Therefore, the Principal role also involves acting as Product Owner.
           </p>
 
-          <section class="projects">
-            <h4>Key projects</h4>
-            <section>
-              <h5>Notifications Platform</h5>
-
-              <p>The Notifications Platform delivers messages to subscribed customers and employees on flight and passenger events via many channels including:  sms, email, in app messaging, and facebook messenger.</p>
-              <p>
-                Established Notifications Team from scratch: an agile, autonomous, product focussed team which manages all aspect of the product lifecycle including design, operations, support, and devlopment.
-                The team operates in a highly collaborative Kanban fashion with a strict work in progress limit, regular releases, and automation of almost all processes.
-              </p>
-            </section>
-            <section>
-              <h5>Evolve IT</h5>
-
-              <p>Qantas has been going through a technical, cultural and operational transformation of IT.</p>
-              <ul>
-                <li>Helped to create the new playbook to guide teams in the new ways of working</li>
-                <li>Volunteered as a Change Champion</li>
-                <li>Lead the adoption of the new ways of working in the Integration Domain</li>
-              </ul>
-
-            </section>
-            <section>
-              <h5>Customer Response Engine</h5>
-
-              <p>The Customer Response Engine provides insights around customer for Qantas services via APIs and event streams using flight, booking and customer data feeds.</p>
-              <p>Introduce more customer friendly event consumption models and agile ways of working inspired by the spotify framework to the team</p>
-
-            </section>
+          <section>
+            <ul>
+              <li>
+                <h4>Deeply Involved in Qantas Transformation project</h4>
+                <p>
+                  Qantas has been going through a technical, cultural and operational transformation of IT.
+                  <ul>
+                    <li>Advised on potential structures to support IT implementation</li>
+                    <li>Helped to create the playbook to guide teams in the new ways of working</li>
+                    <li>Led the adoption of the new ways of working in the Integration Domain</li>
+                    <li>Consulted with other teams as a Change Champion</li>
+                  </ul>
+                </p>
+              </li>
+              <li>
+                <h4>Established Notification Team</h4>
+                <p>
+                  The Notifications Platform delivers messages to subscribed customers
+                  and employees on flight and passenger events via many channels including:
+                  sms, email, in app messaging, and facebook messenger. The team operates in
+                  a highly collaborative Kanban fashion with a strict work in progress limit,
+                  regular releases, and automation of almost all processes. They are an agile,
+                  autonomous, product focussed team which manages all aspect of
+                  the product lifecycle including design, operations, support, and development
+                <p>
+              </li>
+              <li>
+                <h4>Customer Response Engine</h4>
+                <p>
+                  The Customer Response Engine ingest very large amounts of data and provides insights
+                  around customers for Qantas services via APIs and event streams using flight,
+                  booking and customer data feeds. Introduced more customer friendly event
+                  consumption models and agile ways of working inspired by the spotify framework to the team
+                </p>
+               </li>
+            </ul>
           </section>
         </section>
+
         <section class="role">
-          <h3>Engineering Practice Lead, Qantas</h3>
+          <h3>Engineering Practice Lead</h3>
 
           <div class="location-date">
             <span>Sydney, Australia</span>
@@ -105,420 +219,197 @@ categories: cv
           </div>
 
           <p>
-            This role is responsible for managing the development practices of the
-            four teams rebuilding the Qantas website in AWS using Agile practices.
+            This role was responsible for providing technical guidance and oversight to the
+            four teams rebuilding the Qantas website in AWS. It involved establishing and strengthening
+            software development standards to ensure the development teams consistently delivered
+            quality software using Agile practices.
           </p>
 
-          <ul class="two-columns">
-            <li>Technical Leader</li>
-            <li>Product and technology ownership</li>
-            <li>Technology direction and management</li>
-            <li>Product direction and strategy</li>
-            <li>Story definition and prioritisation</li>
-            <li>Hiring, managing and mentoring developers</li>
-          </ul>
-
-          <section class="projects">
-            <h4>Key projects</h4>
-            <section>
-              <h5>Continual Improvement</h5>
-              <ul>
-                <li>Organize and support developer guilds and chapters:
-                  <ul class="inline">
-                    <li>Security Guild</li>
-                    <li>Front End Chapter</li>
-                    <li>Java Guild</li>
-                    <li>AEM Guild</li>
-                  </ul>
-                </li>
-                <li>Set a goal of regular low fanfare releases with increased automation and decreased external dependencies</li>
-                <li>Arrange for and define work to reach this goal</li>
-              </ul>
-            </section>
-            <section>
-              <h5>Security Guild</h5>
-              <p>
-                Qantas Security Teams and Developers did not effectively communicate security initiatives and discovered issues.
-              </p>
-              <ul class="two-columns">
-                <li>Establish a Security Guild to identify issues and set actions to resolve them</li>
-                <li>Regularly catch up to share knowledge between team members</li>
-                <li>Establish a very active slack channel (#security) for regular discussion of security matters.</li>
-              </ul>
-            </section>
+          <section>
+            <ul>
+              <li>
+                Focused on improving development practices and reducing the time taken to release across four teams.
+                Established or guided developer guilds and chapters:
+                <ul class="inline">
+                  <li>Security Guild</li>
+                  <li>Front End Chapter</li>
+                  <li>Java Guild</li>
+                  <li>AEM Guild</li>
+                </ul>
+                Encouraged regular low fanfare releases with increased automation
+                Decreased external dependencies
+              </li>
+              <li>Evaluated new technologies using data and metrics</li>
+              <li>Coached developers in TDD/BDD practices</li>
+              <li>
+                Communication between Qantas security teams and developers was ad-hoc and reactive.
+                Set up a Security Guild to improve communication between security teams and developers.
+                Forums resulted in improved knowledge sharing between teams
+              </li>
+            </ul>
           </section>
         </section>
-        <section>
-          <h4>Tools and technologies</h4>
-
-          <ul class="inline">
-            <li>Java</li>
-            <li>Spring MVC</li>
-            <li>AWS: Cloudformation, Lambda, Kinesis, SNS</li>
-            <li>Blue/Green Deployments</li>
-            <li>Bamboo</li>
-            <li>Jira</li>
-            <li>Confluence</li>
-          </ul>
-        </section>
       </section>
-    </section>
-    <section>
-      <h3>Technical Director, RateCity</h3>
 
-      <div class="company-info">
-        <span><img src="images/ratecity.png" onerror="this.src='images/ratecity.png';this.onerror=null;" alt="RateCity Logo"></span>
-        <span>
-          <a href="http://www.ratecity.com.au">http://www.ratecity.com.au</a><br>
-          RateCity is Australia's leading financial comparison website where users compare credit cards, loans, and investment products.
-        </span>
-      </div>
+      <section class="company">
+        <div class="company-info">
+          <span><img src="images/ratecity.png" onerror="this.src='images/ratecity.png';this.onerror=null;" alt="RateCity Logo"></span>
+          <span>
+            <a href="http://www.ratecity.com.au">http://www.ratecity.com.au</a><br>
+            RateCity is Australia's leading financial comparison website where users compare credit cards, loans, and investment products.
+            RateCity has a million unique visitors per month.
+          </span>
+        </div>
 
-      <div class="location-date">
-        <span>Sydney, Australia</span>
-        <span>January 2015 - March 2016</span>
-      </div>
+        <h3>Technical Director</h3>
 
-      <p>
-        This role guides the technical decisions made by the company and is
-        responsible for managing a team of developers. RateCity has a million
-        unique visitors per month.
-      </p>
+        <div class="location-date">
+          <span>Sydney, Australia</span>
+          <span>January 2015 - March 2016</span>
+        </div>
 
-      <ul class="two-columns">
-        <li>Product and technology ownership</li>
-        <li>Technology direction and management</li>
-        <li>Agile Scrum methodology</li>
-        <li>Product direction and strategy</li>
-        <li>Story definition and prioritisation</li>
-        <li>Hiring, developing and managing developers including remote team</li>
-      </ul>
+        <p>
+          This role led the technical decisions made by the company and was
+          responsible for managing a team of developers.
+        </p>
 
-      <section class="projects">
-        <h4>Key projects</h4>
+          <section>
+            <ul>
+              <li>Replaced ad-hoc development process where developers would work on projects based
+                 on immediate business demands with an Agile Scrum approach</li>
+              <li>Achieved business buy-in to the new development process</li>
+              <li>Took a legacy code base with performance issues and a large amount of technology
+                debt and migrated it to a high performance modular system using a measured and risk based approach.
+                Introduced infrastructure, design and useability enhancements</li>
+              <li>Led the redevelopment of the credit card site from the ground up with a focus on
+                 the user experience</li>
+              <li>Established a new data warehouse to gather disparate user data, enabling
+                linkage between information and increased behavioural tracking using Google Analytics</li>
+              <li>Transitioned the website from hosted web server provider onto AWS to
+                increase flexibility and responsiveness</li>
+              <li>Set up and managed a remote team</li>
+            </ul>
+          </section>
+      </section>
 
-        <section>
-          <h5>Agile development methodologies</h5>
-          <p>
-            The ad-hoc development process where developers would work on projects based on immediate business demands was replaced with an Agile Scrum approach.
-          </p>
-          <ul>
-            <li>Introduced standups, two week sprints, retrospectives and prioritisation meetings</li>
-            <li>Achieved business buy-in to a new development process</li>
-            <li>Helped business identify their goals and divide work into manageable and well defined epics and stories</li>
-            <li>Based on team velocity, created a plan to deliver business needs</li>
-          </ul>
-        </section>
+      <section class="company">
+        <div class="company-info">
+          <span><img src="images/dius.png" alt="DiUS Logo"></span>
+          <span>
+            <a href="http://www.dius.com.au">http://www.dius.com.au</a><br>
+            DiUS is an Agile consulting business which focuses on delivering products
+            for its customers in a collaborative, iterative and build-measure-learn way.
+          </span>
+        </div>
 
-        <section>
-          <h5>Credit cards</h5>
-          <p>
-            The credit card site was redeveloped from the ground up with a focus on the user experience.
-          </p>
-          <ul>
-            <li>Conducted user surveys and workshops to build user stories</li>
-            <li>Developed core search functionality in Elastic Search</li>
-            <li>Redesigned front end</li>
-          </ul>
-        </section>
+        <h3>Senior Software Engineer</h3>
 
-        <section>
-          <h5>Tracking and analytics</h5>
-          <p>
-            To increase RateCity's knowledge of its customers, this project gathered disparate user data into a data warehouse, enabling linkage between information.
-          </p>
-          <ul>
-            <li>Linked multiple sources of information including GA, Omniture, Salesforce and PHG</li>
-            <li>Increased behaviour tracking using Google Analytics</li>
-          </ul>
-        </section>
+        <div class="location-date">
+          <span>Sydney, Australia</span>
+          <span>May 2011 - December 2015</span>
+        </div>
+
+        <p>
+          Lead developer and project manager consulting with local and remote teams.
+        </p>
 
         <section>
-          <h5>Migration to AWS</h5>
-          <p>
-            In order to increase flexibility and responsiveness, this project transitioned the website from the hosted web server provider onto Amazon Web Service.
-          </p>
           <ul>
-            <li>Built a system to provision servers automatically</li>
-            <li>Developed a switch over / roll back plan</li>
-          </ul>
-        </section>
-
-        <section>
-          <h5>Major site improvements</h5>
-          <p>This ongoing process took a legacy code base with performance issues and a large amount of technology debt
-            and migrated it to a high performance modular system.
-          </p>
-          <ul>
-            <li>Used a measured and risk based approach to migrate from the older system</li>
-            <li>Introduced infrastructure, design and useability enhancements</li>
+            <li>Worked on ResMed's ECO application; a medical patient management and reporting system
+              that allows ResMed to monitor patients and their use of therapy devices wirelessly
+              and via a card. This is a highly regulated environment with multiple countries'laws
+              being applicable. Developed a framework, tests and processes to help ensure that all
+              regulatory requirements were monitored and met. Used extensive cucumber tests as a basis
+              for meeting FDA regulation requirements</li>
+            <li>Developed ResMed's Apnea Link to Care (ALC) project, part of ResMed's EasyCare
+              Online offering, to allow doctors to diagnose and manage patients with
+              sleep apnea. Introduced user testing of early iterations to ensure quick feedback on
+              development direction</li>
+            <li>Led Zerobots project to develop an innovative approach to reduce the time it takes to set
+              up software projects by automating the creation of Java and Rails projects in Github and AWS.
+              Set up build pipeline, source code and AWS infrastructure based off a user specified template</li>
           </ul>
         </section>
       </section>
 
-      <h4>Tools and technologies</h4>
-      <ul class="inline">
-        <li>Ruby on Rails</li>
-        <li>Sidekiq on Redis</li>
-        <li>Elastic Search</li>
-        <li>PostgreSQL</li>
-        <li>Ansible</li>
-        <li>AWS</li>
-        <li>jQuery</li>
-        <li>ReactJs</li>
-        <li>Bootstrap</li>
-        <li>Jira</li>
-        <li>Confluence</li>
-      </ul>
-    </section>
+      <section class="company">
+        <div class="company-info">
+          <span><img src="images/foxsports.png" alt="Fox Sports Logo"></span>
+          <span>
+            <a href="http://www.foxsports.com.au">http://www.foxsports.com.au</a><br>
+            Foxsports is owned by Premier Media Group who also produces Fuel TV and How To.
+          </span>
+        </div>
 
-    <section>
-      <h3>Lead Developer / Senior Developer</h3>
+          <h3>Software Development Engineer</h3>
 
-      <div class="company-info">
-        <span><img src="images/dius.png" alt="DiUS Logo"></span>
-        <span>
-          <a href="http://www.dius.com.au">http://www.dius.com.au</a><br>
-          DiUS is an Agile consulting business which focuses on delivering products
-          for its customers in a collaborative, iterative and build-measure-learn way.
-        </span>
-      </div>
+        <div class="location-date">
+          <span>Sydney, Australia</span>
+          <span>March 2008 - May 2011</span>
+        </div>
 
-      <div class="location-date">
-        <span>Sydney, Australia</span>
-        <span>May 2011 - December 2015</span>
-      </div>
-
-      <ul class="two-columns">
-        <li>Agile Scrum methodology</li>
-        <li>Project management</li>
-        <li>Behaviour and Test Driven Development</li>
-        <li>Continuous build, integration and deployment pipeline</li>
-        <li>Lead Developer working with local and remote teams</li>
-      </ul>
-
-      <section class="projects">
-        <h4>Key projects</h4>
-
-        <section>
-          <h5>ResMed's Apnea Link to Care (ALC)</h5>
-          <p>
-            The global ALC project, part of ResMed's EasyCare Online offering was developed to allow doctors to diagnose and manage patients with sleep apnea.
-          </p>
-          <ul>
-            <li>Gathered user requirements</li>
-            <li>Introduced user testing of early iterations to ensure quick feedback on development direction</li>
-            <li>Developed reporting to identify issues</li>
-          </ul>
-        </section>
-
-        <section>
-          <h5>Whitepages</h5>
-          <p>
-            Developed a staff directory and hierarchical charts using a bespoke data source.
-          </p>
-          <ul>
-            <li>Set up build pipeline with automated system for continuous testing and deployment</li>
-            <li>Followed BDD and TDD using rspec</li>
-          </ul>
-        </section>
-
-        <section>
-          <h5>Chronos</h5>
-          <p>
-            The Chronos reporting tool was designed to collate data from various databases and highlights key information to exam schedulers and students.
-          </p>
-          <ul>
-            <li>Managed and developed team</li>
-            <li>Coached a team of developers in TDD/BDD practices</li>
-            <li>Introduced standups, retrospectives and showcases to support a continual health check of the project</li>
-          </ul>
-        </section>
-
-        <section>
-          <h5>Zerobots</h5>
-          <p>
-            The Zerobots project was established to reduce the time it takes to set up software projects by automating the creation
-            of Java and Rails projects in Github and AWS.
-          </p>
-          <ul>
-            <li>Developed an innovative approach to reduce the average set up time to less than an hour</li>
-            <li>Set up build pipeline, source code and AWS infrastructure based off a user specified template</li>
-          </ul>
-        </section>
-
-        <section>
-          <h5>EasyCare Online (ECO)</h5>
-          <p>
-            Developed the ECO application; a medical patient management and reporting system that allows ResMed to monitor patients
-            and their use of therapy devices wirelessly and via a card.
-          </p>
-          <ul>
-            <li>Worked in highly regulated environment meeting multiple countries' laws</li>
-            <li>Developed a framework, tests and processes to help ensure that all regulatory requirements can be monitored and met</li>
-            <li>Used extensive cucumber tests as a basis for meeting FDA regulation requirements</li>
-          </ul>
-        </section>
+        <p>This role included leading the development of a Java web application to support the booking of
+        satellites and equipment for recording content using AWS.</p>
       </section>
 
-      <section>
-        <h4>Tools and technologies</h4>
+      <section class="company">
+        <div class="company-info">
+          <span>
+            <img src="images/hypertag.png" alt="Hypertag logo">
+          </span>
+          <span>
+            <a href="http://www.hypertag.com">http://www.hypertag.com</a><br>
+            Hypertag develops Bluetooth and RFID content servers referred to as tags.
+          </span>
+        </div>
 
-        <ul class="inline">
-          <li>Ruby on Rails</li>
-          <li>Java</li>
-          <li>Spring MVC</li>
-          <li>Hibernate</li>
-          <li>SqlServer</li>
-          <li>Ansible</li>
-          <li>Angular</li>
-          <li>AWS</li>
-          <li>Jira</li>
-          <li>Confluence</li>
-          <li>Bamboo</li>
-          <li>Spring Security</li>
-          <li>Scala</li>
-          <li>Play 2</li>
-          <li>Vagrant</li>
-          <li>Cucumber</li>
-          <li>Selenium</li>
-        </ul>
-      </section>
-    </section>
+          <h3>Java Developer</h3>
 
-    <section>
-      <h3>Software Development Engineer</h3>
+        <div class="location-date">
+          <span>Cambridge, UK</span>
+          <span>July 2007 - November 2007 (short term contract)</span>
+        </div>
 
-      <div class="company-info">
-        <span><img src="images/foxsports.png" alt="Fox Sports Logo"></span>
-        <span>
-          <a href="http://www.foxsports.com.au">http://www.foxsports.com.au</a><br>
-          Foxsports is owned by Premier Media Group who also produces Fuel TV and How To.
-        </span>
-      </div>
-
-      <div class="location-date">
-        <span>Sydney, Australia</span>
-        <span>March 2008 - May 2011</span>
-      </div>
-
-      <ul class="two-columns">
-        <li>Project planning and lead</li>
-        <li>Project management</li>
-        <li>Automation of graphic systems working on live news casts</li>
-        <li>Cross department projects with multiple stakeholders</li>
-      </ul>
-
-      <section class="projects">
-        <h4>Key projects</h4>
-
-        <section>
-          <h5>DIBS</h5>
-          <p>
-            This in-house Java web application was developed to support the booking of satellites and equipment for recording content.
-          </p>
-          <ul>
-            <li>Identified common requirements from multiple stakeholder groups and developed a practical solution</li>
-            <li>Designed and lead developer of application</li>
-          </ul>
-        </section>
-
-        <section>
-          <h5>Fox Sports Crew</h5>
-          <p>
-            This project developed technology to support offsite contractors.
-          </p>
-          <ul>
-            <li>Developed a secure website to facilitate communication</li>
-            <li>Provided non-technical staff with an automatic deployment using SVN</li>
-          </ul>
-        </section>
-
-        <section>
-          <h5>PMG Names</h5>
-          <p>
-            This project created an alias database which allowed automated tools in the business to correctly identify a team name in varied context and usage.
-          </p>
-          <ul>
-            <li>Hierarchical database of team names and their aliases</li>
-            <li>Expanded scope of project as core technology was shown to be useful for multiple projects</li>
-          </ul>
-        </section>
+        <p>    This contract role supported the continued development of the Hypertag product.</p>
       </section>
 
-      <section>
-        <h4>Tools and technologies</h4>
-        <ul class="inline">
-          <li>C# .NET</li>
-          <li>Java</li>
-          <li>Spring MVC</li>
-          <li>SqlServer</li>
-          <li>Grails</li>
-          <li>AWS</li>
-          <li>SVN</li>
-          <li>Tomcat</li>
-          <li>Maven</li>
-        </ul>
+      <section class="company">
+        <div class="company-info">
+          <span><img src="images/biowisdom.png" alt="BioWisdom Logo"></span>
+          <span>
+            <a href="http://www.biowisdom.com">http://www.biowisdom.com</a><br>
+            BioWisdom builds ontologies around biomedical research in the form of graphs of assertion
+            branching from concepts.
+          </span>
+        </div>
+
+        <h3>Software Engineer</h3>
+
+        <div class="location-date">
+          <span>Cambridge, UK</span>
+          <span>May 2005 - July 2007</span>
+        </div>
+
+        <p>This role was responsible for building a graphical ontology
+        querying tool and developing middle-tier business logic components.</p>
       </section>
-    </section>
 
-    <section>
-      <h3>Java Developer</h3>
+      <section class="company">
+        <div class="company-info">
+          <span><img src="images/cu.png" alt="University of Colorado Logo"></span>
+          <span>
+          The codebroker development tool helps Java programmers by doing background searches for relevant Java features.</span>
+        </div>
 
-      <div class="company-info">
-        <span>
-          <img src="images/hypertag.png" alt="Hypertag logo">
-        </span>
-        <span>
-          <a href="http://www.hypertag.com">http://www.hypertag.com</a><br>
-          Hypertag develops Bluetooth and RFID content servers referred to as tags.
-        </span>
-      </div>
+        <h3>Research and Development Assistant, Life Long Learning and Design</h3>
 
-      <div class="location-date">
-        <span>Cambridge, UK</span>
-        <span>July 2007 - November 2007 (short term contract)</span>
-      </div>
+        <div class="location-date">
+          <span>Colorado, USA</span>
+          <span>August 2003 - September 2004</span>
+        </div>
 
-      <section>
-        <h4>Tools and technologies</h4>
-        <ul class="inline">
-          <li>Java</li>
-          <li>Ant</li>
-          <li>Tomcat</li>
-          <li>Non-blocking IO</li>
-        </ul>
+        <p>Worked as research assistant under Yunwen Ye on the codebroker development tool.</p>
       </section>
-    </section>
-
-    <section>
-      <h3>Software Engineer</h3>
-
-      <div class="company-info">
-        <span><img src="images/biowisdom.png" alt="BioWisdom Logo"></span>
-        <span>
-          <a href="http://www.biowisdom.com">http://www.biowisdom.com</a><br>
-          BioWisdom builds ontologies around biomedical research in the form of graphs of assertion branching from concepts.
-        </span>
-      </div>
-
-      <div class="location-date">
-        <span>Cambridge, UK</span>
-        <span>May 2005 - July 2007</span>
-      </div>
-
-      <section>
-        <h4>Tools and technologies</h4>
-        <ul class="inline">
-          <li>C# .NET</li>
-          <li>Win32 Libraries</li>
-          <li>Java</li>
-          <li>Tomcat</li>
-          <li>Oracle</li>
-          <li>Graph Database</li>
-        </ul>
-      </section>
-    </section>
   </section>
 
   <section>
@@ -526,81 +417,40 @@ categories: cv
 
     <section>
       <h3>BSc, Computer Science</h3>
+
       <div class="location-date">
-        <span>University of Colorado, USA</span>
+        <span>University of Colorado, Boulder</span>
         <span>October 2000 - July 2004</span>
       </div>
     </section>
 
-    <section>
-      <h3>Life Long Learning & Design - Research & Development Assistant</h3>
-      <div class="location-date">
-        <span>University of Colorado, USA</span>
-        <span>August 2003 - September 2004</span>
-      </div>
-    </section>
   </section>
 
   <section>
     <h2>Other</h2>
 
-    <section>
-      <h3>Founding Member and Organiser of Random Hacks of Kindness</h3>
-      <div class="company-info">
-        <span><img src="images/rhok.png" alt="Random Hacks of Kindness Logo"></span>
-        <span>
-          <a href="http://www.rhokaustralia.org">http://www.rhokaustralia.org</a><br>
-          RHoK is a rapidly growing global initiative making the world a better place by developing practical, open source technology solutions to respond to some of the
-          most complex challenges facing humanity.
-        </span>
-      </div>
+    <h3>Founding Member and Organizer of Random Hacks of Kindness</h3>
+    <div class="company-info">
+      <span><img src="images/rhok.png" alt="Random Hacks of Kindness Logo"></span>
+      <span>
+        <a href="http://www.rhokaustralia.org">http://www.rhokaustralia.org</a><br>
+        RHoK is a rapidly growing global initiative making the world a better place by developing practical,
+        open source technology solutions to respond to some of the most complex challenges facing humanity.
+      </span>
+    </div>
 
-      <div class="location-date">
-        <span>Sydney</span>
-        <span>Sydney	2011 - present</span>
-      </div>
+    <div class="location-date">
+      <span>Sydney, Australia</span>
+      <span>2011 - 2016</span>
+    </div>
 
-      <ul class="two-columns">
-        <li>Set up and ran the first weekend hackathon (June 2011)</li>
-        <li>Organisation of several RHoK hackathons</li>
-        <li>Working with charities to define their problems</li>
-        <li>Project leader / member</li>
-        <li>Guiding volunteers to ensure that projects are effectively deployed</li>
-      </ul>
-    </section>
-
-    <section class="projects">
-      <h4>Example projects</h4>
-
-      <section>
-        <h5>FirstStop</h5>
-
-        <p>
-          In conjunction with the Blue Mountains Bush Fire Crisis team and Sydney University, this project developed a program which allows users affected by disaster to
-          share their personal data with aid agencies using a QR code (June 2014).
-        </p>
-      </section>
-
-      <section>
-        <h5>SmallConnect</h5>
-
-        <p>This project focussed on bringing easy access to services to at risk youth (November 2015).</p>
-      </section>
-
-      <section>
-        <h4>Tools and technologies</h4>
-
-        <ul class="inline">
-          <li>Vue.js</li>
-          <li>Sass</li>
-          <li>Bootstrap</li>
-          <li>Rails</li>
-          <li>Mongodb</li>
-          <li>Javascript QRcode reader</li>
-          <li>Raspberry Pi WAP</li>
-        </ul>
-      </section>
-    </section>
+    <p>
+      Established the Sydney chapter and ran several hackathons.
+      This role included working with charities to define their problems and guiding volunteers to ensure
+      that projects were effectively deployed. An example project, FirstStop, was developed in conjunction
+      with the Blue Mountains Bush Fire Crisis team and Sydney University to allow users affected by disaster
+      to share their personal data with aid agencies using a QR code (June 2014)
+    </p>
   </section>
 
   <section>
