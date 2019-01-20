@@ -1,0 +1,221 @@
+---
+# CV Styles
+---
+
+@import url(fonts/open_sans.css);
+
+$dark-blue: #00578A;
+$mid-blue: #0588BC;
+$light-blue: #CAE4F1;
+$desk: #CCC;
+$paper: #FFF;
+
+$page-height: 26cm;
+$top-margin: 0.75cm;
+$inside-margin: 0.25cm;
+$left-outside-margin: 1cm;
+$right-outside-margin: 1cm;
+
+$sidebar-width: 3cm;
+$page-width: 21cm;
+$content-width: $page-width - $left-outside-margin - $right-outside-margin;
+
+$small-indent: 3cm;
+$big-indent: $content-width / 2;
+$li-left-padding: 1.5em;
+$li-right-padding: 2em;
+
+body {
+  font-size: .28cm;
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  width: $page-width;
+  margin: auto;
+  background-color: $paper;
+}
+
+main {
+  padding-left: $inside-margin;
+  width: $content-width;
+}
+
+
+section + section {
+  margin-top: 2em;
+
+  &>section + section {
+    margin-top: 2.5em;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $dark-blue;
+  margin: 0.5em 0em;
+}
+
+em {
+  color: $dark-blue;
+  font-style: normal;
+}
+
+p {
+  margin: 0.5em 0em;
+}
+
+a {
+  color: $mid-blue;
+}
+
+ul {
+  list-style: circle;
+  padding-left: 1.5em;
+}
+
+aside {
+  padding-right: $inside-margin;
+  width: $sidebar-width;
+  font-style: normal;
+
+  address {
+    height: $page-height;
+  }
+
+  .phone a {
+    text-decoration: none;
+    color: #000;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    li {
+      margin-bottom: 0.5em;
+    }
+  }
+}
+
+.company {
+  margin-top: 2em;
+}
+
+.company-info {
+  display: flex;
+
+  img {
+    max-width: 16em;
+    max-height: 4em;
+    width: auto;
+    height: auto;
+  }
+
+  span {
+    min-width: $big-indent;
+  }
+}
+
+div.location-date {
+  display: flex;
+  margin: 0.5em 0 0;
+
+  span {
+    min-width: $big-indent;
+  }
+}
+
+ul.two-columns {
+  display: flex;
+  flex-wrap: wrap;
+
+  li {
+    padding-right: 2em;
+    width: calc(50% - 2em);
+  }
+}
+
+ul.inline {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li + li::before {
+    content: "•";
+    margin: 0 0.5em;
+    color: $dark-blue;
+    font-weight: bold;
+  }
+}
+
+dl {
+  display: flex;
+  flex-wrap: wrap;
+
+  dt {
+    color: $dark-blue;
+    width: $small-indent;
+  }
+
+  dd {
+    width: $content-width - $small-indent;
+    margin: 0em 0em .5em 0em;
+
+    &:last-child {
+        margin: 0em;
+    }
+  }
+}
+
+@media screen {
+  html {
+    background-color: $desk;
+  }
+
+  body {
+    padding: $top-margin $right-outside-margin 0 $left-outside-margin;
+  }
+
+  .for-printing {
+    display: none;
+  }
+
+  button {
+    left: calc(-2em - #{$left-outside-margin});
+    padding-left: 2em;
+    position: absolute;
+    background-color: $mid-blue;
+    color: #fff;
+    border: none;
+    border-radius: .5em 0 0 .5em
+  }
+
+  aside {
+    position: fixed;
+    button {
+      top: 0px;
+    }
+  }
+  article {
+    margin-left: $sidebar-width - $inside-margin;
+  }
+}
+
+@media print {
+  button {
+    display: none;
+  }
+
+  aside {
+    address {
+      page-break-after: always;
+      page-break-inside: avoid;
+      button {
+        display: none;
+      }
+    }
+  }
+
+  article>section, section.company {
+      page-break-inside: avoid;
+  }
+}
