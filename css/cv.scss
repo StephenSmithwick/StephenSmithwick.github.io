@@ -41,7 +41,7 @@ article {
 
 
 section + section {
-  margin-top: 2em;
+  margin-top: 2.5em;
 
   &>section + section {
     margin-top: 2.5em;
@@ -94,8 +94,8 @@ aside {
   }
 }
 
-.company {
-  margin-top: 2em;
+h2 + .company-info {
+  margin: 1em 0em
 }
 
 .company-info {
