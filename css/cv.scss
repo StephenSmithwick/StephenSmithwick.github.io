@@ -41,10 +41,10 @@ article {
 
 
 section + section {
-  margin-top: 2.5em;
+  margin-top: 2em;
 
   &>section + section {
-    margin-top: 2.5em;
+    margin-top: 2em;
   }
 }
 
