@@ -2,11 +2,10 @@
 title: Stephen Smithwick's Site
 email: stephen.smithwick@domain.com
 description: >
-  Welcome to my humble site.  Here, I share with you stories and lessons I have learned
-  in my Software Engineering career.
+  Welcome to my humble github Page.  A place to collect information about myself and notes
+  for myself in the future
 baseurl: ""
 url: "https://StephenSmithwick.github.io" # the base hostname & protocol for your site
-twitter_username: S_Smithwick
 github_username:  StephenSmithwick
 logo: images/logo.jpeg
 show_downloads: true
