@@ -1,0 +1,5 @@
+@font-face {
+    font-family: 'Atkinson Hyperlegible';
+    font-style: normal;
+    src: local('Atkinson Hyperlegible'), local('AtkinsonHyperlegible'), url(AtkinsonHyperlegible-Regular.ttf) format('ttf');
+}

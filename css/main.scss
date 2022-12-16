@@ -3,8 +3,17 @@
 ---
 @charset "utf-8";
 
+@import url(fonts/atkinson-hyperlegible.css);
+
+$dark-blue: #00578A;
+$darker-blue: darken($dark-blue, 25%);
+$mid-blue: #0588BC;
+$light-blue: #CAE4F1;
+$desk: #CCC;
+$paper: #FFF;
+
 // Our variables
-$base-font-family: Helvetica, Arial, sans-serif;
+$base-font-family: Atkinson Hyperlegible, Helvetica, Arial, sans-serif;
 $base-font-size:   16px;
 $small-font-size:  $base-font-size * 0.875;
 $base-line-height: 1.5;
@@ -13,14 +22,14 @@ $spacing-unit:     30px;
 
 $text-color:       #111;
 $background-color: #fdfdfd;
-$brand-color:      #2a7ae2;
+$brand-color:      $dark-blue;
 
-$grey-color:       #828282;
+$grey-color:      $mid-blue;
 $grey-color-light: lighten($grey-color, 40%);
 $grey-color-dark:  darken($grey-color, 25%);
 
-$on-palm:          600px;
-$on-laptop:        800px;
+$on-palm:          800px;
+$on-laptop:        1000px;
 
 
 

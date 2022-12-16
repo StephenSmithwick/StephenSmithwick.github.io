@@ -1,12 +1,15 @@
 # Site settings
-title: Stephen Smithwick's Site
-email: stephen.smithwick@domain.com
+title: Helpful Ideas
+email: stephen.smithwick@<gmail.com
 description: >
-  Welcome to my humble github Page.  A place to collect information about myself and notes
-  for myself in the future
+  Welcome to my Github Page.  
+  A place to collect useful information
 baseurl: ""
 url: "https://StephenSmithwick.github.io" # the base hostname & protocol for your site
 github_username:  StephenSmithwick
+linkedin: 
+  name: Stephen Smithwick
+  url: https://www.linkedin.com/in/stephen-smithwick-4674214/
 logo: images/logo.jpeg
 show_downloads: true
 google_analytics: UA-60117878-2
