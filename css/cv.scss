@@ -5,6 +5,7 @@
 @import url(fonts/open_sans.css);
 
 $dark-blue: #00578A;
+$darker-blue: darken($dark-blue, 25%);
 $mid-blue: #0588BC;
 $light-blue: #CAE4F1;
 $desk: #CCC;
@@ -179,21 +180,34 @@ dl {
     display: none;
   }
 
-  button {
+  .left-nav {
+    top: 0em;
     left: calc(-2em - #{$left-outside-margin});
-    padding-left: 2em;
+    padding: .25em 0em .25em 2em;
     position: absolute;
     background-color: $mid-blue;
-    color: #fff;
-    border: none;
-    border-radius: .5em 0 0 .5em
+    border-radius: .5em 0 0 .5em;
+
+    a, button { 
+      &:hover { cursor: pointer; }
+      &:last-child { border-width: 0; }
+
+      font-size: .30cm;
+      color: #fff;
+      text-decoration: none;
+      background-color: transparent;
+      border: solid #fff;
+      border-width: 0 1px 0 0;
+      padding: 1px 6px;
+    }
+  }
+
+  address {
+    margin-top: 3em;
   }
 
   aside {
     position: fixed;
-    button {
-      top: 0px;
-    }
   }
   article {
     margin-left: $sidebar-width - $inside-margin;
@@ -201,7 +215,7 @@ dl {
 }
 
 @media print {
-  button {
+  .left-nav {
     display: none;
   }
 
@@ -209,9 +223,6 @@ dl {
     address {
       page-break-after: always;
       page-break-inside: avoid;
-      button {
-        display: none;
-      }
     }
   }
 
