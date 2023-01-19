@@ -1,0 +1,14 @@
+<div id="feedback" class="form">
+    <form target="hidden-form" method="post" action="https://docs.google.com/forms/d/e/1FAIpQLSdt2gCfGcwcfgKpKfY18QIVDaHI6ua7FXs9WgqC63LHq2-fXg/formResponse">
+        <input type="email" name="entry.1275386493" placeholder="From" /> <button type="submit">Send</button>
+        <textarea name="entry.63101751" rows="4" cols="24">Send Me A Message</textarea>
+    </form>
+    <div class="response">Thank you for your feedback.</div>
+    <iframe style="display:none" name="hidden-form"></iframe>
+</div>
+<script>
+    const form = document.querySelector('#feedback>form')
+    form.addEventListener('submit', e => {
+        document.querySelector("#feedback").classList.add("submitted")
+    })
+</script>
