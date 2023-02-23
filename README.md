@@ -21,6 +21,6 @@ into personal html pages.
 - **Fonts** - OpenSans for CV and AtkinsonHyperlegible for blog
 
 ## Reviewing feedback
-Contact Form submission from the footer go to here: [https://stephensmithwick.github.io/submissions](https://docs.google.com/spreadsheets/d/1JKbfmLUuQCjdYEyA0UPPoTFH158ZPrFjYEwnQ_4DIs4) (Note: Access is restricted)
+Contact Form submission from the footer go to here: [stephensmithwick.github.io/submissions](https://docs.google.com/spreadsheets/d/1JKbfmLUuQCjdYEyA0UPPoTFH158ZPrFjYEwnQ_4DIs4) (Note: Access is restricted)
 
 Thanks for taking a look :)
