@@ -15,11 +15,11 @@ class: company
 This role includes leading technical decisions and managing stakeholders.
 
 #### Consistency monitoring and repair
-Amazon recently introduced strongly consistent writes requiring significant changes to the underlying architecture.
+Amazon has introduced strongly consistent writes requiring significant changes to the underlying architecture.
 *   Designed workflow, built software and wrote runbooks for new processes to handle alarming and repair of S3 entries
 *   Updated the primary service to audit for consistency, alarming and allow the repair of discovered issues
 *   Inconsistent entries can endanger S3's reliability promise of 11 9s of durability
-*   Extremely rare events happen regularly when you are operating at the scale of 100 trillion entries
+*   Rare events happen often when you are operating at the scale of over a 100 trillion entries
 
 #### Kindle Author Portal
 Transformed the Author Portal from a legacy bespoke service into a React frontend and AWS lambda and ECS backend which allowed the development of reports to be more agile.
@@ -28,12 +28,12 @@ Transformed the Author Portal from a legacy bespoke service into a React fronten
 
 #### Kindle fraud and abuse
 Built a machine learning (ML) pipeline which used reader behavior to detect fraud in near real-time.
-*   Used Kinesis streams to aggregate live reader behavior
+*   Used Kinesis streams to collect batches of live reader behavior for analysis
 *   Deployed models trained by ML scientists and hosted in SageMaker BYO ECR containers
 *   Built tooling to allow ML scientists to train and deploy models that integrated on a near real-time basis
 
 #### Operational excellence
-Managed a huge fleet of servers across AWS regions across the world.
+Managed a fleet of over 100K servers across AWS regions across the world.
 *   Responded to and investigated new issues as part of on-call roster
 *   Built and updated runbooks
 *   Improved Code coverage and reliability of CI pipeline
