@@ -13,6 +13,8 @@ linkedin:
 logo: images/logo.jpeg
 show_downloads: true
 google_analytics: UA-60117878-2
+collections:
+  - resume
 
 # Build settings
 markdown: kramdown

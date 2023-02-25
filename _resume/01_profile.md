@@ -1,0 +1,4 @@
+---
+header: Profile
+---
+I am a Senior Software Developer at Amazon AWS with significant experience in cloud computing and machine learning. Prior to this, I was Principal Software Engineer at Qantas Airlines, working on customer solutions such as notifications and insights. I am passionate about my work which mostly involves exploring, innovating and implementing key decisions around our solutions. I believe in the importance of agile development which builds team excellence through the practice of continuous improvement. I also love to code and learn new technologies: from Android Apps for my sons in Kotlin to Scala courses and meetups, I happily geek out with my team and colleagues.
