@@ -4,7 +4,7 @@ title:  "LeetCode - Algorithms"
 date:   2023-03-04
 categories: LeetCode
 ---
-## Algorithm I
+## Algorithms I
 
 {:.leetcode}
 - binary-search
@@ -39,15 +39,12 @@ categories: LeetCode
 - reverse-bits
 - single-number
 
-## Algorithm II
+## Algorithms II
 
 {:.leetcode}
 - find-first-and-last-position-of-element-in-sorted-array
-- find-first-and-last-position-of-element-in-sorted-array?envType=study-plaid=algorithm-ii",
 - search-in-rotated-sorted-array
-- search-in-rotated-sorted-array?envType=study-plan&id=algorithm-ii
 - search-a-2d-matrix
-- search-a-2d-matrix?envType=study-plan&id=algorithm-ii
 - find-minimum-in-rotated-sorted-array
 - find-peak-element
 - remove-duplicates-from-sorted-list-ii
@@ -94,12 +91,16 @@ categories: LeetCode
 - max-points-on-a-line
 
 ## How to use
-Greasmonkey script to decorate this list: [blog.leetcode.user.js](https://github.com/StephenSmithwick/StephenSmithwick.github.io/raw/main/greasemonkey/blog.leetcode.user.js)
+Install this Greasmonkey script to decorate the list: [blog.leetcode.user.js](https://github.com/StephenSmithwick/StephenSmithwick.github.io/raw/main/greasemonkey/blog.leetcode.user.js)
 
+The Greasemonkey script will ask to access the following url to fetch leetcode data for the logged in user:
 {:.information}
 LeetCode Personal Dataaset: [https://leetcode.com/api/problems/algorithms/](https://leetcode.com/api/problems/algorithms/)
 
-To retrieve Leetcode problems:
+To build more lists of `problem` `slugs` you can use this javascript page query from your developer console:
 ```javascript
-[...document.querySelectorAll('a')].filter(li=>li.target=="_blank" && li.href.indexOf("/problems/") > 0).map(li=>li.href)
+[...document.querySelectorAll('a')]
+    .map(       li => li.href.match(/\/problems\/([^\/]+)\//))
+    .filter(    match => match)
+    .map(       match => match[1])
 ```
