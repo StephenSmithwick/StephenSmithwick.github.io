@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Agile is Dead, Long live Agile"
+title:  "Agile is Dead, Long live agile development"
 date:   2023-03-05
 categories: organize
 published: false
