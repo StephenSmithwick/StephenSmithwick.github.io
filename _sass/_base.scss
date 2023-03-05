@@ -8,7 +8,7 @@ dl, dd, ol, ul, figure {
     padding: 0;
 }
 
-
+html { background-color: $desk; }
 
 /**
  * Basic styling
@@ -21,6 +21,8 @@ body {
     color: $text-color;
     background-color: $background-color;
     -webkit-text-size-adjust: 100%;
+    width: 21cm;
+    margin: auto;
 }
 
 
