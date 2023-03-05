@@ -1,7 +1,7 @@
 ---
 layout: resume
-title: "Stephen Smithwick"
-date: 2022-09-19 20:33:58
+title: "Resume - Stephen Smithwick"
+date: 2023-03-05
 categories: resume
 ---
 
