@@ -4,6 +4,27 @@ title:  "LeetCode - Algorithms"
 date:   2023-03-04
 categories: LeetCode
 ---
+## How to use
+
+<details markdown="block">
+<summary>Instructions to decorated list using Greasemonkey</summary>
+
+Install this Greasmonkey script to decorate the list: [**blog.leetcode.user.js**](https://github.com/StephenSmithwick/StephenSmithwick.github.io/raw/main/greasemonkey/blog.leetcode.user.js)
+
+The Greasemonkey script will ask to access a leetcode url to fetch the logged in users' problems data.
+
+{:.information}
+LeetCode Problem Dataset: [https://leetcode.com/api/problems/algorithms/](https://leetcode.com/api/problems/algorithms/)
+
+To build more lists of `problem` `slugs`: use this javascript page query in the developer console anywhere you find links to leetcode problems:
+```javascript
+[...document.querySelectorAll('a')]
+    .map(       li => li.href.match(/\/problems\/([^\/]+)\//))
+    .filter(    match => match)
+    .map(       match => match[1])
+```
+</details>
+
 ## Algorithms I
 
 {:.leetcode}
@@ -89,18 +110,3 @@ categories: LeetCode
 - shuffle-an-array
 - happy-number
 - max-points-on-a-line
-
-## How to use
-Install this Greasmonkey script to decorate the list: [blog.leetcode.user.js](https://github.com/StephenSmithwick/StephenSmithwick.github.io/raw/main/greasemonkey/blog.leetcode.user.js)
-
-The Greasemonkey script will ask to access the following url to fetch leetcode data for the logged in user:
-{:.information}
-LeetCode Personal Dataaset: [https://leetcode.com/api/problems/algorithms/](https://leetcode.com/api/problems/algorithms/)
-
-To build more lists of `problem` `slugs` you can use this javascript page query from your developer console:
-```javascript
-[...document.querySelectorAll('a')]
-    .map(       li => li.href.match(/\/problems\/([^\/]+)\//))
-    .filter(    match => match)
-    .map(       match => match[1])
-```
