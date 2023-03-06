@@ -2,10 +2,10 @@
  * Site header
  */
 .site-header {
-    border-top: 5px solid $grey-color-dark;
-    border-bottom: 1px solid $grey-color-light;
-        min-height: 56px;
-        padding: 0 30px; 
+    border-bottom: 5px solid $grey-color-dark;
+    border-top: 1px solid $grey-color-light;
+    min-height: 56px;
+    padding: 0 $spacing-unit; 
 
     // Positioning context for the mobile navigation icon
     position: relative;
@@ -94,8 +94,8 @@
  * Site footer
  */
 .site-footer {
-    border-top: 1px solid $grey-color-light;
-    padding: $spacing-unit 0;
+    border-top: 2px solid $grey-color-dark;
+    padding: $spacing-unit;
     background-color: $light-blue;
 }
 
@@ -165,7 +165,7 @@
  * Page content
  */
 .page-content {
-    padding: $spacing-unit 0;
+    padding: $spacing-unit;
 }
 
 .page-heading {
@@ -177,7 +177,8 @@
     list-style: none;
 
     > li {
-        margin-bottom: $spacing-unit;
+        margin-bottom: $spacing-unit/2;
+        border-bottom: 2px solid $light-green;
     }
 }
 
