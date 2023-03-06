@@ -1,8 +1,7 @@
 ---
 layout: post
 title:  "LeetCode - Algorithms"
-date:   2023-03-04
-categories: LeetCode
+categories: leetcode
 ---
 ## How to use
 

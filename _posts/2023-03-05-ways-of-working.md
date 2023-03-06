@@ -1,8 +1,7 @@
 ---
 layout: post
 title:  "Agile is Dead, Long live agile development"
-date:   2023-03-05
-categories: organize
+categories: work
 published: false
 ---
 # Agile Manifesto
