@@ -1,4 +1,12 @@
-.form {
+#feedback  {
+    > form {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        input    { width: 80%;  margin: 1px; }
+        button   { width: 16%;  margin: 1px; }
+        textarea { width: 100%; margin: 1px; }
+    }
     .response {
         margin: 10px 0;
         padding: 10px;
@@ -6,7 +14,7 @@
         display: none;
     }
     &.submitted {
-        form { display: none; }
+        form      { display: none;  }
         .response { display: block; }
     }
 }
