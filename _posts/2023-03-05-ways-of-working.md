@@ -62,4 +62,6 @@ its behavior accordingly.
 # Agile is Dead
 [Agile is Dead • Pragmatic Dave Thomas • GOTO 2015](https://m.youtube.com/watch?v=a-BOSpxYJ9M&t=8s)
 
+[The death of Agile - Allen Holub](https://m.youtube.com/watch?v=vSnCeJEka_s)
 
+Agile has been built into a proper noun. Consultants sell a sort of cargo cult. Agile development requires a complete change in corporate structure.  The most important part of the agile manifesto is the values and the processes, while important, are to support the manifesto. Agile development needs to be process second to the people.
