@@ -8,7 +8,8 @@ into personal html pages.
 
 ## To build locally
 - Install ruby 
-  - I recomend first installing rbenv + rbenv-gemset via homebrew (`brew install rbenv rbenv-gemsets`)
+  - I recomend first installing rbenv + rbenv-gemset via homebrew (`brew install rbenv rbenv-gemsets`) 
+  - Add rbenv shims to your path in your rc file (in my `~/.zprofile ` I added `eval "$(rbenv init - zsh)"`).
   - from the project directory: `rbenv install`
 - Install Jekyll `bundle install`
 - Start serving local content `bundle exec jekyll serve`
