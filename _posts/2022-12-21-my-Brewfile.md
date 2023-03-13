@@ -13,9 +13,8 @@ To install brew:
 ```
 
 Download the brewfile locally: 
-- [gist: Brewfile](https://gist.github.com/StephenSmithwick/e77bb2c572b320631ecef3f0d8740927)
 ```zsh
-curl https://gist.githubusercontent.com/StephenSmithwick/e77bb2c572b320631ecef3f0d8740927/raw/f3a3f89180336de8248dbc1a8808f9c75cae8bfb/Brewfile \
+curl https://gist.githubusercontent.com/StephenSmithwick/e77bb2c572b320631ecef3f0d8740927/raw/4b588ff4322e239470c63ff89ffdddae1ffa8eae/Brewfile \
 --output Brewfile
 ```
 
@@ -24,7 +23,7 @@ In the same directory we downloaded the Brewfile run:
 brew bundle
 ```
 
-## The Gist:
+## [Gist: Brewfile](https://gist.github.com/StephenSmithwick/e77bb2c572b320631ecef3f0d8740927)
 
 <script src="https://gist.github.com/StephenSmithwick/e77bb2c572b320631ecef3f0d8740927.js"></script>
 
