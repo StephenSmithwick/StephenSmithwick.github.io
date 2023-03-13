@@ -6,6 +6,7 @@
 // @author       stephensmithwick
 // @match        http://127.0.0.1:4000/leetcode/*
 // @match        https://stephensmithwick.github.io/leetcode/*
+// @match        http://stephensmithwick.github.io/leetcode/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=0.1
 // @grant        GM.xmlHttpRequest
 // ==/UserScript==
