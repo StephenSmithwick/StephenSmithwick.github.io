@@ -2,7 +2,7 @@
 layout: post
 title:  "Adhoc Log Summaries in Unix"
 date:   2022-12-19
-categories: DevOps
+categories: devops
 ---
 
 The Unix CLI famously provides simple singularly focussed tools which acheive powerful results when combined with the pipe command. Below I explore how we can summarize our logs using common unix tools. While performance can vary by machine and tool version, I have found these tools to generally work well with up to 100s of GB of logs. I recomend to use a smaller sample of your logs while initially building your query (`head -n 1000` is your friend).
