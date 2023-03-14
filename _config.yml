@@ -8,6 +8,7 @@ description: >
 baseurl: ""
 url: "https://StephenSmithwick.github.io" # the base hostname & protocol for your site
 github_urls:
+  base: "https://github.com/StephenSmithwick/StephenSmithwick.github.io"
   edit: "https://github.com/StephenSmithwick/StephenSmithwick.github.io/edit/main"
   new: "https://github.com/StephenSmithwick/StephenSmithwick.github.io/new/main"
 github_username:  StephenSmithwick

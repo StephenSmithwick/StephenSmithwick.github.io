@@ -19,6 +19,7 @@
         <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
         {% endif %}
       {% endfor %}
+      <a class="page-link" href="{{ site.github_urls.base }}">{% include github-icon.html %}</a>
     </div>
   </nav>
 
