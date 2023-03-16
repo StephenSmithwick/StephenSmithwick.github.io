@@ -1,5 +1,6 @@
 # StephenSmithwick.github.io
-My github page.  Deploys as a static site as part of Github Pages.  Uses Jekyl to render markdown sass and html
+This is a personal static jekyll site which deploys as part of Github Pages: [StephenSmithwick.github.io
+](https://StephenSmithwick.github.io).  Uses Jekyl to render markdown sass and html
 into personal html pages.
 
 ## Dependencies
