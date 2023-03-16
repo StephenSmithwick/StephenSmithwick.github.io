@@ -1,7 +1,6 @@
 # StephenSmithwick.github.io
 This is a personal static jekyll site which deploys as part of Github Pages: [StephenSmithwick.github.io
-](https://StephenSmithwick.github.io).  Uses Jekyl to render markdown sass and html
-into personal html pages.
+](https://StephenSmithwick.github.io).  
 
 ## Dependencies
 - Ruby 2.7.6
