@@ -24,6 +24,13 @@
     &,
     &:visited {
         color: $darker-blue;
+        text-decoration: none;
+    }
+}
+
+header, footer {
+    a {
+        text-decoration: none;
     }
 }
 
