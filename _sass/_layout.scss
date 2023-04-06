@@ -21,11 +21,11 @@
     margin-bottom: 0;
     float: left;
 
-    &,
-    &:visited {
+    &, &:visited, &:hover {
         color: $darker-blue;
         text-decoration: none;
     }
+
 }
 
 header, footer {
@@ -184,6 +184,10 @@ header, footer {
 .post-list {
     margin-left: 0;
     list-style: none;
+
+    a {
+        text-decoration: none;
+    }
 
     > li {
         margin-bottom: $spacing-unit/2;

@@ -21,7 +21,7 @@ body {
     color: $text-color;
     background-color: $background-color;
     -webkit-text-size-adjust: 100%;
-    max-width: 30cm;
+    max-width: 26cm;
     margin: auto;
 }
 
@@ -75,6 +75,22 @@ li {
          margin-bottom: 0;
     }
 }
+
+dl {
+    display: grid;
+    grid-template-columns: fit-content(20%) auto;
+  
+    dt {
+      color: $dark-green;
+      font-weight: bolder;
+      grid-column: 1;
+    }
+  
+    dd {
+        margin-left: 1em;
+      grid-column: 2;
+    }
+  }
 
 
 
