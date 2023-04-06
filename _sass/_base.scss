@@ -60,6 +60,19 @@ figcaption {
     font-size: $small-font-size;
 }
 
+/**
+ * Tags
+ */
+ .tag {
+    top: 0em;
+    background-color: $mid-blue;
+    border-radius: .5em;
+    padding: 0 0.25em;
+    color: #fff;
+    font-size: small;
+    vertical-align: text-top;
+  }
+
 
 
 /**
@@ -136,7 +149,6 @@ blockquote {
         margin-bottom: 0;
     }
 }
-
 
 
 /**
