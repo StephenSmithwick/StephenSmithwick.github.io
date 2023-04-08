@@ -64,16 +64,15 @@ figcaption {
  * Tags
  */
  .tag {
-    top: 0em;
+    margin-left: -1em;
     background-color: $mid-blue;
-    border-radius: .5em;
+    border: 1px solid $dark-blue;
+    border-radius: 1em;
     padding: 0 0.25em;
     color: #fff;
     font-size: small;
     vertical-align: text-top;
   }
-
-
 
 /**
  * Lists
@@ -94,14 +93,14 @@ dl {
     grid-template-columns: fit-content(20%) auto;
   
     dt {
-      color: $dark-green;
-      font-weight: bolder;
-      grid-column: 1;
+        color: $dark-green;
+        font-weight: bolder;
+        grid-column: 1;
     }
   
     dd {
         margin-left: 1em;
-      grid-column: 2;
+        grid-column: 2;
     }
   }
 
