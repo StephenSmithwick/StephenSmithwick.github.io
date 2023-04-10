@@ -1,5 +1,7 @@
 ---
-category:ml
+layout: post
+title:  "Playing with ml some more"
+categories: ml
 published: false
 ---
 
