@@ -10,8 +10,7 @@ categories: leetcode
 
 Install this Greasmonkey script to decorate the list: [**blog.leetcode.user.js**](https://github.com/StephenSmithwick/StephenSmithwick.github.io/raw/main/greasemonkey/blog.leetcode.user.js)
 
-The Greasemonkey script will ask to access a leetcode url to fetch the logged in users' problems data.
-
+The Greasemonkey script will ask to access a leetcode url to fetch the logged in users' problems data. Please make sure you are logged in here: [LeetCode login](https://leetcode.com/accounts/login).
 {:.information}
 LeetCode Problem Dataset: [https://leetcode.com/api/problems/algorithms/](https://leetcode.com/api/problems/algorithms/)
 
