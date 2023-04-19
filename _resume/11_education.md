@@ -6,4 +6,4 @@ header: Education
 
 {:.location-date}
 - University of Colorado, Boulder 
-- October 2000 - July 2004
+- August 2000 - May 2004
