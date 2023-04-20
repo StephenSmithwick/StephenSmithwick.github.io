@@ -147,6 +147,22 @@ header, footer {
     width:         calc(40% - (#{$spacing-unit} / 2));
 }
 
+ul.leetcode>li.grid {
+    display: grid;
+    grid-template-columns: 3em 2fr 1fr;
+
+    &>data.status {
+        grid-column: 1;
+    }
+    &>a {
+        grid-column: 2;
+    }
+    &>data.stats {
+        grid-column: 3;
+        data { background-color: $light-blue;}
+    }
+}
+
 @include media-query($on-laptop) {
     .footer-col-1,
     .footer-col-2 {

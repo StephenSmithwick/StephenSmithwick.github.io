@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LeetCode Study Plan
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.3
 // @description  Decorate Blog leetcode lists with Leetcode userdata
 // @author       stephensmithwick
 // @match        http://127.0.0.1:4000/leetcode/*
@@ -24,7 +24,7 @@
             const leetProblems = new Map(leetData.stat_status_pairs.map(x => [x.stat.question__title_slug, x]));
 
             [...document.querySelectorAll(".leetcode>li")].forEach(li => {
-                const slug = li.innerHTML;
+                const slug = li.dataset.slug || li.innerHTML;
                 const url = `https://leetcode.com/problems/${slug}`;
 
                 const problem = leetProblems.get(slug);
@@ -38,12 +38,13 @@
                 const success_rate = (total_acs && total_submitted) ? (total_acs/total_submitted).toFixed(2) : '';
 
                 li.innerHTML = `
-                <a href="${url}">
-                    ${status} ${difficulty} ${id}. ${title} (
-                        tries: <code class="language-plaintext">${total_submitted}</code>;
-                        rate: <code class="language-plaintext">${success_rate}</code>;
-                    )
-                </a>`;
+                    <data class="status">${status} ${difficulty}</data>
+                    <a href="${url}">${id}. ${title} </a> 
+                    <data class="stats">
+                        tries: <data>${total_submitted}</data>
+                        rate: <data>${success_rate}</data>
+                    </data>`;
+                li.classList.add("grid");
             });
         }
     });
