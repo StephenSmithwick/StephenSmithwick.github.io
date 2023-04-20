@@ -2,6 +2,7 @@
 layout: post
 title:  "Getting started in Rust"
 categories: rust
+last_edit: 2023-04-19
 ---
 
 ## Installing Rust:
@@ -25,19 +26,19 @@ Cargo is a build tool for Rust. It is also used to manage packages of libraries 
 : Create a new project
 
 `cargo build `
-: build your project with
+: build your project
 
 `cargo run `
-: run your project with
+: run your project
 
 `cargo test `
-: test your project with
+: test your project
 
 `cargo doc `
-: build documentation for your project with
+: build documentation for your project
 
 `cargo publish `
-: publish a library to crates.io with 
+: publish a library to crates.io 
 
 ## Example: Streaming Math
 
@@ -45,7 +46,7 @@ Cargo is a build tool for Rust. It is also used to manage packages of libraries 
 
 Will create the following project:
 
-[![streaming-math directory structure](https://www.plantuml.com/plantuml/svg/SoWkIImgoStCIybDBE3IKYWkAKfD17BJTNCJIpAuj80YHSb0IYjU8JSnCq-lg9WBn7PEB4hFrol9pytXSaZDIu7g1m00)](https://www.plantuml.com/plantuml/umla/SoWkIImgoStCIybDBE3IKYWkAKfD17BJTNCJIpAuj80YHSb0IYjU8JSnCq-lg9WBn7PEB4hFrol9pytXSaZDIu7g1m00){: style="float: left"}
+[![streaming-math directory structure](https://www.plantuml.com/plantuml/svg/SoWkIImgoStCIybDBE3IKYWkAKfD17BJTNCJIpAuj80YHSb0IYjU8JSnCq-lg9WBn7PEB4hFrol9pytXSaZDIu7g1m00)](https://www.plantuml.com/plantuml/umla/SoWkIImgoStCIybDBE3IKYWkAKfD17BJTNCJIpAuj80YHSb0IYjU8JSnCq-lg9WBn7PEB4hFrol9pytXSaZDIu7g1m00)
 
 `Cargo.toml`
 : The manifest file for Rust. Project metadata and dependencies are defined here.
@@ -69,9 +70,10 @@ Hello, world!
 For this project I aim to create a simple app which streams 2 files summing up corresponding lines between each file.  We will provide some safety by checking for Ok Results and handling non-matching results.
 
 1. Opens 2 files passed in by argument ([Accepting Command Line Arguments](https://doc.rust-lang.org/book/ch12-01-accepting-command-line-arguments.html))
-2. Streams through both files ([BufReader.lines](https://doc.rust-lang.org/rust-by-example/std_misc/file/read_lines.html#efficient-method) and [Iterator.zip](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.zip))
-3. Parses each line as an int ([parse](https://doc.rust-lang.org/std/primitive.str.html#method.parse))
-4. Sums up both rows
+2. Streams through both files ([BufReader.lines](https://doc.rust-lang.org/rust-by-example/std_misc/file/read_lines.html#efficient-method))
+3. Zips both streams together ([Iterator.zip](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.zip))
+4. Parses each line as an int ([parse](https://doc.rust-lang.org/std/primitive.str.html#method.parse))
+5. Sums up both rows
 
 ```rust
 use std::env;
@@ -127,3 +129,4 @@ We get the following:
 More reading: 
 - [Concise Control Flow with if let](https://doc.rust-lang.org/book/ch06-03-if-let.html)
 - [SIMD](https://doc.rust-lang.org/std/simd/index.html) - [by example](https://www.cs.brandeis.edu/~cs146a/rust/rustbyexample-02-21-2015/simd.html)
+- [Excercism](https://exercism.org/tracks/rust)
