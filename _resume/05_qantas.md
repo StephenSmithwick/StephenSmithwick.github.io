@@ -10,7 +10,7 @@ class: company
 
 {:.location-date}
 - Sydney, Australia 
-- March 2016 - May 2019
+- March 2016 - April 2019
 
 Led technical decisions and managed stakeholders and teams within the Integration Domain.
 
