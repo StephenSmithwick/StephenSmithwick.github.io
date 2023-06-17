@@ -34,6 +34,18 @@ header, footer {
     }
 }
 
+.left { 
+    float: left; 
+    margin-right: 2em;
+}
+
+.right { 
+    float: right; 
+    margin-left: 2em;
+}
+
+.clear { clear: both; }
+
 .site-nav {
     float: right;
     line-height: 56px;
@@ -217,7 +229,6 @@ ul.leetcode>li.grid {
             .post-meta {
                 grid-column: 2;
                 justify-self: end;
-                text-align: right;
                 small { white-space: nowrap; }
             }
         }
@@ -227,6 +238,7 @@ ul.leetcode>li.grid {
 .post-meta {
     font-size: $small-font-size;
     color: $grey-color;
+    text-align: right;
 }
 
 .post-link {
