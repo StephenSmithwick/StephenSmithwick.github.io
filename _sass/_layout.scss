@@ -34,6 +34,11 @@ header, footer {
     }
 }
 
+.small {
+    font-size: x-small;
+    code { font-size: x-small; }
+}
+
 .left { 
     float: left; 
     margin-right: 2em;
@@ -171,7 +176,7 @@ ul.leetcode>li.grid {
     }
     &>data.stats {
         grid-column: 3;
-        data { background-color: $light-blue;}
+        data { color: $dark-green; font-weight: bolder;}
     }
 }
 
