@@ -2,6 +2,7 @@
 layout: post
 title:  "LeetCode - Algorithms"
 categories: leetcode
+load: leetcode.lists
 ---
 ## How to use
 
@@ -212,6 +213,3 @@ To build more lists of `problem` `slugs`: use this javascript page query in the 
  - daily-temperatures
  - rotting-oranges
  - longest-common-subsequence
-
-
- {% include leetcode.preload.js.html %}

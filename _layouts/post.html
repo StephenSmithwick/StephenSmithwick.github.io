@@ -18,3 +18,8 @@ layout: default
   </article>
 
 </div>
+
+{% if page.load contains 'diff2html' %}{% include load/diff2html.html %}{% endif %}
+{% if page.load contains 'mermaid' %}{% include load/mermaid.html %}{% endif %}
+{% if page.load contains 'leetcode.lists' %}{% include load/leetcode.lists.html %}{% endif %}
+{% if page.load contains 'kotlin.playground' %}{% include load/kotlin.playground.html %}{% endif %}
