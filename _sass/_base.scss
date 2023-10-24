@@ -153,16 +153,12 @@ blockquote {
 /**
  * Code formatting
  */
-pre,
 code {
     font-size: 15px;
     border: 1px solid $grey-color-light;
     border-radius: 3px;
     background-color: #404040;
-    color:#fff
-}
-
-code {
+    color:#fff;
     padding: 1px 5px;
 }
 
@@ -177,7 +173,7 @@ pre {
     }
 }
 
-/**
+/*
  * Clearfix
  */
 %clearfix {
@@ -191,7 +187,7 @@ pre {
 
 
 
-/**
+/*
  * Icons
  */
 .icon {
@@ -204,6 +200,35 @@ pre {
 
         path {
             fill: $grey-color;
+        }
+    }
+}
+
+/*
+*  Styled Table
+*/
+
+table.styled {
+    margin: auto auto 1em;
+    box-shadow: 0 0 0.25em $mid-blue;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    
+    thead tr {
+        background-color: $dark-blue;
+        color: $paper;
+        text-align: left;
+    }
+    th, td {
+        padding: 0.7em;
+    }
+
+    tbody  {
+        tr {
+            border-bottom: thin solid $light-blue;
+        }
+        tr:nth-of-type(even) {
+            background-color: $light-blue;
         }
     }
 }

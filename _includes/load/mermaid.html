@@ -1,12 +1,12 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.0.0/mermaid.min.js"></script>
+<script src="/js/mermaid.min.js"></script>
 <script>
-    mermaid.initialize({
-        startOnLoad:true,
-        theme: 'forest',
-        flowchart:{
-                useMaxWidth:false,
-                htmlLabels:true
-            }
-    });
-    window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
+  [...document.querySelectorAll("code.language-mermaid")].forEach((code) => {
+    code.parentElement.classList.add("mermaid");
+    code.parentElement.innerHTML = code.innerHTML;
+  });
+  
+  mermaid.initialize({ 
+    securityLevel:'loose',
+    flowchart: { useMaxWidth: false, htmlLabels: true }
+  });
 </script>
