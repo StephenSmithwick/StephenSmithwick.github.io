@@ -3,6 +3,7 @@ layout: post
 title:  "Exploration of certificates"
 categories: tls
 load: [mermaid,diff2html]
+last_edit: 2023-10-25
 published: true
 ---
 
