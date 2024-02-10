@@ -13,7 +13,7 @@ Using Rustup:
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-> Note: It is also possible to install rust via `homebrew` however `rustup` is the community recommended approach which  allows for multiple versions of rust on the same computer. [source](https://sourabhbajaj.com/mac-setup/Rust/)
+> Note: It is also possible to install rust via `homebrew` however `rustup` is the community recommended approach which allows for multiple versions of rust on the same computer. [source](https://sourabhbajaj.com/mac-setup/Rust/)
 
 
 ## Cargo

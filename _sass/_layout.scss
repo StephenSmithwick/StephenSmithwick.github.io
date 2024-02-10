@@ -51,6 +51,13 @@ header, footer {
 
 .clear { clear: both; }
 
+.file { 
+    color: $dark-blue;
+    background-color: $desk;
+    padding:  0 0.5em;
+    margin-bottom: 0;
+}
+
 .site-nav {
     float: right;
     line-height: 56px;
