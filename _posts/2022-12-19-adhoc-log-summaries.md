@@ -15,7 +15,7 @@ For the following examples I will simulate logs with the following zsh command:
 ```
 
 Outputting:
-```logs
+```
 2022-12-19T23:44:33,357606000-08:00; GET A; duration=100
 2022-12-19T23:44:33,364918000-08:00; GET B; duration=500
 2022-12-19T23:44:33,372200000-08:00; GET C; duration=100
@@ -44,7 +44,7 @@ We can grab the interesting log part of well structured logs using `cut` with th
 | uniq -c \
 | sort -nr
 ```
-```logs
+```
       3 GET D
       3 GET C
       2 GET B
@@ -60,7 +60,7 @@ When the logs are less structured or the structure isn't yet known by the operat
 | uniq -c \
 | sort -nr
 ```
-```logs
+```
       3 GET D
       3 GET C
       2 GET B
@@ -85,7 +85,7 @@ Awk, while slightly more complex, allows us to do much more complicated log anal
 | sort -nr
 ```
 
-```logs
+```
 255  GET B
 200  GET D
 100  GET A

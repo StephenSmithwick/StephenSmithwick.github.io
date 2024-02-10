@@ -2,6 +2,7 @@
 layout: post
 title:  "Getting started in Rust"
 categories: rust
+load: mermaid
 last_edit: 2023-04-19
 ---
 
@@ -12,7 +13,7 @@ Using Rustup:
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-> Note: It is also possible to install rust via `homebrew` however `rustup` is the community recommended approach which  allows for multiple versions of rust on the same computer. [source](https://sourabhbajaj.com/mac-setup/Rust/)
+> Note: It is also possible to install rust via `homebrew` however `rustup` is the community recommended approach which allows for multiple versions of rust on the same computer. [source](https://sourabhbajaj.com/mac-setup/Rust/)
 
 
 ## Cargo
@@ -46,7 +47,14 @@ Cargo is a build tool for Rust. It is also used to manage packages of libraries 
 
 Will create the following project:
 
-[![streaming-math directory structure](https://www.plantuml.com/plantuml/svg/SoWkIImgoStCIybDBE3IKYWkAKfD17BJTNCJIpAuj80YHSb0IYjU8JSnCq-lg9WBn7PEB4hFrol9pytXSaZDIu7g1m00)](https://www.plantuml.com/plantuml/umla/SoWkIImgoStCIybDBE3IKYWkAKfD17BJTNCJIpAuj80YHSb0IYjU8JSnCq-lg9WBn7PEB4hFrol9pytXSaZDIu7g1m00)
+```mermaid
+    ---
+    title: Streaming Math Directory
+    ---
+    flowchart LR
+    project(streaming-math) --> src(src) --> main[/main/]
+    src --> Cargo[/Cargo.toml/]
+```
 
 `Cargo.toml`
 : The manifest file for Rust. Project metadata and dependencies are defined here.

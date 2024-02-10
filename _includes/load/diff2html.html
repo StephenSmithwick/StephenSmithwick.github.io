@@ -1,6 +1,6 @@
 <script type="text/javascript" src="/js/diff2html.min.js"></script>
 <script>
-    [ ...document.querySelectorAll(".language-diff") ].forEach(diff => {
+    [ ...document.querySelectorAll(".language-diff") ].forEach((diff) => {
         const diffHtml = Diff2Html.html(diff.innerText, {
             drawFileList: false,
             outputFormat: 'side-by-side',
