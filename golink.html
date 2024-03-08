@@ -1,0 +1,8 @@
+---
+layout: null
+---
+
+<form> 
+    <input type="text" id="govar" size="30" /> 
+    <input type="button" value="go" onclick="const golink=window.location.search.substring(1);const govar=document.getElementById('govar').value; window.location.href = `http://go/${golink}/${govar}`;"/>
+</form>
