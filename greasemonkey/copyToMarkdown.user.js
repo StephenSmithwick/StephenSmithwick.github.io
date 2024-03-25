@@ -13,7 +13,10 @@ function copyToMarkdown(event) {
 }
 
 function clean(title) {
-  return title.replaceAll('[', '').replaceAll(']', '')
+  return title
+    .replaceAll('[', '')
+    .replaceAll(']', '')
+    .replace(/ - [^-]+$/ ,"");
 }
 
 GM_registerMenuCommand('Copy to Markdown', copyToMarkdown);
