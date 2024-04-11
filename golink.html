@@ -3,6 +3,20 @@ layout: null
 ---
 
 <form> 
-    <input type="text" id="govar" size="30" /> 
+    <label class="input-sizer">
+        <input id="govar" type="text" size="30" onInput="this.parentNode.dataset.value = this.value">
+    </label>
     <input type="button" value="go" onclick="const golink=window.location.search.substring(1);const govar=document.getElementById('govar').value; top.window.location.href = `http://go/${golink}/${govar}`;"/>
 </form>
+
+<style>
+.input-sizer {
+    display: inline-grid;
+
+    &::after {
+        content: attr(data-value) '  ';
+        visibility: hidden;
+        white-space: pre-wrap;
+    }
+}
+</style>
