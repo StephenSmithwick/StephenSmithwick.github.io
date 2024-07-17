@@ -10,7 +10,9 @@
 var removeTimeout;
 const target_class = [
     "reel-shelf-content-wrapper",
-    "reel-shelf-responsive-layout"
+    "rich-section-content-wrapper",
+    "reel-shelf-items",
+    "reel-shelf-header"
 ]
 
 function removeShorts() {
