@@ -5,3 +5,12 @@ _site
 
 streaming-math/target
 
+*.js
+!jest.config.js
+*.d.ts
+node_modules
+whispercpp
+
+# CDK asset staging directory
+.cdk.staging
+cdk.out
