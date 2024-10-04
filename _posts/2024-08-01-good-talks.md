@@ -1,8 +1,9 @@
 ---
 layout: post
 title:  "Interesting talks in from the industry"
-categories: ml
-published: false
+categories: informative
+published: true
+last_edit: 2024-10-04
 ---
 
 In no particular order:
