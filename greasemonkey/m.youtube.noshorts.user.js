@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name         Remove Youtube Shorts
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.3
 // @description  Remove Youtube Shorts
 // @author       Stephen Smithwick
 // @match        https://m.youtube.com/*
 // ==/UserScript==
 
-var removeTimeout;
 const target_class = [
+    "rich-section-single-column",
     "reel-shelf-content-wrapper",
     "rich-section-content-wrapper",
     "reel-shelf-items",
@@ -28,9 +28,15 @@ const removeAddedShorts = new MutationObserver((mutationList, observer) => {
         if (
             mutation.type === "childList" 
             && mutation.addedNodes 
-            && mutation.target.className.split(" ").some(clazz => target_class.includes(clazz))
-        ) { removeShorts(); }
+            && target_class.some(clazz => mutation.target.innerHTML.indexOf(clazz) > 0)
+        ) {
+            console.log(mutation.target)
+            removeShorts();
+        }
     }
 });
 
+console.log("Remove Youtube Shorts - loaded");
 removeAddedShorts.observe(document.getElementById("app"), { childList: true, subtree: true });
+
+removeShorts();
