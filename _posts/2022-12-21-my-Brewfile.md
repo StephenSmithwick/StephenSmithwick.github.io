@@ -14,7 +14,7 @@ To install brew:
 
 Download the brewfile locally: 
 ```zsh
-curl https://gist.githubusercontent.com/StephenSmithwick/e77bb2c572b320631ecef3f0d8740927/raw/a54946787f92f8b948933bbeb7261dcf7fa51338/Brewfile \
+curl https://gist.githubusercontent.com/StephenSmithwick/e77bb2c572b320631ecef3f0d8740927/raw/ad5df111ff2f064db9a3b80e06341a646705211f/Brewfile \
 --output Brewfile
 ```
 
