@@ -7,13 +7,11 @@ last_edit: 2024-03-19
 ---
 
 # A List of my Tampermonkey (aka Greasemonkey, Violentmonkey) User Scripts
-[blog.leetcode](https://github.com/StephenSmithwick/StephenSmithwick.github.io/raw/main/greasemonkey/blog.leetcode.user.js)
+[blog.leetcode]({{ site.github_urls.raw }}/greasemonkey/blog.leetcode.user.js)
 : Decorates the blog post [LeetCode - Algorithms](/leetcode/leetcode-algorithms.html)
 
-[m.youtube.noshorts](https://github.com/StephenSmithwick/StephenSmithwick.github.io/raw/main/greasemonkey/m.youtube.noshorts.user.js)
+[m.youtube.noshorts]({{ site.github_urls.raw }}/greasemonkey/m.youtube.noshorts.user.js)
 : Removes youtube shorts from the m.youtube experience
 
-[copyToMarkdown](https://github.com/StephenSmithwick/StephenSmithwick.github.io/raw/main/greasemonkey/copyToMarkdown.user.js)
+[copyToMarkdown]({{ site.github_urls.raw }}/greasemonkey/copyToMarkdown.user.js)
 : Copies the current url as a markdown link
-
-

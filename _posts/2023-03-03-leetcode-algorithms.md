@@ -9,7 +9,7 @@ load: leetcode.lists
 <details markdown="block">
 <summary>Instructions to decorated list using Greasemonkey</summary>
 
-Install this Greasmonkey script to decorate the lists below: [**blog.leetcode.user.js**](https://github.com/StephenSmithwick/StephenSmithwick.github.io/raw/main/greasemonkey/blog.leetcode.user.js)
+Install this Greasmonkey script to decorate the lists below: [**blog.leetcode.user.js**]({{ site.github_urls.raw }}/greasemonkey/blog.leetcode.user.js)
 
 The Greasemonkey script will ask to access a leetcode url to fetch the logged in users' problems data. Please make sure you are logged in here: [LeetCode login](https://leetcode.com/accounts/login).
 {:.information}
