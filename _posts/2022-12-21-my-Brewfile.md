@@ -2,6 +2,7 @@
 layout: post
 title:  "My Brewfile"
 categories: dev-desktop
+date:   2024-11-15
 ---
 
 To save on setup, I keep an updated list of applications I like on my mac.  I use [homebrew](https://brew.sh/) and the [Homebrew Bundle](https://github.com/Homebrew/homebrew-bundle) feature based on ruby [bundler](https://bundler.io/) tool.
