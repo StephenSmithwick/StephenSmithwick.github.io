@@ -1,14 +1,14 @@
 # StephenSmithwick.github.io
 This is a personal static jekyll site which deploys as part of Github Pages: [StephenSmithwick.github.io
-](https://StephenSmithwick.github.io).  
+](https://StephenSmithwick.github.io).
 
 ## Dependencies
 - Ruby 2.7.6
 - Jekyll + Ruby dependencies in Gemfile
 
 ## To build locally
-- Install ruby 
-  - I recommend first installing rbenv + rbenv-gemset via homebrew (`brew install rbenv rbenv-gemsets`) 
+- Install ruby
+  - I recommend first installing rbenv + rbenv-gemset via homebrew (`brew install rbenv rbenv-gemset`)
   - Add rbenv shims to your path in your rc file (in my `~/.zprofile ` I added `eval "$(rbenv init - zsh)"`).
   - from the project directory: `rbenv install`
 - Install Jekyll `bundle install`
@@ -21,8 +21,8 @@ This is a personal static jekyll site which deploys as part of Github Pages: [St
 - **Greasemonkey** - Useful Greasemonkey/Tampermonkey scripts to add value to this blog.
 
 ## Reviewing feedback
-The Contact Form submits to this google sheet: 
-  [stephensmithwick.github.io/submissions](https://docs.google.com/spreadsheets/d/1JKbfmLUuQCjdYEyA0UPPoTFH158ZPrFjYEwnQ_4DIs4) 
+The Contact Form submits to this google sheet:
+  [stephensmithwick.github.io/submissions](https://docs.google.com/spreadsheets/d/1JKbfmLUuQCjdYEyA0UPPoTFH158ZPrFjYEwnQ_4DIs4)
 (Note: Access is restricted)
 
 Thanks for taking a look :)
