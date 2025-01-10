@@ -9,9 +9,9 @@
 
     // Positioning context for the mobile navigation icon
     position: relative;
-    background-image:url("../images/mount_rainier.png"), url("../images/mount_rainier_tail.png");
+    background-image:url("../images/pikes_peak.jpg"), url("../images/pikes_peak_tail.jpg");
     background-repeat: no-repeat, repeat-x;
-    background-size: auto 100% , 1px 100%;
+    background-size: auto 100%, 1px 100%;
 }
 
 .site-title {
@@ -39,19 +39,19 @@ header, footer {
     code { font-size: x-small; }
 }
 
-.left { 
-    float: left; 
+.left {
+    float: left;
     margin-right: 2em;
 }
 
-.right { 
-    float: right; 
+.right {
+    float: right;
     margin-left: 2em;
 }
 
 .clear { clear: both; }
 
-.file { 
+.file {
     color: $dark-blue;
     background-color: $desk;
     padding:  0 0.5em;
@@ -237,7 +237,7 @@ ul.leetcode>li.grid {
                 text-decoration: none;
                 grid-column: 1;
             }
-        
+
             .post-meta {
                 grid-column: 2;
                 justify-self: end;
