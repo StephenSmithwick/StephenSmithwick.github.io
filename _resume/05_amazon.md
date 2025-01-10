@@ -1,18 +1,17 @@
 ---
-header: Work Experience
 class: company
 ---
 {:.company-info}
-- [![AWS Logo](images/aws.png) Amazon AWS](https://aws.amazon.com/) 
+- [![AWS Logo](images/aws.png) Amazon AWS](https://aws.amazon.com/)
 - [![Kindle Logo](images/kindle.svg) Amazon Kindle](https://kdp.amazon.com/)
 
 ### Senior Software Development Engineer
 
 {:.location-date}
 - Seattle, USA
-- May 2019 - Present
+- May 2019 - March 2023 (4 yrs)
 
-This role includes leading technical decisions and managing stakeholders.
+This role includes leading  technical decisions and managing stakeholders.
 
 #### Consistency monitoring and repair
 Amazon has introduced strongly consistent writes requiring significant changes to the underlying architecture.
