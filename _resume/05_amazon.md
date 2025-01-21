@@ -2,8 +2,9 @@
 class: company
 ---
 {:.company-info}
-- [![AWS Logo](images/aws.png) Amazon AWS](https://aws.amazon.com/)
-- [![Kindle Logo](images/kindle.svg) Amazon Kindle](https://kdp.amazon.com/)
+- ![Amazon Logo](images/amazon.png)
+- [Kindle Direct Publishing](https://kdp.amazon.com/) operates a subscription based marketplace to give readers unlimited access to books by participating authors \\
+[AWS](https://aws.amazon.com/) is the leading cloud computing platform which provides S3 the ubiquitious storage service with high availability and durability (11 9's)
 
 ### Senior Software Development Engineer
 
@@ -12,6 +13,12 @@ class: company
 - May 2019 - March 2023 (4 yrs)
 
 This role includes leading  technical decisions and managing stakeholders.
+
+#### Kindle fraud and abuse
+Built a machine learning (ML) pipeline which used reader behavior to detect fraud in near real-time.
+*   Used Kinesis streams to collect batches of live reader behavior for analysis
+*   Deployed models trained by ML scientists and hosted in SageMaker BYO ECR containers
+*   Built tooling to allow ML scientists to train and deploy models that integrated on a near real-time basis
 
 #### Consistency monitoring and repair
 Amazon has introduced strongly consistent writes requiring significant changes to the underlying architecture.
@@ -25,14 +32,8 @@ Transformed the Author Portal from a legacy bespoke service into a React fronten
 *   Used ReactJS frontend to render results from lambda requests
 *   For long running requests, used ECS containers running Spring based backend
 
-#### Kindle fraud and abuse
-Built a machine learning (ML) pipeline which used reader behavior to detect fraud in near real-time.
-*   Used Kinesis streams to collect batches of live reader behavior for analysis
-*   Deployed models trained by ML scientists and hosted in SageMaker BYO ECR containers
-*   Built tooling to allow ML scientists to train and deploy models that integrated on a near real-time basis
-
 #### Operational excellence
-Managed a fleet of over 100K servers across AWS regions across the world.
+Managed a fleet of over 100K servers across all AWS regions across the world.
 *   Responded to and investigated new issues as part of on-call roster
 *   Built and updated runbooks
 *   Improved Code coverage and reliability of CI pipeline
