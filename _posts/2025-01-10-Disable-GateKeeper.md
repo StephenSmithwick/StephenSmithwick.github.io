@@ -2,15 +2,16 @@
 layout: post
 title:  "Disabling Gatekeeper"
 categories: dev-desktop
+last_edit: 2025-01-29
 ---
 
-Below I discuss how to disabled Gatekeeper using a custom generated profile.
-I built the script based on the contents of this gist: [gist:hoishing/README.md](https://gist.github.com/hoishing/cadd905b095e15531467255b537f6906)
+You may want to disable Gatekeeper if you are trying to execute code which has not been signed.
 
-Gatekeeper makes your desktop more secure by restricting what applications can be run on it.
-This is undoubtably makes your more computer more safe and you should be wary before you disable it.
+Gatekeeper makes your desktop more secure by requiring applications be [signed with a developer id](https://developer.apple.com/developer-id).
+The problem is that obtaining a developer id costs an annual subscription fee from Apple.
 
-If you are willing to take the risk the rest of this blog post will provide instructions and a helpful script to disable GateKeeper.
+If you are willing to forgo the extra safety that Gatekeper provides this blog post provides instructions and a helpful script to disable it using a custom generated profile.  I built the script based on the contents of this gist: \\
+[gist:hoishing/README.md](https://gist.github.com/hoishing/cadd905b095e15531467255b537f6906)
 
 ## Disabling GateKeeper
 Execute the script:
@@ -18,7 +19,7 @@ Execute the script:
 /bin/bash -c "$(curl -fsSL {{ site.github_urls.raw }}/allow-unsigned.sh)"
 ```
 
-The script(see below) will:
+The script:
 1. Generates a new profile which disables GateKeeper
 2. Loads the new profile
 3. Opens System Settings to the new Profile Loader
