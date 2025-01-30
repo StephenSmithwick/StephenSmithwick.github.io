@@ -8,35 +8,48 @@
 // ==/UserScript==
 
 const target_class = [
-    "rich-section-single-column",
-    "reel-shelf-content-wrapper",
-    "rich-section-content-wrapper",
-    "reel-shelf-items",
-    "reel-shelf-header"
-]
+  "rich-section-single-column",
+  "reel-shelf-content-wrapper",
+  "rich-section-content-wrapper",
+  "reel-shelf-items",
+  "reel-shelf-header",
+];
 
 function removeShorts() {
-    console.log("Removing Shorts");
-    for (const clazz of target_class) {
-        [...document.querySelectorAll(`.${clazz}`)].forEach(
-            (elem) => {elem.remove()}
-        )
-    }
+  console.log("Removing Shorts");
+  for (const clazz of target_class) {
+    [...document.querySelectorAll(`.${clazz}`)].forEach((elem) => {
+      const boundingRect = elem.getBoundingClientRect();
+      elem.remove();
+      if (boundingRect.bottom < 0) {
+        window.scrollBy(0, -elem.offsetHeight);
+      }
+    });
+  }
 }
-const removeAddedShorts = new MutationObserver((mutationList, observer) => {
+
+function onAdded(targets, action) {
+  const observer = new MutationObserver((mutationList, observer) => {
+    var doAction = false;
     for (const mutation of mutationList) {
-        if (
-            mutation.type === "childList" 
-            && mutation.addedNodes 
-            && target_class.some(clazz => mutation.target.innerHTML.indexOf(clazz) > 0)
-        ) {
-            console.log(mutation.target)
-            removeShorts();
-        }
+      if (
+        mutation.type === "childList" &&
+        mutation.addedNodes &&
+        targets.some((clazz) => mutation.target.innerHTML.indexOf(clazz) > 0)
+      ) {
+        doAction = true;
+      }
     }
-});
+    if (doAction) action();
+  });
+
+  observer.observe(document.getElementById("app"), {
+    childList: true,
+    subtree: true,
+  });
+
+  action();
+}
 
 console.log("Remove Youtube Shorts - loaded");
-removeAddedShorts.observe(document.getElementById("app"), { childList: true, subtree: true });
-
-removeShorts();
+onAdded(target_class, removeShorts);
