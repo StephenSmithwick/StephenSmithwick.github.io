@@ -28,6 +28,7 @@ brew "gawk"
 brew "pandoc"
 brew "java"
 brew "tailscale"
+brew "go"
 
 cask_args appdir: "/Applications"
 cask "rectangle"
