@@ -9,6 +9,7 @@ streaming-math/target
 *.d.ts
 node_modules
 whispercpp
+state-cdk/*.js
 
 # CDK asset staging directory
 .cdk.staging
