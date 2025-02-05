@@ -1,18 +1,26 @@
 ---
 layout: post
-title: DeepSeek-R1
+title: Qwen Distilled by DeepSeek
+last_edit: 2025-02-05
 published: true
 categories: ml
 ---
 
-This is an exploration of the local version of [DeepSeek-R1][DeepSeek-R1].  I have used the convenient ollama tool to fetch and run the model.
+This is an exploration of a [DeepSeek R1][DeepSeek-R1] distilled model: DeepSeek-R1-Distill-Qwen-14B.
+
+DeepSeek-R1 is a large-scale model trained with reinforcement learning and without supervised fine-tuning.
+Supervised fine-tuning adapts a pre-trained Large Language Model to a task using labeled data as final step.
+Reinforcement learning does not require precise labels but simply a reward for eventual correct behviour.
+
 
 # Running Locally
+I have used the convenient ollama tool to fetch and run the model.
 ```zsh
 brew install ollama
 ollama serve
 ollama run deepseek-r1:14b
 ```
+Please note that despite the text ollama is downloading a distilled qwen (general.name=DeepSeek R1 Distill Qwen 14B)
 # Sample Interactions
 ## Chancellor of Germany
 > \>\>\> Who was the chancellor of Germany in 2020?
@@ -1271,4 +1279,5 @@ ollama run deepseek-r1:14b
 > Each house has a unique color, nationality, drink, and cigarette brand (with House 5 smoking Dunhill).
 
 [DeepSeek-R1]: https://github.com/deepseek-ai/DeepSeek-R1
+[DeepSeek-R1-Model]: https://huggingface.co/deepseek-ai/DeepSeek-R1
 [LlamaCPP_PR]: https://github.com/ggerganov/llama.cpp/pull/11453
