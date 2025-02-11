@@ -3,24 +3,57 @@ layout: default
 ---
 
 <div class="home">
-  <p class="post-meta">
-    <a href="{{ site.github_urls.new }}/_posts">📄 New</a>
-  </p>
+    <div class="post-header">
+        <span class="category">
+            <label for="categories">Category :</label>
+            <select name="categories" id="category-choice">
+                <option value="all" selected>all</option>
+                {% assign categories = site.categories | sort %} {% for category
+                in categories %}
+                <option value="{{ category.first }}">
+                    {{ category.first }}
+                </option>
+                {% endfor %}
+            </select>
+        </span>
+        <span class="new">
+            <a href="{{ site.github_urls.new }}/_posts">📄 New</a>
+        </span>
+    </div>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a> 
-          <span class="post-meta">
-            {{ post.date | date: "%b %-d, %Y" }}
-            {% if post.last_edit %}<small>(edited: {{post.last_edit | date: "%b %-d, %Y"}}) </small>{% endif %}
-          </span>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
+    <ul class="post-list">
+        {% for post in site.posts %}
+        <li class="{{ post.categories }}">
+            <h2>
+                <a
+                    class="post-link"
+                    href="{{ post.url | prepend: site.baseurl }}"
+                >
+                    {{ post.title }}
+                </a>
+            </h2>
+            <span class="edit">
+                {% if post.last_edit %} edited: {{post.last_edit | date: "%b
+                %-d, %Y"}} {% endif %}
+            </span>
+            <span class="date"> {{ post.date | date: "%b %-d, %Y" }} </span>
+            <span class="category">{{ post.categories }}</span>
+        </li>
+        {% endfor %}
+    </ul>
 
-  <p class="rss-subscribe">subscribe <a href="{{ '/feed.xml' | prepend: site.baseurl }}">via RSS</a></p>
-
+    <p class="rss-subscribe">
+        subscribe
+        <a href="{{ '/feed.xml' | prepend: site.baseurl }}">via RSS</a>
+    </p>
 </div>
+
+<script>
+    document.getElementById("category-choice").onchange = function (event) {
+        const target = event.target.value;
+        document.querySelectorAll(".post-list>li").forEach((node) => {
+            node.style.display =
+                target == "all" || target == node.className ? "" : "none";
+        });
+    };
+</script>

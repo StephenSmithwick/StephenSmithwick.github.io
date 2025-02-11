@@ -221,6 +221,16 @@ ul.leetcode>li.grid {
     font-size: 20px;
 }
 
+.post-header {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    .category { grid-column: 1; }
+    .new {
+        grid-column: 2;
+        a { text-decoration: none; }
+        justify-self: end;
+    }
+}
 .post-list {
     margin-left: 0;
     list-style: none;
@@ -228,21 +238,30 @@ ul.leetcode>li.grid {
     > li {
         margin-bottom: $spacing-unit/2;
         border-bottom: 1px solid $light-blue;
+        display: grid;
+        grid-template-columns: 70% 15% 15%;
 
         h2 {
-            display: grid;
-            grid-template-columns: 70% 30%;
+            grid-column: 1;
+            a { text-decoration: none; }
+            margin-bottom: 0px;
+        }
 
-            a {
-                text-decoration: none;
-                grid-column: 1;
-            }
+        .category {
+            grid-column: 1;
+            font-size: smaller;
+            color: $dark-blue;
+            font-weight: bold;
+        }
 
-            .post-meta {
-                grid-column: 2;
-                justify-self: end;
-                small { white-space: nowrap; }
-            }
+        .edit {
+            grid-column: 2;
+            font-size: smaller;
+        }
+
+        .date {
+            grid-column: 3;
+            justify-self: end;
         }
     }
 }
