@@ -3,7 +3,7 @@ _site
 .terraform
 .DS_Store
 
-streaming-math/target
+**/target
 
 !jest.config.js
 *.d.ts

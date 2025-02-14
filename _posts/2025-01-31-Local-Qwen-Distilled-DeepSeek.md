@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Qwen Distilled by DeepSeek
-last_edit: 2025-02-05
+title: DeepSeek Distilled into a 14B Qwen Model
+last_edit: 2025-02-14
 published: true
 categories: ml
 ---
@@ -54,6 +54,10 @@ Please note that despite the text ollama is downloading a distilled qwen (genera
 >
 > The Chancellor of Germany in 2020 was **Angela Merkel**. She had been re-elected multiple times and
 > continued to serve until her final term ended in 2021.
+
+The answer is uninteresting in that it is correct.  The \<think\> block is more interesting and if taken at face value
+starts with the correct answer but needs to recall other related facts before deciding the initial answer is correct.
+
 
 ## Calculate Pi
 > \>\>\> Can you write me a rust program which calculates pi out to the specified number of digits
@@ -151,6 +155,46 @@ Please note that despite the text ollama is downloading a distilled qwen (genera
 >
 > If you want more precision, you might consider using more advanced algorithms like the **Chudnovsky algorithm** or leveraging existing libraries
 > for high-precision calculations. Let me know if you'd like to see an implementation of a different method!
+
+The code, as written, required minimal changes to make compilable, likely due to updates to the assumed library (see below).
+More concerning is the fact the this program does not meet requirements:
+> calculates pi out to the specified number of digits
+
+`diff -U 9999 src/main.qwen.rs  src/main.rs`
+```diff
+--- src/main.qwen.rs	2025-02-14 11:27:58
++++ src/main.rs	2025-02-14 11:16:56
+@@ -1,25 +1,25 @@
+ use rand::Rng;
+
+ fn main() {
+     // Number of random points to generate (more = better approximation)
+-    let num_points: u32 = 10_000_000; // You can adjust this for more precision
++    let num_points: u32 = 1_00_000_000; // You can adjust this for more precision
+
+     // Calculate Pi using Monte Carlo method
+     let mut count_inside_circle = 0;
+-    let mut rng = rand::thread_rng();
++    let mut rng = rand::rng();
+
+     for _ in 0..num_points {
+-        let x: f64 = rng.gen_range(0.0, 1.0);
+-        let y: f64 = rng.gen_range(0.0, 1.0);
++        let x: f64 = rng.random_range(0.0..1.0);
++        let y: f64 = rng.random_range(0.0..1.0);
+
+         if (x * x + y * y) < 1.0 {
+             count_inside_circle += 1;
+         }
+     }
+
+     // Calculate Pi
+     let pi_estimate = 4.0 * (count_inside_circle as f64) / (num_points as f64);
+
+     // Print Pi with the specified number of digits
+     println!("Estimate of Pi: {:.10}", pi_estimate);
+ }
+```
 
 ## Einstein's Riddle
 > \>\>\> There are five houses in a row. Each house is painted a different color and has a person of a different nationality living in it. Each person drinks a different beverage, smokes a different
@@ -1277,6 +1321,10 @@ Please note that despite the text ollama is downloading a distilled qwen (genera
 > 5. **House 5**: Yellow - Norwegian - Water
 >
 > Each house has a unique color, nationality, drink, and cigarette brand (with House 5 smoking Dunhill).
+
+I am impressed with the overall steps that the model took to arrive ar a solution, however it did answer the complete question:
+
+> Using these 15 clues, which person owns the pet fish?
 
 [DeepSeek-R1]: https://github.com/deepseek-ai/DeepSeek-R1
 [DeepSeek-R1-Model]: https://huggingface.co/deepseek-ai/DeepSeek-R1
