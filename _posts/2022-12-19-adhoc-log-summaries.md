@@ -5,10 +5,14 @@ date:   2022-12-19
 categories: devops
 ---
 
-The Unix CLI famously provides simple singularly focussed tools which acheive powerful results when combined with the pipe command. Below I explore how we can summarize our logs using common unix tools. While performance can vary by machine and tool version, I have found these tools to generally work well with up to 100s of GB of logs. I recomend to use a smaller sample of your logs while initially building your query (`head -n 1000` is your friend).
+The Unix command-line interface (CLI) is known for its simple commands that achieve powerful results in combination.
+
+Below, I explore how we can summarize logs using common Unix commands.
+
+While performance can vary by machine and tool version, I have found these tools to generally work well with logs hundreds of gigabytes in size. When building a query, I recommend working with a smaller sample of your logs first (`head -n 1000` is your friend).
 
 ## The Setup
-For the following examples I will simulate logs with the following zsh command:
+For the following examples, I will simulate logs using this Zsh command:
 ```zsh
 (for req in A_100 B_500 C_100 D_200 B_10 C_8 C_8 D_200 D_200
     echo "$(date -Ins); GET ${req:s/_/; duration=}")
@@ -27,15 +31,14 @@ Outputting:
 2022-12-19T23:44:33,413488000-08:00; GET D; duration=200
 ```
 
-## The basics: `grep`, `sort`, `cut` and `uniq`
-A good first approach to count requests is to use the following commmands: 
-- `grep` \ `egrep` to focus our results on a particular pattern in regex
-- `cut`  to select log parts of well structured logs
+## The Basics: `grep`, `sort`, `cut` and `uniq`
+A good first approach to count requests is to use the following commmands:
+- `grep` / `egrep` to filter logs based on a regular expression
+- `cut`  to extract structured log parts
 - `sort` to sort output for use by uniq and to sort the final results by frequency
 - `uniq` to group uniq results
 
-We can grab the interesting log part of well structured logs using `cut` with the proper delimtter.  Then pipe the results to `sort` and `uniq -c` to count the frequency of unique log parts.  At the end, we can re-sort the results by most frequent `sort -nr`:
-
+For well-structured logs, `cut` can extract relevant log parts. We then pipe the output through `sort` and `uniq -c` to calculate the frequency, followed by `sort -nr` to sort results in descending order:
 ```zsh
 (for req in A_100 B_500 C_100 D_200 B_10 C_8 C_8 D_200 D_200
     echo "$(date -Ins); GET ${req:s/_/; duration=}") \
@@ -51,7 +54,7 @@ We can grab the interesting log part of well structured logs using `cut` with th
       1 GET A
 ```
 
-When the logs are less structured or the structure isn't yet known by the operator, using `grep -o` with a regular expression matching the interesting part of the log message will work similarly:
+If logs are less structured or their format is unknown, grep -o can extract relevant information using a regular expression:
 ```zsh
 (for req in A_100 B_500 C_100 D_200 B_10 C_8 C_8 D_200 D_200
     echo "$(date -Ins); GET ${req:s/_/; duration=}") \
@@ -60,6 +63,8 @@ When the logs are less structured or the structure isn't yet known by the operat
 | uniq -c \
 | sort -nr
 ```
+
+This produces the same result:
 ```
       3 GET D
       3 GET C
@@ -68,19 +73,19 @@ When the logs are less structured or the structure isn't yet known by the operat
 ```
 
 ## Stream editing using `awk`
-Awk, while slightly more complex, allows us to do much more complicated log analysis. Here we summarize our logs with the average duration parsed from every request:
+`awk`, while slightly more complex, allows for more advanced log analysis. Here, we compute the average request duration per request type
 
 ```zsh
 (for req in A_100 B_500 C_100 D_200 B_10 C_8 C_8 D_200 D_200
-    echo "$(date -Ins); GET ${req:s/_/; duration=}") \
+    echo "$(gdate -Ins); GET ${req:s/_/; duration=}") \
 | awk -F '[;=]' '
-    /GET .*/ { 
+    /GET .*/ {
         duration[$2]+= $4
-        count[$2]++ 
-    } 
-    END { 
-        for (req in count) 
-            print (duration[req] / count[req]), req 
+        count[$2]++
+    }
+    END {
+        for (req in count)
+            print (duration[req] / count[req]), req
     }' \
 | sort -nr
 ```
@@ -93,7 +98,7 @@ Awk, while slightly more complex, allows us to do much more complicated log anal
 ```
 
 ## Stream editing using `perl`
-While Perl is not in the posix list, sometimes we need better regular expression handling than `awk` provides. Perl can behave as a stream editor and with the right flags and it's syntax can be like `awk`:
+Although Perl is not part of the POSIX standard, it provides more advanced regular expression handling than `awk` and also functions as a stream editor with the correct flags:
 
 ```zsh
 (for req in A_100 B_500 C_100 D_200 B_10 C_8 C_8 D_200 D_200
