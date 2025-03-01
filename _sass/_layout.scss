@@ -239,24 +239,37 @@ ul.leetcode>li.grid {
         margin-bottom: $spacing-unit/2;
         border-bottom: 1px solid $light-blue;
         display: grid;
-        grid-template-columns: 70% 15% 15%;
+        grid-template-columns: 65% 20% 15%;
+        @include media-query($on-palm) {
+            grid-template-columns: 80% 0% 20%;
+        }
+        font-size: 15px;
+        @include media-query($on-laptop) {
+            font-size: 12px;
+        }
 
         h2 {
             grid-column: 1;
             a { text-decoration: none; }
             margin-bottom: 0px;
+
+            font-size: 20px;
+            @include media-query($on-laptop) {
+                font-size: 16px;
+            }
         }
 
         .category {
             grid-column: 1;
-            font-size: smaller;
             color: $dark-blue;
             font-weight: bold;
         }
 
         .edit {
             grid-column: 2;
-            font-size: smaller;
+            @include media-query($on-palm) {
+                display: none;
+            }
         }
 
         .date {
@@ -270,10 +283,6 @@ ul.leetcode>li.grid {
     font-size: $small-font-size;
     color: $grey-color;
     text-align: right;
-}
-
-.post-link {
-    font-size: 24px;
 }
 
 .information {
@@ -309,6 +318,14 @@ details {
 
 .post-content {
     margin-bottom: $spacing-unit;
+
+    h1 {
+        font-size: 36px;
+
+        @include media-query($on-laptop) {
+            font-size: 32px;
+        }
+    }
 
     h2 {
         font-size: 32px;

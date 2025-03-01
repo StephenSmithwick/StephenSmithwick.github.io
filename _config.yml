@@ -12,6 +12,7 @@ github_urls:
   new: "https://github.com/StephenSmithwick/StephenSmithwick.github.io/new/main"
   raw: "https://github.com/StephenSmithwick/StephenSmithwick.github.io/raw/main"
   blob: "https://github.com/StephenSmithwick/StephenSmithwick.github.io/blob/main"
+  tree: "https://github.com/StephenSmithwick/StephenSmithwick.github.io/tree/main"
 github_username: StephenSmithwick
 linkedin:
   name: Stephen Smithwick
