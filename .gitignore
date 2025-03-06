@@ -12,5 +12,6 @@ whispercpp
 state-cdk/*.js
 
 # CDK asset staging directory
+cdk.context.json
 .cdk.staging
 cdk.out

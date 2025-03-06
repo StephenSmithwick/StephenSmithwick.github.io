@@ -27,8 +27,8 @@ To build the app:
 - Build functions and CFN Template: `npm run build`
 
 ## Deploy
-
-Run `cdk deploy` to deploy / redeploy the Stack to your AWS Account.
+Login to aws (preferred approach [AWS SSO]({% post_url 2025-03-04-AWS-SSO %}))
+Run `cdk deploy CommentsInterface` (or `CommentsStore`) to deploy / redeploy the Stack to your AWS Account.
 
 After the deployment you will see the Dunctions URL which can then be used.
 
