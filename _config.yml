@@ -23,6 +23,7 @@ google_analytics: UA-60117878-2
 permalink: none
 collections:
   - resume
+  - resume_bluestaq
 exclude:
   - state-cdk
 
