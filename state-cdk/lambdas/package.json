@@ -11,6 +11,6 @@
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.538.0",
     "@aws-sdk/lib-dynamodb": "^3.538.0",
-    "uuid": "*"
+    "@aws-lambda-powertools/logger": "^2.16.0"
   }
 }

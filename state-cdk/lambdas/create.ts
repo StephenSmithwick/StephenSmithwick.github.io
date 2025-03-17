@@ -1,38 +1,62 @@
-import { DynamoDBDocument } from '@aws-sdk/lib-dynamodb';
-import { DynamoDB } from '@aws-sdk/client-dynamodb';
-import { v4 as uuidv4 } from 'uuid';
+import { DynamoDBDocument } from "@aws-sdk/lib-dynamodb";
+import { DynamoDB } from "@aws-sdk/client-dynamodb";
+import { Logger } from "@aws-lambda-powertools/logger";
 
-const TABLE_NAME = process.env.TABLE_NAME || '';
-const PRIMARY_KEY = process.env.PRIMARY_KEY || '';
+const logger = new Logger({ serviceName: "list" });
+
+const TABLE_NAME = process.env.TABLE_NAME || "";
+const PRIMARY_KEY = process.env.PRIMARY_KEY || "";
+const SORT_KEY = process.env.SORT_KEY || "";
 
 const db = DynamoDBDocument.from(new DynamoDB());
 
-const RESERVED_RESPONSE = `Error: You're using AWS reserved keywords as attributes`,
-  DYNAMODB_EXECUTION_ERROR = `Error: Execution update, caused a Dynamodb error, please take a look at your CloudWatch Logs.`;
+const characters =
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+const charactersLength = characters.length;
+
+function appendRandom(value: string, length: number): string {
+  for (let i = 0; i < length; i++) {
+    value += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return value;
+}
 
 export const handler = async (event: any = {}): Promise<any> => {
-
   if (!event.body) {
-    return { statusCode: 400, body: 'invalid request, you are missing the parameter body' };
+    return {
+      statusCode: 400,
+      body: "Missing request body",
+    };
   }
-  const item = typeof event.body == 'object' ? event.body : JSON.parse(event.body);
+  const item =
+    typeof event.body == "object" ? event.body : JSON.parse(event.body);
+
+  const { page } = item;
+
+  if (!page) {
+    return {
+      statusCode: 400,
+      body: `Expecting page`,
+    };
+  }
+
   const message = {
-    page: item["page"],
+    [PRIMARY_KEY]: page,
+    [SORT_KEY]: appendRandom(`${new Date().toJSON()}-`, 5),
     user: item["user"],
-    message: item["message"]
-  }
-  message[PRIMARY_KEY] = uuidv4();
+    message: item["message"],
+  };
   const params = {
     TableName: TABLE_NAME,
-    Item: message
+    Item: message,
   };
 
   try {
+    logger.info(`Creating: ${JSON.stringify(message)}`);
     await db.put(params);
-    return { statusCode: 201, body: '' };
+    return { statusCode: 201, body: "" };
   } catch (dbError) {
-    const errorResponse = dbError.code === 'ValidationException' && dbError.message.includes('reserved keyword') ?
-      RESERVED_RESPONSE : DYNAMODB_EXECUTION_ERROR;
-    return { statusCode: 500, body: errorResponse };
+    logger.critical(JSON.stringify(dbError));
+    return { statusCode: 500, body: "Unexpected error" };
   }
 };

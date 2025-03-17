@@ -11,7 +11,7 @@ To build the app:
 
 ## Deploy
 
-Run `cdk deploy` to deploy / redeploy the Stack to your AWS Account.
+Run `cdk deploy --all` to deploy / redeploy the Stack to your AWS Account.
 
 After the deployment you will see the Dunctions URL which can then be used.
 
@@ -32,19 +32,4 @@ Other useful CDK commands:
 
     $ cdk diff
     <shows diff against deployed stack>
-```
-
-
-## Interact via `curl`
-
-### Create message
-```zsh
-curl -v $create -H 'content-type: application/json' \
--d '{ "user": "ssmithwick", "message": "test", "page": "/dev-desktop/User-Scripts.html" }'
-```
-
-### List messages
-```zsh
-curl -v $list -H 'content-type: application/json' \
--d '{ "page": "/dev-desktop/User-Scripts.html" }'
 ```
