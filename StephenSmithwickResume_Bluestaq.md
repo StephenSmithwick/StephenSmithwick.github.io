@@ -3,6 +3,7 @@ layout: resume
 title: "Resume - Stephen Smithwick"
 date: 2025-03-17
 categories: resume
+hide: true
 ---
 
 {% for section in site.resume_bluestaq %}

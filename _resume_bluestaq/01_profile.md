@@ -1,4 +1,6 @@
 ---
 header: Profile
 ---
-I am a Senior Software Developer who most recently worked at Snowflake and Amazon S3 with significant experience in cloud computing and machine learning. Prior to this, I was Principal Software Engineer at Qantas Airlines, working on customer solutions such as notifications and insights. I am passionate about my work which mostly involves exploring, innovating and implementing key decisions around our solutions. I believe in the importance of agile development which builds team excellence through the practice of continuous improvement. I also love to code and learn new technologies: from experiments in ML to scripts to scratch an itch, I happily geek out with my team and colleagues.
+I am a Senior Software Engineer with passion and expertice in AI/ML, big data, and cloud computing.
+I have a proven track record in designing and optimizing a large-scale machine learning pipeline, database architectures, and cloud-based solutions.
+I am passionate about AI/ML and its applications to improve productivity and workflows.
