@@ -14,6 +14,9 @@ name: amazon
 - May 2019 - March 2023 (4 yrs)
 
 This role includes leading  technical decisions and managing stakeholders.
+*   Developed machine learning fraud detection pipeline for Kindle Direct Publishing, integrating real-time AI-driven anomaly detection.
+*   Designed data workflows and consistency monitoring for Amazon S3, ensuring large-scale data integrity for ML models.
+*   Led efforts in big data processing using AWS Kinesis, DynamoDB, and Elasticsearch.
 
 #### Kindle fraud and abuse
 Built a machine learning (ML) pipeline which used reader behavior to detect fraud in near real-time.

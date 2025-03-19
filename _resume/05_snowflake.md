@@ -13,7 +13,7 @@ Snowflake is a leading cloud data warehouse which provides a SaaS solution to st
 - Bellevue, USA
 - May 2023 - August 20204 (1 yr 4 mos)
 
-This role includes leading technical decisions around network traffic
+This role includes deploying major infrastructure across AWS, GCP and Azure, leading technical decisions around network traffic
 and working directly with major customers.
 
 #### Organizing and Automating Certificate Generation

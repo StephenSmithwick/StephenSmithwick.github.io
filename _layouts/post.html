@@ -8,12 +8,12 @@ layout: default
     <p class="post-meta">
       {{ page.date | date: "%b %-d, %Y" }}
       {% if page.author %} • {{ page.author }}{% endif %}
-      {% if page.last_edit %} • edited: {{page.last_edit | date: "%b %-d, %Y"}} {% endif %} 
+      {% if page.last_edit %} • edited: {{page.last_edit | date: "%b %-d, %Y"}} {% endif %}
       • <a class="edit" href="{{ site.github_urls.edit }}/{{ page.path }}">✎ edit</a>
     </p>
   </header>
 
-  <article class="post-content"> 
+  <article class="post-content">
     {{ content }}
   </article>
 
@@ -23,3 +23,6 @@ layout: default
 {% if page.load contains 'mermaid' %}{% include load/mermaid.html %}{% endif %}
 {% if page.load contains 'leetcode.lists' %}{% include load/leetcode.lists.html %}{% endif %}
 {% if page.load contains 'kotlin.playground' %}{% include load/kotlin.playground.html %}{% endif %}
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+{% include comments.html element=".post-content" github_account="StephenSmithwick/StephenSmithwick.github.io" require_cookie_consent="true" %}

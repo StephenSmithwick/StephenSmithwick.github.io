@@ -2,6 +2,14 @@
 header: Tools and Techologies
 name: tools
 ---
+
+ML
+: {:.inline}
+*   SageMaker
+*   Python
+*   Jupyter Notebook
+*   Llama.cpp
+
 Java/JVM
 
 : {:.inline}
@@ -11,11 +19,10 @@ Java/JVM
 *   Spring
 *   Dagger2
 
-
 Web
 
 : {:.inline}
-*   Javascript
+*   Javascript/Typescript
 *   React
 *   Redux
 *   Bootstrap
@@ -33,12 +40,19 @@ Operational
 
 : {:.inline}
 *   AWS
+*   GCP
+*   Azure
 *   Ansible
 *   Bamboo
 *   Docker
 *   Splunk
 *   CloudWatch
 *   CDK/CloudFormation
+*   Terraform
+*   Git
+*   Maven
+*   Jenkins
+*   SonarQube
 
 Agile
 
@@ -70,10 +84,3 @@ Data
 *   Oracle
 *   PostgreSQL
 *   Snowflake
-
-Other
-
-: {:.inline}
-*   Git
-*   Python
-*   SageMaker
