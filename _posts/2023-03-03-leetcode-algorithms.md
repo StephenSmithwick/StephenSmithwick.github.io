@@ -2,7 +2,7 @@
 layout: post
 title:  "LeetCode - Algorithms"
 categories: leetcode
-load: leetcode.lists
+plugins: leetcode.lists
 ---
 ## How to use
 

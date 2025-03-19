@@ -19,10 +19,7 @@ layout: default
 
 </div>
 
-{% if page.load contains 'diff2html' %}{% include load/diff2html.html %}{% endif %}
-{% if page.load contains 'mermaid' %}{% include load/mermaid.html %}{% endif %}
-{% if page.load contains 'leetcode.lists' %}{% include load/leetcode.lists.html %}{% endif %}
-{% if page.load contains 'kotlin.playground' %}{% include load/kotlin.playground.html %}{% endif %}
-
-<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-{% include comments.html element=".post-content" github_account="StephenSmithwick/StephenSmithwick.github.io" require_cookie_consent="true" %}
+{% if page.plugins contains 'diff2html' %}{% include plugins/diff2html.html %}{% endif %}
+{% if page.plugins contains 'mermaid' %}{% include plugins/mermaid.html %}{% endif %}
+{% if page.plugins contains 'leetcode.lists' %}{% include plugins/leetcode.lists.html %}{% endif %}
+{% if page.plugins contains 'kotlin.playground' %}{% include plugins/kotlin.playground.html %}{% endif %}

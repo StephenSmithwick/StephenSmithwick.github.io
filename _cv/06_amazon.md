@@ -11,12 +11,15 @@ name: amazon
 
 {:.location-date}
 - Seattle, USA
-- May 2019 - March 2023 (4 yrs)
+- May 2019 - March 2023
 
-This role includes leading  technical decisions and managing stakeholders.
-*   Developed machine learning fraud detection pipeline for Kindle Direct Publishing, integrating real-time AI-driven anomaly detection.
-*   Designed data workflows and consistency monitoring for Amazon S3, ensuring large-scale data integrity for ML models.
-*   Led efforts in big data processing using AWS Kinesis, DynamoDB, and Elasticsearch.
+I led technical decisions and managed stakeholders.
+*   Developed machine learning fraud detection pipeline for Kindle Direct Publishing, integrating real-time AI-driven anomaly detection
+*   Designed data workflows and consistency monitoring for Amazon S3, ensuring large-scale data integrity for ML models
+*   Led efforts in big data processing using AWS Kinesis, DynamoDB, and Elasticsearch
+*   Developed the Kindle Author Portal with a ReactJS frontend and a ECS hosted Java Spring backend
+*   Managed a fleet of over 100K S3 servers across all AWS regions
+*   Improved Code coverage and reliability of CI pipeline
 
 #### Kindle fraud and abuse
 Built a machine learning (ML) pipeline which used reader behavior to detect fraud in near real-time.
@@ -25,19 +28,8 @@ Built a machine learning (ML) pipeline which used reader behavior to detect frau
 *   Built tooling to allow ML scientists to train and deploy models that integrated on a near real-time basis
 
 #### Consistency monitoring and repair
-Amazon has introduced strongly consistent writes requiring significant changes to the underlying architecture.
+Amazon introduced strongly consistent writes which require significant changes to the underlying architecture.
 *   Designed workflow, built software and wrote runbooks for new processes to handle alarming and repair of S3 entries
 *   Updated the primary service to audit for consistency, alarming and allow the repair of discovered issues
 *   Inconsistent entries can endanger S3's reliability promise of 11 9s of durability
 *   Rare events happen often when you are operating at the scale of over a 100 trillion entries
-
-#### Kindle Author Portal
-Transformed the Author Portal from a legacy bespoke service into a React frontend and AWS lambda and ECS backend which allowed the development of reports to be more agile.
-*   Used ReactJS frontend to render results from lambda requests
-*   For long running requests, used ECS containers running Spring based backend
-
-#### Operational excellence
-Managed a fleet of over 100K servers across all AWS regions across the world.
-*   Responded to and investigated new issues as part of on-call roster
-*   Built and updated runbooks
-*   Improved Code coverage and reliability of CI pipeline

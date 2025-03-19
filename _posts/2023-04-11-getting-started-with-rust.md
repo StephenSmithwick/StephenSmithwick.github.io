@@ -2,7 +2,7 @@
 layout: post
 title:  "Getting started in Rust"
 categories: rust
-load: mermaid
+plugins: mermaid
 last_edit: 2023-04-19
 ---
 
@@ -39,7 +39,7 @@ Cargo is a build tool for Rust. It is also used to manage packages of libraries 
 : build documentation for your project
 
 `cargo publish `
-: publish a library to crates.io 
+: publish a library to crates.io
 
 ## Example: Streaming Math
 
@@ -94,7 +94,7 @@ fn main() {
     let args: Vec<String> = env::args().collect();
     let path1 = &args[1];
     let path2 = &args[2];
-    
+
     if let (Ok(lines1), Ok(lines2)) = (read_lines(path1), read_lines(path2)) {
         for (line1, line2) in lines1.zip(lines2) {
             if let (Ok(one), Ok(two)) = (line1, line2) {
@@ -134,7 +134,7 @@ We get the following:
 10
 ```
 
-More reading: 
+More reading:
 - [Concise Control Flow with if let](https://doc.rust-lang.org/book/ch06-03-if-let.html)
 - [SIMD](https://doc.rust-lang.org/std/simd/index.html) - [by example](https://www.cs.brandeis.edu/~cs146a/rust/rustbyexample-02-21-2015/simd.html)
 - [Excercism](https://exercism.org/tracks/rust)

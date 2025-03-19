@@ -6,4 +6,4 @@ categories: resume
 show: false
 ---
 
-{% include resume/main.html overlay=site.resume_bluestaq %}
+{% include resume/main.html base=site.cv overlay=site.resume_ai %}

@@ -1,0 +1,12 @@
+---
+header: Key Skills
+name: skills
+---
+{:.two-columns}
+*   AI/ML pipeline automation & fraud detection
+*   Hosting/retraining Large Language Models (LLMs)
+*   Big data processing & optimization
+*   Cloud infrastructure automation (AWS, GCP, Azure)
+*   DevOps, CI/CD, and software architecture
+*   Agile at scale (Scrum, Kanban)
+*   Stakeholder & team leadership

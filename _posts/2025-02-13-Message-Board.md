@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Message Board for my Blog
-load: [diff2html]
+plugins: [diff2html]
 last_edit: 2025-03-17
 published: true
 categories: devops

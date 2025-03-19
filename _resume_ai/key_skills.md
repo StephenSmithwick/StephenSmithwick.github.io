@@ -4,7 +4,7 @@ name: skills
 ---
 {:.two-columns}
 *   Automation of AI/ML pipelines
-*   Classification for Fraud Detection
+*   ML Classification for fraud detection
 *   Hosting/retraining Large Language Models (LLM)
 *   Change management
 *   Stakeholder/Product Owner management

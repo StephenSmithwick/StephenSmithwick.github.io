@@ -2,7 +2,7 @@
 layout: post
 title:  "Exploration of certificates"
 categories: tls
-load: [mermaid,diff2html]
+plugins: [mermaid, diff2html]
 last_edit: 2023-10-25
 published: true
 ---
@@ -25,7 +25,7 @@ sequenceDiagram
 ## Generating a certificate chain
 ```mermaid
 graph TD
-   Server(Server Certificate) 
+   Server(Server Certificate)
    CA(CA Certificate)
 
    CA --signs--> Server
@@ -35,7 +35,7 @@ graph TD
 ```zsh
 # Generate private key and csr
 openssl req -new -newkey rsa:2048 -nodes -out ca.csr -keyout ca.key \
-    -subj "/CN=ca.localhost" 
+    -subj "/CN=ca.localhost"
 
 # Self sign the csr to generate a pem
 openssl x509 -trustout -signkey ca.key -days 7 -req -in ca.csr -out ca.pem
@@ -58,14 +58,14 @@ ca.key
 : The private key.  This is important to keep safe and a secret as it is the only way for the server to decrypt messaged encrypted using the public key.
 
 ca.pem
-: We sign the public part of key `csr` to give the client some assurance of the certificates origin.  This certificate, like most certificates issued by root Certificate Authorities (CAs), is self-signed.  
-    
+: We sign the public part of key `csr` to give the client some assurance of the certificates origin.  This certificate, like most certificates issued by root Certificate Authorities (CAs), is self-signed.
+
 {:.clear}
 The client will have have a list of trusted CA certificates obtained out-of-band of the current request.  Comparing the csr with the pem
 ```zsh
 diff -U 9999 --label="ca.csr" --label="ca.pem" \
     <(openssl req -text -noout -verify -in ca.csr) \
-    <(openssl x509 -in ca.pem -text -noout) 
+    <(openssl x509 -in ca.pem -text -noout)
 ```
 
 ```diff
@@ -145,18 +145,18 @@ diff -U 9999 --label="ca.csr" --label="ca.pem" \
 ```
 
 ### Creating a certificate chain
-A certificate chain contains the public key 
+A certificate chain contains the public key
 ```zsh
 # Generate new private key and csr for a
 openssl req -new -newkey rsa:2048 -nodes -out a.csr -keyout a.key \
     -subj "/CN=localhost" \
     -addext "subjectAltName=DNS:localhost,IP:127.0.0.1"
 
-# Sign it 
+# Sign it
 openssl x509 -trustout -CA ca.pem -CAkey ca.key -days 7 -req -in a.csr -out a.pem
 
 ```
-A call on `tree` reveals similar, private key (`a.key`), certificate request(`a.csr`) and the resulting certificate chain (`a.pem`).  
+A call on `tree` reveals similar, private key (`a.key`), certificate request(`a.csr`) and the resulting certificate chain (`a.pem`).
 
 {:.right}
 ```
@@ -178,7 +178,7 @@ a.key
 : The private key.
 
 a.pem
-: Once a Certificate request is signed by a 
+: Once a Certificate request is signed by a
 Note that the certificate chain contains the ca.pem in it's tail:
 
 {:.clear}
@@ -221,14 +221,14 @@ openssl s_server -status_verbose -accept 4443 -WWW -cert <(cat a.pem ca.pem) -ke
 > Host: localhost:4433
 > User-Agent: curl/8.1.2
 > Accept: */*
-> 
+>
 * HTTP 1.0, assume close after body
 < HTTP/1.0 200 ok
 HTTP/1.0 200 ok
 < Content-type: text/plain
 Content-type: text/plain
 
-< 
+<
 test
 * Closing connection 0
 ```
