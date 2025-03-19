@@ -1,49 +1,66 @@
 ---
 # Only the main Sass file needs front matter (the dashes are enough)
 ---
+
 @charset "utf-8";
 
 @import url(fonts/atkinson-hyperlegible.css);
 
-$dark-blue: #00578A;
+$dark-blue: #00578a;
 $darker-blue: darken($dark-blue, 25%);
-$mid-blue: #0588BC;
-$light-blue: #CAE4F1;
+$mid-blue: #4b91eb;
+$light-blue: #c9d9f2;
 $dark-green: #080;
 $darker-green: darken($dark-green, 25%);
 $light-green: #9deb9d;
 
-.dark-blue { color: $dark-blue; }
-.darker-blue { color: $darker-blue; }
-.mid-blue { color: $mid-blue; }
-.light-blue { color: $light-blue; }
-.dark-green { color: $dark-green; }
-.darker-green { color: $darker-green; }
-.light-green { color: $light-green; }
+.dark-blue {
+    color: $dark-blue;
+}
+.darker-blue {
+    color: $darker-blue;
+}
+.mid-blue {
+    color: $mid-blue;
+}
+.light-blue {
+    color: $light-blue;
+}
+.dark-green {
+    color: $dark-green;
+}
+.darker-green {
+    color: $darker-green;
+}
+.light-green {
+    color: $light-green;
+}
 
-$desk: #CCC;
-$paper: #FFF;
+$desk: #ccc;
+$paper: #fff;
 
 // Our variables
-$base-font-family: Atkinson Hyperlegible, Helvetica, Arial, sans-serif;
-$base-font-size:   16px;
-$small-font-size:  $base-font-size * 0.875;
+$base-font-family:
+    Atkinson Hyperlegible,
+    Helvetica,
+    Arial,
+    sans-serif;
+$base-font-size: 16px;
+$small-font-size: $base-font-size * 0.875;
 $base-line-height: 1.5;
 
-$spacing-unit:     30px;
+$spacing-unit: 30px;
 
-$text-color:       #111;
+$text-color: #111;
 $background-color: #fdfdfd;
-$brand-color:      $dark-blue;
+$brand-color: $dark-blue;
 
-$grey-color:      $mid-blue;
+$grey-color: $mid-blue;
 $grey-color-light: lighten($grey-color, 40%);
-$grey-color-dark:  darken($grey-color, 25%);
+$grey-color-dark: darken($grey-color, 25%);
 
-$on-palm:          800px;
-$on-laptop:        1000px;
-
-
+$on-palm: 800px;
+$on-laptop: 1000px;
 
 // Using media queries with like this:
 // @include media-query($palm) {
@@ -58,14 +75,6 @@ $on-laptop:        1000px;
     }
 }
 
-
-
 // Import partials from `sass_dir` (defaults to `_sass`)
-@import
-        "base",
-        "layout",
-        "syntax-highlighting",
-        "gist-highlighting",
-        "diff2html",
-        "forms"
-;
+@import "base", "layout", "syntax-highlighting", "gist-highlighting",
+    "diff2html", "forms";
