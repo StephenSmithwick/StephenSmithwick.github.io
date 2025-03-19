@@ -11,7 +11,7 @@ May 2019 - March 2023
 
 Highlights:
 *   Led development of a real-time ML fraud detection pipeline for Kindle Direct Publishing.
-*   Designed data workflows and consistency monitoring for Amazon S3.
+*   Designed data workflows and consistency monitoring for Amazon S3, ensuring large-scale data integrity for ML models (fix me)
 *   Built ML-powered anomaly detection leveraging AWS Kinesis, DynamoDB, and Elasticsearch.
 *   Developed the Kindle Author Portal with a ReactJS frontend and a Java Spring backend.
 *   Managed 100K+ S3 servers across all AWS regions.

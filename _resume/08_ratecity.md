@@ -14,3 +14,4 @@ Highlights:
 *   Led a system migration from a legacy monolith to a modular high-performance architecture.
 *   Improved system scalability by transitioning to AWS.
 *   Developed a new data warehouse, enhancing behavioral tracking and analytics.
+*   Established and managed a remote overseas team.

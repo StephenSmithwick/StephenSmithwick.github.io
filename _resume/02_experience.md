@@ -1,4 +1,4 @@
 ---
-header: Work Experience
+header: Experience
 name: experience
 ---

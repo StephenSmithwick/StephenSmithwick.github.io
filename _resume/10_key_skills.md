@@ -9,4 +9,4 @@ name: skills
 *   Cloud infrastructure automation (AWS, GCP, Azure)
 *   DevOps, CI/CD, and software architecture
 *   Agile at scale (Scrum, Kanban)
-*   Stakeholder & team leadership
+*   Stakeholder management & team leadership
