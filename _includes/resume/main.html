@@ -1,0 +1,11 @@
+{% assign bases = site.resume %}
+{% assign overlays = include.overlay %}
+
+{% for base in bases %}
+  {% assign overlay = overlays | where: "name", base.name | first %}
+  {% if overlay %}
+    {% include resume/section.html section=overlay %}
+  {% else %}
+    {% include resume/section.html section=base %}
+  {% endif %}
+{% endfor %}

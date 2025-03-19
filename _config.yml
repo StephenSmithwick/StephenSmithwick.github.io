@@ -1,9 +1,9 @@
 # Site settings
-title: Peak Ideas
+title: Summit Stack
 email: stephen.smithwick@<gmail.com
 description: >
-  Welcome to my Github Page.
-  A place to collect useful information
+  Welcome to Stephen Smithwick's blog,
+  a collection of articles for developers.
 baseurl: ""
 url: "https://StephenSmithwick.github.io" # the base hostname & protocol for your site
 github_urls:
@@ -21,6 +21,7 @@ logo: images/logo.jpeg
 show_downloads: true
 google_analytics: UA-60117878-2
 permalink: none
+emptyArray: []
 collections:
   - resume
   - resume_bluestaq

@@ -20,14 +20,14 @@
         </a>
 
         <div class="trigger">
-            {% for page in site.pages %}{% if page.title and !page.hide %}
+            {% for page in site.pages %}{% if page.show %}
             <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">
                 {{ page.title }}
             </a>
             {% endif %} {% endfor %}
-            <a class="page-link" href="{{ site.github_urls.base }}"
-                >{% include github-icon.html %}</a
-            >
+            <a class="page-link" href="{{ site.github_urls.base }}">
+                {% include github-icon.html %}
+            </a>
         </div>
     </nav>
 </header>

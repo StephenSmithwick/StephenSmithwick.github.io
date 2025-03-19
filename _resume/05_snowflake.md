@@ -1,6 +1,6 @@
 ---
-header: Work Experience
 class: company
+name: snowflake
 ---
 {:.company-info}
 - ![Snowflake Logo](images/snowflake.svg)

@@ -1,6 +1,7 @@
 ---
 header: Profile
+name: profile
 ---
-I am a Senior Software Engineer with passion and expertice in AI/ML, big data, and cloud computing.
-I have a proven track record in designing and optimizing a large-scale machine learning pipeline, database architectures, and cloud-based solutions.
-I am passionate about AI/ML and its applications to improve productivity and workflows.
+I am a Senior Software Engineer with passion and expertise in AI/ML, big data, and cloud computing.
+I have a proven track record in designing and optimizing large-scale machine learning pipelines, database architectures, and cloud-based solutions.
+I am passionate about AI/ML and its applications as a tool to improve productivity and automate workflows.

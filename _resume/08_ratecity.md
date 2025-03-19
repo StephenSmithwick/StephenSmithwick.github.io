@@ -1,15 +1,16 @@
 ---
 class: company
+name: ratecity
 ---
 {:.company-info}
-- ![RateCity Logo](images/ratecity.png) 
+- ![RateCity Logo](images/ratecity.png)
 - [http://www.ratecity.com.au](http://www.ratecity.com.au) \\
 RateCity is Australia's leading financial comparison website where users compare credit cards, loans, and investment products.
 
 ### Technical Director
 
 {:.location-date}
-- Sydney, Australia 
+- Sydney, Australia
 - January 2015 - March 2016
 
 Led the technical decisions made by the company and managed a team of developers.

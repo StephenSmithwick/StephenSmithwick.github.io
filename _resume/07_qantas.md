@@ -1,15 +1,16 @@
 ---
 class: company
+name: qantas
 ---
 {:.company-info}
-- ![Qantas Logo](images/qantas.png) 
+- ![Qantas Logo](images/qantas.png)
 - [http://www.qantas.com](http://www.qantas.com) \\
  Qantas is Australia's leading domestic and international airline.
 
 ### Principal Software Engineer
 
 {:.location-date}
-- Sydney, Australia 
+- Sydney, Australia
 - March 2016 - April 2019
 
 Led technical decisions and managed stakeholders and teams within the Integration Domain.
@@ -34,11 +35,11 @@ Focused on improving development practices and reducing the time taken to releas
 
 #### Established Notification Team
 The Notifications Platform delivered messages to subscribed customers and employees on flight and passenger events via many channels including sms, email, in app messaging, and facebook messenger. The team operated in a highly collaborative Kanban fashion with a strict work in progress limit, regular releases, and automation of almost all processes. It was an agile, autonomous, product focused team which managed all aspects of the product lifecycle including design, operations, support, and development
-    
+
 
 #### Led Customer Response Engine Team
 The Customer Response Engine ingested very large amounts of data and provided insights around customers for Qantas services via APIs and event streams using flight, booking and customer data feeds. Introduced more customer friendly event consumption models and agile ways of working inspired by the spotify framework
-    
+
 
 #### Established Security Guild
 Communication between Qantas security teams and developers was ad-hoc and reactive. Set up a Security Guild to improve communication between security teams and developers. Forums resulted in improved knowledge sharing between teams
