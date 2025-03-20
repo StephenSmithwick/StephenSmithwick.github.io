@@ -136,6 +136,9 @@ ul.company-info {
 
     li {
         min-width: $big-indent;
+        &:last-child {
+            text-align: right;
+        }
     }
 }
 

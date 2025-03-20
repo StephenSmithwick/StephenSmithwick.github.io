@@ -2,6 +2,7 @@
 header: Profile
 name: profile
 ---
-Experienced software engineer with 20+ years in AI/ML, big data, and cloud computing.
-Proven expertise in designing scalable machine learning pipelines, optimizing database architectures, and enhancing system performance.
-Passionate about leveraging AI/ML to improve productivity and automate workflows.
+Software engineer with 20+ years experience designing and developing efficient, scalable solutions to complex problems.
+Proven expertise in driving technical innovation and aligning strategic planning with business goals.
+Passionate about mentoring other engineers and collaborating across teams to elevate engineering processes.
+Love hands-on coding, debugging and upholding high-quality coding standards in an agile environment.

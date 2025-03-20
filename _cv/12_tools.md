@@ -57,6 +57,7 @@ Testing
 *   Selenium
 *   jUnit
 *   Hamcrest Assertions
+*   Mockito
 
 Data
 

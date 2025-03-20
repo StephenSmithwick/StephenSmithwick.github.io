@@ -8,7 +8,6 @@ name: ratecity
 January 2015 - March 2016
 
 ### RateCity - Technical Director
-
 Highlights:
 *   Transitioned the development process to an agile scrum framework.
 *   Led a system migration from a legacy monolith to a modular high-performance architecture.

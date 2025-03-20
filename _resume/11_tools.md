@@ -47,3 +47,22 @@ Data
 *   S3
 *   ElasticSearch
 *   Kinesis
+
+Agile
+
+: {:.inline}
+*   Confluence
+*   Jira
+*   Trello
+*   Kanban
+*   Scrum
+
+Testing
+
+: {:.inline}
+*   Cucumber
+*   Rspec
+*   Selenium
+*   jUnit
+*   Hamcrest Assertions
+*   Mockito
