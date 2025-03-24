@@ -5,6 +5,6 @@ name: education
 
 ### BSc, Computer Science
 
-{:.location-date}
+{:.company-info}
 - University of Colorado, Boulder
 - August 2000 - May 2004

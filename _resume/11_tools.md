@@ -1,5 +1,5 @@
 ---
-header: Tools and Techologies
+header: Tools and Technologies
 name: tools
 ---
 ML
