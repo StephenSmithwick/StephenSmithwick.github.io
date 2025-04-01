@@ -26,6 +26,7 @@ cd state-cdk
 To build the app:
 - Install cdk library: `npm install -g aws-cdk`
 - Install dependencies: `npm install`
+- Update dependencies: `npx npm-check-updates -u` (follow with `npm install`)
 - Build functions and CFN Template: `npm run build`
 
 ## Deploy
