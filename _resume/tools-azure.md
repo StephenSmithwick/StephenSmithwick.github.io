@@ -1,6 +1,6 @@
 ---
 header: Tools and Technologies
-name: tools
+name: tools-azure
 ---
 ML
 
@@ -32,11 +32,12 @@ Web
 Operational
 
 : {:.inline}
-*   Docker
+*   Kubernetes / Docker
 *   Terraform
 *   CloudFormation
 *   Jenkins
 *   SonarQube
+*   GoLang
 
 Data
 

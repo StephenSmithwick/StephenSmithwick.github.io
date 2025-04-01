@@ -1,6 +1,6 @@
 ---
 class: company
-name: snowflake
+name: snowflake-cv
 ---
 {:.company-info}
 - ![Snowflake Logo](images/snowflake.svg)

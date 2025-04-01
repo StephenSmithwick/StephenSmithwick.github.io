@@ -1,6 +1,6 @@
 ---
 class: company
-name: dius
+name: dius-archive
 ---
 {:.company-info}
 - ![DiUS Logo](images/dius.png)

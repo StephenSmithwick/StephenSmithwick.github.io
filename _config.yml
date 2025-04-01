@@ -23,10 +23,7 @@ google_analytics: UA-60117878-2
 permalink: none
 emptyArray: []
 collections:
-  - cv
   - resume
-  - resume_ai
-  - resume_brief
 exclude:
   - state-cdk
 

@@ -1,11 +1,10 @@
-{% assign bases = include.base %}
-{% assign overlays = include.overlay %}
+{% assign sections = include.sections %}
 
-{% for base in bases %}
-  {% assign overlay = overlays | where: "name", base.name | first %}
-  {% if overlay %}
-    {% include resume/section.html section=overlay %}
+{% for name in sections %}
+  {% assign content = site.resume | where: "name", name | first %}
+  {% if content %}
+    {% include resume/section.html section=content %}
   {% else %}
-    {% include resume/section.html section=base %}
+    !!! No resume content found for: {{ name }}
   {% endif %}
 {% endfor %}

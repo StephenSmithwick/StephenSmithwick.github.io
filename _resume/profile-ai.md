@@ -1,6 +1,6 @@
 ---
 header: Profile
-name: profile
+name: profile-ai
 ---
 I am a passionate software engineer with more than 20 years of experience pushing the boundaries of data design and performance optimizations.
 I have a proven track record in machine learning (ML) and AI, big data, and cloud computing implementing large-scale machine learning pipeline,

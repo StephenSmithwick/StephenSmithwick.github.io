@@ -3,14 +3,15 @@ header: Key Skills
 name: skills
 ---
 {:.two-columns}
-*   AI/ML pipeline automation for training and deploying models with labeled data
-*   Hosting/retraining Large Language Models (LLMs)
 *   Big data processing and optimization
 *   Cloud infrastructure automation (AWS, GCP, Azure)
 *   DevOps, CI/CD, and software architecture
 *   Agile at scale (Scrum, Kanban)
+*   Design and review solutions through design documents with technical and product buy-in
+*   Assist and mentor developers for areas wher I am the subject matter expert
 *   Stakeholder management and team leadership
-*   Building and using graph databases
+*   Builds expertise in new areas and shares with the team
 *   Business and technology strategy
 *   Data driven goals and metrics (KPIs)
+*   AI/ML pipeline automation for training and deploying models with labeled data
 *   TDD/BDD

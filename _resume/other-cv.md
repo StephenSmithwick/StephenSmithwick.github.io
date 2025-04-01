@@ -1,6 +1,6 @@
 ---
 header: Other
-name: other
+name: other-cv
 ---
 
 ### Founding Member and Organizer of Random Hacks of Kindness Australia

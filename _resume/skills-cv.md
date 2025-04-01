@@ -1,6 +1,6 @@
 ---
 header: Key Skills
-name: skills
+name: skills-cv
 ---
 {:.two-columns}
 *   Product direction and strategy

@@ -1,6 +1,6 @@
 ---
 class: company
-name: amazon
+name: amazon-cv
 ---
 {:.company-info}
 - ![Amazon Logo](images/amazon.png)
