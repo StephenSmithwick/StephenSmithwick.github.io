@@ -8,7 +8,7 @@ name: skills
 *   DevOps, CI/CD, and software architecture
 *   Agile at scale (Scrum, Kanban)
 *   Design and review solutions through design documents with technical and product buy-in
-*   Assist and mentor developers for areas wher I am the subject matter expert
+*   Mentored developers in specialized domains, enhancing team proficiency
 *   Stakeholder management and team leadership
 *   Builds expertise in new areas and shares with the team
 *   Business and technology strategy
