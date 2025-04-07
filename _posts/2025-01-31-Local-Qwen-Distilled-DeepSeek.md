@@ -1322,7 +1322,7 @@ More concerning is the fact the this program does not meet requirements:
 >
 > Each house has a unique color, nationality, drink, and cigarette brand (with House 5 smoking Dunhill).
 
-I am impressed with the overall steps that the model took to arrive ar a solution, however it did answer the complete question:
+I am impressed with the overall steps that the model took to arrive at a solution, however it did not answer the complete question:
 
 > Using these 15 clues, which person owns the pet fish?
 
