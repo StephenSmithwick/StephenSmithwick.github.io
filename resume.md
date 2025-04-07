@@ -17,4 +17,4 @@ selections:
 show: true
 ---
 
-{% include resume/main.html base=site.resume overlay=site.emptyArray %}
+{% include resume/main.html sections=page.selections %}
