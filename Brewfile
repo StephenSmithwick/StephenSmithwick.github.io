@@ -16,6 +16,7 @@ brew "node"
 brew "rbenv"
 brew "rbenv-gemset"
 brew "podman"
+brew "languagetool"
 
 # Linux tools
 brew "grep"
@@ -31,6 +32,9 @@ brew "java"
 brew "tailscale"
 brew "go"
 brew "ollama"
+
+# Ops Tools
+brew "minikube"
 
 cask_args appdir: "/Applications"
 cask "rectangle"
