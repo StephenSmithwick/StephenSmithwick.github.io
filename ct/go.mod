@@ -1,7 +1,9 @@
 module ct/play
 
-go 1.21.4
+go 1.23.0
 
-require github.com/google/certificate-transparency-go v1.1.7
+toolchain go1.24.2
 
-require golang.org/x/crypto v0.31.0 // indirect
+require github.com/google/certificate-transparency-go v1.3.1
+
+require golang.org/x/crypto v0.37.0 // indirect
