@@ -15,8 +15,12 @@ brew "ipython"
 brew "node"
 brew "rbenv"
 brew "rbenv-gemset"
-brew "podman"
 brew "languagetool"
+brew "bash-completion@2"
+
+# Containers
+# brew "podman"
+# brew "k3d"
 
 # Linux tools
 brew "grep"
