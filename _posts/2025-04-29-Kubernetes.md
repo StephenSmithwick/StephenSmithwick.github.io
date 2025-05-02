@@ -2,7 +2,7 @@
 layout: post
 title: Kubernetes
 # last_edit:
-published: true
+published: false
 categories: devops
 ---
 
