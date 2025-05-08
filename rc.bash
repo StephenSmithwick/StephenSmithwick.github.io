@@ -1,4 +1,4 @@
 #! /bin/bash
 PATH="$PATH:$(go env GOPATH)/bin"
 
-alias kubectl="minikube kubectl --"
+# alias kubectl="minikube kubectl --"

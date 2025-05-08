@@ -4,11 +4,13 @@ title: Kubernetes
 # last_edit:
 published: false
 categories: devops
+meta: WiP
 ---
 
 Kubernetes(k8s) is a container orchestration system initially built by google and inspired by their internal [Borg](https://kubernetes.io/blog/2015/04/borg-predecessor-to-kubernetes/).
 
 To get started with k8s development, you can use Minikube.
+
 
 # Working with [Minkube](https://minikube.sigs.k8s.io/docs/) to test
 
@@ -68,6 +70,11 @@ kubectl create deployment hello-node \
 
 - `kubectl get deployments`
 - `kubectl get pods`
+- `pod=$(kubectl get pods --no-headers -o custom-columns=":metadata.name" | grep "hello-node" | head -n 1)`
+- `kubectl get events`
+- `kubectl config view`
+- `kubectl logs $pod`
+
 
 ### Service
 In order to expose a pod and make it a service you will need to expose the deployment:
@@ -102,8 +109,37 @@ kubernetes   ClusterIP      10.96.0.1       <none>        443/TCP          20h
 ```
 
 ---
+# Alternative to Docker - Colima
+https://github.com/abiosoft/colima
+
+Getting started
+```bash
+brew install Colima
+colima start --kubernetes
+```
+
+start minikube
+: `minikube start`
+
+dashboard
+: `minikube dashboard`
+
+## Useful colima commands
+
+`colima start`
+: starts colima.  Useful Options: `--cpu`, `--memory` (GBs), `--disk` (GBs), `--arch` (deafult: aarch64),
+
+`colima list`
+: List all colima profiles
+
+`colima ssh -p [default]`
+: SSH into the the colima container matching the profile(`-p` default: `default`)
+
 
 # Alternative to Docker and minikube (podman and k3d)
+## Resources
+- [Using Podman instead of Docker](https://k3d.io/v5.5.1/usage/advanced/podman/#macos)
+
 You need a container service.  Docker should probably be your default but
 I've been playing with [podman](https://podman.io/) because it offers rootless alternative to docker which is largely drop-in compatible.
 
@@ -130,3 +166,23 @@ podman network create k3d
 podman network inspect k3d -f '{{ .DNSEnabled }}'
 ```
 {% endraw %}
+
+
+
+# Alternatives
+
+k0S
+: [k0sproject.io](https://k0sproject.io/) - k0s is the simple, solid & certified Kubernetes distribution that works on any infrastructure: bare-metal, on-premises, edge, IoT, public & private clouds. It's 100% open source & free.
+
+K3S
+: [k3s.io](https://k3s.io/) - Lightweight Kubernetes built for IoT & Edge computing - Rancher
+
+MicroK8s
+: [microk8s](https://microk8s.io/) - Zero-ops, pure-upstream, HA Kubernetes, from developer workstations to production
+
+
+
+[minikube-on-a-mac]: https://medium.com/@architchandra/how-to-install-minikube-on-a-mac-33bb2626623
+[podman-on-osx]: https://bharatrajagopalan.medium.com/experimenting-with-alternatives-for-docker-podman-on-mac-os-big-sur-with-vmware-fusion-3d9f21dbcf65
+[ducker]: https://github.com/robertpsoane/ducker
+[docker-to-colima]: https://medium.com/@ttofisandreas/how-i-transitioned-from-docker-desktop-to-colima-015bd70aa461

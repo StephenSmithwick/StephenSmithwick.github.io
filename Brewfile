@@ -19,6 +19,8 @@ brew "languagetool"
 brew "bash-completion@2"
 
 # Containers
+brew "colima"
+brew "docker"
 # brew "podman"
 # brew "k3d"
 
