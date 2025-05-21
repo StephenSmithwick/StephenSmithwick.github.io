@@ -1,14 +1,29 @@
 /**
  * Reset some basic elements
  */
-body, h1, h2, h3, h4, h5, h6,
-p, blockquote, pre, hr,
-dl, dd, ol, ul, figure {
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+hr,
+dl,
+dd,
+ol,
+ul,
+figure {
     margin: 0;
     padding: 0;
 }
 
-html { background-color: $desk; }
+html {
+    background-color: $desk;
+}
 
 /**
  * Basic styling
@@ -25,19 +40,25 @@ body {
     margin: auto;
 }
 
-
-
 /**
  * Set `margin-bottom` to maintain vertical rhythm
  */
-h1, h2, h3, h4, h5, h6,
-p, blockquote, pre,
-ul, ol, dl, figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+ul,
+ol,
+dl,
+figure,
 %vertical-rhythm {
     margin-bottom: $spacing-unit / 2;
 }
-
-
 
 /**
  * Images
@@ -46,8 +67,6 @@ img {
     max-width: 100%;
     vertical-align: middle;
 }
-
-
 
 /**
  * Figures
@@ -63,28 +82,30 @@ figcaption {
 /**
  * Tags
  */
- .tag {
+.tag {
     margin-left: -1em;
     background-color: $mid-blue;
-    border: 1px solid $dark-blue;
+    border-top: 2px solid $mid-blue;
+    border-bottom: 2px solid $dark-blue;
     border-radius: 1em;
     padding: 0 0.25em;
     color: #fff;
     font-size: small;
     vertical-align: text-top;
-  }
+}
 
 /**
  * Lists
  */
-ul, ol {
+ul,
+ol {
     margin-left: $spacing-unit;
 }
 
 li {
     > ul,
     > ol {
-         margin-bottom: 0;
+        margin-bottom: 0;
     }
 }
 
@@ -102,18 +123,19 @@ dl {
         margin-left: 1em;
         grid-column: 2;
     }
-  }
-
-
+}
 
 /**
  * Headings
  */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: 300;
 }
-
-
 
 /**
  * Links
@@ -131,8 +153,6 @@ a {
     }
 }
 
-
-
 /**
  * Blockquotes
  */
@@ -149,14 +169,27 @@ blockquote {
     }
 }
 
-blockquote.dark-blue { border-left-color:  lighten($dark-blue, 20%); }
-blockquote.darker-blue { border-left-color:  lighten($darker-blue, 20%); }
-blockquote.mid-blue { border-left-color:  lighten($mid-blue, 20%); }
-blockquote.light-blue { border-left-color:  lighten($light-blue, 20%); }
-blockquote.dark-green { border-left-color:  lighten($dark-green, 10%); }
-blockquote.darker-green { border-left-color:  lighten($darker-green, 20%); }
-blockquote.light-green { border-left-color:  lighten($light-green, 20%); }
-
+blockquote.dark-blue {
+    border-left-color: lighten($dark-blue, 20%);
+}
+blockquote.darker-blue {
+    border-left-color: lighten($darker-blue, 20%);
+}
+blockquote.mid-blue {
+    border-left-color: lighten($mid-blue, 20%);
+}
+blockquote.light-blue {
+    border-left-color: lighten($light-blue, 20%);
+}
+blockquote.dark-green {
+    border-left-color: lighten($dark-green, 10%);
+}
+blockquote.darker-green {
+    border-left-color: lighten($darker-green, 20%);
+}
+blockquote.light-green {
+    border-left-color: lighten($light-green, 20%);
+}
 
 /**
  * Code formatting
@@ -166,7 +199,7 @@ code {
     border: 1px solid $grey-color-light;
     border-radius: 3px;
     background-color: #404040;
-    color:#fff;
+    color: #fff;
     padding: 1px 5px;
 }
 
@@ -185,7 +218,6 @@ pre {
  * Clearfix
  */
 %clearfix {
-
     &:after {
         content: "";
         display: table;
@@ -193,13 +225,10 @@ pre {
     }
 }
 
-
-
 /*
  * Icons
  */
 .icon {
-
     > svg {
         display: inline-block;
         width: 16px;
@@ -227,11 +256,12 @@ table.styled {
         color: $paper;
         text-align: left;
     }
-    th, td {
+    th,
+    td {
         padding: 0.7em;
     }
 
-    tbody  {
+    tbody {
         tr {
             border-bottom: thin solid $light-blue;
         }
