@@ -18,10 +18,10 @@
     "@types/node": "*",
     "aws-cdk": "*",
     "esbuild": "*",
-    "typescript": "~5.8.2"
+    "typescript": "~5.8.3"
   },
   "dependencies": {
-    "aws-cdk-lib": "^2.187.0",
+    "aws-cdk-lib": "^2.197.0",
     "constructs": "^10.4.2"
   }
 }
