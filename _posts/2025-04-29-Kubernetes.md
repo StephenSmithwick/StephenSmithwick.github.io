@@ -2,46 +2,65 @@
 layout: post
 title: Kubernetes
 # last_edit:
-published: false
+published: true
 categories: devops
 meta: WiP
 ---
 
 Kubernetes(k8s) is a container orchestration system initially built by google and inspired by their internal [Borg](https://kubernetes.io/blog/2015/04/borg-predecessor-to-kubernetes/).
 
-To get started with k8s development, you can use Minikube.
-
+To get started with k8s development, we will use Minikube.
 
 # Working with [Minkube](https://minikube.sigs.k8s.io/docs/) to test
 
-Minikube is a lightweight k8s implementation that creates a VM on your local machine and deploys a simple cluster containing only one node. Minikube is available for Linux, macOS, and Windows systems.
+Minikube is a lightweight k8s implementation that creates a local cluster with a simple one node cluster.
 
 ## Prerequisites
-You need a container service.  Docker should probably be your default.
+You need a container service.  You can use Docker or Colima as a light weight alternative
 
-Installing Docker: https://docs.docker.com/desktop/setup/install/mac-install/
+Installing Docker on OSX mostly uses the traditioanal app install: [Docker Mac Install](https://docs.docker.com/desktop/setup/install/mac-install/)
+
+Installing Colima is easy with your typical OSX package managers: [Colima Mac Install](https://github.com/abiosoft/colima?tab=readme-ov-file#installation)
+
+```bash
+brew install Colima
+colima start --kubernetes
+```
+
+### Useful colima commands
+
+`colima start`
+: starts colima.  Useful Options: `--cpu`, `--memory` (GBs), `--disk` (GBs), `--arch` (deafult: aarch64), `--kubernetes`
+
+`colima list`
+: List all colima profiles
+
+`colima ssh -p [default]`
+: SSH into the the colima container matching the profile(`-p` default: `default`)
 
 ## Commands
 The Minikube CLI provides basic bootstrapping operations for working with your cluster:
 
-start minikube
-: `minikube start`
+`minikube start`
+: start minikube
 
-using minikube's kubectl
-: `alias kubectl="minikube kubectl --"`
+`alias kubectl="minikube kubectl --"`
+: You can use minikube's kubectl for guaranteed compatibility
 
-dashboard
-: `minikube dashboard`
+`minikube dashboard`
+: bring up a dashboard displaying the status of your minikube cluster in a web browser
+
+`minikube status`
+: Show the the status of minkube in thwe CLI
 
 <!--
-start
 stop
 status
 delete
 -->
 
 # [Cluster](https://kubernetes.io/docs/tutorials/hello-minikube/)
-Kubernetes coordinates a highly available cluster of computers that are connected to work as a single unit. The abstractions in Kubernetes allow you to deploy containerized applications to a cluster without tying them specifically to individual machines. To make use of this new model of deployment, applications need to be packaged in a way that decouples them from individual hosts: they need to be containerized. Containerized applications are more flexible and available than in past deployment models, where applications were installed directly onto specific machines as packages deeply integrated into the host. Kubernetes automates the distribution and scheduling of application containers across a cluster in a more efficient way. Kubernetes is an open-source platform and is production-ready.
+Kubernetes coordinates a highly available cluster of servers. Kubernetes allows you to deploy containerized applications to the cluster without tying them specifically to individual server. Applications will need to be packaged in a container (Docker). Kubernetes automates the distribution and scheduling of application containers across a cluster.
 
 A k8s cluster consists of two types of resources:
 
@@ -53,7 +72,7 @@ A node is the worker machine in a k8s cluster. Each node has a [Kubelet](https:/
 
 The node has tools for handling container operations like [containerd](https://containerd.io/) or [CRI-O](https://cri-o.io/).
 
-A production cluster should have a minimum of three nodes because if both [etcd](https://etcd.io/) and the control plane instance are lost: redundancy is compromised.
+A production cluster should have a minimum of three nodes to maintain redundancy of [etcd](https://etcd.io/) and the control plane.
 
 When you deploy an applications: the control plane starts the application containers and schedules the containers to run on the cluster's nodes.
 Node-level components, like kubelet, communicate with the control plane using the k8s API exposed by the control.
@@ -108,32 +127,12 @@ kubernetes   ClusterIP      10.96.0.1       <none>        443/TCP          20h
 🎉  Opening service default/hello-node in default browser...
 ```
 
----
-# Alternative to Docker - Colima
-https://github.com/abiosoft/colima
-
-Getting started
-```bash
-brew install Colima
-colima start --kubernetes
-```
 
 start minikube
 : `minikube start`
 
 dashboard
 : `minikube dashboard`
-
-## Useful colima commands
-
-`colima start`
-: starts colima.  Useful Options: `--cpu`, `--memory` (GBs), `--disk` (GBs), `--arch` (deafult: aarch64),
-
-`colima list`
-: List all colima profiles
-
-`colima ssh -p [default]`
-: SSH into the the colima container matching the profile(`-p` default: `default`)
 
 
 # Alternative to Docker and minikube (podman and k3d)
