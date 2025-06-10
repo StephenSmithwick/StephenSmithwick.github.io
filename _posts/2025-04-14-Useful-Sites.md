@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Useful Links"
+title:  "Links to think about"
 categories: devops
 plugins: leetcode.lists
 published: false

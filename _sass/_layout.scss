@@ -315,6 +315,15 @@ details {
 .post-content {
     margin-bottom: $spacing-unit;
 
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: 400;
+    }
+
     h1 {
         font-size: 36px;
 
@@ -344,6 +353,22 @@ details {
 
         @include media-query($on-laptop) {
             font-size: 18px;
+        }
+    }
+
+    h5 {
+        font-size: 18px;
+
+        @include media-query($on-laptop) {
+            font-size: 15px;
+        }
+    }
+
+    h6 {
+        font-size: 15px;
+
+        @include media-query($on-laptop) {
+            font-size: 12px;
         }
     }
 }
