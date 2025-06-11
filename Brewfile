@@ -16,6 +16,7 @@ brew "node"
 brew "rbenv"
 brew "rbenv-gemset"
 brew "languagetool"
+brew "vale"
 brew "bash-completion@2"
 
 # Containers

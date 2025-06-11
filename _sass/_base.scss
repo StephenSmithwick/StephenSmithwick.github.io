@@ -214,16 +214,17 @@ pre {
     }
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    &:has(+ div[class^="language"]) {
+.code-title {
+    &:has(+ div) {
         margin: 0;
-        padding: 2px;
         background-color: $light-blue;
+        border: 2px solid $light-blue;
+        border-radius: 2px 2px 0 0;
+        border-bottom: 0;
+    }
+
+    & + div pre {
+        border: 2px $light-blue solid;
     }
 }
 
