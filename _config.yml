@@ -26,6 +26,7 @@ collections:
   - resume
 exclude:
   - state-cdk
+  - next.js
 
 # Build settings
 markdown: kramdown

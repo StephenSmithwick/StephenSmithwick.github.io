@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Links to think about"
+title:  "Links to come back to"
 categories: devops
 plugins: leetcode.lists
 published: false
@@ -11,3 +11,6 @@ published: false
 
 ## Coding
 - https://www.codetriage.com/
+
+## Web Development
+- https://vercel.com/blog/how-core-web-vitals-affect-seo
