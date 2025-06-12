@@ -46,6 +46,9 @@ brew "ipython"
 brew "awscli"
 brew "minikube"
 
+# Databases
+brew "postgresql"
+
 cask_args appdir: "/Applications"
 cask "rectangle"
 cask "google-chrome"
