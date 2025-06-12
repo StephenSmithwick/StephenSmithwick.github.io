@@ -10,6 +10,7 @@ brew "libtool"
 brew "languagetool"
 brew "vale"
 brew "bash-completion@2"
+brew "bitwarden-cli"
 
 # Containers
 brew "colima"
@@ -66,3 +67,4 @@ cask "boop"
 cask "shotcut"
 cask "alacritty"
 cask "chatgpt"
+cask "pgadmin4"
