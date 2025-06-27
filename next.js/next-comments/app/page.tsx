@@ -1,12 +1,16 @@
-import Comments from "./ui/Comments";
-import NewComment from "./ui/NewComment";
+"use client";
+
+import Comments from "@/app/ui/Comments";
+import NewComment from "@/app/ui/NewComment";
+import { useSearchParams } from "next/navigation";
 
 export default function Home() {
+  const post = useSearchParams().get("post");
   return (
     <>
       <h2>Comments</h2>
-      <NewComment post="test" />
-      <Comments post="test" />
+      <NewComment post={post} />
+      <Comments post={post} />
     </>
   );
 }
