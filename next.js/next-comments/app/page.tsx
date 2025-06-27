@@ -1,4 +1,3 @@
-import { CurrentUser } from "./ui/Author";
 import Comments from "./ui/Comments";
 import NewComment from "./ui/NewComment";
 

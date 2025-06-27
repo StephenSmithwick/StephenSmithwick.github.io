@@ -14,7 +14,7 @@ export default function Comments({ post }: { post: string }) {
   useEffect(() => {
     const fetchData = async () => {
       const request = await fetch(`/api/comments/${post}`);
-      const comments: [Comment] = await Promise.all<[Comment]>(
+      const comments: Comment[] = await Promise.all<Comment[]>(
         (await request.json()).map(
           async (comment: Comment): Promise<Comment> => ({
             ...comment,

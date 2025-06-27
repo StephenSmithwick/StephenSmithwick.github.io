@@ -1,8 +1,9 @@
 import postgres from "postgres";
+import { Author, Comment, CommentRow } from "./definitions";
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: "require" });
 
-export async function fetchPostComments(post: string) {
+export async function fetchPostComments(post: string): Promise<Comment[]> {
   try {
     await setupComment();
     const comments = await sql<CommentRow[]>`SELECT
