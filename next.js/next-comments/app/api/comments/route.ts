@@ -1,5 +1,5 @@
 import type { NextRequest } from "next/server";
-import { createComment, fetchPostComments } from "@/app/lib/comments/access";
+import { createComment } from "@/app/lib/comments/access";
 
 export const config = {
   api: {

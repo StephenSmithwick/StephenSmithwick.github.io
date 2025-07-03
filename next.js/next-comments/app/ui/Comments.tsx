@@ -36,7 +36,7 @@ export default function Comments({
     fetchData().catch((e) => {
       console.error("An error occurred while fetching comments.", e);
     });
-  }, [post, lastComment]);
+  }, [remarkHtml, post, lastComment]);
 
   return comments ? (
     <ul className="comment-list">
