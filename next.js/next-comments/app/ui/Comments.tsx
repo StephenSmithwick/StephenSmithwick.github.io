@@ -8,7 +8,13 @@ import { Comment } from "@/app/lib/comments/definitions";
 import { remark } from "remark";
 import html from "remark-html";
 
-export default function Comments({ post }: { post: string }) {
+export default function Comments({
+  post,
+  lastComment,
+}: {
+  post: string;
+  lastComment?: number;
+}) {
   const [comments, setData] = useState<Comment[]>();
   const remarkHtml = remark().use(html);
 
@@ -30,7 +36,7 @@ export default function Comments({ post }: { post: string }) {
     fetchData().catch((e) => {
       console.error("An error occurred while fetching comments.", e);
     });
-  }, [post]);
+  }, [post, lastComment]);
 
   return comments ? (
     <ul className="comment-list">
@@ -48,7 +54,7 @@ export default function Comments({ post }: { post: string }) {
     </ul>
   ) : (
     <ul className="loading comment-list">
-      <li>Loading</li>
+      <li>Loading...</li>
     </ul>
   );
 }

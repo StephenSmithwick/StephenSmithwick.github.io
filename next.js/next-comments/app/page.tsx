@@ -1,11 +1,15 @@
 "use client";
 
 import Comments from "@/app/ui/Comments";
-import CommentForm from "@/app/ui/CommentForm";
+import { default as CommentForm, CommentsUpdated } from "@/app/ui/CommentForm";
 import { useSearchParams } from "next/navigation";
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 export default function Home() {
+  useEffect(() => {
+    window.postMessage({ update: "done" });
+  });
+
   return (
     <Suspense fallback={<Loading />}>
       <CommentBlock />
@@ -15,12 +19,17 @@ export default function Home() {
 
 function CommentBlock() {
   const post = useSearchParams().get("post") || "default";
+  const [lastComment, setLastComment] = useState<number>();
+
+  const commentsUpdated: CommentsUpdated = (id: number) => {
+    setLastComment(id);
+  };
 
   return (
     <div id="comment-section">
       <Header />
-      <CommentForm post={post} />
-      <Comments post={post} />
+      <CommentForm post={post} onUpdate={commentsUpdated} />
+      <Comments post={post} lastComment={lastComment} />
     </div>
   );
 }
@@ -31,7 +40,7 @@ const Loading = () => (
   <>
     <Header />
     <ul className="loading comment-list">
-      <li>Loading</li>
+      <li>Loading...</li>
     </ul>
   </>
 );

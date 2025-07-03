@@ -9,13 +9,15 @@ export const config = {
   },
 };
 
-export async function POST(request: NextRequest) {
+export async function POST(request: NextRequest): Promise<Response> {
   try {
     const newComment = await request.json();
-    await createComment(newComment);
+    const lastComment = await createComment(newComment);
 
     return new Response(
-      JSON.stringify(await fetchPostComments(newComment.post)),
+      JSON.stringify({
+        lastComment,
+      }),
       {
         status: 200,
       },

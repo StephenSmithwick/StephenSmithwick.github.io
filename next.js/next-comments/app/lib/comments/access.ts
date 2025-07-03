@@ -27,6 +27,10 @@ export async function fetchPostComments(post: string): Promise<Comment[]> {
   }
 }
 
+type CommentInsert = {
+  id: number;
+};
+
 export async function createComment({
   post,
   author,
@@ -35,10 +39,14 @@ export async function createComment({
   post: string;
   author: Author;
   text: string;
-}) {
+}): Promise<number> {
   try {
-    await sql`INSERT INTO comment (post, author, author_image, text, date )
-      VALUES (${post}, ${author.name}, ${author.image}, ${text}, current_timestamp);`;
+    const lastComment = await sql<
+      CommentInsert[]
+    >`INSERT INTO comment (post, author, author_image, text, date )
+      VALUES (${post}, ${author.name}, ${author.image}, ${text}, current_timestamp)
+      RETURNING id`;
+    return lastComment[0].id;
   } catch (error) {
     console.error("Database Error:", error);
     throw new Error("Failed to insert comment.");
