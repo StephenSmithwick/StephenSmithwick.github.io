@@ -1,0 +1,12 @@
+<iframe
+    id="comment-section"
+    src="{{site.comments.iframe_url}}?post={{ page.slug }}"
+    sandbox="allow-popups"></iframe>
+
+<script language="javascript" type="text/javascript">
+const comments = document.getElementById( 'comment-section' );
+comments.addEventListener("message", () => {
+  console.log("Message received");
+  comments.style.height = comments.contentWindow.document.body.scrollHeight + 'px';
+});
+</script>

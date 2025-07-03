@@ -13,6 +13,9 @@ github_urls:
   raw: "https://github.com/StephenSmithwick/StephenSmithwick.github.io/raw/main"
   blob: "https://github.com/StephenSmithwick/StephenSmithwick.github.io/blob/main"
   tree: "https://github.com/StephenSmithwick/StephenSmithwick.github.io/tree/main"
+comments:
+  iframe_url: "https://stephen-smithwick-github-io-comment.vercel.app"
+  # iframe_url: "http://localhost:3000"
 github_username: StephenSmithwick
 linkedin:
   name: Stephen Smithwick
