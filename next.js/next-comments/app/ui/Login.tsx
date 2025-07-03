@@ -13,7 +13,7 @@ function SignOutButton({ user }: { user: Author }) {
 
 function SignInButton() {
   return (
-    <button onClick={() => signIn()}>
+    <button onClick={() => signIn("github", { redirect: false })}>
       <img className="avatar" src={Anonymous.image} alt="Author Avatar" /> Sign
       in
     </button>

@@ -88,10 +88,12 @@ body {
 }
 
 .loading.comment-list {
-    padding: 0 1rem;
     margin-top: 2rem;
-    background-color: rgba(0, 0, 1, 0.5);
+    color: #fff;
+    background-color: #444;
+    font-weight: 400;
     border-radius: 0.25rem;
+    text-align: center;
 }
 
 .comment {
