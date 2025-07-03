@@ -6,10 +6,6 @@ import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 
 export default function Home() {
-  useEffect(() => {
-    window.postMessage({ update: "done" });
-  });
-
   return (
     <Suspense fallback={<Loading />}>
       <CommentBlock />
@@ -24,6 +20,11 @@ function CommentBlock() {
   const commentsUpdated: CommentsUpdated = (id: number) => {
     setLastComment(id);
   };
+
+  useEffect(() => {
+    console.log("Updating Updating Comments>Home>CommentBlock");
+    window.postMessage({ update: "done" });
+  });
 
   return (
     <div id="comment-section">
