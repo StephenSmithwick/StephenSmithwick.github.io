@@ -17,11 +17,11 @@ function CommentBlock() {
   const post = useSearchParams().get("post") || "default";
 
   return (
-    <>
+    <div id="comment-section">
       <Header />
       <CommentForm post={post} />
       <Comments post={post} />
-    </>
+    </div>
   );
 }
 
