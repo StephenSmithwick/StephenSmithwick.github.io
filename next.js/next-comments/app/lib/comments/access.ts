@@ -1,12 +1,21 @@
 import postgres from "postgres";
-import { Author, Comment, CommentRow } from "./definitions";
+import { Author, Comment } from "./definitions";
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: "require" });
+
+type CommentRow = {
+  id: number;
+  date: string;
+  post: string;
+  text: string;
+  author: string;
+  author_image: string;
+};
 
 export async function fetchPostComments(post: string): Promise<Comment[]> {
   try {
     const comments = await sql<CommentRow[]>`SELECT
-        id, date, post, text, author, avatar_url
+        id, date, post, text, author, author_image
       FROM comment
       WHERE comment.post = ${post}
       ORDER BY comment.id ASC
@@ -28,8 +37,8 @@ export async function createComment({
   text: string;
 }) {
   try {
-    await sql`INSERT INTO comment (post, author, avatar_url, text, date )
-      VALUES (${post}, ${author.name}, ${author.avatar_url}, ${text}, current_timestamp);`;
+    await sql`INSERT INTO comment (post, author, author_image, text, date )
+      VALUES (${post}, ${author.name}, ${author.image}, ${text}, current_timestamp);`;
   } catch (error) {
     console.error("Database Error:", error);
     throw new Error("Failed to insert comment.");
@@ -41,7 +50,7 @@ function to_comment(res: CommentRow): Comment {
     ...res,
     author: {
       name: res.author,
-      avatar_url: res.avatar_url,
+      image: res.author_image,
     },
   };
 }

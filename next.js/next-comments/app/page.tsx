@@ -1,16 +1,37 @@
 "use client";
 
 import Comments from "@/app/ui/Comments";
-import NewComment from "@/app/ui/NewComment";
+import CommentForm from "@/app/ui/CommentForm";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 export default function Home() {
-  const post = useSearchParams().get("post");
+  return (
+    <Suspense fallback={<Loading />}>
+      <CommentBlock />
+    </Suspense>
+  );
+}
+
+function CommentBlock() {
+  const post = useSearchParams().get("post") || "default";
+
   return (
     <>
-      <h2>Comments</h2>
-      <NewComment post={post} />
+      <Header />
+      <CommentForm post={post} />
       <Comments post={post} />
     </>
   );
 }
+
+const Header = () => <h2>Comments</h2>;
+
+const Loading = () => (
+  <>
+    <Header />
+    <ul className="loading comment-list">
+      <li>Loading</li>
+    </ul>
+  </>
+);

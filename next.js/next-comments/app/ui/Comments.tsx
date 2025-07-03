@@ -4,17 +4,18 @@ import React, { useState, useEffect } from "react";
 import Author from "./Author";
 
 import { Comment } from "@/app/lib/comments/definitions";
+
 import { remark } from "remark";
 import html from "remark-html";
 
 export default function Comments({ post }: { post: string }) {
-  const [comments, setData] = useState<Comment[]>([]);
+  const [comments, setData] = useState<Comment[]>();
   const remarkHtml = remark().use(html);
 
   useEffect(() => {
     const fetchData = async () => {
       const request = await fetch(`/api/comments/${post}`);
-      const comments: Comment[] = await Promise.all<Comment[]>(
+      const newComments: Comment[] = await Promise.all<Comment[]>(
         (await request.json()).map(
           async (comment: Comment): Promise<Comment> => ({
             ...comment,
@@ -23,13 +24,13 @@ export default function Comments({ post }: { post: string }) {
         ),
       );
 
-      setData(comments);
+      setData(newComments);
     };
 
     fetchData().catch((e) => {
       console.error("An error occurred while fetching comments.", e);
     });
-  }, []);
+  }, [post]);
 
   return comments ? (
     <ul className="comment-list">
@@ -46,8 +47,8 @@ export default function Comments({ post }: { post: string }) {
       ))}
     </ul>
   ) : (
-    <ul className="comment-list">
-      <li className="loading">Loading</li>
+    <ul className="loading comment-list">
+      <li>Loading</li>
     </ul>
   );
 }

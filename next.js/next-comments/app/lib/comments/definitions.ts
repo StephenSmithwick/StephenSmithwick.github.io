@@ -8,14 +8,10 @@ export type Comment = {
 
 export type Author = {
   name: string;
-  avatar_url: string;
+  image: string;
 };
 
-export type CommentRow = {
-  id: number;
-  date: string;
-  post: string;
-  text: string;
-  author: string;
-  avatar_url: string;
+export const Anonymous: Author = {
+  name: "Anonymous",
+  image: "https://github.com/identicons/stephensmithwick.png",
 };

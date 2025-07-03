@@ -15,7 +15,7 @@ async function setupDB() {
       post VARCHAR(255) NOT NULL,
       text TEXT NOT NULL,
       author TEXT NOT NULL,
-      avatar_url TEXT
+      author_image TEXT
     );
   `;
 }
