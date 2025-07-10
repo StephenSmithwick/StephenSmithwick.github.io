@@ -50,6 +50,9 @@ brew "minikube"
 # Databases
 brew "postgresql"
 
+# ML
+brew "whisper-cpp"
+
 cask_args appdir: "/Applications"
 cask "rectangle"
 cask "google-chrome"
