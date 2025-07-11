@@ -217,9 +217,21 @@ pre {
     &:has(+ div) {
         margin: 0;
         background-color: $light-blue;
+        background: linear-gradient(
+            $light-blue 10%,
+            darken($light-blue, 5%) 50%,
+            $light-blue 90%
+        );
         border: 2px solid $light-blue;
         border-radius: 2px 2px 0 0;
         border-bottom: 0;
+    }
+
+    & > strong {
+        background-color: $background-color;
+        margin-left: 0.25rem;
+        padding: 0.1rem 0.5rem;
+        border-radius: 0.5rem;
     }
 
     & + div pre {
