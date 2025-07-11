@@ -9,8 +9,8 @@
 
     // Positioning context for the mobile navigation icon
     position: relative;
-    background-image: url("../images/pikes_peak.jpg"),
-        url("../images/pikes_peak_tail.jpg");
+    background-image:
+        url("../images/pikes_peak.jpg"), url("../images/pikes_peak_tail.jpg");
     background-repeat: no-repeat, repeat-x;
     background-size:
         auto 100%,
@@ -135,9 +135,9 @@ footer {
  * Site footer
  */
 .site-footer {
-    border-top: 2px solid $grey-color-dark;
     padding: $spacing-unit;
-    background-color: $light-blue;
+    background-color: $dark-blue;
+    color: $paper;
 }
 
 .footer-heading {
@@ -153,9 +153,15 @@ footer {
 
 .footer-col-wrapper {
     font-size: 15px;
-    color: $grey-color;
+    color: $paper;
     margin-left: -$spacing-unit / 2;
     @extend %clearfix;
+    a {
+        color: $paper;
+        &:visited {
+            color: $light-blue;
+        }
+    }
 }
 
 .footer-col {
