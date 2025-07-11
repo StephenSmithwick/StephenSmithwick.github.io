@@ -4,24 +4,26 @@ title:  "LeetCode - Algorithms"
 categories: leetcode
 plugins: leetcode.lists
 ---
-## How to use
+## How to Use
 
 <details markdown="block">
-<summary>Instructions to decorated list using Greasemonkey</summary>
+<summary>Instructions for Decorating Lists Using a UserScripts</summary>
 
-Install this Greasmonkey script to decorate the lists below: [**blog.leetcode.user.js**]({{ site.github_urls.raw }}/greasemonkey/blog.leetcode.user.js)
+Install this userscript to enhance the lists below: [**blog.leetcode.user.js**]({{ site.github_urls.raw }}/greasemonkey/blog.leetcode.user.js)
 
-The Greasemonkey script will ask to access a leetcode url to fetch the logged in users' problems data. Please make sure you are logged in here: [LeetCode login](https://leetcode.com/accounts/login).
+The userscript will request access to a LeetCode URL to fetch your logged-in user's problem data. Please ensure you are logged in at: [LeetCode login](https://leetcode.com/accounts/login).
 {:.information}
 LeetCode Problem Dataset: [https://leetcode.com/api/problems/algorithms/](https://leetcode.com/api/problems/algorithms/)
 
-To build more lists of `problem` `slugs`: use this javascript page query in the developer console anywhere you find links to leetcode problems:
+To generate more lists of `problem` `slugs`, use this JavaScript query in your browser's developer console from any page containing links to LeetCode problems:
 ```javascript
 [...document.querySelectorAll('a')]
     .map(       li => li.href.match(/\/problems\/([^\/]+)\//))
     .filter(    match => match)
     .map(       match => match[1])
 ```
+
+More scripts at: [UserScripts]({% post_url 2024-02-10-User-Scripts %})
 </details>
 
 ## Algorithms I

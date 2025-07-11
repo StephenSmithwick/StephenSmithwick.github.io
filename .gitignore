@@ -2,6 +2,7 @@ _site
 .sass-cache
 .terraform
 .DS_Store
+.env
 
 **/target
 

@@ -157,8 +157,7 @@ a {
  * Blockquotes
  */
 blockquote {
-    color: $grey-color;
-    border-left: 4px solid $grey-color-light;
+    border-left: 4px solid $grey-color;
     padding-left: $spacing-unit / 2;
     font-size: 18px;
     letter-spacing: -1px;
@@ -282,5 +281,25 @@ table.styled {
         tr:nth-of-type(even) {
             background-color: $light-blue;
         }
+    }
+}
+
+.columns-2 {
+    display: flex;
+    flex-wrap: wrap;
+
+    .column {
+        padding-right: 1em;
+        width: calc(50% - 1em);
+    }
+}
+
+.columns-3 {
+    display: flex;
+    flex-wrap: wrap;
+
+    .column {
+        padding-right: 1em;
+        width: calc(33% - 1em);
     }
 }

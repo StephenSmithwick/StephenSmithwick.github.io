@@ -3,24 +3,24 @@ layout: post
 title:  "My Brewfile"
 categories: dev-desktop
 date:   2024-11-15
-last_edit: 2025-01-29
+last_edit: 2025-07-11
 ---
 
-To save on setup, I keep an updated list of applications I like on my mac.  I use [homebrew](https://brew.sh/) and the [Homebrew Bundle](https://github.com/Homebrew/homebrew-bundle) feature which is inspired by ruby [bundler](https://bundler.io/) tool.
+To streamline my setup, I maintain an updated list of applications I prefer on my Mac. I use [Homebrew](https://brew.sh/) and its [Homebrew Bundle](https://github.com/Homebrew/homebrew-bundle) feature, which is inspired by Ruby's [Bundler](https://bundler.io/) tool.
 
-## Install
-To install brew:
+## Installation
+To install Homebrew:
 ```zsh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-Download the brewfile locally:
+Download the Brewfile locally:
 ```zsh
 curl {{ site.github_urls.raw }}/Brewfile \
  --output Brewfile
 ```
 
-In the same directory we downloaded the Brewfile run:
+In the same directory where you downloaded the Brewfile, run:
 ```zsh
 brew bundle
 ```
@@ -29,6 +29,5 @@ brew bundle
 
 <script src="https://emgithub.com/embed-v2.js?target={{ site.github_urls.blob }}/Brewfile&style=default&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showCopy=on"></script>
 
-## To Work around Apple's Strict Notarization
-Apple requires applications be signed by a registered Apple developer account before a user executes them.
-To override this safety feature see: [Disabling GateKeeper]({% post_url 2025-01-10-Disable-GateKeeper %})
+## Working Around Apple's Strict Notarization
+Apple requires applications be signed by a registered Apple developer account before a user can execute them. To override this safety feature, refer to: [Disabling GateKeeper]({% post_url 2025-01-10-Disable-GateKeeper %})
