@@ -238,7 +238,24 @@ ul.leetcode > li.grid {
 
     > li {
         margin-bottom: $spacing-unit/2;
-        border-bottom: 1px solid $light-blue;
+        /* border-image-source: linear-gradient(
+            90deg,
+            #fff,
+            #1252a4 20%,
+            #1252a4 80%,
+            #fff,
+            3px
+        ); */
+        border-bottom: 1px solid transparent;
+        /*! border-right: 50px solid transparent; */
+        border-image: linear-gradient(
+                90deg,
+                $paper,
+                $mid-blue 20%,
+                $mid-blue 80%,
+                $paper
+            )
+            1 round;
         display: grid;
         grid-template-columns: 65% 20% 15%;
         @include media-query($on-palm) {
