@@ -1,12 +1,6 @@
-<iframe
-    id="comment-section"
-    src="{{site.comments.iframe_url}}?post={{ page.slug }}"
-    sandbox="allow-popups"></iframe>
+<script type="module" crossorigin src="/comments-app/assets/index-CZqSUvHj.js"></script>
+<link rel="stylesheet" crossorigin href="/comments-app/assets/index-DwzOXtHh.css">
+<script>window.POST_SLUG="{{ page.slug }}"</script>
 
-<script language="javascript" type="text/javascript">
-const comments = document.getElementById( 'comment-section' );
-comments.addEventListener("message", () => {
-  console.log("Message received");
-  comments.style.height = comments.contentWindow.document.body.scrollHeight + 'px';
-});
-</script>
+<noscript>You need to enable Comments.</noscript>
+<div id="comments"></div>
