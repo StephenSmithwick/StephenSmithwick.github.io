@@ -22,7 +22,7 @@ export async function fetchPostComments(post: string): Promise<Comment[]> {
       LIMIT 1000`;
     return comments.map(to_comment);
   } catch (error) {
-    console.error("Database Error:", error);
+    console.error(`Database Error: on ${process.env.POSTGRES_URL}`, error);
     throw new Error("Failed to fetch the latest comments.");
   }
 }
