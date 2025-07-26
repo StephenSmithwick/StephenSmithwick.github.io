@@ -31,6 +31,10 @@ export type CommentsUpdated = (lastComment: number) => void;
 
 function postComment(post: string, onUpdate: CommentsUpdated) {
   return async function postComment(form: FormData) {
+    console.log(`POST: ${env.API_HOST}/api/comments`, {
+      post: post,
+      text: `${form.get("text")}`,
+    });
     const response = await fetch(`${env.API_HOST}/api/comments`, {
       method: "POST",
       body: JSON.stringify({

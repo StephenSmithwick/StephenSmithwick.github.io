@@ -1,6 +1,6 @@
 #! /bin/bash
 
-echo "This is a temporary solution to aid in integrating the solid comments client into the blog.  Until we have a better build approach you will also need to update the references to assets in _includes/comments.html after running this script"
+echo "This is a temporary solution to aid in integrating the solid comments client into the blog.  This includes a hacky update to references in _includes/comments.html after running this script"
 
 # build and replace
 (cd js-frameworks/solid-comments && pnpm install && pnpm build) \
