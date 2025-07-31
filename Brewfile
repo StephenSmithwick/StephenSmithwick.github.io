@@ -32,7 +32,6 @@ brew "java"
 brew "entr"
 brew "tailscale"
 brew "go"
-brew "ollama"
 
 # Dev Tools
 brew "npm"
@@ -52,13 +51,14 @@ brew "postgresql"
 
 # ML
 brew "whisper-cpp"
+brew "espeak-ng"
+brew "ollama"
 
 cask_args appdir: "/Applications"
 cask "rectangle"
 cask "google-chrome"
 cask "visual-studio-code"
 cask "zed"
-cask "intellij-idea-ce"
 cask "balenaetcher"
 cask "caffeine"
 cask "kdiff3"
