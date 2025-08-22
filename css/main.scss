@@ -13,6 +13,7 @@ $light-blue: #c9d9f2;
 $dark-green: #080;
 $darker-green: darken($dark-green, 25%);
 $light-green: #9deb9d;
+$dark-red: #803;
 
 .dark-blue {
     color: $dark-blue;
@@ -34,6 +35,9 @@ $light-green: #9deb9d;
 }
 .light-green {
     color: $light-green;
+}
+.dark-red {
+    color: $dark-red;
 }
 
 $desk: #ccc;
