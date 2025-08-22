@@ -41,6 +41,7 @@ brew "rbenv"
 brew "rbenv-gemset"
 brew "python"
 brew "ipython"
+brew "just"
 
 # Ops Tools
 brew "awscli"
