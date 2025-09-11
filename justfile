@@ -45,3 +45,15 @@ new-post category slug +title:
     cat << POST > "_posts/{{date}}-{{slug}}.md"
     {{post}}
     POST
+
+# List all post categories currently used
+post-categories:
+    @ ggrep -Poh "(?<=categories: ).*" -R _posts/. | sort | uniq
+
+# Summarize all posts
+post-summary:
+    @ ggrep -m 10 -P "(?<=(categories|title): ).*" -R _posts/. \
+    | awk -F: '\
+    NR==1         { prefix=$1 } \
+    $1 != prefix  { prefix=$1; print "\n" prefix; $1=""; print $0 } \
+    $1 == prefix  { $1=""; print $0 }'
