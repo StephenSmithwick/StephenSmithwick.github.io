@@ -48,12 +48,16 @@ new-post category slug +title:
 
 # List all post categories currently used
 post-categories:
-    @ ggrep -Poh "(?<=categories: ).*" -R _posts/. | sort | uniq
+    @ ggrep -Poh "(?<=categories: ).*" -R _posts/. \
+    | sort | uniq \
+    | awk '\
+    NR == 1 { ls = $0 } \
+    NR >  1 { ls = ls "\033[34m, \033[31m" $0 } \
+    END     { print "\033[31m", ls, "\033[0m" }'
 
 # Summarize all posts
 post-summary:
     @ ggrep -m 10 -P "(?<=(categories|title): ).*" -R _posts/. \
     | awk -F: '\
-    NR==1         { prefix=$1 } \
-    $1 != prefix  { prefix=$1; print "\n" prefix; $1=""; print $0 } \
-    $1 == prefix  { $1=""; print $0 }'
+    $1 != prefix  { prefix=$1; print "\n\033[34m" prefix "\033[0m"; $1="" } \
+    { field=$2; $1=$2=""; print "\033[32m" field ": \033[0m" $0 }'
