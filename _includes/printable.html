@@ -1,0 +1,35 @@
+<script>
+function printElement(element) {
+  console.log("printing", element)
+  element.classList.add("print-focus");
+
+  const style = document.head.appendChild(document.createElement("style"));
+  style.textContent = `
+    @media print {
+      body *:not(.print-focus):not(.print-focus *):not(:has(.print-focus)) {
+        display: none !important;
+      }
+    }`;
+
+  window.print();
+
+  style.remove();
+  element.classList.remove("print-focus");
+}
+
+// License: MIT. Made by jaynewey: https://github.com/jaynewey/charm-icons
+const printIcon = `
+<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" version="1.1" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+  <rect height="4.5" width="6.5" y="9.75" x="4.75"/>
+  <path d="m4.75 4.25v-2.5h6.5v2.5m-7 8h-2.5v-7.5h12.5v7.5h-2.5"/>
+</svg>
+`;
+
+[...document.querySelectorAll(".printable")].forEach((printable) => {
+  const printButton = document.createElement("button")
+  printButton.addEventListener("click", () => printElement(printable));
+  printButton.classList.add("print-button")
+  printButton.innerHTML=printIcon;
+  printable.appendChild(printButton)
+});
+</script>

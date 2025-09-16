@@ -13,6 +13,7 @@ Each week I focus on 1-2 projects and professional development. That limit force
 
 ## Daily
 
+{:.printable}
 8:00-8:30 **Startup & Focus Prep**
 : Review the day's goals and choose a max of 3 important tasks
 : Do a 5-minute “activation” (coffee, short walk, upbeat music).
