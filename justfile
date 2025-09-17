@@ -61,3 +61,9 @@ post-summary:
     | awk -F: '\
     $1 != prefix  { prefix=$1; print "\n\033[34m" prefix "\033[0m"; $1="" } \
     { field=$2; $1=$2=""; print "\033[32m" field ": \033[0m" $0 }'
+
+# Breakdown posts by category
+post-analysis:
+    @ ggrep -Poh "(?<=categories: ).*" -R _posts/. \
+    | sort | uniq -c | sort -nr \
+    | awk '{ printf "%20s \033[34m", $2 "(" $1 ")"; for(i=0;i<$1;i++) printf "▐"; print "\033[0m" }'
