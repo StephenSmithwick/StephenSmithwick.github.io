@@ -12,40 +12,43 @@
     4 \(\square\) -
     5 \(\square\)
 }
-\newcommand{\row}[2][]{ \textbf{#2}  & #1 & #1 & #1 & #1 & #1 }
-\newcommand{\contentrow}[2]{ \textbf{#1}  & #2 & #2 & #2 & #2 & #2 }
-\newcommand{\hour}[1]{ \makebox[0.03in][c]{#1} }
+\newcommand{\row}[1]{ \rowcontent{#1}{} }
+\newcommand{\rowcontent}[2]{ \rowsubtitlecontent{#1}{}{#2} }
+\newcommand{\rowsubtitlecontent}[3]{ \textbf{#1} #2 & #3 & #3 & #3 & #3 & #3 }
 
 \begin{document}
 
 % ------------------- Front Page Grid -------------------
 \noindent \parbox[t][0.3in][t]{3.5in}{\textbf{Week's Theme:}}  \textbf{Projects (max 2):} \\
 
-\noindent \begin{tabularx}{\linewidth}{|>{\raggedleft\arraybackslash}p{0.4in}|*{5}{>{\raggedright\arraybackslash}X|}}
+\noindent \begin{tabularx}{\linewidth}{|>{\raggedleft\arraybackslash}p{0.5in}|*{5}{>{\raggedright\arraybackslash}X|}}
     \hline
     & \textbf{Monday} & \textbf{Tuesday} & \textbf{Wednesday} & \textbf{Thursday} & \textbf{Friday} \\ \hline
     \row{Focus} \\[0.8in] \hline
-    \contentrow{Work}{
+    \rowcontent{Work}{
         1.\par\vspace{0.5in}
         2.\par\vspace{0.5in}
         3.\par\rule{0pt}{0.5in}
     } \\ \hline
-    \contentrow{Chores}{
+    \rowcontent{Chores}{
         4.\par\vspace{0.5in}
         5.\par\rule{0pt}{0.5in}
     } \\ \hline
     \row{Notes} \\[1.5in] \hline
-    \contentrow{Daily}{
-    \hspace*{-0.1in}\begin{tikzpicture}[x=0.24in, every node/.style={font=\scriptsize}]
-        \draw (8,0) -- (15,0);
-        \foreach \x in {8,...,15}
-            \draw (\x, 0) -- (\x, -0.2) node[above=4pt] {\x};
-        \foreach \x in {8.5,9.5,...,14.5}
-            \draw (\x, 0) -- (\x, -0.1);
-    \end{tikzpicture}
-        % \hour{8}|\hour{9}|\hour{10}|\hour{11}|\hour{12}|\hour{13}|\hour{14}|
+    \rowsubtitlecontent{Daily}{
+    work \par
+    chores \par
+    excersise \par
+    }{
+        \hspace*{-0.1in}\begin{tikzpicture}[x=0.24in, every node/.style={font=\scriptsize}]
+            \draw (8,0) -- (15,0);
+            \foreach \x in {8,...,15}
+                \draw (\x, 0) -- (\x, -0.2) node[above=4pt] {\x};
+            \foreach \x in {8.5,9.5,...,14.5}
+                \draw (\x, 0) -- (\x, -0.1);
+        \end{tikzpicture}
     } \\[0.5in] \hline
-    \contentrow{Done}{\checkboxes} \\ \hline
+    \rowcontent{Done}{\checkboxes} \\ \hline
 \end{tabularx}
 
 \newpage
