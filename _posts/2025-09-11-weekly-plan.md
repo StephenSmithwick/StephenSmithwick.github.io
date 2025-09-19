@@ -59,7 +59,7 @@ xelatex weekly-plan.tex
 
 Here is the result: 
 
-<object data="../weekly-plan.pdf" type="application/pdf" width="900px" height="700px">
+<object data="../weekly-plan.pdf" type="application/pdf" width="100%" height="700px">
     <embed src="../weekly-plan.pdf">
         <p>This browser does not support PDFs. Please download the PDF above to view it.
     </embed>
