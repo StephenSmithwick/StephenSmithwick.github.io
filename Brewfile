@@ -73,6 +73,7 @@ cask "chatgpt"
 cask "pgadmin4"
 cask "bitwarden"
 cask "mater"
+cask "wireshark-app"
 
 # Documents and Editors
 cask "basictex"
