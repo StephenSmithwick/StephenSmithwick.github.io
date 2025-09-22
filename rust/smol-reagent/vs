@@ -1,0 +1,7 @@
+HTTP/1.1 200 OK
+Content-Type: text/event-stream
+Keep-Alive: timeout=5, max=100
+Server: llama.cpp
+Access-Control-Allow-Origin: 
+Transfer-Encoding: chunked
+

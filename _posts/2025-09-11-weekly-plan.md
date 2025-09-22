@@ -3,13 +3,15 @@ layout: post
 title:  My Weekly Work Plan
 categories: work
 published: true
-last_edit: 2025-09-16
+last_edit: 2025-09-22
 ---
 
 Balancing work, household responsibilities, and professional growth during school hours is a challenge.  I want a system to focus me on a few key things, track progress and build habits to increase my productivity even more.  Inspired by [How to Make Doing Hard Things Easier](https://www.youtube.com/watch?v=-2jZ-iOR8p4), I created a weekly/daily plan and printable sheet to track and reflect on my progress.
 
 ## Weekly
-Each week I focus on 1-2 projects and professional development. That limit forces me to prioritize and prevents spreading effort too thin. During weekdays I will take advantage of what time I have available outside of looking after my boys and chores to work on projects and learn more. Every weekend I will review my work projects and pick a focus theme for next week.
+Each week I focus on 1-2 projects and professional development. That limit forces me to prioritize and prevents spreading effort too thin. During weekdays I will take advantage of what time I have available outside of looking after my boys and chores to work on projects and learn more. Every weekend I review my work projects and pick a focus theme for next week.
+
+Additionally, I can track extra project work that I pick up through the week.
 
 ## Daily
 
@@ -61,7 +63,7 @@ Here is the result:
 
 <object data="../weekly-plan.pdf" type="application/pdf" width="100%" height="700px">
     <embed src="../weekly-plan.pdf">
-        <p>This browser does not support PDFs. Please download the PDF above to view it.
+        <p>This browser does not support PDFs. Please download the PDF to view it.
     </embed>
 </object>
 

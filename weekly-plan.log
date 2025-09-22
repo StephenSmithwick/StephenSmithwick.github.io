@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.3.8)  18 SEP 2025 12:57
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.3.8)  22 SEP 2025 10:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -415,32 +415,52 @@ LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen265
+\lightrulewidth=\dimen266
+\cmidrulewidth=\dimen267
+\belowrulesep=\dimen268
+\belowbottomsep=\dimen269
+\aboverulesep=\dimen270
+\abovetopsep=\dimen271
+\cmidrulesep=\dimen272
+\cmidrulekern=\dimen273
+\defaultaddspace=\dimen274
+\@cmidla=\count292
+\@cmidlb=\count293
+\@aboverulesep=\dimen275
+\@belowrulesep=\dimen276
+\@thisruleclass=\count294
+\@lastruleclass=\count295
+\@thisrulewidth=\dimen277
+)
 (/usr/local/texlive/2025basic/texmf-dist/tex/latex/l3backend/l3backend-xetex.de
 f
 File: l3backend-xetex.def 2024-05-08 L3 backend support: XeTeX
-\g__graphics_track_int=\count292
+\g__graphics_track_int=\count296
 \l__pdf_internal_box=\box65
-\g__pdf_backend_annotation_int=\count293
-\g__pdf_backend_link_int=\count294
+\g__pdf_backend_annotation_int=\count297
+\g__pdf_backend_link_int=\count298
 ) (./weekly-plan.aux)
 \openout1 = `weekly-plan.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -477,39 +497,39 @@ LaTeX Font Info:    ... okay on input line 19.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 22--23
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
 
  []
 
 (/usr/local/texlive/2025basic/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/local/texlive/2025basic/texmf-dist/tex/latex/amsfonts/umsb.fd)
-Overfull \hbox (1.485pt too wide) in paragraph at lines 52--52
- []\TU/lmr/m/n/10 excersise
- []
-
-
-Overfull \hbox (4.4763pt too wide) in paragraph at lines 52--52
+Overfull \hbox (4.4763pt too wide) in paragraph at lines 54--54
 []|| []|  
  []
 
 
-Overfull \hbox (4.4763pt too wide) in paragraph at lines 52--52
+Overfull \hbox (4.4763pt too wide) in paragraph at lines 54--54
 []|| []|  
  []
 
 
-Overfull \hbox (4.4763pt too wide) in paragraph at lines 52--52
+Overfull \hbox (4.4763pt too wide) in paragraph at lines 54--54
 []|| []|  
  []
 
 
-Overfull \hbox (4.4763pt too wide) in paragraph at lines 52--52
+Overfull \hbox (4.4763pt too wide) in paragraph at lines 54--54
 []|| []|  
  []
 
 
-Overfull \hbox (4.4763pt too wide) in paragraph at lines 52--52
-[]|| []|  
+Overfull \hbox (4.4763pt too wide) in paragraph at lines 54--54
+[]|| [] 
+ []
+
+
+Overfull \hbox (1.485pt too wide) in paragraph at lines 54--54
+ []|\TU/lmr/m/n/10 excersise|
  []
 
 
@@ -517,7 +537,7 @@ Overfull \hbox (4.4763pt too wide) in paragraph at lines 52--52
 [1
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 61--64
+Underfull \hbox (badness 10000) in paragraph at lines 71--74
 
  []
 
@@ -530,11 +550,11 @@ L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 12634 strings out of 475366
- 260907 string characters out of 5762340
- 670232 words of memory out of 5000000
- 35408 multiletter control sequences out of 15000+600000
- 560576 words of font info for 49 fonts, out of 8000000 for 9000
+ 12700 strings out of 475366
+ 261909 string characters out of 5762340
+ 676290 words of memory out of 5000000
+ 35474 multiletter control sequences out of 15000+600000
+ 560560 words of font info for 47 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
  102i,14n,107p,421b,770s stack positions out of 10000i,1000n,20000p,200000b,200000s
 

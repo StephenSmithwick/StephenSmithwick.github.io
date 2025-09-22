@@ -4,6 +4,7 @@
 \usepackage{tabularx}
 \usepackage{tikz}
 \usepackage{amssymb}
+\usepackage{booktabs}
 
 \newcommand{\checkboxes}{
     1 \(\square\) -
@@ -12,9 +13,9 @@
     4 \(\square\) -
     5 \(\square\)
 }
-\newcommand{\row}[1]{ \rowcontent{#1}{} }
-\newcommand{\rowcontent}[2]{ \rowsubtitlecontent{#1}{}{#2} }
-\newcommand{\rowsubtitlecontent}[3]{ \textbf{#1} #2 & #3 & #3 & #3 & #3 & #3 }
+\newcommand{\row}[1]{ \rawrow{\textbf{#1}}{} }
+\newcommand{\rowcontent}[2]{ \rawrow{\textbf{#1}}{#2} }
+\newcommand{\rawrow}[2]{ #1 & #2 & #2 & #2 & #2 & #2 }
 
 \begin{document}
 
@@ -27,7 +28,9 @@
     \row{Focus} \\[0.8in] \hline
     \rowcontent{Work}{
         1.\par\vspace{0.5in}
-        2.\par\vspace{0.5in}
+        2.\par\rule{0pt}{0.5in}
+    } \\ \hline
+    \rowcontent{Flex}{
         3.\par\rule{0pt}{0.5in}
     } \\ \hline
     \rowcontent{Chores}{
@@ -35,11 +38,7 @@
         5.\par\rule{0pt}{0.5in}
     } \\ \hline
     \row{Notes} \\[1.5in] \hline
-    \rowsubtitlecontent{Daily}{
-    work \par
-    chores \par
-    excersise \par
-    }{
+    \rowcontent{Daily}{
         \hspace*{-0.1in}\begin{tikzpicture}[x=0.24in, every node/.style={font=\scriptsize}]
             \draw (8,0) -- (15,0);
             \foreach \x in {8,...,15}
@@ -47,19 +46,30 @@
             \foreach \x in {8.5,9.5,...,14.5}
                 \draw (\x, 0) -- (\x, -0.1);
         \end{tikzpicture}
-    } \\[0.5in] \hline
+    } \\[-0.2in] \hline
+    \rawrow{work}{} \\ \hline
+    \rawrow{chores}{} \\ \hline
+    \rawrow{excersise}{} \\ \hline
     \rowcontent{Done}{\checkboxes} \\ \hline
 \end{tabularx}
 
 \newpage
 
 % ------------------- Back Page: Weekend Review -------------------
-\begin{center}
-    {\LARGE \textbf{Week Review}}
-\end{center}
-\vspace{0.2in}
-\textbf{Delivered:} \\[2.0in]
-\textbf{Wins:} \\[2.0in]
-\textbf{Struggles:} \\[2.0in]
+
+\noindent \begin{tabularx}{\linewidth}{|>{\raggedleft\arraybackslash}p{0.5in}|*{5}{>{\raggedright\arraybackslash}X|}}
+    \hline
+    \row{
+    Bonus
+    Work
+    } \\[0.2in] \hline
+    \row{Time} \\[0.2in] \hline
+    \row{Notes} \\[1.5in] \hline
+\end{tabularx}
+
+\begin{center}{\textbf{Week Review}}\end{center}
+\textbf{Delivered:} \\[1.3in]
+\textbf{Wins:} \\[1.3in]
+\textbf{Struggles:} \\[1.3in]
 
 \end{document}
