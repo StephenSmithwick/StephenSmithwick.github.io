@@ -9,6 +9,7 @@ async function mediaCapture() {
     });
 
     const video = document.createElement("video");
+
     video.srcObject = stream;
     video.autoplay = true;
 
