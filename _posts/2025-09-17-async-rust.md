@@ -2,7 +2,7 @@
 layout: post
 title:  An Exploration of Async Rust
 categories: rust
-published: true
+published: false
 # last_edit:
 ---
 
@@ -35,12 +35,6 @@ sudo tcpdump -i en1 -s 0 -B 524288 -w DumpFile01.pcap
 # now call above curl command
 ```
 
-## [Tokio][tokio]
-Overview of Tokio.
-
-### [reqwest][reqwest]
-Usage of reqwest
-
 ## [smol][smol]
 ```rust
 use smol::{io, net, prelude::*, Unblock};
@@ -58,6 +52,12 @@ fn main() -> io::Result<()> {
 }
 ```
 
+## [Tokio][tokio]
+Overview of Tokio.
+
+### [reqwest][reqwest]
+Usage of reqwest
+
 ## [embassy][embassy]
 
 ## [glommio][glommio]
@@ -67,9 +67,9 @@ fn main() -> io::Result<()> {
 
 
 [state-of-async]: https://corrode.dev/blog/async
-[tokio]: https://github.com/tokio-rs/tokio
 [smol]: https://github.com/smol-rs/smol
+[tokio]: https://github.com/tokio-rs/tokio
+[reqwest]: https://github.com/seanmonstar/reqwest
 [embassy]: https://github.com/embassy-rs/embassy
 [glommio]: https://github.com/DataDog/glommio
-[reqwest]: https://github.com/seanmonstar/reqwest
 [sqlx]: https://github.com/launchbadge/sqlx
