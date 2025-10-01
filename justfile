@@ -4,8 +4,9 @@ post := '''
     layout: post
     title:  ${title}
     categories: ${category}
-    published: true
+    published: false
     # last_edit:
+    needs-work: unpublished
     ---
 '''
 comments_html := '''
@@ -67,3 +68,13 @@ post-analysis:
     @ ggrep -Poh "(?<=categories: ).*" -R _posts/. \
     | sort | uniq -c | sort -nr \
     | awk '{ printf "%20s \033[34m", $2 "(" $1 ")"; for(i=0;i<$1;i++) printf "▐"; print "\033[0m" }'
+
+# Breakdown of posts by `need-works` category
+post-needs-work target="all":
+    @ ggrep -Poh "(?<=needs-work: ).*" -R _posts/. \
+    | sort | uniq -c | sort -nr \
+    | awk '{ printf "%20s \033[34m", $2 "(" $1 ")"; for(i=0;i<$1;i++) printf "▐"; print "\033[0m" }'
+    @ if [[ "{{target}}" != "all" ]]; then \
+        printf "\n\e[34m{{target}}: \e[0m\n"; \
+        grep -rl "needs-work: *{{target}}" _posts | sed "s/_posts\//\t/"; \
+    fi

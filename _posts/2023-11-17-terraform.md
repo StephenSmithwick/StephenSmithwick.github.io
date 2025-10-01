@@ -3,6 +3,7 @@ layout: post
 title:  Terraform on LocalStack
 categories: devops
 published: false
+needs-work: unpublished
 ---
 
 [ls-terraform]: https://docs.localstack.cloud/user-guide/integrations/terraform/
