@@ -1,12 +1,14 @@
 ---
 layout: post
-title:  "Terraform on LocalStack"
+title:  Terraform on LocalStack
 categories: devops
 published: false
 ---
 
+[ls-terraform]: https://docs.localstack.cloud/user-guide/integrations/terraform/
+[ls-terraform-post]: https://wormholerelays.com/posts/localstack-with-terraform-and-docker-for-running-aws-locally/
 
-Heavily inspired by the [LocalStack Terraform Documentation][ls-terraform] and [WormholeRelays Localstack with Terraform and Docker for running AWS locally][wormholerelays]
+Heavily inspired by the [LocalStack Terraform Documentation][ls-terraform] and [WormholeRelays Localstack with Terraform and Docker for running AWS locally][ls-terraform-post]
 
 # Setup
 
@@ -237,8 +239,3 @@ resource "aws_s3_bucket" "test-bucket" {
   bucket = "my-bucket"
 }
 ```
-
-
-[ls-terraform]: https://docs.localstack.cloud/user-guide/integrations/terraform/
-[wormholerelays]: https://wormholerelays.com/posts/localstack-with-terraform-and-docker-for-running-aws-locally/
-[main.tf]: ()

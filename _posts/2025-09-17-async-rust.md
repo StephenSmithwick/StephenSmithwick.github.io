@@ -6,6 +6,15 @@ published: false
 # last_edit:
 ---
 
+[state-of-async]: https://corrode.dev/blog/async
+[smol]: https://github.com/smol-rs/smol
+[tokio]: https://github.com/tokio-rs/tokio
+[reqwest]: https://github.com/seanmonstar/reqwest
+[actson-rs]: https://github.com/michel-kraemer/actson-rs
+[embassy]: https://github.com/embassy-rs/embassy
+[glommio]: https://github.com/DataDog/glommio
+[sqlx]: https://github.com/launchbadge/sqlx
+
 I want to explore async rust options.  I will focus on a service which relies on making http streaming requests to a llama.cpp server(`llama-server -hf unsloth/Qwen3-0.6B-GGUF --jinja`).
 
 The request:
@@ -63,13 +72,3 @@ Usage of reqwest
 ## [glommio][glommio]
 
 ## What about threads
-
-
-
-[state-of-async]: https://corrode.dev/blog/async
-[smol]: https://github.com/smol-rs/smol
-[tokio]: https://github.com/tokio-rs/tokio
-[reqwest]: https://github.com/seanmonstar/reqwest
-[embassy]: https://github.com/embassy-rs/embassy
-[glommio]: https://github.com/DataDog/glommio
-[sqlx]: https://github.com/launchbadge/sqlx

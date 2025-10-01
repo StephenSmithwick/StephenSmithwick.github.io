@@ -4,12 +4,22 @@ title:  "Playing with alpaca.cpp and llama.cpp"
 categories: ml
 ---
 
-This is an exploration of [Stanford's Alpaca language model][1].  Alpaca is based on the [Facebook's LLaMA language model][2] but is fine tuned to respond to instructions.  The LLaMA and derived Alpaca models comes in multiples sizes with greater resources needed for the larger models: 7B, 13B, 30B and 65B parameters.
+[alpaca-model]: https://github.com/tatsu-lab/stanford_alpaca
+[llama-model]: https://ai.facebook.com/blog/large-language-model-llama-meta-ai/
+[llama-gh]: https://github.com/facebookresearch/llama
+[llama.cpp-gh]: https://github.com/ggerganov/llama.cpp
+[ggml-gh]: https://github.com/ggerganov/ggml
+[alpaca.cpp-gh]: https://github.com/antimatter15/alpaca.cpp
+[alpaca-lora-gh]: https://github.com/tloen/alpaca-lora
+[rlhf-hf]: https://huggingface.co/blog/rlhf
+[alpaca-hallucinations]: https://gizmodo.com/stanford-ai-alpaca-llama-facebook-taken-down-chatgpt-1850247570
 
-Facebook provides a reference python project to run the models: ([Facebook repo to load model][3]).  An open source project [llama.cpp][4] been developed to run the LLaMA model using C++ and [ggml][5] which can run the LLaMA and Alpaca models with some modifications (quantization of the weights for consumption by ggml).  Additionally, there is a branch of `llama.cpp` called [alpaca.cpp][6] which specifically targets the alpaca models to provide a chat like interface. Specifically `alpaca.cpp` uses an [open reproduction][7] of Stanford's Alpaca.
+This is an exploration of [Stanford's Alpaca language model][alpaca-model].  Alpaca is based on the [Facebook's LLaMA language model][llama-model] but is fine tuned to respond to instructions.  The LLaMA and derived Alpaca models comes in multiples sizes with greater resources needed for the larger models: 7B, 13B, 30B and 65B parameters.
+
+Facebook provides a reference python project to run the models: ([Facebook repo to load model][llama-gh]).  An open source project [llama.cpp][llama.cpp-gh] been developed to run the LLaMA model using C++ and [ggml][ggml-gh] which can run the LLaMA and Alpaca models with some modifications (quantization of the weights for consumption by ggml).  Additionally, there is a branch of `llama.cpp` called [alpaca.cpp][alpaca.cpp-gh] which specifically targets the alpaca models to provide a chat like interface. Specifically `alpaca.cpp` uses an [open reproduction][alpaca-lora-gh] of Stanford's Alpaca.
 
 Further reading: 
-- [RLHF][8]
+- [RLHF][rlhf-hf]
 
 ## Acquiring the models
 For this exploration of the Alpaca models let us start with the smallest model (7B parameters) with weights which have been quantized to 4 bits to optimize for running with lower resources.
@@ -160,7 +170,7 @@ llama_print_timings:       total time = 29757.34 ms
 
 ## About Hallucinations:
 
-These language models are impressive but one major risk is the lack of transparency in how they arrive at their answer.  Furthermore, these models can quite confidently tell you something which is not true: [Stanford Researchers Take Down Alpaca AI Due to 'Hallucinations'][9] 
+These language models are impressive but one major risk is the lack of transparency in how they arrive at their answer.  Furthermore, these models can quite confidently tell you something which is not true: [Stanford Researchers Take Down Alpaca AI Due to 'Hallucinations'][alpaca-hallucinations] 
 
 A trivial example.  I ran this query through the model 3 times:
 ```zsh
@@ -178,14 +188,3 @@ I received the following incorrect results:
 - `x = sqrt(2) [end of text]`
 - `x = 4 [end of text]`
 - `x = ±√(24/2) [end of text]`
-
-
-[1]: https://github.com/tatsu-lab/stanford_alpaca
-[2]: https://ai.facebook.com/blog/large-language-model-llama-meta-ai/
-[3]: https://github.com/facebookresearch/llama
-[4]: https://github.com/ggerganov/llama.cpp
-[5]: https://github.com/ggerganov/ggml
-[6]: https://github.com/antimatter15/alpaca.cpp
-[7]: https://github.com/tloen/alpaca-lora
-[8]: https://huggingface.co/blog/rlhf
-[9]: https://gizmodo.com/stanford-ai-alpaca-llama-facebook-taken-down-chatgpt-1850247570

@@ -4,6 +4,10 @@ title:  "Configuring Git Access Per Repository"
 categories: git
 ---
 
+[ssh-key-gh]: (https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key)
+[git-pk-config-so]: (https://superuser.com/questions/232373/how-to-tell-git-which-private-key-to-use#answer-1664624)
+[git-config-doc]: (https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration)
+
 Many developers need to access Git repositories with different accounts on the same laptop. My particular challenge was configuring a single Git repository to use a different account. While there is varying advice online on how to achieve this, I wanted a best-practices approach that adhered to the following principles:
 
 ### Principles:
@@ -14,7 +18,7 @@ Minimal changes to SSH config
 : To minimize the impact of any changes to Git.
 
 ## Generating a Separate SSH Key and Adding It to GitHub
-Git authentication over SSH is secure and easy to manage. It is best practice to generate a separate SSH key for each machine. This allows you to revoke access individually and eliminates the need to transfer private keys between machines. Many of the following steps were rediscovered using GitHub’s excellent [documentation][1].
+Git authentication over SSH is secure and easy to manage. It is best practice to generate a separate SSH key for each machine. This allows you to revoke access individually and eliminates the need to transfer private keys between machines. Many of the following steps were rediscovered using GitHub’s excellent [documentation][ssh-key-gh].
 
 1. Generate an SSH key (this is the only change to the SSH config directory):
 ```zsh
@@ -41,8 +45,4 @@ git config user.email "${user_email}"
 git config core.sshCommand "ssh -i ~/.ssh/${personal_git_key}"
 ```
 
-Special thanks to Dmytro Buryak, whose [stack overflow post][2] pointed me in the right direction. Additionally, Git’s [official documentation][3] was a helpful reference.  If you need to configure multiple local repositories with different accounts, Dmytro provides a particularly clever way of associating Git configurations at the root directory level—check out his post for more details.
-
-[1]: (https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key)
-[2]: (https://superuser.com/questions/232373/how-to-tell-git-which-private-key-to-use#answer-1664624)
-[3]: (https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration)
+Special thanks to Dmytro Buryak, whose [stack overflow post][git-pk-config-so] pointed me in the right direction. Additionally, Git’s [official documentation][git-config-doc] was a helpful reference.  If you need to configure multiple local repositories with different accounts, Dmytro provides a particularly clever way of associating Git configurations at the root directory level—check out his post for more details.

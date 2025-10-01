@@ -7,6 +7,11 @@ published: true
 categories: devops
 ---
 
+[//]: # (References)
+[DynamoDB-FilterExpression]: https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_Query.html
+[AWS-CDK-Lambda-Example]: https://github.com/aws-samples/aws-cdk-examples/tree/main/typescript/api-cors-lambda-crud-dynamodb
+[will-it-cors]: https://httptoolkit.com/will-it-cors/preflight-response/
+
 I set out to create a free tier, no privileged service to allow users to comment on my blog.
 
 # Backend
@@ -220,8 +225,3 @@ By explicitly allowing the ‘content-type’ header in the CORS configuration, 
   - We log to CloudWatch on any modification to the Data in DynamoDB and any errors encountered which provides some visibility of the system over time.
 
 By implementing these security measures, you can enhance the protection of your serverless comment system against potential threats and ensure compliance with best practices.
-
-[//]: # References
-[DynamoDB-FilterExpression]: https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_Query.html
-[AWS-CDK-Lambda-Example]: https://github.com/aws-samples/aws-cdk-examples/tree/main/typescript/api-cors-lambda-crud-dynamodb
-[will-it-cors]: https://httptoolkit.com/will-it-cors/preflight-response/

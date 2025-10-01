@@ -100,7 +100,7 @@ pub struct Usage {
 
 #[tokio::main]
 async fn main() -> Result<(), reqwest::Error> {
-    let echo_json: serde_json::Value = reqwest::Client::new()
+    let response = reqwest::Client::new()
         .post("http://localhost:8080/v1/chat/completions")
         .json(&serde_json::json!({
             "messages": [
@@ -109,14 +109,19 @@ async fn main() -> Result<(), reqwest::Error> {
                     "content": "Why is the sky blue?"
                 }
             ],
-            "stream": false
+            "stream": true
         }))
         .send()
         .await?
-        .json()
-        .await?;
+        .expect("OK response");
 
-    println!("{echo_json:#?}");
+    let mut byte_stream = response.bytes_stream();
+    let mut buffer = Vec::new();
+
+    while let Some(chunk) = byte_stream.next().await {
+        buffer.extend_from_slice(&chunk?);
+    }
+
     Ok(())
 }
 

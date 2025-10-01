@@ -6,6 +6,10 @@ published: true
 categories: ml
 ---
 
+[DeepSeek-R1]: https://github.com/deepseek-ai/DeepSeek-R1
+[DeepSeek-R1-Model]: https://huggingface.co/deepseek-ai/DeepSeek-R1
+[LlamaCPP_PR]: https://github.com/ggerganov/llama.cpp/pull/11453
+
 This is an exploration of a [DeepSeek R1][DeepSeek-R1] distilled model: DeepSeek-R1-Distill-Qwen-14B.
 
 DeepSeek-R1 is a large-scale model trained with reinforcement learning and without supervised fine-tuning.
@@ -1325,7 +1329,3 @@ More concerning is the fact the this program does not meet requirements:
 I am impressed with the overall steps that the model took to arrive at a solution, however it did not answer the complete question:
 
 > Using these 15 clues, which person owns the pet fish?
-
-[DeepSeek-R1]: https://github.com/deepseek-ai/DeepSeek-R1
-[DeepSeek-R1-Model]: https://huggingface.co/deepseek-ai/DeepSeek-R1
-[LlamaCPP_PR]: https://github.com/ggerganov/llama.cpp/pull/11453
