@@ -1,7 +1,10 @@
+use anyhow::Result;
+use futures::stream::StreamExt;
 use serde::{Deserialize, Serialize};
+use tokio_util::bytes::Bytes;
 
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
-pub struct ChatCompletionChunk {
+pub struct ChatMessage {
     pub id: String,
     pub object: String,
     pub created: u64,
@@ -98,6 +101,21 @@ pub struct Usage {
     pub total_tokens: u32,
 }
 
+fn trim_to_object(s: &str) -> &str {
+    match s.find('{') {
+        Some(pos) => &s[pos..],
+        None => "",
+    }
+}
+
+async fn process_message(next: reqwest::Result<Bytes>) -> Result<()> {
+    let unwrap = next?; // Propagate the error with '?'
+    let json_str = trim_to_object(std::str::from_utf8(&unwrap)?); // Also propagate the UTF-8 error
+    let message: ChatMessage = serde_json::from_str(json_str)?; // Propagate the deserialization error
+    println!("{:?}", message);
+    Ok(())
+}
+
 #[tokio::main]
 async fn main() -> Result<(), reqwest::Error> {
     let response = reqwest::Client::new()
@@ -112,14 +130,15 @@ async fn main() -> Result<(), reqwest::Error> {
             "stream": true
         }))
         .send()
-        .await?
-        .expect("OK response");
+        .await?;
 
     let mut byte_stream = response.bytes_stream();
-    let mut buffer = Vec::new();
 
-    while let Some(chunk) = byte_stream.next().await {
-        buffer.extend_from_slice(&chunk?);
+    while let Some(next) = byte_stream.next().await {
+        match process_message(next).await {
+            Ok(_) => (),
+            Err(e) => eprintln!("Error processing message: {:?}", e),
+        }
     }
 
     Ok(())
@@ -145,9 +164,9 @@ mod tests {
     #[test]
     fn test_serialization() {
         for response in [NO_STREAM, STREAM_THINKING, STREAM_END, STREAM_CONTENT] {
-            let chunk: ChatCompletionChunk = serde_json::from_str(response).unwrap();
+            let chunk: ChatMessage = serde_json::from_str(response).unwrap();
             let serialized = serde_json::to_string(&chunk).unwrap();
-            let rechunk: ChatCompletionChunk = serde_json::from_str(&serialized).unwrap();
+            let rechunk: ChatMessage = serde_json::from_str(&serialized).unwrap();
 
             assert_eq!(rechunk, chunk);
         }
@@ -155,7 +174,7 @@ mod tests {
 
     #[test]
     fn test_no_stream() {
-        let chunk: ChatCompletionChunk = serde_json::from_str(NO_STREAM).unwrap();
+        let chunk: ChatMessage = serde_json::from_str(NO_STREAM).unwrap();
 
         assert_eq!(Some(String::from("stop")), chunk.choices[0].finish_reason);
         match &chunk.choices[0].content {
@@ -171,7 +190,7 @@ mod tests {
 
     #[test]
     fn test_stream_thinking() {
-        let chunk: ChatCompletionChunk = serde_json::from_str(STREAM_THINKING).unwrap();
+        let chunk: ChatMessage = serde_json::from_str(STREAM_THINKING).unwrap();
 
         assert_eq!(None, chunk.choices[0].finish_reason);
         match &chunk.choices[0].content {
@@ -187,7 +206,7 @@ mod tests {
 
     #[test]
     fn test_stream_content() {
-        let chunk: ChatCompletionChunk = serde_json::from_str(STREAM_CONTENT).unwrap();
+        let chunk: ChatMessage = serde_json::from_str(STREAM_CONTENT).unwrap();
 
         assert_eq!(None, chunk.choices[0].finish_reason);
         match &chunk.choices[0].content {
@@ -203,7 +222,7 @@ mod tests {
 
     #[test]
     fn test_stream_end() {
-        let chunk: ChatCompletionChunk = serde_json::from_str(STREAM_END).unwrap();
+        let chunk: ChatMessage = serde_json::from_str(STREAM_END).unwrap();
 
         assert_eq!(Some(String::from("stop")), chunk.choices[0].finish_reason);
     }

@@ -8,10 +8,17 @@ needs-work: unpublished
 ---
 
 [state-of-async]: https://corrode.dev/blog/async
+
+[//]: # (smol)
 [smol]: https://github.com/smol-rs/smol
+
+[//]: # (Tokio)
 [tokio]: https://github.com/tokio-rs/tokio
 [reqwest]: https://github.com/seanmonstar/reqwest
+[futures-rs]: https://github.com/rust-lang/futures-rs
 [actson-rs]: https://github.com/michel-kraemer/actson-rs
+
+[//]: # (Other)
 [embassy]: https://github.com/embassy-rs/embassy
 [glommio]: https://github.com/DataDog/glommio
 [sqlx]: https://github.com/launchbadge/sqlx
@@ -63,10 +70,41 @@ fn main() -> io::Result<()> {
 ```
 
 ## [Tokio][tokio]
-Overview of Tokio.
+Tokio is an async library ecosystem within rust.  
+
+Most example Tokio code marks the main function with `#[tokio::main]` to make the entire project asynchronous.
+
+The `#[tokio::main]` macro is a macro that replaces your main function with a non-async main function that starts a runtime and then calls your code
+
+<div class="columns-2" markdown="1">
+
+```rust
+#[tokio::main]
+async fn main() {
+    println!("Hello world");
+}
+```
+{:.column}
+
+```rust
+fn main() {
+    tokio::runtime::Builder::new_multi_thread()
+        .enable_all()
+        .build()
+        .unwrap()
+        .block_on(async {
+            println!("Hello world");
+        })
+}
+```
+{:.column}
+
+</div>
+
+In where a portion of synchronous code is needed, For instance, a GUI application might want to run the GUI code on the main thread and run a Tokio runtime next to it on another thread.
 
 ### [reqwest][reqwest]
-Usage of reqwest
+Reqwest is an io library which work within tokio to provide non-blocking io.
 
 ## [embassy][embassy]
 
