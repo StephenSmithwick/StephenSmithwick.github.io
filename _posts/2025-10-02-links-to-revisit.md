@@ -1,10 +1,8 @@
 ---
 layout: post
-title:  "Links to come back to"
-categories: devops
-plugins: leetcode.lists
-published: false
-needs-work: unpublished
+title:  "Links to Revisit"
+categories: notes
+published: true
 ---
 
 ## Ops
@@ -15,3 +13,6 @@ needs-work: unpublished
 
 ## Web Development
 - https://vercel.com/blog/how-core-web-vitals-affect-seo
+
+## DB
+- https://duckdb.org/
