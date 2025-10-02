@@ -5,6 +5,7 @@ title: Stateful Kubernetes Service
 published: true
 categories: devops
 meta: WiP
+needs-work: WiP
 ---
 
 Kubernetes(k8s) is a container orchestration system initially built by google and inspired by their internal [Borg](https://kubernetes.io/blog/2015/04/borg-predecessor-to-kubernetes/). With k8s support in all of the major cloud providers, it is the most universal way to run your service in the cloud.

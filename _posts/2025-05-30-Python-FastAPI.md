@@ -5,6 +5,7 @@ title: FastAPI exploration in Python
 published: true
 categories: python
 meta: WiP
+needs-work: WiP
 ---
 
 A quick exploration of [FastAPI](https://fastapi.tiangolo.com) going through the [tutorial](https://fastapi.tiangolo.com/#create-it.)
