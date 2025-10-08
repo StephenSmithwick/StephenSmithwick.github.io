@@ -63,18 +63,16 @@ post-summary:
     $1 != prefix  { prefix=$1; print "\n\033[34m" prefix "\033[0m"; $1="" } \
     { field=$2; $1=$2=""; print "\033[32m" field ": \033[0m" $0 }'
 
-# Breakdown posts by category
-post-analysis:
-    @ ggrep -Poh "(?<=categories: ).*" -R _posts/. \
+# Breakdown posts by any meta field (date, layout, title, date, categories)
+post-analysis field="categories":
+    @ ggrep -Poh "(?<=^{{field}}: ).*$" -R _posts/. \
     | sort | uniq -c | sort -nr \
     | awk '{ printf "%20s \033[34m", $2 "(" $1 ")"; for(i=0;i<$1;i++) printf "▐"; print "\033[0m" }'
 
-# Breakdown of posts by `need-works` category
-post-needs-work target="all":
-    @ ggrep -Poh "(?<=needs-work: ).*" -R _posts/. \
-    | sort | uniq -c | sort -nr \
-    | awk '{ printf "%20s \033[34m", $2 "(" $1 ")"; for(i=0;i<$1;i++) printf "▐"; print "\033[0m" }'
+# Breakdown of posts by `need-works` field
+post-needs-work target="all": && (post-analysis "needs-work")
     @ if [[ "{{target}}" != "all" ]]; then \
-        printf "\n\e[34m{{target}}: \e[0m\n"; \
+        printf "\e[34m{{target}}: \e[0m\n"; \
         grep -rl "needs-work: *{{target}}" _posts | sed "s/_posts\//\t/"; \
+        echo; \
     fi
