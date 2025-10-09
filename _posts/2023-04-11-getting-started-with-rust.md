@@ -62,7 +62,7 @@ Will create the following project:
 `src/main.rs`
 : The source directory and entry point for your code.
 
-source: **[{% include github-icon.html %} streaming-math]({{ site.github_urls.base }}/tree/main/streaming-math)**
+source: **[{% include github-icon.html %} streaming-math]({{ site.playground_urls.tree }}/rust/streaming-math)**
 {: style="clear: both"}
 
 ### Running the initial project
