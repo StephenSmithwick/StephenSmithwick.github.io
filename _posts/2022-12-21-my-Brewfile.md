@@ -16,8 +16,7 @@ To install Homebrew:
 
 Download the Brewfile locally:
 ```zsh
-curl {{ site.github_urls.raw }}/Brewfile \
- --output Brewfile
+curl -L {{ site.playground_urls.raw }}/Brewfile --output Brewfile
 ```
 
 In the same directory where you downloaded the Brewfile, run:
@@ -25,9 +24,9 @@ In the same directory where you downloaded the Brewfile, run:
 brew bundle
 ```
 
-## [Brewfile]({{ site.github_urls.blob }}/Brewfile)
+## [Brewfile]({{ site.playground_urls.blob }}/Brewfile)
 
-<script src="https://emgithub.com/embed-v2.js?target={{ site.github_urls.blob }}/Brewfile&style=default&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showCopy=on"></script>
+<script src="https://emgithub.com/embed-v2.js?target={{ site.playground_urls.blob }}/Brewfile&style=default&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showCopy=on"></script>
 
 ## Working Around Apple's Strict Notarization
 Apple requires applications be signed by a registered Apple developer account before a user can execute them. To override this safety feature, refer to: [Disabling GateKeeper]({% post_url 2025-01-10-Disable-GateKeeper %})
