@@ -25,9 +25,9 @@ This is a personal static jekyll site which deploys as part of Github Pages: [St
 ```bash
 just --list
 Available recipes:
-    build-comments                   # build js-frameworks/solid-comments
+    build-comments                   # build comments-app
     default                          # list commands
-    install-comments                 # move js-frameworks/solid-comments into jekyll and update references
+    install-comments                 # move comments-app into jekyll and update references
     new-post category slug +title    # creates a new post with todays date and specified Title, slug, and category
     post-analysis field="categories" # Breakdown posts by any meta field (date, layout, title, date, categories)
     post-categories                  # List all post categories currently used

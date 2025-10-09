@@ -36,7 +36,7 @@ collections:
   - resume
 exclude:
   - state-cdk
-  - js-frameworks
+  - comments-solid
 
 # Build settings
 markdown: kramdown

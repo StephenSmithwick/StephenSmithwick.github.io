@@ -24,13 +24,16 @@ comments_html := '''
 default:
     just --list
 
-# build js-frameworks/solid-comments
+# build comments-app
 build-comments:
-    (cd js-frameworks/solid-comments && pnpm install && pnpm build)
+    (cd comments-solid && pnpm install && pnpm build)
 
-# move js-frameworks/solid-comments into jekyll and update references
+# move comments-app into jekyll and update references
 install-comments: build-comments
     #! /bin/bash
+    rm -rf comments-app && mkdir -p comments-app
+    cp -r comments-solid/dist/* comments-app
+
     js=$(ls comments-app/assets/*.js)
     css=$(ls comments-app/assets/*.css)
 
