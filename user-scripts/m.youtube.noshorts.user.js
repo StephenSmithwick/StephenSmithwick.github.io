@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Remove Youtube Shorts
+// @name         Remove Youtube Shorts on mobile
 // @namespace    http://tampermonkey.net/
-// @version      0.3
-// @description  Remove Youtube Shorts
+// @version      0.4
+// @description  Remove Youtube Shorts on Mobile Youtube
 // @author       Stephen Smithwick
 // @match        https://m.youtube.com/*
 // ==/UserScript==
@@ -15,7 +15,30 @@ const target_class = [
   "reel-shelf-header",
 ];
 
-function removeShorts() {
+function onAdded(targets, action) {
+  const observer = new MutationObserver((mutationList, observer) => {
+    if (
+      mutationList.find(
+        (mutation) =>
+          mutation.type === "childList" &&
+          mutation.addedNodes &&
+          targets.some((clazz) => mutation.target.innerHTML.indexOf(clazz) > 0),
+      )
+    ) {
+      action();
+    }
+  });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
+  });
+
+  action();
+}
+
+console.log("Remove Youtube Shorts - loaded");
+onAdded(target_class, () => {
   console.log("Removing Shorts");
   for (const clazz of target_class) {
     [...document.querySelectorAll(`.${clazz}`)].forEach((elem) => {
@@ -26,30 +49,4 @@ function removeShorts() {
       }
     });
   }
-}
-
-function onAdded(targets, action) {
-  const observer = new MutationObserver((mutationList, observer) => {
-    var doAction = false;
-    for (const mutation of mutationList) {
-      if (
-        mutation.type === "childList" &&
-        mutation.addedNodes &&
-        targets.some((clazz) => mutation.target.innerHTML.indexOf(clazz) > 0)
-      ) {
-        doAction = true;
-      }
-    }
-    if (doAction) action();
-  });
-
-  observer.observe(document.getElementById("app"), {
-    childList: true,
-    subtree: true,
-  });
-
-  action();
-}
-
-console.log("Remove Youtube Shorts - loaded");
-onAdded(target_class, removeShorts);
+});
