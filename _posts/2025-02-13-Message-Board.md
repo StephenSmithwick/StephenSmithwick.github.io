@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Message Board for my Blog
+title: A Stateful Lambda CDK
 plugins: [diff2html]
 last_edit: 2025-03-17
 published: true
@@ -22,10 +22,10 @@ I created the backend loosely based on the [AWS provided CDK Lamda Example][AWS-
 
 ## Build
 
-Go to the infrastructure directory: **[{% include github-icon.html %} state-cdk]({{ site.github_urls.tree }}/state-cdk)**
+Go to the infrastructure directory: **[{% include github-icon.html %} state-cdk]({{ site.playground_urls.tree }}/devops/state-cdk)**
 
 ```bash
-git clone git@github.com:StephenSmithwick/StephenSmithwick.github.io.git
+git clone git@github.com:StephenSmithwick/playground
 cd state-cdk
 ```
 
@@ -42,7 +42,7 @@ Note you can also deploy individual parts of the stack (from `cdk ls`):
 - CommentsStore
 - CommentsInterface
 
-After the deployment you will see the Functions URL saved in [`comments.out.json`](({{ site.github_urls.tree }}/state-cdk/comments.out.json))
+After the deployment you will see the Functions URL saved in [`comments.out.json`]({{ site.playground_urls.tree }}/devops/state-cdk/comments.out.json)
 
 ## CDK
 
@@ -206,7 +206,7 @@ By explicitly allowing the ‘content-type’ header in the CORS configuration, 
 
 # Work to Do
 - [x] Configure AWS SSO account to interact with service:[setup AWS SSO]({% post_url 2025-03-04-AWS-SSO %})
-- [x] Setup hosted backend in AWS using CDK: **[state-cdk]({{ site.github_urls.tree }}/state-cdk)**
+- [x] Setup hosted backend in AWS using CDK: **[state-cdk]({{ site.playground_urls.tree }}/devops/state-cdk)**
 - [x] Setup CORS
 - [ ] Integrate with website
 - [ ] Creation of Unit Tests for lambda functions
