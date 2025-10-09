@@ -234,16 +234,15 @@ test
 ```
 
 ## Resources
-- http://web.archive.org/web/20100504162138/http://www.ibm.com/developerworks/java/library/j-certgen/)
-- https://www.xolphin.com/support/OpenSSL/Frequently_used_OpenSSL_Commands)
-- https://stackoverflow.com/questions/10175812/how-to-generate-a-self-signed-ssl-certificate-using-openssl)
-- https://jamielinux.com/docs/openssl-certificate-authority/introduction.html)
-- https://medium.com/@organicprogrammer/how-https-works-part-three-the-anatomy-of-certificate-dc7ad5f208bf)
-- https://www.openssl.org/docs/man1.1.1/man1/x509.html)
-- https://www.openssl.org/docs/man1.1.1/man1/openssl-req.html)
-- https://help.mulesoft.com/s/article/How-to-set-up-a-minimal-SSL-TLS-server-from-the-command-line
-- https://medium.com/@superseb/get-your-certificate-chain-right-4b117a9c0fce
-- https://superuser.com/questions/126121/how-to-create-my-own-certificate-chain
-- https://jamielinux.com/docs/openssl-certificate-authority/create-the-root-pair.html
-- https://linuxconfig.org/testing-https-client-using-openssl-to-simulate-a-server
-- https://www.ssl.com/article/ssl-tls-handshake-ensuring-secure-online-interactions/
+- [IBM: Generate Certificate Chains](http://web.archive.org/web/20100504162138/http://www.ibm.com/developerworks/java/library/j-certgen/)
+- [Frequently used OpenSSL Commands](https://www.xolphin.com/support/OpenSSL/Frequently_used_OpenSSL_Commands)
+- [StackOverflow: Generate a self-signed SSL certificate](https://stackoverflow.com/questions/10175812/how-to-generate-a-self-signed-ssl-certificate-using-openssl)
+- [OpenSSL Certificate Authority - Intro](https://jamielinux.com/docs/openssl-certificate-authority/introduction.html)
+  - [Create the root pair](https://jamielinux.com/docs/openssl-certificate-authority/create-the-root-pair.html)
+- [Get your certificate chain right](https://medium.com/@superseb/get-your-certificate-chain-right-4b117a9c0fce)
+- [Super User: How to create my own certificate chain?](https://superuser.com/questions/126121/how-to-create-my-own-certificate-chain)
+- [Testing HTTPS clients using openssl to simulate a server](https://linuxconfig.org/testing-https-client-using-openssl-to-simulate-a-server)
+- [SSL/TLS Handshake: Ensuring Secure Online Interactions](https://www.ssl.com/article/ssl-tls-handshake-ensuring-secure-online-interactions/)
+- [OpenSSL Docs: x509](https://www.openssl.org/docs/man1.1.1/man1/x509.html)
+- [OpenSSL Docs: req](https://www.openssl.org/docs/man1.1.1/man1/openssl-req.html)
+- [OpenSSL Docs: s_server](https://docs.openssl.org/3.2/man1/openssl-s_server/#options)
