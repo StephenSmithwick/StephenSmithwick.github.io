@@ -9,9 +9,9 @@ plugins: leetcode.lists
 <details markdown="block">
 <summary>Instructions for Decorating Lists Using a UserScripts</summary>
 
-Install this userscript to enhance the lists below: [**blog.leetcode.user.js**]({{ site.github_urls.raw }}/greasemonkey/blog.leetcode.user.js)
+Install this user script to enhance the lists below: [**blog.leetcode.user.js**]({{ site.playground_urls.raw }}/user-scripts/blog.leetcode.user.js)
 
-The userscript will request access to a LeetCode URL to fetch your logged-in user's problem data. Please ensure you are logged in at: [LeetCode login](https://leetcode.com/accounts/login).
+The user script will request access to a LeetCode URL to fetch your logged-in user's problem data. Please ensure you are logged in at: [LeetCode login](https://leetcode.com/accounts/login).
 {:.information}
 LeetCode Problem Dataset: [https://leetcode.com/api/problems/algorithms/](https://leetcode.com/api/problems/algorithms/)
 

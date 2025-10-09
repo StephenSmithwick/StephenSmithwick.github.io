@@ -13,6 +13,13 @@ github_urls:
   raw: "https://github.com/StephenSmithwick/StephenSmithwick.github.io/raw/main"
   blob: "https://github.com/StephenSmithwick/StephenSmithwick.github.io/blob/main"
   tree: "https://github.com/StephenSmithwick/StephenSmithwick.github.io/tree/main"
+playground_urls:
+  base: "https://github.com/StephenSmithwick/playground"
+  edit: "https://github.com/StephenSmithwick/playground/edit/main"
+  new: "https://github.com/StephenSmithwick/playground/new/main"
+  raw: "https://github.com/StephenSmithwick/playground/raw/main"
+  blob: "https://github.com/StephenSmithwick/playground/blob/main"
+  tree: "https://github.com/StephenSmithwick/playground/tree/main"
 comments:
   app_url: "https://stephen-smithwick-github-io-comment.vercel.app"
   # app_url: "http://localhost:3000"
