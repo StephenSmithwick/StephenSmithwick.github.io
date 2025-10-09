@@ -16,7 +16,7 @@ If you are willing to forgo the extra safety that Gatekeper provides this blog p
 ## Disabling GateKeeper
 Execute the script:
 ```zsh
-/bin/bash -c "$(curl -fsSL {{ site.github_urls.raw }}/bin/allow-unsigned.sh)"
+/bin/bash -c "$(curl -fsSL {{ site.playground_urls.raw }}/osx-fixes/allow-unsigned.sh)"
 ```
 
 The script:
@@ -25,5 +25,5 @@ The script:
 3. Opens System Settings to the new Profile Loader
 4. [Manual] If you are certain that you wish to disable GateKeeper then you must load the profile.
 
-## [allow-unsigned.sh]({{ site.github_urls.blob }}/bin/allow-unsigned.sh)
-<script src="https://emgithub.com/embed-v2.js?target={{ site.github_urls.blob }}/bin/allow-unsigned.sh&style=default&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showCopy=on"></script>
+## [allow-unsigned.sh]({{ site.playground_urls.blob }})
+{% include embed.html playground="/osx-fixes/allow-unsigned.sh" %}

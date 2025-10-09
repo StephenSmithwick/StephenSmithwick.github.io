@@ -1,0 +1,8 @@
+{% capture url %}{% if include.url != nil %}
+    {{include.url}}
+{% elsif include.playground != nil %}
+    {{ site.playground_urls.blob }}{{include.playground}}
+{% elsif include.blog != nil %}
+    {{ site.github_urls.blob }}{{include.blog}}
+{% endif %}{% endcapture %}
+<script src="https://emgithub.com/embed-v2.js?target={{ url }}&style=dark&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showCopy=on"></script>
