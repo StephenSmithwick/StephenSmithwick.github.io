@@ -9,20 +9,20 @@ post := '''
     needs-work: unpublished
     ---
 '''
-comments_html := '''
-    <script type="module" crossorigin src="/${js}"></script>
-    <link rel="stylesheet" crossorigin href="/${css}">
-    <script>window.POST_SLUG="{{ page.slug }}"</script>
-
-    <noscript>You need to enable javascript to make a comment.</noscript>
-
-    <div id="comments"></div>
-    <a href="{{ site.comments.app_url }}?post={{ page.slug }}">- comments app</a>
-'''
+comments_html := `cat comments-solid/comments.template.html`
 
 # list commands
 default:
     just --list
+
+
+# Run Dev Server Locally
+serve: install-comments
+    bundle exec jekyll serve
+
+# clean project
+clean:
+    bundle exec jekyll
 
 # build comments-app
 build-comments:

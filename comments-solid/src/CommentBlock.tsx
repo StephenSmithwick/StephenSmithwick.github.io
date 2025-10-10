@@ -17,7 +17,7 @@ const CommentBlock: Component = () => {
   return (
     <div id="comment-section" class={styles.App}>
       <h2>Comments</h2>
-      <CommentForm post={post} onUpdate={commentsUpdated} />
+      {/*<CommentForm post={post} onUpdate={commentsUpdated} />*/}
       <Comments post={post} lastComment={lastComment()} />
     </div>
   );

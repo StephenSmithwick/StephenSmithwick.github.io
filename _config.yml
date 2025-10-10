@@ -37,6 +37,7 @@ collections:
 exclude:
   - state-cdk
   - comments-solid
+  - comments-service
 
 # Build settings
 markdown: kramdown
