@@ -1,35 +1,29 @@
 date := `date "+%Y-%m-%d"`
-post := '''
-    ---
-    layout: post
-    title:  ${title}
-    categories: ${category}
-    published: false
-    # last_edit:
-    needs-work: unpublished
-    ---
-'''
+post := `cat post.header.template.md`
 comments_html := `cat comments-solid/comments.template.html`
 
 # list commands
 default:
     just --list
 
-
-# Run Dev Server Locally
-serve: install-comments
+# Run Jekyll Server Locally
+serve: install-comments-app
     bundle exec jekyll serve
+
+# Run Comments Server Locally
+serve-comments: install-comments-app
+    (cd comments-service && pnpm dev)
 
 # clean project
 clean:
     bundle exec jekyll
 
 # build comments-app
-build-comments:
+build-comments-app:
     (cd comments-solid && pnpm install && pnpm build)
 
 # move comments-app into jekyll and update references
-install-comments: build-comments
+install-comments-app: build-comments-app
     #! /bin/bash
     rm -rf comments-app && mkdir -p comments-app
     cp -r comments-solid/dist/* comments-app
@@ -41,7 +35,7 @@ install-comments: build-comments
     {{comments_html}}
     HTML
 
-# creates a new post with todays date and specified Title, slug, and category
+# creates a new post with todays date and specified title, slug, and category
 new-post category slug +title:
     #! /bin/bash
     title="{{title}}"
