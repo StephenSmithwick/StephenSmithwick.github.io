@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
+const VALID_ORIGINS = (process.env.CORS_ORIGIN || "").split(",");
+
 export default function middleware(req: NextRequest) {
-  const validOrigins = (process.env.CORS_ORIGIN || "").split(",");
   const origin = req.headers.get("Origin");
-  const matchingValidOrigin = validOrigins.find(
+  const matchingValidOrigin = VALID_ORIGINS.find(
     (validOrigin) => validOrigin == origin,
   );
 
