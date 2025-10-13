@@ -57,7 +57,7 @@ Additionally, I can track extra project work that I pick up through the week.
 ##  Building a physical page to track
 
 A paper planner pulls me away from screens and makes progress visible, even when the computer is off. 
-I built a simple weekly worksheet in LaTeX that reflects this system.  I started by modifying a LaTeX document supplied by ChatGPT and ended up with this file: **[{% include github-icon.html %} weekly-plan.tex]({{ site.github_urls.blob }}/weekly-plan.tex)**
+I built a simple weekly worksheet in LaTeX that reflects this system.  I started by modifying a LaTeX document supplied by ChatGPT and ended up with this file: **[{% include github-icon.html %} weekly-plan.tex]({{ site.github_urls.blob }}/weekly-plan/weekly-plan.tex)**
 
 To compile the PDF:
 ```bash
@@ -68,10 +68,10 @@ xelatex weekly-plan.tex
 
 Here is the result: 
 
-<object data="../weekly-plan.pdf" type="application/pdf" width="100%" height="700px">
-    <embed src="../weekly-plan.pdf">
+<object data="../weekly-plan/weekly-plan.pdf" type="application/pdf" width="100%" height="700px">
+    <embed src="../weekly-plan/weekly-plan.pdf">
         <p>This browser does not support PDFs. Please download the PDF to view it.
     </embed>
 </object>
 
-Download: [weekly-plan.pdf]({{ site.github_urls.raw }}/weekly-plan.pdf)
+Download: [weekly-plan.pdf]({{ site.github_urls.raw }}/weekly-plan/weekly-plan.pdf)
