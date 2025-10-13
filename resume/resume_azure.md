@@ -1,6 +1,7 @@
 ---
 layout: resume
 title: "Stephen Smithwick"
+permalink: resume/azure_StephenSmithwick
 date: 2025-04-01
 categories: resume
 selections:
@@ -14,7 +15,7 @@ selections:
   - skills
   - tools
   - other
-show: true
+show: false
 ---
 
 {% include resume/main.html sections=page.selections %}
