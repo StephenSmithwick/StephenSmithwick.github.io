@@ -21,23 +21,22 @@ layout: default
         </span>
     </div>
 
-    <ul class="post-list">
+    <ul class="blog-list">
         {% for post in site.posts %}
         <li class="{{ post.categories }}">
-            <h2>
+            <span class="title">
                 <a
                     class="post-link"
-                    href="{{ post.url | prepend: site.baseurl }}"
-                >
+                    href="{{ post.url | prepend: site.baseurl }}">
                     {{ post.title }}
                 </a>
-            </h2>
+                <span class="category">{{ post.categories }}</span>
+            </span>
             <span class="edit">
                 {% if post.last_edit %} edited: {{post.last_edit | date: "%b
                 %-d, %Y"}} {% endif %}
             </span>
             <span class="date"> {{ post.date | date: "%b %-d, %Y" }} </span>
-            <span class="category">{{ post.categories }}</span>
         </li>
         {% endfor %}
     </ul>
@@ -51,7 +50,7 @@ layout: default
 <script>
     document.getElementById("category-choice").onchange = function (event) {
         const target = event.target.value;
-        document.querySelectorAll(".post-list>li").forEach((node) => {
+        document.querySelectorAll(".blog-list>li").forEach((node) => {
             node.style.display =
                 target == "all" || target == node.className ? "" : "none";
         });

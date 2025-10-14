@@ -232,67 +232,47 @@ ul.leetcode > li.grid {
         justify-self: end;
     }
 }
-.post-list {
+.blog-list {
     margin-left: 0;
     list-style: none;
 
     > li {
-        margin-bottom: $spacing-unit/2;
-        /* border-image-source: linear-gradient(
-            90deg,
-            #fff,
-            #1252a4 20%,
-            #1252a4 80%,
-            #fff,
-            3px
-        ); */
-        border-bottom: 1px solid transparent;
-        /*! border-right: 50px solid transparent; */
-        border-image: linear-gradient(
-                90deg,
-                $paper,
-                $mid-blue 20%,
-                $mid-blue 80%,
-                $paper
-            )
-            1 round;
         display: grid;
         grid-template-columns: 65% 20% 15%;
         @include media-query($on-palm) {
             grid-template-columns: 80% 0% 20%;
         }
-        font-size: 15px;
-        @include media-query($on-laptop) {
-            font-size: 12px;
-        }
 
-        h2 {
+        .title {
             grid-column: 1;
             a {
                 text-decoration: none;
             }
-            margin-bottom: 0px;
 
-            font-size: 20px;
             @include media-query($on-laptop) {
                 font-size: 16px;
             }
-        }
 
-        .category {
-            grid-column: 1;
-            color: $dark-blue;
-            font-weight: bold;
+            .category {
+                color: $dark-blue;
+                font-weight: bold;
+                font-size: small;
+            }
         }
 
         .edit {
             grid-column: 2;
+            font-size: small;
             @include media-query($on-palm) {
                 display: none;
             }
         }
 
         .date {
+            font-size: small;
+            @include media-query($on-palm) {
+                font-size: x-small;
+            }
             grid-column: 3;
             justify-self: end;
         }
