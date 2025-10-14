@@ -1,8 +1,8 @@
 ---
 layout: resume
-title: "Stephen Smithwick"
-date: 2025-04-01
-categories: resume
+title: Stephen Smithwick
+categories: cv
+last_edit: 2025-10-14
 selections:
   - profile-cv
   - experience

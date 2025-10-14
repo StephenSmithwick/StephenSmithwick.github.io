@@ -1,7 +1,7 @@
 {% assign sections = include.sections %}
 
 {% for name in sections %}
-  {% assign content = site.resume | where: "name", name | first %}
+  {% assign content = site.resume_sections | where: "name", name | first %}
   {% if content %}
     {% include resume/section.html section=content %}
   {% else %}

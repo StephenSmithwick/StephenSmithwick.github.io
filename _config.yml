@@ -32,7 +32,7 @@ show_downloads: true
 permalink: none
 emptyArray: []
 collections:
-  - resume
+  - resume_sections
 exclude:
   - state-cdk
   - comments-solid

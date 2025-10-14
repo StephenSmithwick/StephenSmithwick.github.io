@@ -22,7 +22,7 @@ I created the backend loosely based on the [AWS provided CDK Lamda Example][AWS-
 
 ## Build
 
-Go to the infrastructure directory: **[{% include github-icon.html %} state-cdk]({{ site.playground_urls.tree }}/devops/state-cdk)**
+Go to the infrastructure directory: **[{% include icons/github.html %} state-cdk]({{ site.playground_urls.tree }}/devops/state-cdk)**
 
 ```bash
 git clone git@github.com:StephenSmithwick/playground

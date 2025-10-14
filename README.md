@@ -18,7 +18,7 @@ Please use `just serve` to start a local jekyll server.
 
 Below are other just commands:
 
-```bash
+```jq
 just --list
 Available recipes:
     build-comments                   # build comments-app
@@ -32,12 +32,11 @@ Available recipes:
     post-summary                     # Summarize all posts
     serve                            # Run Dev Server Locally
 ```
-
 ## Overview of content in blog
-- **Resume** - Uses `resume.html`, `resume.scss` and none of the blog styling and layouts are used. The resume is composed of a collection of ordered sections under `_resume` with the following format: `${order}_${section_name}.md`
-- **Posts** - A collection of useful blog posts for future reference found under `_posts/` the title follows the following format: `YYYY-MM-DD-${title}.md`
+- **Resume** - Found under `/resume` Uses the `resume` layout and styles. A resume is composed of a selection of resume sections under `/_resume_sections/`
+- **Posts** - A collection of useful blog posts for future reference found under `/_posts/` the title follows the following format: `YYYY-MM-DD-${slug}.md`.  Use `just new-post` to create a new post
 - **Fonts** - OpenSans for CV and AtkinsonHyperlegible for blog
-- **Greasemonkey** - Useful Greasemonkey/Tampermonkey scripts to add value to this blog.
+- **Comments** - `/comments-service` is the neon/next.js middleware hosted in vercel.  `/comments-solid` is the web client embedded at the bottom of every post.  It is compiled and installed under `/comments-app` (`just install-comments`)
 
 
 Thanks for taking a look :)
