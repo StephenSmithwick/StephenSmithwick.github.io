@@ -11,7 +11,7 @@ $light-blue: #c9d9f2;
 $desk: #ccc;
 $paper: #fff;
 
-$page-height: 26cm;
+$page-height: 25cm;
 $top-margin: 0.75cm;
 $inside-margin: 0.25cm;
 $left-outside-margin: 1cm;
@@ -87,6 +87,7 @@ p {
 
 a {
     color: $mid-blue;
+    text-decoration: none;
 }
 
 ul {
@@ -111,8 +112,8 @@ aside {
     ul {
         list-style: none;
         padding: 0;
-        li {
-            margin-bottom: 0.5em;
+        li + li {
+            margin-top: 0.5em;
         }
     }
 }
