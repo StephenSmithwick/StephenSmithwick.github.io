@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "next": "^15.5.5",
-    "next-auth": "^4.24.11",
+    "next-auth": "^4.24.12",
     "postgres": "^3.4.7",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
