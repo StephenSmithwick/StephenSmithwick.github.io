@@ -35,9 +35,9 @@ ls -R src  | entr -r execute_tests.sh
 
 ## Spell and Grammar check
 
-1. Add a vale configuration file to your project:
+1. Add a vale configuration file your home directory (note: vale searches for a config file recursively checking each parent directory for a config)
 
-    **📄 .vale.ini**
+    **📄 ~/.vale.ini**
     {:.code-title}
     ```ini
     StylesPath = .github/styles
@@ -49,5 +49,7 @@ ls -R src  | entr -r execute_tests.sh
     [*.md]
     BasedOnStyles = Vale, write-good
     ```
-2. Synchronize vale in project dir: `vale sync`
+2. Synchronize to your home vale config: `vale sync`
 3. Search for extension `Vale Language Server` in zed (`⌘`+`⇧ Shift`+`X`) and install
+
+To setup vale per project create a `.vale.ini` file at the project root and then re-run `vale sync` from the project root.
