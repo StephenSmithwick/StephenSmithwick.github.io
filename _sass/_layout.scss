@@ -251,7 +251,8 @@ ul.leetcode > li.grid {
         height: 1.4em;
 
         @include media-query($on-palm) {
-            grid-template-columns: 80% 0% 20%;
+            padding-right: 0;
+            grid-template-columns: 70% 0% 30%;
         }
 
         .title {
@@ -262,6 +263,10 @@ ul.leetcode > li.grid {
 
             @include media-query($on-laptop) {
                 font-size: 16px;
+            }
+
+            @include media-query($on-palm) {
+                font-size: 12px;
             }
 
             .category {
@@ -281,9 +286,6 @@ ul.leetcode > li.grid {
 
         .date {
             font-size: small;
-            @include media-query($on-palm) {
-                font-size: x-small;
-            }
             grid-column: 3;
             justify-self: end;
         }
