@@ -80,9 +80,11 @@ footer {
         color: $text-color;
         line-height: $base-line-height;
 
-        // Gaps between nav items, but not on the first one
-        &:not(:first-child) {
-            margin-left: 20px;
+        @media (min-width: $on-palm) {
+            &:not(:first-child) {
+                border-left: 1px solid $dark-blue;
+                padding-left:0.25em;
+            }
         }
     }
 
@@ -91,7 +93,7 @@ footer {
         top: 9px;
         right: 30px;
         background-color: $background-color;
-        border: 1px solid $grey-color-light;
+        border: 1px solid $grey-color-dark;
         border-radius: 5px;
         text-align: right;
 
@@ -126,7 +128,7 @@ footer {
 
         .page-link {
             display: block;
-            padding: 5px 10px;
+            padding: 0 0.25em;
         }
     }
 }
@@ -241,7 +243,7 @@ ul.leetcode > li.grid {
     > li {
         display: grid;
         grid-template-columns: 65% 20% 15%;
-        border-bottom: 2px solid #26BAE2;
+        border-bottom: 1.9px solid #26BAE2;
         margin-left: -$spacing-unit;
         margin-right: -$spacing-unit;
         padding-left: 1.25*$spacing-unit;
