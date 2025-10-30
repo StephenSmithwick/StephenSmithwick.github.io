@@ -235,10 +235,21 @@ ul.leetcode > li.grid {
 .blog-list {
     margin-left: 0;
     list-style: none;
+    border-left: 2px solid #EBB6D9;
+    padding-bottom: 1em;
 
     > li {
         display: grid;
         grid-template-columns: 65% 20% 15%;
+        border-bottom: 2px solid #26BAE2;
+        margin-left: -$spacing-unit;
+        margin-right: -$spacing-unit;
+        padding-left: 1.25*$spacing-unit;
+        padding-right: $spacing-unit;
+        align-items: end;
+        line-height: 0.6em;
+        height: 1.4em;
+
         @include media-query($on-palm) {
             grid-template-columns: 80% 0% 20%;
         }
