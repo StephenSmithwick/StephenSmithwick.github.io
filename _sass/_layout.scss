@@ -334,6 +334,15 @@ details {
     @include media-query($on-laptop) {
         font-size: 36px;
     }
+
+    a {
+        margin-left: -1.25em;
+        color: $dark-blue;
+        &:hover {
+            text-decoration: none;
+            color: $mid-blue;
+        }
+    }
 }
 
 .post > .content {

@@ -4,7 +4,14 @@ layout: default
 <div class="post">
 
   <header class="header">
-    <h1 class="title">{{ page.title }} {% if page.meta %}<span class="tag">{{ page.meta }}</span>{% endif %}</h1>
+    <h1 class="title" >
+        <a class="back" href="/">〈</a>
+        <span
+            style="view-transition-name: post-{{ page.slug }}"
+        >
+            {{ page.title }}
+        </span>
+    </h1>
     <p class="meta">
       {{ page.date | date: "%b %-d, %Y" }}
       {% if page.author %} • {{ page.author }}{% endif %}
