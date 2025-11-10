@@ -3,7 +3,8 @@ layout: default
 ---
 
 <div class="home">
-    <div class="post-header">
+    <div class="header">
+        <h2 class="title">Posts</h2>
         <span class="category">
             <label for="categories">Category :</label>
             <select name="categories" id="category-choice">
@@ -39,8 +40,7 @@ layout: default
     </ul>
 
     <p class="rss-subscribe">
-        subscribe
-        <a href="{{ '/feed.xml' | prepend: site.baseurl }}">via RSS</a>
+        <a href="{{ '/feed.xml' | prepend: site.baseurl }}">subscribe via RSS</a>
     </p>
 </div>
 

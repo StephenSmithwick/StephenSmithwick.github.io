@@ -83,7 +83,7 @@ footer {
         @media (min-width: $on-palm) {
             &:not(:first-child) {
                 border-left: 1px solid $dark-blue;
-                padding-left:0.25em;
+                padding-left: 0.25em;
             }
         }
     }
@@ -210,23 +210,28 @@ ul.leetcode > li.grid {
 }
 
 /**
- * Page content
+ * Home / Index
  */
-.page-content {
-    padding: $spacing-unit;
+
+.home {
+    margin-left: $spacing-unit;
+    padding: 0 0.25em;
+    border-left: 2px solid #ebb6d9;
+
+    .rss-subscribe {
+        display: flex;
+        justify-content: flex-end;
+    }
 }
 
-.page-heading {
-    font-size: 20px;
-}
-
-.post-header {
+.home .header {
+    margin-top: 1em;
     display: grid;
-    grid-template-columns: 70% 30%;
-    .category {
+    grid-template-columns: 30% 70%;
+    .title {
         grid-column: 1;
     }
-    .new {
+    .category {
         grid-column: 2;
         a {
             text-decoration: none;
@@ -234,20 +239,21 @@ ul.leetcode > li.grid {
         justify-self: end;
     }
 }
-.blog-list {
-    margin-left: 0;
+
+.home .blog-list {
+    margin: 0;
     list-style: none;
-    border-left: 2px solid #EBB6D9;
     padding-bottom: 1em;
 
+    > li:first-child {
+        border-top: 1.9px solid #26bae2;
+    }
     > li {
         display: grid;
         grid-template-columns: 65% 20% 15%;
-        border-bottom: 1.9px solid #26BAE2;
+        border-bottom: 1.9px solid #26bae2;
         margin-left: -$spacing-unit;
-        margin-right: -$spacing-unit;
-        padding-left: 1.25*$spacing-unit;
-        padding-right: $spacing-unit;
+        padding-left: $spacing-unit;
         align-items: end;
         line-height: 0.6em;
         height: 1.4em;
@@ -294,12 +300,6 @@ ul.leetcode > li.grid {
     }
 }
 
-.post-meta {
-    font-size: $small-font-size;
-    color: $grey-color;
-    text-align: right;
-}
-
 .information {
     border-left: 12px solid $dark-green;
     background-color: $light-green;
@@ -316,11 +316,17 @@ details {
 /**
  * Posts
  */
-.post-header {
-    margin-bottom: $spacing-unit;
+.post {
+    margin: $spacing-unit;
 }
 
-.post-title {
+.post .meta {
+    font-size: $small-font-size;
+    color: $grey-color;
+    text-align: right;
+}
+
+.post > .header > .title {
     font-size: 42px;
     letter-spacing: -1px;
     line-height: 1;
@@ -330,7 +336,7 @@ details {
     }
 }
 
-.post-content {
+.post > .content {
     margin-bottom: $spacing-unit;
 
     h1,
