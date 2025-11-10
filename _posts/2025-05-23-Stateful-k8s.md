@@ -4,7 +4,6 @@ title: Stateful Kubernetes Service
 # last_edit:
 published: true
 categories: devops
-meta: WiP
 needs-work: WiP
 ---
 
