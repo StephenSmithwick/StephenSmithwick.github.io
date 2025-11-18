@@ -185,7 +185,7 @@ footer {
 
 ul.leetcode > li.grid {
     display: grid;
-    grid-template-columns: 3em 2fr 1fr;
+    grid-template-columns: 5em 2fr 1fr;
 
     & > data.status {
         grid-column: 1;
