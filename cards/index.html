@@ -3,7 +3,6 @@
 <html>
 <head>
     <style>
-
 dl {
   display: grid;
   grid-template-columns: 100px auto; /* First column for dt, second for dd */
@@ -11,48 +10,41 @@ dl {
 }
 
 dt {
-  font-weight: bold; /* Example styling */
-}
-
-dd {
-  margin: 0; /* Remove default margin */
+  font-weight: bold; 
+  margin: auto 0;
+  line-height: 126px;
+  height: 126px;
 }
 
 .card {
-    display: relative; /* Use flexbox for main layout */
-    justify-content: space-between; /* Pushes content to top and bottom */
-    flex-direction: column; /* Stack children vertically */
+    display: inline-block;
     position: relative;
-    width: 80px;
-    height: 112px;
+    width: 90px;
+    height: 126px;
     background-color: #ffffff;
     border: 1px solid #ccc;
     border-radius: 5px;
     margin: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 5px; /* Add padding so corners aren't touching edges */
-    box-sizing: border-box; /* Ensure padding is included in width/height */
+    box-sizing: border-box;
 }
 
 .card-corner {
     position: absolute;
     font-size: 16px;
     line-height: 1em;
+    text-align: center;
 }
 
 .card-corner.top-left {
-    top: 5px;   /* Distance from the top edge */
-    left: 5px;  /* Distance from the left edge */
-    font-size: 16px;
-    line-height: 1em;
+    top: 5px;   
+    left: 3px;
 }
 
 .card-corner.bottom-right {
-    bottom: 5px; /* Distance from the bottom edge */
-    right: 5px;  /* Distance from the right edge */
-    transform: rotate(180deg); /* Rotate for correct orientation */
-    font-size: 16px;
-    line-height: 1em;
+    bottom: 5px; 
+    right: 3px;  
+    transform: rotate(180deg); 
 }
 .card.red {
     color: red;
@@ -64,98 +56,80 @@ dd {
 /* Pips should be absolutely positioned within the card container */
 .pip {
     position: absolute;
-    font-size: 16px; 
+    font-size: 28px; 
     line-height: 1em;
-}
-
-/* Positioning for Specific Ranks (Examples) */
-/* Ace (Center only) */
-.rank-a .pip {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Centered exactly */
-    font-size: 48px; /* Larger symbol */
-}
-
-/* Two (Top center, Bottom center) */
-.rank-2 .pip:nth-child(2) { top: 15%; left: 50%; transform: translateX(-50%); }
-.rank-2 .pip:nth-child(3) { bottom: 15%; left: 50%; transform: translateX(-50%) rotate(180deg); }
-
-/* Three (Top center, Middle center, Bottom center) */
-.rank-3 .pip:nth-child(2) { top: 15%; left: 50%; transform: translateX(-50%); }
-.rank-3 .pip:nth-child(3) { top: 50%; left: 50%; transform: translate(-50%, -50%); }
-.rank-3 .pip:nth-child(4) { bottom: 15%; left: 50%; transform: translateX(-50%) rotate(180deg); }
-
-/* Four (Four corners of the middle area) */
-.rank-4 .pip:nth-child(2) { top: 15%; left: 15%; }
-.rank-4 .pip:nth-child(3) { top: 15%; right: 15%; }
-.rank-4 .pip:nth-child(4) { bottom: 15%; left: 15%; transform: rotate(180deg); }
-.rank-4 .pip:nth-child(5) { bottom: 15%; right: 15%; transform: rotate(180deg); }
-
-/* Five (Four corners, one center) */
-.rank-5 .pip:nth-child(2) { top: 15%; left: 15%; }
-.rank-5 .pip:nth-child(3) { top: 15%; right: 15%; }
-.rank-5 .pip:nth-child(4) { top: 50%; left: 50%; transform: translate(-50%, -50%); } /* Center pip */
-.rank-5 .pip:nth-child(5) { bottom: 15%; left: 15%; transform: rotate(180deg); }
-.rank-5 .pip:nth-child(6) { bottom: 15%; right: 15%; transform: rotate(180deg); }
-
-/* Six (Two columns of three) */
-.rank-6 .pip:nth-child(1) { top: 15%; left: 15%; }
-.rank-6 .pip:nth-child(2) { top: 50%; left: 15%; transform: translateY(-50%); }
-.rank-6 .pip:nth-child(3) { bottom: 15%; left: 15%; transform: rotate(180deg); }
-.rank-6 .pip:nth-child(4) { top: 15%; right: 15%; }
-.rank-6 .pip:nth-child(5) { top: 50%; right: 15%; transform: translateY(-50%); }
-.rank-6 .pip:nth-child(6) { bottom: 15%; right: 15%; transform: rotate(180deg); }
-
-
-/* Seven (Six like the six, plus one top center) */
-.rank-7 .pip:nth-child(1) { top: 15%; left: 15%; }
-.rank-7 .pip:nth-child(2) { top: 50%; left: 15%; transform: translateY(-50%); }
-.rank-7 .pip:nth-child(3) { bottom: 15%; left: 15%; transform: rotate(180deg); }
-.rank-7 .pip:nth-child(4) { top: 15%; right: 15%; }
-.rank-7 .pip:nth-child(5) { top: 50%; right: 15%; transform: translateY(-50%); }
-.rank-7 .pip:nth-child(6) { bottom: 15%; right: 15%; transform: rotate(180deg); }
-.rank-7 .pip:nth-child(7) { top: 25%; left: 50%; transform: translateX(-50%); } /* The extra pip */
-
-.rank-8 .pip:nth-child(1) { top: 12%; left: 15%; }
-.rank-8 .pip:nth-child(2) { top: 50%; left: 15%; transform: translateY(-50%); } /* Mid left */
-.rank-8 .pip:nth-child(3) { bottom: 12%; left: 15%; transform: rotate(180deg); }
-.rank-8 .pip:nth-child(4) { top: 12%; right: 15%; }
-.rank-8 .pip:nth-child(5) { top: 50%; right: 15%; transform: translateY(-50%); } /* Mid right */
-.rank-8 .pip:nth-child(6) { bottom: 12%; right: 15%; transform: rotate(180deg); }
-.rank-8 .pip:nth-child(7) { top: 22%; left: 50%; transform: translateX(-50%); } /* Upper center-ish */
-.rank-8 .pip:nth-child(8) { bottom: 22%; left: 50%; transform: translateX(-50%) rotate(180deg); } /* Lower center-ish */
-
-/* Rank 9 layout using absolute positioning */
-.rank-9 .pip:nth-child(1) { top: 12%; left: 15%; }
-.rank-9 .pip:nth-child(2) { top: 50%; left: 15%; transform: translateY(-50%); }
-.rank-9 .pip:nth-child(3) { bottom: 12%; left: 15%; transform: rotate(180deg); }
-.rank-9 .pip:nth-child(4) { top: 12%; left: 50%; transform: translateX(-50%); }
-.rank-9 .pip:nth-child(5) { bottom: 12%; left: 50%; transform: translateX(-50%) rotate(180deg); }
-.rank-9 .pip:nth-child(6) { top: 12%; right: 15%; }
-.rank-9 .pip:nth-child(7) { top: 50%; right: 15%; transform: translateY(-50%); }
-.rank-9 .pip:nth-child(8) { bottom: 12%; right: 15%; transform: rotate(180deg); }
-.rank-9 .pip:nth-child(9) { top: 50%; left: 50%; transform: translate(-50%, -50%); } /* Center pip */
-
-/* Rank 10 layout using absolute positioning */
-.rank-10 .pip:nth-child(1) { top: 12%; left: 15%; }
-.rank-10 .pip:nth-child(2) { top: 50%; left: 15%; transform: translateY(-50%); }
-.rank-10 .pip:nth-child(3) { bottom: 12%; left: 15%; transform: rotate(180deg); }
-.rank-10 .pip:nth-child(4) { top: 12%; right: 15%; }
-.rank-10 .pip:nth-child(5) { top: 50%; right: 15%; transform: translateY(-50%); }
-.rank-10 .pip:nth-child(6) { bottom: 12%; right: 15%; transform: rotate(180deg); }
-.rank-10 .pip:nth-child(7) { top: 22%; left: 50%; transform: translateX(-50%); } /* Extra T-Middle */
-.rank-10 .pip:nth-child(8) { bottom: 22%; left: 50%; transform: translateX(-50%) rotate(180deg); } /* Extra B-Middle */
-.rank-10 .pip:nth-child(9) { top: 38%; left: 50%; transform: translateX(-50%); } /* Mid Top-Center (approx) */
-.rank-10 .pip:nth-child(10) { bottom: 38%; left: 50%; transform: translateX(-50%) rotate(180deg); } /* Mid Bottom-Center (approx) */
-
-/* J, Q, K (Same styling as Ace) */
-.rank-j .pip, .rank-q .pip, .rank-k .pip {
-    top: 50%;
-    left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 48px; /* Larger symbol for face cards/aces */
 }
+
+.rank-a .pip, .rank-j .pip, .rank-q .pip, .rank-k .pip{
+    top: 50%;
+    left: 50%;
+    font-size: 72px;
+    transform: translate(-50%, -43%);
+}
+
+.rank-2 .pip:nth-child(1) { top: 20%; left: 50%; }
+.rank-2 .pip:nth-child(2) { top: 80%; left: 50%; transform: translate(-50%, -50%) rotate(180deg); }
+
+.rank-3 .pip:nth-child(1) { top: 20%; left: 50%; }
+.rank-3 .pip:nth-child(2) { top: 50%; left: 50%; }
+.rank-3 .pip:nth-child(3) { top: 80%; left: 50%; transform: translate(-50%, -50%) rotate(180deg); }
+
+.rank-4 .pip:nth-child(1) { top: 20%; left: 30%; }
+.rank-4 .pip:nth-child(2) { top: 20%; left: 70%; }
+.rank-4 .pip:nth-child(3) { top: 80%; left: 30%; transform: translate(-50%, -50%) rotate(180deg); }
+.rank-4 .pip:nth-child(4) { top: 80%; left: 70%; transform: translate(-50%, -50%) rotate(180deg); }
+
+.rank-5 .pip:nth-child(1) { top: 20%; left: 30%; }
+.rank-5 .pip:nth-child(2) { top: 20%; left: 70%; }
+.rank-5 .pip:nth-child(3) { top: 50%; left: 50%; }
+.rank-5 .pip:nth-child(4) { top: 80%; left: 30%; transform: translate(-50%, -50%) rotate(180deg); }
+.rank-5 .pip:nth-child(5) { top: 80%; left: 70%; transform: translate(-50%, -50%) rotate(180deg); }
+
+.rank-6 .pip:nth-child(1) { top: 20%; left: 30%; }
+.rank-6 .pip:nth-child(2) { top: 50%; left: 30%; }
+.rank-6 .pip:nth-child(3) { top: 80%; left: 30%; transform: translate(-50%, -50%) rotate(180deg); }
+.rank-6 .pip:nth-child(4) { top: 20%; left: 70%; }
+.rank-6 .pip:nth-child(5) { top: 50%; left: 70%; }
+.rank-6 .pip:nth-child(6) { top: 80%; left: 70%; transform: translate(-50%, -50%) rotate(180deg); }
+
+.rank-7 .pip:nth-child(1) { top: 20%; left: 30%; }
+.rank-7 .pip:nth-child(2) { top: 50%; left: 30%; }
+.rank-7 .pip:nth-child(3) { top: 80%; left: 30%; transform: translate(-50%, -50%) rotate(180deg); }
+.rank-7 .pip:nth-child(4) { top: 20%; left: 70%; }
+.rank-7 .pip:nth-child(5) { top: 50%; left: 70%; }
+.rank-7 .pip:nth-child(6) { top: 80%; left: 70%; transform: translate(-50%, -50%) rotate(180deg); }
+.rank-7 .pip:nth-child(7) { top: 35%; left: 50%; } 
+
+.rank-8 .pip:nth-child(1) { top: 20%; left: 30%; }
+.rank-8 .pip:nth-child(2) { top: 50%; left: 30%; }
+.rank-8 .pip:nth-child(3) { top: 80%; left: 30%; transform: translate(-50%, -50%) rotate(180deg); }
+.rank-8 .pip:nth-child(4) { top: 20%; left: 70%; }
+.rank-8 .pip:nth-child(5) { top: 50%; left: 70%; }
+.rank-8 .pip:nth-child(6) { top: 80%; left: 70%; transform: translate(-50%, -50%) rotate(180deg); }
+.rank-8 .pip:nth-child(7) { top: 35%; left: 50%; } 
+.rank-8 .pip:nth-child(8) { top: 65%; left: 50%; transform: translate(-50%, -50%) rotate(180deg); } /* Extra bottom middle, adjusted */
+
+.rank-9 .pip:nth-child(1) { top: 20%; left: 30%; }
+.rank-9 .pip:nth-child(2) { top: 40%; left: 30%; }
+.rank-9 .pip:nth-child(3) { top: 60%; left: 30%; transform: translate(-50%, -50%) rotate(180deg); }
+.rank-9 .pip:nth-child(4) { top: 80%; left: 30%; transform: translate(-50%, -50%) rotate(180deg); }
+.rank-9 .pip:nth-child(5) { top: 20%; left: 70%; }
+.rank-9 .pip:nth-child(6) { top: 40%; left: 70%; }
+.rank-9 .pip:nth-child(7) { top: 60%; left: 70%; transform: translate(-50%, -50%) rotate(180deg); }
+.rank-9 .pip:nth-child(8) { top: 80%; left: 70%; transform: translate(-50%, -50%) rotate(180deg); }
+.rank-9 .pip:nth-child(9) { top: 50%; left: 50%; }
+
+.rank-10 .pip:nth-child(1) { top: 20%; left: 30%; }
+.rank-10 .pip:nth-child(2) { top: 40%; left: 30%; }
+.rank-10 .pip:nth-child(3) { top: 60%; left: 30%; transform: translate(-50%, -50%) rotate(180deg); }
+.rank-10 .pip:nth-child(4) { top: 80%; left: 30%; transform: translate(-50%, -50%) rotate(180deg); }
+.rank-10 .pip:nth-child(5) { top: 20%; left: 70%; }
+.rank-10 .pip:nth-child(6) { top: 40%; left: 70%; }
+.rank-10 .pip:nth-child(7) { top: 60%; left: 70%; transform: translate(-50%, -50%) rotate(180deg); }
+.rank-10 .pip:nth-child(8) { top: 80%; left: 70%; transform: translate(-50%, -50%) rotate(180deg); }
+.rank-10 .pip:nth-child(9) { top: 30%; left: 50%; }
+.rank-10 .pip:nth-child(10) { top: 70%; left: 50%; transform: translate(-50%, -50%) rotate(180deg); }
     </style>
 </head>
 <body>
@@ -170,60 +144,50 @@ dd {
             d: {value: '♦', color: 'red' }, 
             c: {value: '♣', color: 'black' }
         };
-        const pips = {
-         'A': 'A',
-         '2': '2',
-         '3': '3',
-         '4': '4',
-         '5': '5',
-         '6': '6',
-         '7': '7',
-         '8': '8',
-         '9': '9',
-         '10': '10',
-         'J': 'J',
-         'Q': 'Q',
-         'K': 'K'
+        const royals = {
+         'J♠': 'jack-of-spades.svg',
+         'Q♠': 'queen-of-spades.svg',
+         'K♠': 'king-of-spades.svg',
+         'J♥': 'jack-of-hearts.svg',
+         'Q♥': 'queen-of-hearts.svg',
+         'K♥': 'king-of-hearts.svg',
+         'J♦': 'jack-of-diamonds.svg',
+         'Q♦': 'queen-of-diamonds.svg',
+         'K♦': 'king-of-diamonds.svg',
+         'J♣': 'jack-of-clubs.svg',
+         'Q♣': 'queen-of-clubs.svg',
+         'K♣': 'king-of-clubs.svg',
         };
 
         function renderPlayer(player, cards) {
-            let cardList = cards.split(',').map(renderCard)
+            let cardList = cards.split(',').map(renderCard).join("");
             return `<dt>${player}</dt><dd>${cardList}</dd>`;
         }
 
         function renderCard(card) {
             let suit = suits[card.at(-1)];
-            let value = card.slice(0, -1);
+            let rank = card.slice(0, -1);
             return `
-                <div class="card ${suit.color} rank-${value.toLowerCase()}">
-                    <div class="card-corner top-left">${value} ${suit.value}</div>
-                    ${renderPips(pips[value], suit.value)}
-                    <div class="card-corner bottom-right">${value} ${suit.value}</div>
+                <div class="card ${suit.color} rank-${rank.toLowerCase()}">
+                    <div class="card-corner top-left">${rank}<br/>${suit.value}</div>
+                    <div class="card-middle">${renderPips(rank, suit.value)}</div>
+                    <div class="card-corner bottom-right">${rank}<br/>${suit.value}</div>
                 </div>
                 `;
         }
 
-        function renderPips(rank, suitSymbol) {
-            let pipCount;
-            // Map face cards (J, Q, K) to 0 pips or handle them as images
-            if (['J', 'Q', 'K', 'A'].includes(rank)) {
-                pipCount = 1;
-            } else {
-                pipCount = parseInt(rank, 10);
-            }
-
-            let pipsHtml = '';
-            for (let i = 0; i < pipCount; i++) {
-                pipsHtml += `<div class="pip">${suitSymbol}</div>`;
-            }
-            return pipsHtml;
+        function renderPips(rank, suit) {
+            if (['J', 'Q', 'K'].includes(rank)) {
+                return `<div class="pip"><img src="${royals[rank+suit]}" width=70 /></div>`;
+            } 
+            let count = (rank === 'A') ? 1 : parseInt(rank, 10)
+            return `<div class="pip">${suit}</div>`.repeat(count);
         }
 
         let params = new URLSearchParams(window.location.search);
         const playerList = document.querySelector("#players");
         for( [player,cards] of params.entries() ) {
             playerList.innerHTML += renderPlayer(player, cards);
-
         }
     </script>
 </body>
