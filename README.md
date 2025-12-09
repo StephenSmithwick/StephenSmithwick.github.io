@@ -7,10 +7,9 @@ This is a personal static jekyll site which deploys as part of Github Pages: [St
 - Jekyll + Ruby dependencies in Gemfile
 
 ## To build locally
-- Install ruby
-  - I recommend first installing rbenv + rbenv-gemset via homebrew (`brew install rbenv rbenv-gemset`)
-  - Add rbenv shims to your path in your rc file (in my `~/.zprofile ` I added `eval "$(rbenv init - zsh)"`).
-  - from the project directory: `rbenv install`
+- Install build dependencies: just, ruby, pnpm - `brew install rbenv rbenv-gemset pnpm`
+- Add rbenv shims to your path in your rc file (in my `~/.zprofile ` I added `eval "$(rbenv init - zsh)"`).
+- Install project dependencies: `just install-dependencies`
 - Install Jekyll `bundle install`
 
 ### running server

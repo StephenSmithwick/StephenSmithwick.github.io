@@ -6,6 +6,13 @@ comments_html := `cat comments-solid/comments.template.html`
 default:
     just --list
 
+# Install Project dependencies
+install-dependencies:
+    (printf "rbenv version: "; rbenv versions | grep "StephenSmithwick.github.io/.ruby-version" || rbenv install)
+    bundle install
+    (cd comments-service && pnpm install)
+    (cd comments-solid && pnpm install)
+
 # Run Jekyll Server Locally
 serve: install-comments-app
     bundle exec jekyll serve
