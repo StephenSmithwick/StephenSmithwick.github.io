@@ -408,10 +408,25 @@
         border-radius: 0;
     }
     100%{
-        transform: translateY(-1500px) rotate(540deg);
+        transform: translateY(-1500px) rotate(540deg) scale(1.5);
         opacity: 0;
         border-radius: 50%;
     }
+}
+
+@keyframes hilight {
+    0%{
+    }
+    50%{
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+    100% {
+
+    }
+}
+
+.steve {
+    animation: hilight 5s linear infinite;
 }
 
 .background {
@@ -442,8 +457,6 @@
     background: rgba(255, 255, 255, 0.2);
     animation: animate 60s linear infinite;
 }
-
-
 
 .background li:nth-child(0) {
     left: 67%;
@@ -512,7 +525,7 @@
 
         function renderPlayer({ player, cards, possibilities }) {
             return `
-                <dt>${player}</dt>
+                <dt class="${player.toLowerCase()}">${player}</dt>
                 <dd>${cards.map(renderCard).join("")}</dd>
                 <dd>${possibilities.join("<br/>")}</dd>
             `;
