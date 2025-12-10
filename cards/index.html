@@ -7,13 +7,18 @@
     <style>
         dl {
             display: grid;
-            grid-template-columns: 7rem auto 20rem;
+            grid-template-columns: 10rem auto;
         }
 
         dt {
             font-weight: bold;
             margin: 0.25rem;
             z-index: 1;
+        }
+
+        dt > p {
+            font-weight: normal;
+            font-size: smaller;
         }
 
         dd {
@@ -525,9 +530,8 @@
 
         function renderPlayer({ player, cards, possibilities }) {
             return `
-                <dt class="${player.toLowerCase()}">${player}</dt>
+                <dt class="${player.toLowerCase()}">${player}<p>${possibilities.join("<br/>")}</p></dt>
                 <dd>${cards.map(renderCard).join("")}</dd>
-                <dd>${possibilities.join("<br/>")}</dd>
             `;
         }
 
