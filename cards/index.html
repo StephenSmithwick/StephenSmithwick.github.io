@@ -1,191 +1,517 @@
 <!DOCTYPE html>
 <!-- Example: ?David=10s,7c,8c,6c&Gretchen=5s,Ks,3h,5h&Jenny+(MS)=6d,Js,5h,Kc&Steve=8c,Kd,2c,10d&John=7d,3h,3c,10h&Jim=7d,As,4d,9h&Kate=4h,6d,8h,5c&Tom=As,4c,Joker,Qh&Josephine=Kh,Qd,10c,Joker&Tiffany=9h,3s,8s,4s&Jen+(CO)=8d,Jd,10h,9&Megan=9d,Jc,9s,Ah&Dan=Kd,2d,Ah,Jh -->
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-dl {
-    display: grid;
-    grid-template-columns: 7rem auto 20rem; 
-}
+        dl {
+            display: grid;
+            grid-template-columns: 7rem auto 20rem;
+        }
 
-dt {
-    font-weight: bold;
-    margin: 0.25rem;
-}
+        dt {
+            font-weight: bold;
+            margin: 0.25rem;
+        }
 
-dd {
-    margin: 0.25rem;
-}
+        dd {
+            margin: 0.25rem;
+        }
 
-.card {
-    display: inline-block;
-    position: relative;
-    width: 90px;
-    height: 126px;
-    background-color: #ffffff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-}
+        .card {
+            display: inline-block;
+            position: relative;
+            width: 90px;
+            height: 126px;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+        }
 
-.card-corner {
-    position: absolute;
-    font-size: 16px;
-    line-height: 1em;
-    text-align: center;
-}
+        .card-corner {
+            position: absolute;
+            font-size: 16px;
+            line-height: 1em;
+            text-align: center;
+        }
 
-.card-corner.top-left {
-    top: 5px;   
-    left: 3px;
-}
+        .card-corner.top-left {
+            top: 5px;
+            left: 3px;
+        }
 
-.card-corner.bottom-right {
-    bottom: 5px; 
-    right: 3px;  
-    transform: rotate(180deg); 
-}
-.card.red {
-    color: red;
-}
-.card.black {
-    color: black;
-}
+        .card-corner.bottom-right {
+            bottom: 5px;
+            right: 3px;
+            transform: rotate(180deg);
+        }
 
-/* Pips should be absolutely positioned within the card container */
-.pip {
-    position: absolute;
-    font-size: 28px; 
-    line-height: 1em;
-    transform: translate(-50%, -50%);
-}
+        .card.red {
+            color: red;
+        }
 
-.rank-a .pip, .rank-j .pip, .rank-q .pip, .rank-k .pip, .rank-joker .pip {
-    top: 50%;
-    left: 50%;
-    font-size: 72px;
-    transform: translate(-50%, -43%);
-}
+        .card.black {
+            color: black;
+        }
 
-.rank-2 .pip:nth-child(1) { top: 20%; left: 50%; }
-.rank-2 .pip:nth-child(2) { top: 80%; left: 50%; transform: translate(-50%, -50%) rotate(180deg); }
+        /* Pips should be absolutely positioned within the card container */
+        .pip {
+            position: absolute;
+            font-size: 28px;
+            line-height: 1em;
+            transform: translate(-50%, -50%);
+        }
 
-.rank-3 .pip:nth-child(1) { top: 20%; left: 50%; }
-.rank-3 .pip:nth-child(2) { top: 50%; left: 50%; }
-.rank-3 .pip:nth-child(3) { top: 80%; left: 50%; transform: translate(-50%, -50%) rotate(180deg); }
+        .rank-a .pip,
+        .rank-j .pip,
+        .rank-q .pip,
+        .rank-k .pip,
+        .rank-joker .pip {
+            top: 50%;
+            left: 50%;
+            font-size: 72px;
+            transform: translate(-50%, -43%);
+        }
 
-.rank-4 .pip:nth-child(1) { top: 20%; left: 30%; }
-.rank-4 .pip:nth-child(2) { top: 20%; left: 70%; }
-.rank-4 .pip:nth-child(3) { top: 80%; left: 30%; transform: translate(-50%, -50%) rotate(180deg); }
-.rank-4 .pip:nth-child(4) { top: 80%; left: 70%; transform: translate(-50%, -50%) rotate(180deg); }
+        .rank-2 .pip:nth-child(1) {
+            top: 20%;
+            left: 50%;
+        }
 
-.rank-5 .pip:nth-child(1) { top: 20%; left: 30%; }
-.rank-5 .pip:nth-child(2) { top: 20%; left: 70%; }
-.rank-5 .pip:nth-child(3) { top: 50%; left: 50%; }
-.rank-5 .pip:nth-child(4) { top: 80%; left: 30%; transform: translate(-50%, -50%) rotate(180deg); }
-.rank-5 .pip:nth-child(5) { top: 80%; left: 70%; transform: translate(-50%, -50%) rotate(180deg); }
+        .rank-2 .pip:nth-child(2) {
+            top: 80%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(180deg);
+        }
 
-.rank-6 .pip:nth-child(1) { top: 20%; left: 30%; }
-.rank-6 .pip:nth-child(2) { top: 50%; left: 30%; }
-.rank-6 .pip:nth-child(3) { top: 80%; left: 30%; transform: translate(-50%, -50%) rotate(180deg); }
-.rank-6 .pip:nth-child(4) { top: 20%; left: 70%; }
-.rank-6 .pip:nth-child(5) { top: 50%; left: 70%; }
-.rank-6 .pip:nth-child(6) { top: 80%; left: 70%; transform: translate(-50%, -50%) rotate(180deg); }
+        .rank-3 .pip:nth-child(1) {
+            top: 20%;
+            left: 50%;
+        }
 
-.rank-7 .pip:nth-child(1) { top: 20%; left: 30%; }
-.rank-7 .pip:nth-child(2) { top: 50%; left: 30%; }
-.rank-7 .pip:nth-child(3) { top: 80%; left: 30%; transform: translate(-50%, -50%) rotate(180deg); }
-.rank-7 .pip:nth-child(4) { top: 20%; left: 70%; }
-.rank-7 .pip:nth-child(5) { top: 50%; left: 70%; }
-.rank-7 .pip:nth-child(6) { top: 80%; left: 70%; transform: translate(-50%, -50%) rotate(180deg); }
-.rank-7 .pip:nth-child(7) { top: 35%; left: 50%; } 
+        .rank-3 .pip:nth-child(2) {
+            top: 50%;
+            left: 50%;
+        }
 
-.rank-8 .pip:nth-child(1) { top: 20%; left: 30%; }
-.rank-8 .pip:nth-child(2) { top: 50%; left: 30%; }
-.rank-8 .pip:nth-child(3) { top: 80%; left: 30%; transform: translate(-50%, -50%) rotate(180deg); }
-.rank-8 .pip:nth-child(4) { top: 20%; left: 70%; }
-.rank-8 .pip:nth-child(5) { top: 50%; left: 70%; }
-.rank-8 .pip:nth-child(6) { top: 80%; left: 70%; transform: translate(-50%, -50%) rotate(180deg); }
-.rank-8 .pip:nth-child(7) { top: 35%; left: 50%; } 
-.rank-8 .pip:nth-child(8) { top: 65%; left: 50%; transform: translate(-50%, -50%) rotate(180deg); } /* Extra bottom middle, adjusted */
+        .rank-3 .pip:nth-child(3) {
+            top: 80%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(180deg);
+        }
 
-.rank-9 .pip:nth-child(1) { top: 20%; left: 30%; }
-.rank-9 .pip:nth-child(2) { top: 40%; left: 30%; }
-.rank-9 .pip:nth-child(3) { top: 60%; left: 30%; transform: translate(-50%, -50%) rotate(180deg); }
-.rank-9 .pip:nth-child(4) { top: 80%; left: 30%; transform: translate(-50%, -50%) rotate(180deg); }
-.rank-9 .pip:nth-child(5) { top: 20%; left: 70%; }
-.rank-9 .pip:nth-child(6) { top: 40%; left: 70%; }
-.rank-9 .pip:nth-child(7) { top: 60%; left: 70%; transform: translate(-50%, -50%) rotate(180deg); }
-.rank-9 .pip:nth-child(8) { top: 80%; left: 70%; transform: translate(-50%, -50%) rotate(180deg); }
-.rank-9 .pip:nth-child(9) { top: 50%; left: 50%; }
+        .rank-4 .pip:nth-child(1) {
+            top: 20%;
+            left: 30%;
+        }
 
-.rank-10 .pip:nth-child(1) { top: 20%; left: 30%; }
-.rank-10 .pip:nth-child(2) { top: 40%; left: 30%; }
-.rank-10 .pip:nth-child(3) { top: 60%; left: 30%; transform: translate(-50%, -50%) rotate(180deg); }
-.rank-10 .pip:nth-child(4) { top: 80%; left: 30%; transform: translate(-50%, -50%) rotate(180deg); }
-.rank-10 .pip:nth-child(5) { top: 20%; left: 70%; }
-.rank-10 .pip:nth-child(6) { top: 40%; left: 70%; }
-.rank-10 .pip:nth-child(7) { top: 60%; left: 70%; transform: translate(-50%, -50%) rotate(180deg); }
-.rank-10 .pip:nth-child(8) { top: 80%; left: 70%; transform: translate(-50%, -50%) rotate(180deg); }
-.rank-10 .pip:nth-child(9) { top: 30%; left: 50%; }
-.rank-10 .pip:nth-child(10) { top: 70%; left: 50%; transform: translate(-50%, -50%) rotate(180deg); }
+        .rank-4 .pip:nth-child(2) {
+            top: 20%;
+            left: 70%;
+        }
+
+        .rank-4 .pip:nth-child(3) {
+            top: 80%;
+            left: 30%;
+            transform: translate(-50%, -50%) rotate(180deg);
+        }
+
+        .rank-4 .pip:nth-child(4) {
+            top: 80%;
+            left: 70%;
+            transform: translate(-50%, -50%) rotate(180deg);
+        }
+
+        .rank-5 .pip:nth-child(1) {
+            top: 20%;
+            left: 30%;
+        }
+
+        .rank-5 .pip:nth-child(2) {
+            top: 20%;
+            left: 70%;
+        }
+
+        .rank-5 .pip:nth-child(3) {
+            top: 50%;
+            left: 50%;
+        }
+
+        .rank-5 .pip:nth-child(4) {
+            top: 80%;
+            left: 30%;
+            transform: translate(-50%, -50%) rotate(180deg);
+        }
+
+        .rank-5 .pip:nth-child(5) {
+            top: 80%;
+            left: 70%;
+            transform: translate(-50%, -50%) rotate(180deg);
+        }
+
+        .rank-6 .pip:nth-child(1) {
+            top: 20%;
+            left: 30%;
+        }
+
+        .rank-6 .pip:nth-child(2) {
+            top: 50%;
+            left: 30%;
+        }
+
+        .rank-6 .pip:nth-child(3) {
+            top: 80%;
+            left: 30%;
+            transform: translate(-50%, -50%) rotate(180deg);
+        }
+
+        .rank-6 .pip:nth-child(4) {
+            top: 20%;
+            left: 70%;
+        }
+
+        .rank-6 .pip:nth-child(5) {
+            top: 50%;
+            left: 70%;
+        }
+
+        .rank-6 .pip:nth-child(6) {
+            top: 80%;
+            left: 70%;
+            transform: translate(-50%, -50%) rotate(180deg);
+        }
+
+        .rank-7 .pip:nth-child(1) {
+            top: 20%;
+            left: 30%;
+        }
+
+        .rank-7 .pip:nth-child(2) {
+            top: 50%;
+            left: 30%;
+        }
+
+        .rank-7 .pip:nth-child(3) {
+            top: 80%;
+            left: 30%;
+            transform: translate(-50%, -50%) rotate(180deg);
+        }
+
+        .rank-7 .pip:nth-child(4) {
+            top: 20%;
+            left: 70%;
+        }
+
+        .rank-7 .pip:nth-child(5) {
+            top: 50%;
+            left: 70%;
+        }
+
+        .rank-7 .pip:nth-child(6) {
+            top: 80%;
+            left: 70%;
+            transform: translate(-50%, -50%) rotate(180deg);
+        }
+
+        .rank-7 .pip:nth-child(7) {
+            top: 35%;
+            left: 50%;
+        }
+
+        .rank-8 .pip:nth-child(1) {
+            top: 20%;
+            left: 30%;
+        }
+
+        .rank-8 .pip:nth-child(2) {
+            top: 50%;
+            left: 30%;
+        }
+
+        .rank-8 .pip:nth-child(3) {
+            top: 80%;
+            left: 30%;
+            transform: translate(-50%, -50%) rotate(180deg);
+        }
+
+        .rank-8 .pip:nth-child(4) {
+            top: 20%;
+            left: 70%;
+        }
+
+        .rank-8 .pip:nth-child(5) {
+            top: 50%;
+            left: 70%;
+        }
+
+        .rank-8 .pip:nth-child(6) {
+            top: 80%;
+            left: 70%;
+            transform: translate(-50%, -50%) rotate(180deg);
+        }
+
+        .rank-8 .pip:nth-child(7) {
+            top: 35%;
+            left: 50%;
+        }
+
+        .rank-8 .pip:nth-child(8) {
+            top: 65%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(180deg);
+        }
+
+        /* Extra bottom middle, adjusted */
+
+        .rank-9 .pip:nth-child(1) {
+            top: 20%;
+            left: 30%;
+        }
+
+        .rank-9 .pip:nth-child(2) {
+            top: 40%;
+            left: 30%;
+        }
+
+        .rank-9 .pip:nth-child(3) {
+            top: 60%;
+            left: 30%;
+            transform: translate(-50%, -50%) rotate(180deg);
+        }
+
+        .rank-9 .pip:nth-child(4) {
+            top: 80%;
+            left: 30%;
+            transform: translate(-50%, -50%) rotate(180deg);
+        }
+
+        .rank-9 .pip:nth-child(5) {
+            top: 20%;
+            left: 70%;
+        }
+
+        .rank-9 .pip:nth-child(6) {
+            top: 40%;
+            left: 70%;
+        }
+
+        .rank-9 .pip:nth-child(7) {
+            top: 60%;
+            left: 70%;
+            transform: translate(-50%, -50%) rotate(180deg);
+        }
+
+        .rank-9 .pip:nth-child(8) {
+            top: 80%;
+            left: 70%;
+            transform: translate(-50%, -50%) rotate(180deg);
+        }
+
+        .rank-9 .pip:nth-child(9) {
+            top: 50%;
+            left: 50%;
+        }
+
+        .rank-10 .pip:nth-child(1) {
+            top: 20%;
+            left: 30%;
+        }
+
+        .rank-10 .pip:nth-child(2) {
+            top: 40%;
+            left: 30%;
+        }
+
+        .rank-10 .pip:nth-child(3) {
+            top: 60%;
+            left: 30%;
+            transform: translate(-50%, -50%) rotate(180deg);
+        }
+
+        .rank-10 .pip:nth-child(4) {
+            top: 80%;
+            left: 30%;
+            transform: translate(-50%, -50%) rotate(180deg);
+        }
+
+        .rank-10 .pip:nth-child(5) {
+            top: 20%;
+            left: 70%;
+        }
+
+        .rank-10 .pip:nth-child(6) {
+            top: 40%;
+            left: 70%;
+        }
+
+        .rank-10 .pip:nth-child(7) {
+            top: 60%;
+            left: 70%;
+            transform: translate(-50%, -50%) rotate(180deg);
+        }
+
+        .rank-10 .pip:nth-child(8) {
+            top: 80%;
+            left: 70%;
+            transform: translate(-50%, -50%) rotate(180deg);
+        }
+
+        .rank-10 .pip:nth-child(9) {
+            top: 30%;
+            left: 50%;
+        }
+
+        .rank-10 .pip:nth-child(10) {
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(180deg);
+        }
     </style>
 </head>
+
 <body>
     <dl id="players">
 
     </dl>
+    <script type="module" src="./card_analyzer.js"> </script>
+    <script type="module">
+        import possibleHands from "./card_analyzer.js"
 
-    <script>
-        const suits = {
-            S: {value: '♠', color: 'black' }, 
-            H: {value: '♥', color: 'red' }, 
-            D: {value: '♦', color: 'red' }, 
-            C: {value: '♣', color: 'black' },
-            none: {value: '', color: '', joker:true }
+        const suitDetails = {
+            S: { value: '♠', color: 'black' },
+            H: { value: '♥', color: 'red' },
+            D: { value: '♦', color: 'red' },
+            C: { value: '♣', color: 'black' },
+            none: { value: '', color: '', joker: true }
         };
-   
+
         function renderPips(rank, suit) {
             if (['J', 'Q', 'K', 'Joker'].includes(rank)) {
                 return `<div class="pip"><img src="${rank}${suit}.svg" width=70 /></div>`;
-            } 
+            }
             let count = (rank === 'A') ? 1 : parseInt(rank, 10)
             return `<div class="pip">${suit}</div>`.repeat(count);
         }
 
-        function renderPlayer(player, cards) {
-            let cardList = cards.split(',').map(card => Card(card).render());
-            let possibilities = "The Possibilities are endless";
+        function renderPlayer({ player, cards, possibilities }) {
             return `
                 <dt>${player}</dt>
-                <dd>${cardList.join("")}</dd>
-                <dd>${possibilities}</dd>
+                <dd>${cards.map(renderCard).join("")}</dd>
+                <dd>${possibilities.join("<br/>")}</dd>
             `;
         }
 
-        function Card(str) {
-            str = str.toUpperCase().trim();
-            let suit = suits[str.at(-1)] || suits.none;
-            let rank = suit.joker ? "Joker" : str.slice(0, -1);
-            let render = () =>  `<div class="card ${suit.color} rank-${rank.toLowerCase()}">
+        function renderCard(card) {
+            let suit = suitDetails[card.at(-1)] || suitDetails.none;
+            let rank = suit.joker ? "Joker" : card.slice(0, -1);
+
+            return `
+            <div class="card ${suit.color} rank-${rank.toLowerCase()}">
                 <div class="card-corner top-left">${rank}<br/>${suit.value}</div>
                 <div class="card-middle">${renderPips(rank, suit.value)}</div>
                 <div class="card-corner bottom-right">${rank}<br/>${suit.value}</div>
             </div>`;
+        }
 
-            return { suit, rank, render };
+        function buildDeck(count) {
+            const ranks = "A23456789TJQK";
+            const suitCount = ranks.length * count;
+            return {
+                ranks: Object.fromEntries([...ranks].map(r => [r, 4 * count])),
+                suits: { "S": suitCount, "H": suitCount, "D": suitCount, "C": suitCount },
+                jokers: 4
+            }
+        }
+
+        function forAnalysis(card) {
+            if(card === "JOKER") return "JK";
+            if(card.slice(0, -1) === "10") return 'T' + card.at(-1);
+            return card;
+        }
+
+        function removeCardFromDeck(card, deck) {
+            let c = forAnalysis(card)
+  
+            if(c === "JK") {
+                deck.jokers -= 1;
+            } else {
+                deck.ranks[c[0]] -= 1;
+                deck.suits[c[1]] -= 1;
+            }
+        }
+
+        const suits = {
+                H: "Hearts",
+                C: "Clubs",
+                S: "Spades",
+                D: "Diamonds"
+        };
+        const ranks = {
+            A: "Ace",
+            K: "King",
+            Q: "Queen",
+            J: "Jack",
+            T: "10"
+        };
+
+        function describeCard(card) {
+            if(card==="JK") return "Joker";
+            return `${describeRank(card[0])} of ${suits[card[1]]}`;
+        }
+
+        function describeRank(rank) {
+            return ranks[rank] || rank;
+        }
+
+        function renderPossibility({category, rank, highCard, kicker, kickers, suit}) {
+            switch(category) {
+                case "Five of a Kind": case "Four of a Kind": case "Three of a Kind": return `${category} - ${describeRank(rank)}s`;
+                case "Full House": return "Full House"
+                case "Pair": return `Pair of ${describeRank(rank)}s`;
+                case "Straight": return `${category} - high of ${describeRank(highCard)}`;
+                case "High Card": return `${category} of ${describeRank(highCard)}`;
+                case "Royal Flush": case "Flush": return `${category} - ${suits[suit]}`;
+                default: console.log("Uhandled Possibility", {category, rank, highCard, kicker, kickers, suit});
+            }
+        }
+
+        function gatherPossibilities(cards, deck) {
+            let {current, possible} = possibleHands(cards.map(forAnalysis), deck);
+            console.log("analysis", {current, possible});
+
+            return [renderPossibility(current)];
+            // return [
+            //     renderPossibility(current), 
+            //     ...possible.slice(0,1).map(possibility => `Possible ${renderPossibility(possibility)}`)];
+        }
+
+        function normaliseCards(cardsStr) {
+            return cardsStr.toUpperCase().split(',').map(str => str.trim());
         }
 
         let params = new URLSearchParams(window.location.search);
-        const playerList = document.querySelector("#players");
-        for( [player,cards] of params.entries() ) {
-            playerList.innerHTML += renderPlayer(player, cards);
-        }
+        
+        let players = [
+            ...params.entries()
+                .map(([player, cardsStr]) => {
+                    let cards = normaliseCards(cardsStr);
+                    return { player, cards };
+                })
+        ]
+
+        let deck = buildDeck(2);
+        players.forEach(({cards}) => cards.forEach( card => removeCardFromDeck(card, deck)))
+
+        document.querySelector("#players").innerHTML = players.map( ({player, cards}) => {
+            console.log(`Evaluating: ${player}`);
+            let possibilities = gatherPossibilities(cards, deck);
+            return { player, cards, possibilities };
+        }).map(renderPlayer).join("");
     </script>
 </body>
 
 </html>
-
