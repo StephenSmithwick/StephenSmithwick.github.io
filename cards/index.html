@@ -13,10 +13,12 @@
         dt {
             font-weight: bold;
             margin: 0.25rem;
+            z-index: 1;
         }
 
         dd {
             margin: 0.25rem;
+            z-index: 1;
         }
 
         .card {
@@ -30,6 +32,7 @@
             margin: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             box-sizing: border-box;
+            z-index: 1;
         }
 
         .card-corner {
@@ -371,12 +374,122 @@
             transform: translate(-50%, -50%) rotate(180deg);
         }
     </style>
+    <style>
+@keyframes animate {
+    0%{
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+    }
+    100%{
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+    }
+}
+
+@keyframes animate2 {
+    0%{
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 30%;
+    }
+    100%{
+        transform: translateY(-2000px) rotate(-720deg);
+        opacity: 0;
+        border-radius: 0%;
+    }
+}
+
+@keyframes animate3 {
+    0%{
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+    }
+    100%{
+        transform: translateY(-1500px) rotate(540deg);
+        opacity: 0;
+        border-radius: 50%;
+    }
+}
+
+.background {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    background:
+        linear-gradient(45deg, #2b6874 45px, transparent 45px)64px 64px,
+        linear-gradient(45deg, #2b6874 45px, transparent 45px,transparent 91px, #20545e 91px, #20545e 135px, transparent 135px),
+        linear-gradient(-45deg, #2b6874 23px, transparent 23px, transparent 68px,#2b6874 68px,#2b6874 113px,transparent 113px,transparent 158px,#2b6874 158px);
+    background-color:#20545e;
+    background-size: 128px 128px;
+    overflow: hidden;
+}
+.background li {
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    color:aliceblue;
+    font-weight: 400%;
+    font-size: x-large;
+    background: rgba(255, 255, 255, 0.2);
+    animation: animate 60s linear infinite;
+}
+
+
+
+.background li:nth-child(0) {
+    left: 67%;
+    width: 440px;
+    height: 440px;
+    bottom: -440px;
+    animation-delay: 1s;
+}
+.background li:nth-child(1) {
+    left: 31%;
+    width: 433px;
+    height: 433px;
+    bottom: -433px;
+    animation-delay: 7s;
+    animation: animate2 60s linear infinite;
+}
+.background li:nth-child(2) {
+    left: 63%;
+    width: 397px;
+    height: 397px;
+    bottom: -397px;
+    animation-delay: 15s;
+    animation: animate3 60s linear infinite;
+}
+.background li:nth-child(3) {
+    left: 26%;
+    width: 486px;
+    height: 486px;
+    bottom: -486px;
+    animation-delay: 20s;
+    animation: animate2 120s linear infinite;
+}
+    </style>
 </head>
 
 <body>
     <dl id="players">
 
     </dl>
+    <div >
+<ul class="background">
+   <li></li>
+   <li></li>
+   <li></li>
+   <li></li>
+</ul>
     <script type="module" src="./card_analyzer.js"> </script>
     <script type="module">
         import possibleHands from "./card_analyzer.js"
