@@ -48,7 +48,7 @@ const CATEGORY_PRIORITY = {
 };
 
 // Evaluate made hand (7 or fewer cards). Jokers are full wildcards.
-export function evaluateMadeHand(cards){
+export default function evaluateHand(cards){
   const t = tally(cards);
   const rc = Object.fromEntries(Object.entries(t.ranks||{}).map(([k,v])=>[RVAL[k],v]));
   const sc = t.suits || {};
@@ -147,9 +147,13 @@ export function evaluateMadeHand(cards){
   // Two Pair
   // find two distinct ranks that can each reach 2 with jokers split across them
   const pairRanks = [];
+  let availableJokers = jokers;
   for(let r=12;r>=0;r--){
     const have = rc[r]||0;
-    if(have + jokers >= 2) pairRanks.push(r);
+    if(have + availableJokers >= 2) {
+      pairRanks.push(r);
+      availableJokers--;
+    }
   }
   if(pairRanks.length >= 2){
     const top2 = pairRanks.slice(0,2);
@@ -172,229 +176,3 @@ export function evaluateMadeHand(cards){
   const high = sorted.length ? sorted[0] : (jokers ? 12 : null);
   return { category:"High Card", highCard: high===null?null:RANKS[high], kickers: sorted.slice(1,5).map(v=>RANKS[v]) };
 }
-
-// POSSIBILITIES using remaining deck counts
-export default function possibleHands(cards, remaining){
-  // remaining shape expected:
-  // { ranks: { "A":n,... }, suits: { c:n,d:n,h:n,s:n }, byRankSuit: { "A":{c:n,...}, ... }, jokers: n }
-  const t = tally(cards);
-  const haveRanks = Object.assign({}, t.ranks);
-  const haveSuits = Object.assign({}, t.suits);
-  const haveJokers = t.jokers;
-  const deckJokers = (remaining && remaining.jokers) || 0;
-
-  const totalAvailableRank = r => (remaining.ranks && (remaining.ranks[r]||0)) || 0;
-  const totalAvailableSuit = s => (remaining.suits && (remaining.suits[s]||0)) || 0;
-  const availableByRankSuit = (r,s) => (remaining.byRankSuit && (remaining.byRankSuit[r]||{})[s]) || 0;
-
-  const draws = 7 - cards.length;
-  // if draws <= 0, nothing future possible
-  if(draws <= 0) {
-    return { current: evaluateMadeHand(cards), possible: {} };
-  }
-
-  // helper: check if need <= availInDeck + deckJokers + (jokers in hand can be reused? no: hand jokers already in hand)
-  const canObtain = (need, avail) => need <= (avail + deckJokers);
-
-  // Five of a Kind possibility
-  const fiveOpts = [];
-  for(const r of RANKS){
-    const have = haveRanks[r]||0;
-    const need = Math.max(0, 5 - have);
-    // cannot use hand jokers as "remaining" supply; they already counted in have
-    // available in deck for that rank:
-    const avail = totalAvailableRank(r);
-    if(need <= avail + deckJokers && need <= draws + deckJokers) fiveOpts.push({rank:r, need, avail});
-  }
-
-  // Straight flush / Royal flush possibility: check each suit and each 5-length window
-  const sfOpts = [];
-  for(const s of SUITS){
-    // collect present ranks in that suit from hand
-    const present = new Set();
-    for(const c of cards){
-      if(c===JOKER) continue;
-      if(c[1]===s) present.add(RVAL[c[0]]);
-    }
-    // windows
-    for(let start=0; start<=8; start++){
-      const window = [start,start+1,start+2,start+3,start+4];
-      let missing = [];
-      for(const r of window){
-        if(!present.has(r)) {
-          const rankChar = RANKS[r];
-          const avail = availableByRankSuit(rankChar, s);
-          if(avail>0) missing.push({rank:rankChar, suit:s, avail});
-          else missing.push({rank:rankChar, suit:s, avail:0});
-        }
-      }
-      const need = missing.length;
-      // jokers in deck can supply some; also we may already have hand jokers counted in present? hand jokers are in cards and already counted as haveJokers so they reduce missing
-      // But here we treat hand jokers as already present (they can be used immediately) so effective need is need - handJokersUsed, where handJokersUsed = min(haveJokers, need)
-      const needAfterHandJokers = Math.max(0, need - haveJokers);
-      // deck availability:
-      const availInDeck = missing.reduce((s, m)=> s + m.avail, 0);
-      if(needAfterHandJokers <= availInDeck + deckJokers && needAfterHandJokers <= draws + deckJokers) {
-        const isRoyal = window.every(r=> [8,9,10,11,12].includes(r));
-        sfOpts.push({ suit:s, window: window.map(r=>RANKS[r]), need, availInDeck, isRoyal });
-      }
-    }
-    // wheel (A2345)
-    {
-      const window = [12,0,1,2,3];
-      let missing = [];
-      for(const r of window){
-        if(!present.has(r)){
-          const rankChar = RANKS[r];
-          const avail = availableByRankSuit(rankChar, s);
-          missing.push({rank:rankChar,suit:s,avail});
-        }
-      }
-      const need = missing.length;
-      const needAfterHandJokers = Math.max(0, need - haveJokers);
-      const availInDeck = missing.reduce((s,m)=> s+m.avail, 0);
-      if(needAfterHandJokers <= availInDeck + deckJokers && needAfterHandJokers <= draws + deckJokers) {
-        sfOpts.push({ suit:s, window: ["A","2","3","4","5"], need, availInDeck, isRoyal:false });
-      }
-    }
-  }
-
-  // Four of a Kind possibility
-  const fourOpts = [];
-  for(const r of RANKS){
-    const have = haveRanks[r]||0;
-    const need = Math.max(0, 4 - have);
-    const avail = totalAvailableRank(r);
-    if(need <= avail + deckJokers && need <= draws + deckJokers) fourOpts.push({rank:r, need, avail});
-  }
-
-  // Full House possibility (trip + pair)
-  const fullOpts = [];
-  // try all r for trip, p for pair (r!=p)
-  for(const r of RANKS){
-    const haveR = haveRanks[r]||0;
-    const needTrip = Math.max(0, 3 - haveR);
-    const availTrip = totalAvailableRank(r);
-    // if impossible even with all deck jokers and draws skip
-    if(needTrip > availTrip + deckJokers || needTrip > draws + deckJokers) continue;
-    // remaining draws/jokers after making trip
-    // we approximate feasibility: check existence of any other rank that can be pair
-    for(const p of RANKS){
-      if(p===r) continue;
-      const haveP = haveRanks[p]||0;
-      const needPair = Math.max(0, 2 - haveP);
-      const availPair = totalAvailableRank(p);
-      // total needed = needTrip + needPair; must be <= draws + deckJokers
-      if(needTrip + needPair <= draws + deckJokers && needPair <= availPair + deckJokers) {
-        fullOpts.push({trip:r, pair:p, needTrip, needPair, availTrip, availPair});
-        break;
-      }
-    }
-  }
-
-  // Flush possibility (any suit)
-  const flushOpts = [];
-  for(const s of SUITS){
-    const have = haveSuits[s]||0;
-    const need = Math.max(0, 5 - have);
-    const avail = totalAvailableSuit(s);
-    if(need <= avail + deckJokers && need <= draws + deckJokers) flushOpts.push({suit:s, need, avail});
-  }
-
-  // Straight possibility (any suits)
-  const straightOpts = [];
-  const presentVals = uniqSortedRanks(t.parsed);
-  for(let start=0; start<=8; start++){
-    const window = [start,start+1,start+2,start+3,start+4];
-    let missing = [];
-    for(const r of window){
-      if(!presentVals.includes(r)){
-        const rankChar = RANKS[r];
-        const avail = totalAvailableRank(rankChar);
-        missing.push({rank:rankChar, avail});
-      }
-    }
-    const need = missing.length;
-    const needAfterHandJokers = Math.max(0, need - haveJokers);
-    const availInDeck = missing.reduce((s,m)=> s+m.avail, 0);
-    if(needAfterHandJokers <= availInDeck + deckJokers && needAfterHandJokers <= draws + deckJokers) {
-      straightOpts.push({window: window.map(r=>RANKS[r]), need, availInDeck});
-    }
-  }
-  // wheel
-  {
-    const window = [12,0,1,2,3];
-    let missing = [];
-    for(const r of window){
-      if(!presentVals.includes(r)){
-        const rankChar = RANKS[r];
-        const avail = totalAvailableRank(rankChar);
-        missing.push({rank:rankChar, avail});
-      }
-    }
-    const need = missing.length;
-    const needAfterHandJokers = Math.max(0, need - haveJokers);
-    const availInDeck = missing.reduce((s,m)=> s+m.avail, 0);
-    if(needAfterHandJokers <= availInDeck + deckJokers && needAfterHandJokers <= draws + deckJokers)
-      straightOpts.push({window:["A","2","3","4","5"], need, availInDeck});
-  }
-
-  // Three of a Kind possibility
-  const threeOpts = [];
-  for(const r of RANKS){
-    const have = haveRanks[r]||0;
-    const need = Math.max(0, 3 - have);
-    const avail = totalAvailableRank(r);
-    if(need <= avail + deckJokers && need <= draws + deckJokers) threeOpts.push({rank:r, need, avail});
-  }
-
-  // Two Pair / Pair possibilities
-  const pairOpts = [];
-  for(const r of RANKS){
-    const have = haveRanks[r]||0;
-    const need = Math.max(0, 2 - have);
-    const avail = totalAvailableRank(r);
-    if(need <= avail + deckJokers && need <= draws + deckJokers) pairOpts.push({rank:r, need, avail});
-  }
-  // If there are at least two ranks where pair is possible (accounting jokers across both), then two-pair possible.
-  const twoPairPossible = (() => {
-    // simplified feasibility: try pairs using deck jokers limited by deckJokers
-    // iterate combinations of two distinct ranks
-    for(let i=0;i<RANKS.length;i++){
-      for(let j=i+1;j<RANKS.length;j++){
-        const r1 = RANKS[i], r2 = RANKS[j];
-        const have1 = haveRanks[r1]||0, have2 = haveRanks[r2]||0;
-        const need1 = Math.max(0,2-have1), need2 = Math.max(0,2-have2);
-        const avail1 = totalAvailableRank(r1), avail2 = totalAvailableRank(r2);
-        if(need1 <= avail1 + deckJokers && need2 <= avail2 + deckJokers && (need1+need2) <= draws + deckJokers) return true;
-      }
-    }
-    return false;
-  })();
-
-  // Result assembly
-  const current = evaluateMadeHand(cards);
-  return {
-    current,
-    possible: [
-      ...fiveOpts.map(opts => ({...opts, category: "Five of a Kind"})),
-      ...sfOpts.filter(o=>o.isRoyal).map(opts => ({...opts, category: "Royal Flush"})),
-      ...sfOpts.filter(o=>!o.isRoyal).map(opts => ({...opts, category: "Flush"})),
-      ...fourOpts.map(opts => ({...opts, category: "Four of a Kind"})),
-      ...fullOpts.map(opts => ({...opts, category: "Full House"})),
-      ...flushOpts.map(opts => ({...opts, category: "Flush"})),
-      ...straightOpts.map(opts => ({...opts, category: "Straight"})),
-      ...threeOpts.map(opts => ({...opts, category: "Three of a Kind"})),
-      ...pairOpts.map(opts => ({...opts, category: "Pair"}))
-    ].filter(({need}) => draws >= need)
-  };
-}
-
-// Example usage:
-// const cards = ["Ah","Kh","Qh","Jk"]; // parse with evaluateMadeHand(cards)
-// const remaining = {
-//   ranks: {"A":6,"K":6,...}, suits: {c:24,d:24,h:24,s:24},
-//   byRankSuit: { "A":{c:2,d:2,h:2,s:2}, ... }, jokers:4
-// };
-// console.log(evaluateMadeHand(cards));
-// console.log(possibleHands(cards, remaining));

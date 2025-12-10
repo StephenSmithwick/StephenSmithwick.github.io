@@ -510,14 +510,27 @@
 </ul>
     <script type="module" src="./card_analyzer.js"> </script>
     <script type="module">
-        import possibleHands from "./card_analyzer.js"
+        import evaluateHand from "./card_analyzer.js"
 
-        const suitDetails = {
+        const suitRenderDetails = {
             S: { value: '♠', color: 'black' },
             H: { value: '♥', color: 'red' },
             D: { value: '♦', color: 'red' },
             C: { value: '♣', color: 'black' },
             none: { value: '', color: '', joker: true }
+        };
+        const suits = {
+            H: "Hearts",
+            C: "Clubs",
+            S: "Spades",
+            D: "Diamonds"
+        };
+        const ranks = {
+            A: "Ace",
+            K: "King",
+            Q: "Queen",
+            J: "Jack",
+            T: "10"
         };
 
         function renderPips(rank, suit) {
@@ -528,15 +541,15 @@
             return `<div class="pip">${suit}</div>`.repeat(count);
         }
 
-        function renderPlayer({ player, cards, possibilities }) {
+        function renderPlayer({ player, cards, analysis }) {
             return `
-                <dt class="${player.toLowerCase()}">${player}<p>${possibilities.join("<br/>")}</p></dt>
+                <dt class="${player.toLowerCase()}">${player}<p>${renderAnalysis(analysis)}</p></dt>
                 <dd>${cards.map(renderCard).join("")}</dd>
             `;
         }
 
         function renderCard(card) {
-            let suit = suitDetails[card.at(-1)] || suitDetails.none;
+            let suit = suitRenderDetails[card.at(-1)] || suitRenderDetails.none;
             let rank = suit.joker ? "Joker" : card.slice(0, -1);
 
             return `
@@ -547,46 +560,11 @@
             </div>`;
         }
 
-        function buildDeck(count) {
-            const ranks = "A23456789TJQK";
-            const suitCount = ranks.length * count;
-            return {
-                ranks: Object.fromEntries([...ranks].map(r => [r, 4 * count])),
-                suits: { "S": suitCount, "H": suitCount, "D": suitCount, "C": suitCount },
-                jokers: 4
-            }
-        }
-
         function forAnalysis(card) {
             if(card === "JOKER") return "JK";
             if(card.slice(0, -1) === "10") return 'T' + card.at(-1);
             return card;
         }
-
-        function removeCardFromDeck(card, deck) {
-            let c = forAnalysis(card)
-  
-            if(c === "JK") {
-                deck.jokers -= 1;
-            } else {
-                deck.ranks[c[0]] -= 1;
-                deck.suits[c[1]] -= 1;
-            }
-        }
-
-        const suits = {
-                H: "Hearts",
-                C: "Clubs",
-                S: "Spades",
-                D: "Diamonds"
-        };
-        const ranks = {
-            A: "Ace",
-            K: "King",
-            Q: "Queen",
-            J: "Jack",
-            T: "10"
-        };
 
         function describeCard(card) {
             if(card==="JK") return "Joker";
@@ -597,26 +575,17 @@
             return ranks[rank] || rank;
         }
 
-        function renderPossibility({category, rank, highCard, kicker, kickers, suit}) {
+        function renderAnalysis({category, rank, highCard, kicker, kickers, suit, topPair, secondPair}) {
             switch(category) {
                 case "Five of a Kind": case "Four of a Kind": case "Three of a Kind": return `${category} - ${describeRank(rank)}s`;
                 case "Full House": return "Full House"
                 case "Pair": return `Pair of ${describeRank(rank)}s`;
+                case "Two Pair": return `Pairs of ${describeRank(topPair)}s and ${describeRank(secondPair)}s`;
                 case "Straight": return `${category} - high of ${describeRank(highCard)}`;
-                case "High Card": return `${category} of ${describeRank(highCard)}`;
+                case "High Card": return `${describeRank(highCard)}-${(kickers||[]).slice(0,1).map(describeRank)} high`;
                 case "Royal Flush": case "Flush": return `${category} - ${suits[suit]}`;
                 default: console.log("Uhandled Possibility", {category, rank, highCard, kicker, kickers, suit});
             }
-        }
-
-        function gatherPossibilities(cards, deck) {
-            let {current, possible} = possibleHands(cards.map(forAnalysis), deck);
-            console.log("analysis", {current, possible});
-
-            return [renderPossibility(current)];
-            // return [
-            //     renderPossibility(current), 
-            //     ...possible.slice(0,1).map(possibility => `Possible ${renderPossibility(possibility)}`)];
         }
 
         function normaliseCards(cardsStr) {
@@ -633,13 +602,11 @@
                 })
         ]
 
-        let deck = buildDeck(2);
-        players.forEach(({cards}) => cards.forEach( card => removeCardFromDeck(card, deck)))
-
         document.querySelector("#players").innerHTML = players.map( ({player, cards}) => {
             console.log(`Evaluating: ${player}`);
-            let possibilities = gatherPossibilities(cards, deck);
-            return { player, cards, possibilities };
+            let analysis = evaluateHand(cards.map(forAnalysis));
+            console.log("analysis", analysis);
+            return { player, cards, analysis };
         }).map(renderPlayer).join("");
     </script>
 </body>
