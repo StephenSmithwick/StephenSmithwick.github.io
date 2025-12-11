@@ -1,0 +1,352 @@
+.card {
+    display: inline-block;
+    position: relative;
+    width: 90px;
+    height: 126px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.card-corner {
+    position: absolute;
+    font-size: 16px;
+    line-height: 1em;
+    text-align: center;
+}
+
+.card-corner.top-left {
+    top: 5px;
+    left: 3px;
+}
+
+.card-corner.bottom-right {
+    bottom: 5px;
+    right: 3px;
+    transform: rotate(180deg);
+}
+
+.card.red {
+    color: red;
+}
+
+.card.black {
+    color: black;
+}
+
+/* Pips should be absolutely positioned within the card container */
+.pip {
+    position: absolute;
+    font-size: 28px;
+    line-height: 1em;
+    transform: translate(-50%, -50%);
+}
+
+.rank-a .pip,
+.rank-j .pip,
+.rank-q .pip,
+.rank-k .pip,
+.rank-joker .pip {
+    top: 50%;
+    left: 50%;
+    font-size: 72px;
+    transform: translate(-50%, -43%);
+}
+
+.rank-2 .pip:nth-child(1) {
+    top: 20%;
+    left: 50%;
+}
+
+.rank-2 .pip:nth-child(2) {
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.rank-3 .pip:nth-child(1) {
+    top: 20%;
+    left: 50%;
+}
+
+.rank-3 .pip:nth-child(2) {
+    top: 50%;
+    left: 50%;
+}
+
+.rank-3 .pip:nth-child(3) {
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.rank-4 .pip:nth-child(1) {
+    top: 20%;
+    left: 30%;
+}
+
+.rank-4 .pip:nth-child(2) {
+    top: 20%;
+    left: 70%;
+}
+
+.rank-4 .pip:nth-child(3) {
+    top: 80%;
+    left: 30%;
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.rank-4 .pip:nth-child(4) {
+    top: 80%;
+    left: 70%;
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.rank-5 .pip:nth-child(1) {
+    top: 20%;
+    left: 30%;
+}
+
+.rank-5 .pip:nth-child(2) {
+    top: 20%;
+    left: 70%;
+}
+
+.rank-5 .pip:nth-child(3) {
+    top: 50%;
+    left: 50%;
+}
+
+.rank-5 .pip:nth-child(4) {
+    top: 80%;
+    left: 30%;
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.rank-5 .pip:nth-child(5) {
+    top: 80%;
+    left: 70%;
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.rank-6 .pip:nth-child(1) {
+    top: 20%;
+    left: 30%;
+}
+
+.rank-6 .pip:nth-child(2) {
+    top: 50%;
+    left: 30%;
+}
+
+.rank-6 .pip:nth-child(3) {
+    top: 80%;
+    left: 30%;
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.rank-6 .pip:nth-child(4) {
+    top: 20%;
+    left: 70%;
+}
+
+.rank-6 .pip:nth-child(5) {
+    top: 50%;
+    left: 70%;
+}
+
+.rank-6 .pip:nth-child(6) {
+    top: 80%;
+    left: 70%;
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.rank-7 .pip:nth-child(1) {
+    top: 20%;
+    left: 30%;
+}
+
+.rank-7 .pip:nth-child(2) {
+    top: 50%;
+    left: 30%;
+}
+
+.rank-7 .pip:nth-child(3) {
+    top: 80%;
+    left: 30%;
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.rank-7 .pip:nth-child(4) {
+    top: 20%;
+    left: 70%;
+}
+
+.rank-7 .pip:nth-child(5) {
+    top: 50%;
+    left: 70%;
+}
+
+.rank-7 .pip:nth-child(6) {
+    top: 80%;
+    left: 70%;
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.rank-7 .pip:nth-child(7) {
+    top: 35%;
+    left: 50%;
+}
+
+.rank-8 .pip:nth-child(1) {
+    top: 20%;
+    left: 30%;
+}
+
+.rank-8 .pip:nth-child(2) {
+    top: 50%;
+    left: 30%;
+}
+
+.rank-8 .pip:nth-child(3) {
+    top: 80%;
+    left: 30%;
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.rank-8 .pip:nth-child(4) {
+    top: 20%;
+    left: 70%;
+}
+
+.rank-8 .pip:nth-child(5) {
+    top: 50%;
+    left: 70%;
+}
+
+.rank-8 .pip:nth-child(6) {
+    top: 80%;
+    left: 70%;
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.rank-8 .pip:nth-child(7) {
+    top: 35%;
+    left: 50%;
+}
+
+.rank-8 .pip:nth-child(8) {
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
+/* Extra bottom middle, adjusted */
+
+.rank-9 .pip:nth-child(1) {
+    top: 20%;
+    left: 30%;
+}
+
+.rank-9 .pip:nth-child(2) {
+    top: 40%;
+    left: 30%;
+}
+
+.rank-9 .pip:nth-child(3) {
+    top: 60%;
+    left: 30%;
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.rank-9 .pip:nth-child(4) {
+    top: 80%;
+    left: 30%;
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.rank-9 .pip:nth-child(5) {
+    top: 20%;
+    left: 70%;
+}
+
+.rank-9 .pip:nth-child(6) {
+    top: 40%;
+    left: 70%;
+}
+
+.rank-9 .pip:nth-child(7) {
+    top: 60%;
+    left: 70%;
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.rank-9 .pip:nth-child(8) {
+    top: 80%;
+    left: 70%;
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.rank-9 .pip:nth-child(9) {
+    top: 50%;
+    left: 50%;
+}
+
+.rank-10 .pip:nth-child(1) {
+    top: 20%;
+    left: 30%;
+}
+
+.rank-10 .pip:nth-child(2) {
+    top: 40%;
+    left: 30%;
+}
+
+.rank-10 .pip:nth-child(3) {
+    top: 60%;
+    left: 30%;
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.rank-10 .pip:nth-child(4) {
+    top: 80%;
+    left: 30%;
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.rank-10 .pip:nth-child(5) {
+    top: 20%;
+    left: 70%;
+}
+
+.rank-10 .pip:nth-child(6) {
+    top: 40%;
+    left: 70%;
+}
+
+.rank-10 .pip:nth-child(7) {
+    top: 60%;
+    left: 70%;
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.rank-10 .pip:nth-child(8) {
+    top: 80%;
+    left: 70%;
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.rank-10 .pip:nth-child(9) {
+    top: 30%;
+    left: 50%;
+}
+
+.rank-10 .pip:nth-child(10) {
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(180deg);
+}

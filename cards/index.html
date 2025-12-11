@@ -4,6 +4,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cards.css">
     <style>
         dl {
             display: grid;
@@ -26,360 +27,6 @@
             z-index: 1;
         }
 
-        .card {
-            display: inline-block;
-            position: relative;
-            width: 90px;
-            height: 126px;
-            background-color: #ffffff;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            box-sizing: border-box;
-            z-index: 1;
-        }
-
-        .card-corner {
-            position: absolute;
-            font-size: 16px;
-            line-height: 1em;
-            text-align: center;
-        }
-
-        .card-corner.top-left {
-            top: 5px;
-            left: 3px;
-        }
-
-        .card-corner.bottom-right {
-            bottom: 5px;
-            right: 3px;
-            transform: rotate(180deg);
-        }
-
-        .card.red {
-            color: red;
-        }
-
-        .card.black {
-            color: black;
-        }
-
-        /* Pips should be absolutely positioned within the card container */
-        .pip {
-            position: absolute;
-            font-size: 28px;
-            line-height: 1em;
-            transform: translate(-50%, -50%);
-        }
-
-        .rank-a .pip,
-        .rank-j .pip,
-        .rank-q .pip,
-        .rank-k .pip,
-        .rank-joker .pip {
-            top: 50%;
-            left: 50%;
-            font-size: 72px;
-            transform: translate(-50%, -43%);
-        }
-
-        .rank-2 .pip:nth-child(1) {
-            top: 20%;
-            left: 50%;
-        }
-
-        .rank-2 .pip:nth-child(2) {
-            top: 80%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(180deg);
-        }
-
-        .rank-3 .pip:nth-child(1) {
-            top: 20%;
-            left: 50%;
-        }
-
-        .rank-3 .pip:nth-child(2) {
-            top: 50%;
-            left: 50%;
-        }
-
-        .rank-3 .pip:nth-child(3) {
-            top: 80%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(180deg);
-        }
-
-        .rank-4 .pip:nth-child(1) {
-            top: 20%;
-            left: 30%;
-        }
-
-        .rank-4 .pip:nth-child(2) {
-            top: 20%;
-            left: 70%;
-        }
-
-        .rank-4 .pip:nth-child(3) {
-            top: 80%;
-            left: 30%;
-            transform: translate(-50%, -50%) rotate(180deg);
-        }
-
-        .rank-4 .pip:nth-child(4) {
-            top: 80%;
-            left: 70%;
-            transform: translate(-50%, -50%) rotate(180deg);
-        }
-
-        .rank-5 .pip:nth-child(1) {
-            top: 20%;
-            left: 30%;
-        }
-
-        .rank-5 .pip:nth-child(2) {
-            top: 20%;
-            left: 70%;
-        }
-
-        .rank-5 .pip:nth-child(3) {
-            top: 50%;
-            left: 50%;
-        }
-
-        .rank-5 .pip:nth-child(4) {
-            top: 80%;
-            left: 30%;
-            transform: translate(-50%, -50%) rotate(180deg);
-        }
-
-        .rank-5 .pip:nth-child(5) {
-            top: 80%;
-            left: 70%;
-            transform: translate(-50%, -50%) rotate(180deg);
-        }
-
-        .rank-6 .pip:nth-child(1) {
-            top: 20%;
-            left: 30%;
-        }
-
-        .rank-6 .pip:nth-child(2) {
-            top: 50%;
-            left: 30%;
-        }
-
-        .rank-6 .pip:nth-child(3) {
-            top: 80%;
-            left: 30%;
-            transform: translate(-50%, -50%) rotate(180deg);
-        }
-
-        .rank-6 .pip:nth-child(4) {
-            top: 20%;
-            left: 70%;
-        }
-
-        .rank-6 .pip:nth-child(5) {
-            top: 50%;
-            left: 70%;
-        }
-
-        .rank-6 .pip:nth-child(6) {
-            top: 80%;
-            left: 70%;
-            transform: translate(-50%, -50%) rotate(180deg);
-        }
-
-        .rank-7 .pip:nth-child(1) {
-            top: 20%;
-            left: 30%;
-        }
-
-        .rank-7 .pip:nth-child(2) {
-            top: 50%;
-            left: 30%;
-        }
-
-        .rank-7 .pip:nth-child(3) {
-            top: 80%;
-            left: 30%;
-            transform: translate(-50%, -50%) rotate(180deg);
-        }
-
-        .rank-7 .pip:nth-child(4) {
-            top: 20%;
-            left: 70%;
-        }
-
-        .rank-7 .pip:nth-child(5) {
-            top: 50%;
-            left: 70%;
-        }
-
-        .rank-7 .pip:nth-child(6) {
-            top: 80%;
-            left: 70%;
-            transform: translate(-50%, -50%) rotate(180deg);
-        }
-
-        .rank-7 .pip:nth-child(7) {
-            top: 35%;
-            left: 50%;
-        }
-
-        .rank-8 .pip:nth-child(1) {
-            top: 20%;
-            left: 30%;
-        }
-
-        .rank-8 .pip:nth-child(2) {
-            top: 50%;
-            left: 30%;
-        }
-
-        .rank-8 .pip:nth-child(3) {
-            top: 80%;
-            left: 30%;
-            transform: translate(-50%, -50%) rotate(180deg);
-        }
-
-        .rank-8 .pip:nth-child(4) {
-            top: 20%;
-            left: 70%;
-        }
-
-        .rank-8 .pip:nth-child(5) {
-            top: 50%;
-            left: 70%;
-        }
-
-        .rank-8 .pip:nth-child(6) {
-            top: 80%;
-            left: 70%;
-            transform: translate(-50%, -50%) rotate(180deg);
-        }
-
-        .rank-8 .pip:nth-child(7) {
-            top: 35%;
-            left: 50%;
-        }
-
-        .rank-8 .pip:nth-child(8) {
-            top: 65%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(180deg);
-        }
-
-        /* Extra bottom middle, adjusted */
-
-        .rank-9 .pip:nth-child(1) {
-            top: 20%;
-            left: 30%;
-        }
-
-        .rank-9 .pip:nth-child(2) {
-            top: 40%;
-            left: 30%;
-        }
-
-        .rank-9 .pip:nth-child(3) {
-            top: 60%;
-            left: 30%;
-            transform: translate(-50%, -50%) rotate(180deg);
-        }
-
-        .rank-9 .pip:nth-child(4) {
-            top: 80%;
-            left: 30%;
-            transform: translate(-50%, -50%) rotate(180deg);
-        }
-
-        .rank-9 .pip:nth-child(5) {
-            top: 20%;
-            left: 70%;
-        }
-
-        .rank-9 .pip:nth-child(6) {
-            top: 40%;
-            left: 70%;
-        }
-
-        .rank-9 .pip:nth-child(7) {
-            top: 60%;
-            left: 70%;
-            transform: translate(-50%, -50%) rotate(180deg);
-        }
-
-        .rank-9 .pip:nth-child(8) {
-            top: 80%;
-            left: 70%;
-            transform: translate(-50%, -50%) rotate(180deg);
-        }
-
-        .rank-9 .pip:nth-child(9) {
-            top: 50%;
-            left: 50%;
-        }
-
-        .rank-10 .pip:nth-child(1) {
-            top: 20%;
-            left: 30%;
-        }
-
-        .rank-10 .pip:nth-child(2) {
-            top: 40%;
-            left: 30%;
-        }
-
-        .rank-10 .pip:nth-child(3) {
-            top: 60%;
-            left: 30%;
-            transform: translate(-50%, -50%) rotate(180deg);
-        }
-
-        .rank-10 .pip:nth-child(4) {
-            top: 80%;
-            left: 30%;
-            transform: translate(-50%, -50%) rotate(180deg);
-        }
-
-        .rank-10 .pip:nth-child(5) {
-            top: 20%;
-            left: 70%;
-        }
-
-        .rank-10 .pip:nth-child(6) {
-            top: 40%;
-            left: 70%;
-        }
-
-        .rank-10 .pip:nth-child(7) {
-            top: 60%;
-            left: 70%;
-            transform: translate(-50%, -50%) rotate(180deg);
-        }
-
-        .rank-10 .pip:nth-child(8) {
-            top: 80%;
-            left: 70%;
-            transform: translate(-50%, -50%) rotate(180deg);
-        }
-
-        .rank-10 .pip:nth-child(9) {
-            top: 30%;
-            left: 50%;
-        }
-
-        .rank-10 .pip:nth-child(10) {
-            top: 70%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(180deg);
-        }
-    </style>
-    <style>
 @keyframes animate {
     0%{
         transform: translateY(0) rotate(0deg);
@@ -512,7 +159,7 @@
             0 0 28px #9400d3; /* Violet */
     }
 }
-.megan {
+.place-7-0 {
     text-shadow:
             0 0 4px #ff0000, /* Red */
             0 0 8px #ff7f00, /* Orange */
@@ -606,15 +253,8 @@
 </ul>
     <script type="module" src="./card_analyzer.js"> </script>
     <script type="module">
-        import evaluateHand from "./card_analyzer.js"
-
-        const suitRenderDetails = {
-            S: { value: '♠', color: 'black' },
-            H: { value: '♥', color: 'red' },
-            D: { value: '♦', color: 'red' },
-            C: { value: '♣', color: 'black' },
-            none: { value: '', color: '', joker: true }
-        };
+        import evaluateHand from "./card_analyzer.js";
+        import renderCard from "./cards.js";
         const suits = {
             H: "Hearts",
             C: "Clubs",
@@ -628,33 +268,6 @@
             J: "Jack",
             T: "10"
         };
-
-        function renderPips(rank, suit) {
-            if (['J', 'Q', 'K', 'Joker'].includes(rank)) {
-                return `<div class="pip"><img src="${rank}${suit}.svg" width=70 /></div>`;
-            }
-            let count = (rank === 'A') ? 1 : parseInt(rank, 10)
-            return `<div class="pip">${suit}</div>`.repeat(count);
-        }
-
-        function renderPlayer({ player, cards, analysis }, index) {
-            return `
-                <dt class="${player.toLowerCase()}">${index+1}. ${player}<p>${renderAnalysis(analysis)}</p></dt>
-                <dd>${cards.map(renderCard).join("")}</dd>
-            `;
-        }
-
-        function renderCard(card) {
-            let suit = suitRenderDetails[card.at(-1)] || suitRenderDetails.none;
-            let rank = suit.joker ? "Joker" : card.slice(0, -1);
-
-            return `
-            <div class="card ${suit.color} rank-${rank.toLowerCase()}">
-                <div class="card-corner top-left">${rank}<br/>${suit.value}</div>
-                <div class="card-middle">${renderPips(rank, suit.value)}</div>
-                <div class="card-corner bottom-right">${rank}<br/>${suit.value}</div>
-            </div>`;
-        }
 
         function forAnalysis(card) {
             if(card === "JOKER") return "JK";
@@ -684,6 +297,13 @@
             }
         }
 
+        function renderPlayer({ player, cards, analysis }, index) {
+            return `
+                <dt class="${player.toLowerCase()} place-${cards.length}-${index}">${index+1}. ${player}<p>${renderAnalysis(analysis)}</p></dt>
+                <dd>${cards.map(renderCard).join("")}</dd>
+            `;
+        }
+
         function normaliseCards(cardsStr) {
             return cardsStr.toUpperCase().split(',').map(str => str.trim());
         }
@@ -694,16 +314,18 @@
             ...params.entries()
                 .map(([player, cardsStr]) => {
                     let cards = normaliseCards(cardsStr);
-                    return { player, cards };
+
+                    console.log(`Evaluating: ${player}`);
+                    let analysis = evaluateHand(cards.map(forAnalysis));
+                    console.log("analysis", analysis);
+                    
+                    return { player, cards, analysis};
                 })
         ]
 
-        document.querySelector("#players").innerHTML = players.map( ({player, cards}) => {
-            console.log(`Evaluating: ${player}`);
-            let analysis = evaluateHand(cards.map(forAnalysis));
-            console.log("analysis", analysis);
-            return { player, cards, analysis };
-        }).toSorted((a,b) => (b?.analysis?.priority || 0) - (a?.analysis?.priority || 0)).map(renderPlayer).join("");
+        document.querySelector("#players").innerHTML = players
+            .toSorted((a,b) => (b?.analysis?.priority || 0) - (a?.analysis?.priority || 0))
+            .map(renderPlayer).join("");
     </script>
 </body>
 
