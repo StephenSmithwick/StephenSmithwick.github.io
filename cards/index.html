@@ -637,9 +637,9 @@
             return `<div class="pip">${suit}</div>`.repeat(count);
         }
 
-        function renderPlayer({ player, cards, analysis }) {
+        function renderPlayer({ player, cards, analysis }, index) {
             return `
-                <dt class="${player.toLowerCase()}">${player}<p>${renderAnalysis(analysis)}</p></dt>
+                <dt class="${player.toLowerCase()}">${index+1}. ${player}<p>${renderAnalysis(analysis)}</p></dt>
                 <dd>${cards.map(renderCard).join("")}</dd>
             `;
         }
@@ -703,7 +703,7 @@
             let analysis = evaluateHand(cards.map(forAnalysis));
             console.log("analysis", analysis);
             return { player, cards, analysis };
-        }).map(renderPlayer).join("");
+        }).toSorted((a,b) => (b?.analysis?.priority || 0) - (a?.analysis?.priority || 0)).map(renderPlayer).join("");
     </script>
 </body>
 

@@ -47,8 +47,12 @@ const CATEGORY_PRIORITY = {
   "High Card": 0
 };
 
+export default function evaluateHandWithPriority(cards) {
+  let analysis = evaluateHand(cards);
+  return {...analysis, priority: CATEGORY_PRIORITY[analysis.category]};
+}
 // Evaluate made hand (7 or fewer cards). Jokers are full wildcards.
-export default function evaluateHand(cards){
+export function evaluateHand(cards){
   const t = tally(cards);
   const rc = Object.fromEntries(Object.entries(t.ranks||{}).map(([k,v])=>[RVAL[k],v]));
   const sc = t.suits || {};
@@ -150,7 +154,9 @@ export default function evaluateHand(cards){
   let availableJokers = jokers;
   for(let r=12;r>=0;r--){
     const have = rc[r]||0;
-    if(have + availableJokers >= 2) {
+    if(have == 2) {
+      pairRanks.push(r);
+    } else if(have + availableJokers >= 2) {
       pairRanks.push(r);
       availableJokers--;
     }
