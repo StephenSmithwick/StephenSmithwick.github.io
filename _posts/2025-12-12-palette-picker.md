@@ -14,7 +14,7 @@ needs-work: unpublished
 
 I thought it would be a fun and educational excercise to build myself a palette picker.
 
-<canvas id="color-wheel" width=300 height=300></canvas>
+<canvas id="color-wheel" width=300 height=300 style="float:left"></canvas>
 
 Selected
 : <span id="selected"/>
@@ -22,6 +22,7 @@ Selected
 Complimentary
 : <span id="complementary"/>
 
+<div style="clear: both"/>
 
 <style>
     .color {
