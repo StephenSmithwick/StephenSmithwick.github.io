@@ -14,8 +14,8 @@ install-dependencies:
     (cd comments-solid && pnpm install)
 
 # Run Jekyll Server Locally
-serve: install-comments-app
-    bundle exec jekyll serve
+serve +options="--unpublished": install-comments-app
+    bundle exec jekyll serve {{options}}
 
 # Run Comments Server Locally
 serve-comments: install-comments-app
