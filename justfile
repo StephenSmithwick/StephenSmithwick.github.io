@@ -1,5 +1,5 @@
 date := `date "+%Y-%m-%d"`
-post := `cat post.header.template.md`
+post := `cat post.template.md`
 comments_html := `cat comments-solid/comments.template.html`
 
 # list commands
