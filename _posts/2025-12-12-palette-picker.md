@@ -11,6 +11,7 @@ needs-work: unpublished
 [adobe-color-wheel]: https://color.adobe.com/create/color-wheel
 [canva-color-wheel]: https://www.canva.com/colors/color-wheel/
 [figma-color-wheel]: https://www.figma.com/color-wheel/
+[wiki-color-scheme]: https://en.wikipedia.org/wiki/Color_scheme
 
 I thought it would be a fun and educational excercise to build myself a palette picker.
 
@@ -21,6 +22,23 @@ Selected
 
 Complimentary
 : <span id="compliment"/>
+
+Split
+: <span id="split1"/>
+: <span id="split2"/>
+
+Triadic
+: <span id="triadic1"/>
+: <span id="triadic2"/>
+
+Monochromatic
+: <span id="mono1"/>
+: <span id="mono2"/>
+: <span id="mono3"/>
+: <span id="mono4"/>
+: <span id="mono5"/>
+: <span id="mono6"/>
+: <span id="mono7"/>
 
 <div style="clear: both"/>
 
@@ -34,20 +52,7 @@ Complimentary
 
 <script>
 function ColorWheel(canvas) {
-  const overlay = document.createElement('canvas');
-  [overlay.width, overlay.height] = [canvas.width, canvas.height];
-
-  overlay.style.cssText = ` 
-      position: absolute,
-      left: 0px,
-      top: 0px,
-      pointerEvents: none,
-      zIndex = ${(parseInt(window.getComputedStyle(canvas).zIndex) || 0) + 1}
-  `;
-  canvas.parentNode.appendChild(overlay);
-
   const ctx = canvas.getContext("2d");
-  const octx = overlay.getContext("2d");
   const size = canvas.width = canvas.height;
   const center = size / 2;
 
@@ -77,6 +82,28 @@ function ColorWheel(canvas) {
           y: (x * sin + y * cos)+center
       };
   }
+  
+  function length(pos) {
+    let x = pos.x-center;
+    let y = pos.y-center;
+    
+    return Math.sqrt((x*x) + (y*y));
+  }
+  
+  function scale(pos, factor) {
+    let x = pos.x-center;
+    let y = pos.y-center;
+    
+    let r = Math.sqrt((x*x) + (y*y));
+    let rad = Math.atan(y/x)
+    
+    let scale_r = r * factor;
+    
+    return {
+      x: (scale_r * Math.cos(rad)) + center,
+      y: (scale_r * Math.sin(rad)) + center,
+    };
+  }
 
   function colorAt(pos) {
       const pixel = Array.from(ctx.getImageData(pos.x, pos.y, 1, 1).data);
@@ -87,16 +114,40 @@ function ColorWheel(canvas) {
   
   function selectColors(x,y) {
     const pos = {x: x, y: y};
+    const len = length(pos);
+    if(len > center || len < center/4) return {};
     drawCircle(pos, 10);
     
     function tx(position) {
+      if(length(position) > center) return null;
       drawCircle(position, 5);
       return colorAt(position)
+    }
+    
+    let mono = (len < center / 2) ? {
+      mono1: tx(scale(pos, 3)),
+      mono2: tx(scale(pos, 2.5)),
+      mono3: tx(scale(pos, 2)),
+      mono4: tx(scale(pos, 1.5)),
+      mono5: tx(scale(pos, 0.5)),
+      mono6: tx(scale(pos, 0.25)),
+    } : {
+      mono1: tx(scale(pos, 1.75)),
+      mono2: tx(scale(pos, 1.5)),
+      mono3: tx(scale(pos, 1.25)),
+      mono4: tx(scale(pos, 0.75)),
+      mono5: tx(scale(pos, 0.5)),
+      mono6: tx(scale(pos, 0.25)),
     }
     
     return {
       color: tx(pos),
       compliment: tx(rotate(pos)),
+      split1: tx(rotate(pos, 2.61799)),
+      split2: tx(rotate(pos, 3.66519)),
+      triadic1: tx(rotate(pos, 2.0944)),
+      triadic2: tx(rotate(pos, 4.18879)),
+      ...mono
     };
   }
   
@@ -119,7 +170,7 @@ function ColorWheel(canvas) {
   }
   
   function clear() {
-    ctx.clearRect(0, 0, overlay.width, overlay.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     draw();
   }
 
@@ -138,7 +189,17 @@ const colorWheel = ColorWheel(document.querySelector("#color-wheel"));
 
 const colorViews = [
   ['color', document.querySelector("#selected")],
-  ['compliment', document.querySelector("#compliment")]
+  ['compliment', document.querySelector("#compliment")],
+  ['split1', document.querySelector("#split1")],
+  ['split2', document.querySelector("#split2")],
+  ['triadic1', document.querySelector("#triadic1")],
+  ['triadic2', document.querySelector("#triadic2")],
+  ['mono1', document.querySelector("#mono1")],
+  ['mono2', document.querySelector("#mono2")],
+  ['mono3', document.querySelector("#mono3")],
+  ['mono4', document.querySelector("#mono4")],
+  ['mono5', document.querySelector("#mono5")],
+  ['mono6', document.querySelector("#mono6")]
 ]
 const compliment = document.querySelector("#compliment");
 colorWheel.canvas.addEventListener("click", (evt) => {
@@ -146,7 +207,9 @@ colorWheel.canvas.addEventListener("click", (evt) => {
     const selected = colorWheel.selectColors(evt.offsetX, evt.offsetY);
     
     colorViews.forEach(([field, element]) => {
-      element.innerHTML = `${colorBox(selected[field])} ${selected[field]}`
+      if(selected[field]) {
+        element.innerHTML = `${colorBox(selected[field])} ${selected[field]}`; 
+      }
     });
 });
 </script>
