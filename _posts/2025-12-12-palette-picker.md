@@ -95,13 +95,13 @@ function ColorWheel(canvas) {
     let y = pos.y-center;
     
     let r = Math.sqrt((x*x) + (y*y));
-    let rad = Math.atan(y/x)
+    let theta = Math.atan2(y,x)
     
     let scale_r = r * factor;
     
     return {
-      x: (scale_r * Math.cos(rad)) + center,
-      y: (scale_r * Math.sin(rad)) + center,
+      x: (scale_r * Math.cos(theta)) + center,
+      y: (scale_r * Math.sin(theta)) + center,
     };
   }
 
@@ -202,14 +202,24 @@ const colorViews = [
   ['mono6', document.querySelector("#mono6")]
 ]
 const compliment = document.querySelector("#compliment");
-colorWheel.canvas.addEventListener("click", (evt) => {
+function choose(x,y) {
     colorWheel.clear();
-    const selected = colorWheel.selectColors(evt.offsetX, evt.offsetY);
+    const selected = colorWheel.selectColors(x,y);
     
     colorViews.forEach(([field, element]) => {
       if(selected[field]) {
         element.innerHTML = `${colorBox(selected[field])} ${selected[field]}`; 
       }
     });
-});
+}
+colorWheel.canvas.addEventListener(
+  "mousemove", 
+  e => {
+    if (e.buttons) choose(e.offsetX, e.offsetY);
+  }
+);
+colorWheel.canvas.addEventListener(
+  "click", 
+  e => choose(e.offsetX, e.offsetY)
+);
 </script>
