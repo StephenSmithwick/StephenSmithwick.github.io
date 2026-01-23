@@ -13,7 +13,7 @@ published: true
 [wiki-color-scheme]: https://en.wikipedia.org/wiki/Color_scheme
 [wiki-cielab]: https://en.wikipedia.org/wiki/CIELAB_color_space
 [lch-article]: https://lea.verou.me/blog/2020/04/lch-colors-in-css-what-why-and-how/
-[can-i-use-lch]: https://caniuse.com/css-lch-lab
+[caniuse-lch]: https://caniuse.com/css-lch-lab
 
 This is a color picker I wrote based on the traditional color wheel as an educational exercise.  This tool provides a convenient way to interact with the ideas described in Wikipedia’s article on [Color Scheme][wiki-color-scheme].  All of the code can be viewed in the page source and is not obscured or minified.
 
@@ -45,7 +45,7 @@ Without further ado, have fun playing with the wheel, click and/or drag around t
 Selected
 : <span id="selected"/>
 
-Complementary
+Complement
 : <span id="complement"/>
 
 Split
