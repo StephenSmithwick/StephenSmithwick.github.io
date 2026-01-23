@@ -4,7 +4,6 @@ title: Palette Picker
 categories: tools
 published: true
 # last_edit:
-needs-work: unpublished
 ---
 
 [paletton]: https://paletton.com/
