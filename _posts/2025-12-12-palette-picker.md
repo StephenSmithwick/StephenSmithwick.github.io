@@ -2,7 +2,7 @@
 layout: post
 title: Palette Picker
 categories: tools
-published: false
+published: true
 # last_edit:
 needs-work: unpublished
 ---
@@ -12,16 +12,42 @@ needs-work: unpublished
 [canva-color-wheel]: https://www.canva.com/colors/color-wheel/
 [figma-color-wheel]: https://www.figma.com/color-wheel/
 [wiki-color-scheme]: https://en.wikipedia.org/wiki/Color_scheme
+[wiki-cielab]: https://en.wikipedia.org/wiki/CIELAB_color_space
+[lch-article]: https://lea.verou.me/blog/2020/04/lch-colors-in-css-what-why-and-how/
+[can-i-use-lch]: https://caniuse.com/css-lch-lab
 
-I thought it would be a fun and educational excercise to build myself a palette picker.
+This is a color picker I wrote based on the traditional color wheel as an educational exercise.  This tool provides a convenient way to interact with the ideas described in Wikipedia’s article on [Color Scheme][wiki-color-scheme].  All of the code can be viewed in the page source and is not obscured or minified.
 
-<canvas id="color-wheel" width=500 height=500 style="float:left"></canvas>
+As I explored this idea I looked at a few existing tools for inspiration. My goal here was not feature parity, but a simpler interaction model:
+- [Adobe][adobe-color-wheel]
+- [Canva][canva-color-wheel]
+- [Figma][figma-color-wheel]
+
+## My Goals
+
+This tool prioritizes intuition over precision. It is intended for exploration rather than exact color science, and currently focuses on complementary, split, triadic, and monochromatic relationships derived from a single point on the wheel.
+
+## Why LCH instead of HSL or RGB
+
+For this picker I used LCH([Can I use LCH][caniuse-lch]), which is derived from [CIELAB][wiki-cielab] which is designed to match human vision and perceptual uniformity. I chose a fixed, medium lightness and a high chroma value which is beyond what most displays can fully reproduce, meaning it will be downscaled. With hues evenly spaced around the spectrum, the resulting color wheel feels more evenly distributed to the eye than what you would get using HSL.
+
+
+## Sampling colors from the canvas
+In order to retrieve the colors I used a simple approach and sample the colors directly from the canvas. This means the hex values match what is rendered though it may be inaccurate near boundaries due to anti-aliasing and color interpolation.
+
+
+## The tool
+
+Without further ado, have fun playing with the wheel, click and/or drag around the wheel to select the base colors.  All other colors will be calculated automatically.
+
+<div id="color-chooser" markdown="1">
+<canvas id="color-wheel" width=370></canvas>
 
 Selected
 : <span id="selected"/>
 
-Complimentary
-: <span id="compliment"/>
+Complementary
+: <span id="complement"/>
 
 Split
 : <span id="split1"/>
@@ -38,11 +64,18 @@ Monochromatic
 : <span id="mono4"/>
 : <span id="mono5"/>
 : <span id="mono6"/>
-: <span id="mono7"/>
 
-<div style="clear: both"/>
+</div>
 
 <style>
+    #color-chooser {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    #color-wheel {
+        border-radius: 50%;
+    }
     .color {
         display: inline-block;
         width: 1rem;
@@ -52,19 +85,14 @@ Monochromatic
 
 <script>
 function ColorWheel(canvas) {
-  const ctx = canvas.getContext("2d");
-  const size = canvas.width = canvas.height;
+  const ctx = canvas.getContext("2d", { willReadFrequently: true });
+  const size = canvas.height = canvas.width;
   const center = size / 2;
 
-  const conic = ctx.createConicGradient(-2*Math.PI/3, center, center);
-  const colors = [
-    "#f00", // red
-    "#808", // purple
-    "#03f", // blue
-    "#080", // green
-    "#ff0", // yellow
-    "#fa0"  // orange
-  ];
+  const conic = ctx.createConicGradient(0, center, center);
+  // Choose 6 colors that are evenly spaced perceptually using lch for the colorwheel's gradient
+  const colors = Array.from({ length:6 }, (_,i) => `lch(60% 132 ${i*60}`); 
+
   [...colors, colors[0]].forEach(
       (col, i) => conic.addColorStop(i / 6, col));
   
@@ -90,65 +118,55 @@ function ColorWheel(canvas) {
     return Math.sqrt((x*x) + (y*y));
   }
   
-  function scale(pos, factor) {
+  // evenly space steps over the color wheel and choose the nearest index to the current pos
+  function monochromaticSteps(pos) {
     let x = pos.x-center;
     let y = pos.y-center;
+    let len = Math.sqrt((x*x) + (y*y));
     
-    let r = Math.sqrt((x*x) + (y*y));
     let theta = Math.atan2(y,x)
     
-    let scale_r = r * factor;
+    let monoStep = center / 6;
+    let monoDelta = len % monoStep;
     
-    return {
-      x: (scale_r * Math.cos(theta)) + center,
-      y: (scale_r * Math.sin(theta)) + center,
-    };
+    return Array.from( {length:6},
+      (_,i) => {
+        let step = i * monoStep + monoDelta;
+        return [ `mono${i+1}`, {
+          x: (step * Math.cos(theta)) + center,
+          y: (step * Math.sin(theta)) + center,
+        }];
+      }); 
   }
-
+  
   function colorAt(pos) {
-      const pixel = Array.from(ctx.getImageData(pos.x, pos.y, 1, 1).data);
-      return `#${pixel.slice(0,3).map(
-              byte => byte.toString(16).padStart(2, '0'))
-          .join("").toUpperCase()}`;
+    if(length(pos) > center) return null;
+    const pixel = Array.from(ctx.getImageData(pos.x, pos.y, 1, 1).data);
+    return `#${pixel.slice(0,3).map(
+            byte => byte.toString(16).padStart(2, '0'))
+        .join("").toUpperCase()}`;
   }
   
   function selectColors(x,y) {
     const pos = {x: x, y: y};
-    const len = length(pos);
-    if(len > center || len < center/4) return {};
+    if(length(pos) > center ) return {};
+    
+    let positions = [
+      ["color", pos],
+      ["complement", rotate(pos)],
+      ["split1", rotate(pos, 2.61799)],
+      ["split2", rotate(pos, 3.66519)],
+      ["triadic1", rotate(pos, 2.0944)],
+      ["triadic2", rotate(pos, 4.18879)],
+      ...monochromaticSteps(pos)
+    ];
+    
+    let colors = positions.map(([color, position]) => [color, colorAt(position)]);
+    
     drawCircle(pos, 10);
+    positions.forEach(([_, position]) => drawCircle(position, 5));
     
-    function tx(position) {
-      if(length(position) > center) return null;
-      drawCircle(position, 5);
-      return colorAt(position)
-    }
-    
-    let mono = (len < center / 2) ? {
-      mono1: tx(scale(pos, 3)),
-      mono2: tx(scale(pos, 2.5)),
-      mono3: tx(scale(pos, 2)),
-      mono4: tx(scale(pos, 1.5)),
-      mono5: tx(scale(pos, 0.5)),
-      mono6: tx(scale(pos, 0.25)),
-    } : {
-      mono1: tx(scale(pos, 1.75)),
-      mono2: tx(scale(pos, 1.5)),
-      mono3: tx(scale(pos, 1.25)),
-      mono4: tx(scale(pos, 0.75)),
-      mono5: tx(scale(pos, 0.5)),
-      mono6: tx(scale(pos, 0.25)),
-    }
-    
-    return {
-      color: tx(pos),
-      compliment: tx(rotate(pos)),
-      split1: tx(rotate(pos, 2.61799)),
-      split2: tx(rotate(pos, 3.66519)),
-      triadic1: tx(rotate(pos, 2.0944)),
-      triadic2: tx(rotate(pos, 4.18879)),
-      ...mono
-    };
+    return Object.fromEntries(colors);
   }
   
   function draw() {
@@ -189,7 +207,7 @@ const colorWheel = ColorWheel(document.querySelector("#color-wheel"));
 
 const colorViews = [
   ['color', document.querySelector("#selected")],
-  ['compliment', document.querySelector("#compliment")],
+  ['complement', document.querySelector("#complement")],
   ['split1', document.querySelector("#split1")],
   ['split2', document.querySelector("#split2")],
   ['triadic1', document.querySelector("#triadic1")],
@@ -201,10 +219,10 @@ const colorViews = [
   ['mono5', document.querySelector("#mono5")],
   ['mono6', document.querySelector("#mono6")]
 ]
-const compliment = document.querySelector("#compliment");
-function choose(x,y) {
+const complement = document.querySelector("#complement");
+function colorSelectHandler(e) {
     colorWheel.clear();
-    const selected = colorWheel.selectColors(x,y);
+    const selected = colorWheel.selectColors(e.offsetX, e.offsetY);
     
     colorViews.forEach(([field, element]) => {
       if(selected[field]) {
@@ -215,11 +233,11 @@ function choose(x,y) {
 colorWheel.canvas.addEventListener(
   "mousemove", 
   e => {
-    if (e.buttons) choose(e.offsetX, e.offsetY);
+    if (e.buttons) colorSelectHandler(e);
   }
 );
 colorWheel.canvas.addEventListener(
   "click", 
-  e => choose(e.offsetX, e.offsetY)
+  e => colorSelectHandler(e)
 );
 </script>
