@@ -1,6 +1,5 @@
 ---
 header: Technical Expertise
-name: expertise
 ---
 
 Distributed Systems

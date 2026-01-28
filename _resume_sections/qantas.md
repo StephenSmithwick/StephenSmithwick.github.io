@@ -1,6 +1,5 @@
 ---
 class: company
-name: qantas
 ---
 {:.company-info}
 - ![Qantas Logo](images/qantas.png)

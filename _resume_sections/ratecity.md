@@ -1,6 +1,5 @@
 ---
 class: company
-name: ratecity
 ---
 {:.company-info}
 - ![RateCity Logo](images/ratecity.png)

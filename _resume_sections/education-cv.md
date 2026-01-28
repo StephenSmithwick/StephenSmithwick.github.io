@@ -1,6 +1,5 @@
 ---
 header: Education
-name: education-cv
 ---
 
 ### BSc, Computer Science

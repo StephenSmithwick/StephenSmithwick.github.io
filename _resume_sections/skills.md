@@ -1,6 +1,5 @@
 ---
 header: Key Skills
-name: skills
 ---
 {:.two-columns}
 *   Big data processing and optimization

@@ -1,6 +1,5 @@
 ---
 header: Other
-name: other
 ---
 {:.company-info}
 - ![Random Hacks of Kindness Logo](images/rhok.png)

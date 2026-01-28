@@ -1,6 +1,5 @@
 ---
 class: company
-name: urap-archive
 ---
 {:.company-info}
 - ![University of Colorado Logo](images/cu.png)

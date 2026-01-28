@@ -1,6 +1,5 @@
 ---
 class: company
-name: amazon
 ---
 {:.company-info}
 - ![Amazon Logo](images/amazon.png)

@@ -1,6 +1,5 @@
 ---
 class: company
-name: qantas-cv
 ---
 {:.company-info}
 - ![Qantas Logo](images/qantas.png)

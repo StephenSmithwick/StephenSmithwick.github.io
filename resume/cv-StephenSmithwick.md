@@ -5,7 +5,6 @@ categories: cv
 last_edit: 2025-10-14
 selections:
   - profile-cv
-  - experience
   - snowflake-cv
   - amazon-cv
   - qantas-cv

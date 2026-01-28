@@ -1,6 +1,5 @@
 ---
 header: Tools and Techologies
-name: tools-ai
 ---
 ML
 

@@ -1,6 +1,5 @@
 ---
 class: company
-name: snowflake
 ---
 
 {:.company-info}

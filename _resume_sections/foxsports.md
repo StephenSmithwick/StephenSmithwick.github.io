@@ -1,6 +1,5 @@
 ---
 class: company
-name: fox-archive
 ---
 {:.company-info}
 - ![Fox Sports Logo](images/foxsports.png)

@@ -4,7 +4,6 @@ title: Stephen Smithwick
 last_edit: 2025-10-14
 sections:
   - profile
-  - experience
   - snowflake
   - amazon
   - qantas

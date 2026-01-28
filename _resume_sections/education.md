@@ -1,6 +1,5 @@
 ---
 header: Education
-name: education
 ---
 
 ### BSc, Computer Science

@@ -1,6 +1,5 @@
 ---
 class: company
-name: biowisdom-archive
 ---
 
 {:.company-info}

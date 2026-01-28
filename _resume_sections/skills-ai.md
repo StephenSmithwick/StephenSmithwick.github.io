@@ -1,6 +1,5 @@
 ---
 header: Key Skills
-name: skills-ai
 ---
 {:.two-columns}
 *   AI/ML pipeline automation & fraud detection

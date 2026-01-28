@@ -1,6 +1,5 @@
 ---
 header: Tools and Technologies
-name: tools
 ---
 ML
 
