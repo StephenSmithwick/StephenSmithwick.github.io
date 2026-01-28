@@ -42,7 +42,6 @@ Data & Storage
 *   PostgreSQL
 *   DynamoDB
 *   Elasticsearch
-*   Data Warehousing
 
 Frameworks & Web
 
