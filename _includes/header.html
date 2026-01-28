@@ -5,6 +5,7 @@
         {% include icons/mobile-menu.html %}
 
         <div class="trigger">
+            {% if include.content %}{{include.content}}{% endif %}
             {% for page in site.pages %}{% if page.show %}
             <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">
                 {{ page.title }}

@@ -80,5 +80,5 @@ $on-laptop: 1000px;
 }
 
 // Import partials from `sass_dir` (defaults to `_sass`)
-@import "base", "layout", "syntax-highlighting", "gist-highlighting",
-    "diff2html", "forms", "printable", "view-transitions";
+@import "base", "layout", "site_nav", "icons", "syntax-highlighting",
+    "gist-highlighting", "diff2html", "forms", "printable", "view-transitions";

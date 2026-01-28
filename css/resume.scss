@@ -2,17 +2,13 @@
 # Resume Styles
 ---
 
-@import url(fonts/open_sans.css);
-
 $dark-blue: #00578a;
 $darker-blue: darken($dark-blue, 25%);
-$mid-blue: #0588bc;
+$mid-blue: #4b91eb;
 $light-blue: #c9d9f2;
 $desk: #ccc;
 $paper: #fff;
 
-/* $page-height: 25cm; // A4 */
-$page-height: 275mm; // US-Letter
 $top-margin: 0.75cm;
 $inside-margin: 0.25cm;
 $left-outside-margin: 1cm;
@@ -27,6 +23,22 @@ $small-indent: 3cm;
 $big-indent: $content-width / 2;
 $li-left-padding: 1.5em;
 $li-right-padding: 2em;
+
+@mixin media-query($device) {
+    @media screen and (max-width: $device) {
+        @content;
+    }
+}
+$grey-color: $mid-blue;
+$grey-color-light: lighten($grey-color, 40%);
+$grey-color-dark: darken($grey-color, 25%);
+$background-color: #fdfdfd;
+$text-color: #111;
+$base-line-height: 1.5;
+$on-palm: 800px;
+$on-laptop: 1000px;
+$spacing-unit: 1em;
+@import "site_nav", "icons", url(fonts/open_sans.css);
 
 body {
     font-size: 0.28cm;
@@ -102,7 +114,8 @@ aside {
     font-style: normal;
 
     address {
-        height: $page-height;
+        position: fixed;
+        width: $sidebar-width;
     }
 
     .phone a {
@@ -232,35 +245,19 @@ dl {
         display: none;
     }
 
-    .left-nav {
-        top: 0em;
-        left: calc(-2em - #{$left-outside-margin});
+    header {
+        position: sticky;
+        height: 5em;
+        top: 0;
+        left: 0;
         padding: 0.25em 0em 0.25em 2em;
-        position: absolute;
         background-color: $mid-blue;
-        border-radius: 0.5em 0 0 0.5em;
-
-        a,
-        button {
-            &:hover {
-                cursor: pointer;
-            }
-            &:last-child {
-                border-width: 0;
-            }
-
-            font-size: 0.3cm;
-            color: #fff;
-            text-decoration: none;
-            background-color: transparent;
-            border: solid #fff;
-            border-width: 0 1px 0 0;
-            padding: 1px 6px;
-        }
+        border-bottom: 5px solid $dark-blue;
+        margin-left: -$sidebar-width;
     }
 
     address {
-        margin-top: 3em;
+        margin-top: 112px;
     }
 
     aside {
@@ -272,6 +269,7 @@ dl {
 }
 
 @media print {
+    header,
     .left-nav {
         display: none;
     }

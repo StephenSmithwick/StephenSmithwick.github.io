@@ -6,12 +6,13 @@
     <link href="/css/resume.css" rel="stylesheet" type="text/css" />
 </head>
 
+
+{% capture print %}
+<button onclick="window.print()">Print</button>
+{% endcapture %}
+
 <body class="resume">
     <aside>
-        <div class="left-nav">
-            <button onclick="print_resume()">Print</button>
-            <a href="{{ site.baseurl }}/">Home</a>
-        </div>
         <address>
             <h1>Stephen Smithwick</h1>
 
@@ -26,27 +27,9 @@
         </address>
     </aside>
     <article>
+        {% include header.html content=print %}
         {{ content }}
     </article>
-    <script>
-        function print_resume() {
-            const sidebar = document.getElementsByTagName('aside')[0];
-            const address = sidebar.getElementsByTagName('address')[0];
-            const article = document.getElementsByTagName('article')[0];
-
-            const pages = article.clientHeight / address.clientHeight;
-
-            for (var i = 1; i < pages; i++) {
-                var next = address.cloneNode(true);
-                next.removeAttribute('id');
-                next.setAttribute('class', 'for-printing');
-                sidebar.insertBefore(next, null);
-                console.log({sidebar: document.getElementsByTagName('aside')[0].clientHeight, article: article.clientHeight})
-            }
-
-            window.print();
-        }
-    </script>
 </body>
 
 </html>
