@@ -11,7 +11,8 @@ $light-blue: #c9d9f2;
 $desk: #ccc;
 $paper: #fff;
 
-$page-height: 25cm;
+/* $page-height: 25cm; // A4 */
+$page-height: 275mm; // US-Letter
 $top-margin: 0.75cm;
 $inside-margin: 0.25cm;
 $left-outside-margin: 1cm;
@@ -140,6 +141,25 @@ ul.company-info {
         &:last-child {
             text-align: right;
         }
+    }
+}
+
+.company-shorts {
+    display: grid;
+    grid-template-columns: auto $big-indent;
+    align-items: first baseline;
+    row-gap: 0;
+
+    h3 {
+        grid-column: 1;
+        margin: 0 0 0.5em 0;
+    }
+
+    ul {
+        grid-column: 2;
+        margin: 0 0 0.5em 0;
+        list-style-type: none;
+        text-align: right;
     }
 }
 

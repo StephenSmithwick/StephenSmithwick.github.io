@@ -8,9 +8,7 @@ name: ratecity
 January 2015 - March 2016
 
 ### RateCity - Technical Director
-Highlights:
-*   Transitioned the development process to an agile scrum framework.
-*   Led a system migration from a legacy monolith to a modular high-performance architecture.
-*   Improved system scalability by transitioning to AWS.
-*   Developed a new data warehouse, enhancing behavioral tracking and analytics.
-*   Established and managed a remote overseas team.
+*   *Transformed engineering culture* by implementing Agile/Scrum frameworks, improving delivery predictability and team velocity.
+*   *Modernized the front-end architecture* by migrating from *Rails* to a *decoupled ReactJS stack*.
+*   *Architected the transition to AWS*, re-platforming the infrastructure to support horizontal scalability and improved site reliability.
+*   *Engineered a custom data warehouse*, integrating behavioral tracking to enable real-time, data-driven product analytics.

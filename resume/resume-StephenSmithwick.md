@@ -9,9 +9,9 @@ sections:
   - amazon
   - qantas
   - ratecity
+  - earlier
   - education
-  - skills
-  - tools
+  - expertise
   - other
 show: true
 ---

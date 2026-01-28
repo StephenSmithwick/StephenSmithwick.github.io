@@ -8,11 +8,8 @@ name: qantas
 March 2016 - April 2019
 
 ### Qantas - Principal Software Engineer
-Highlights:
-*   Advised and implemented IT transformation initiatives, improving development practices.
-*   Championed Test Driven Development (TDD) and Continuous Integration within Bamboo pipelines.
-*   Led the adoption of agile methodologies across multiple teams.
-*   Established the Notification Team, delivering multi-channel flight and passenger updates.
-*   Led the Customer Response Engine team to enhance customer insights through APIs and event streams.
-*   Founded the Security Guild to improve security best practices across development teams.
-*   Built a high-performing team by defining measurable KPIs with team input, and prioritizing work by business value while supporting individual growth.
+*   *Architected a high-concurrency middleware layer* using Java and Spring to unify fragmented legacy APIs, supporting millions of flight events daily.
+*   *Led engineering practices* over the transformation of the Qantas website to AEM, migrating from a monolithic architecture to a decoupled microservices environment on AWS.
+*   *Standardized engineering excellence across multiple teams* by introducing automated testing, CI/CD pipelines, and a shared internal library for common patterns.
+*   *Directly managed and mentored a team of engineers*, balancing hands-on technical contribution with strategic roadmap planning.
+*   *Founded the Security Guild* to improve security best practices across development teams.
