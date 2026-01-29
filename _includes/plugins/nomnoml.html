@@ -1,0 +1,21 @@
+<script src="/js/graphre.js"></script>
+<script src="/js/nomnoml.js"></script>
+
+<script>
+const DEFAULT_STYLES = [
+  "#fill: #fff; #eee",
+  "#padding: 4",
+  "#gutter: 4",
+  ""].join("\n");
+[...document.querySelectorAll("code.language-nomnoml")].forEach((code,i) => {
+  let source = DEFAULT_STYLES + code.innerText;
+  let parent = code.parentElement;
+  let classes = parent.className;
+  let styles = parent.style.cssText;
+  code.parentElement.outerHTML = `<canvas class="${classes}" style="${styles}" id="nomnoml-canvas-${i}"></canvas>`;
+  let canvas = document.getElementById(`nomnoml-canvas-${i}`)
+
+  nomnoml.draw(canvas, source)
+});
+</script>
+<!--Editor: https://www.nomnoml.com/ -->
