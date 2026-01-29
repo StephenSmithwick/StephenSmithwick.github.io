@@ -1,11 +1,11 @@
-<script src="/js/mermaid.min.js"></script>
+<script src="/js/mermaid.tiny.min.js"></script>
 <script>
   [...document.querySelectorAll("code.language-mermaid")].forEach((code) => {
     code.parentElement.classList.add("mermaid");
     code.parentElement.innerHTML = code.innerHTML;
   });
-  
-  mermaid.initialize({ 
+
+  mermaid.initialize({
     securityLevel:'loose',
     flowchart: { useMaxWidth: false, htmlLabels: true }
   });
