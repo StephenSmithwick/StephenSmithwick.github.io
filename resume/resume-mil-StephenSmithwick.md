@@ -3,6 +3,7 @@ layout: resume
 title: Stephen Smithwick
 last_edit: 2025-10-14
 categories: mil
+aside: aside-mil
 sections:
   - profile-mil
   - snowflake-mil

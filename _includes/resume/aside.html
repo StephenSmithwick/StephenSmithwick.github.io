@@ -1,0 +1,6 @@
+{% capture slug %}{{ page.aside | default: 'aside' }}{% endcapture %}
+{% assign aside = site.resume_sections | where_exp: "item", "item.slug == slug" | first %}
+
+<address>
+    {{ aside.content }}
+</address>

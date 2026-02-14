@@ -1,9 +1,8 @@
-{% for name in include.sections %}
-  {% capture target_path %}_resume_sections/{{ name }}.md{% endcapture %}
-  {% assign content = site.resume_sections | where_exp: "item", "item.path == target_path" | first %}
+{% for slug in include.sections %}
+  {% assign content = site.resume_sections | where_exp: "item", "item.slug == slug" | first %}
   {% if content %}
     {% include resume/section.html section=content %}
   {% else %}
-    !!! No resume content found for: {{ name }}
+    !!! No resume content found for: {{ slug }}
   {% endif %}
 {% endfor %}
