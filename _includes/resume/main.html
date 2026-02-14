@@ -1,8 +1,4 @@
-{% assign sections = include.sections %}
-
-
-
-{% for name in sections %}
+{% for name in include.sections %}
   {% capture target_path %}_resume_sections/{{ name }}.md{% endcapture %}
   {% assign content = site.resume_sections | where_exp: "item", "item.path == target_path" | first %}
   {% if content %}
