@@ -37,6 +37,11 @@ exclude:
   - state-cdk
   - comments-solid
   - comments-service
+defaults:
+  - scope:
+      path: "resume"
+    values:
+      permalink: /resume/:basename/
 
 # Build settings
 markdown: kramdown
