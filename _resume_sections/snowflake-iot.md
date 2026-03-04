@@ -13,3 +13,4 @@ May 2023 - August 2024
 * Modernized global ingress routing by contributing to the migration from legacy NGINX to a custom, dynamic Envoy-based routing platform.
 * Coordinated cross-team fix of a critical authentication vulnerability, closing a potential security bypass.
 * Developed tool to block attacker associated IP addresses during high-stakes security incident and limit the blast radius of at scale attack on Snowflake customer.
+* Setup Snowflake dashboards and alerts on service issues using Grafana and Prometheus.

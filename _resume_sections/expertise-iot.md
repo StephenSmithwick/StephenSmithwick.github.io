@@ -24,15 +24,17 @@ Cloud Infrastructure
 *   Docker
 *   Kubernetes
 *   CI/CD (Jenkins, GitLab CI)
+*   Kinesis Data Streams
 
 Languages
 
 : {:.inline}
+*   TypeScript
 *   Java (Expert/20+ years)
+*   C#
 *   Python
 *   Go
 *   SQL
-*   TypeScript
 *   Ruby
 *   Rust
 
