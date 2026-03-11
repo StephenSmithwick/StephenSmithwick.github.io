@@ -19,15 +19,15 @@
     "remark-html": "^16.0.1"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.3",
+    "@eslint/eslintrc": "^3.3.5",
     "@next/env": "^15.5.12",
-    "@tailwindcss/postcss": "^4.2.0",
-    "@types/node": "^20.19.33",
+    "@tailwindcss/postcss": "^4.2.1",
+    "@types/node": "^20.19.37",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "eslint": "^9.39.3",
+    "eslint": "^9.39.4",
     "eslint-config-next": "15.3.3",
-    "tailwindcss": "^4.2.0",
+    "tailwindcss": "^4.2.1",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   }
