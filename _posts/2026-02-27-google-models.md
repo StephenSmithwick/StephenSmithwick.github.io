@@ -23,7 +23,7 @@ Gemini 2.5 Flash Lite	| gemini-2.5-flash-lite	| Text-out |	Ultra-fast, high RPM 
 Display Name|API Model ID | Category|Key Strength
 -|-|-|-
 Gemma 3 27B |	gemma-3-27b-it	| Other |	High-tier open weights (multi-modal).
-Gemma 3 12B |	gemma-3-12b-it	| Other |	Great for local hosting/Agentia testing.
+Gemma 3 12B |	gemma-3-12b-it	| Other |	Great for local hosting/Agent testing.
 Gemma 3 4B |	gemma-3-4b-it	| Other |	Lightweight multi-modal.
 Gemma 3 1B |	gemma-3-1b-it	| Other |	Extreme efficiency.
 
