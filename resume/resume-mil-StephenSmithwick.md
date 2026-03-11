@@ -1,7 +1,7 @@
 ---
 layout: resume
 title: Stephen Smithwick
-last_edit: 2025-10-14
+last_edit: 2026-02-14
 categories: mil
 aside: aside-mil
 sections:

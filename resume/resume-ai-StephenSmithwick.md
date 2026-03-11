@@ -2,7 +2,7 @@
 layout: resume
 title: Stephen Smithwick
 categories: ai
-last_edit: 2025-10-14
+last_edit: 2026-01-28
 sections:
   - profile-ai
   - snowflake

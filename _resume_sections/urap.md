@@ -2,7 +2,7 @@
 class: company
 ---
 {:.company-info}
-- ![University of Colorado Logo](images/cu.png)
+- ![University of Colorado Logo](/resume/images/cu.png)
 - [https://l3d.cs.colorado.edu](https://l3d.cs.colorado.edu) \\
 Life Long Learning and Design
 

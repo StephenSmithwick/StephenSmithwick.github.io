@@ -2,7 +2,7 @@
 class: company
 ---
 {:.company-info}
-- ![Qantas Logo](images/qantas.png)
+- ![Qantas Logo](/resume/images/qantas.png)
 - Sydney, Australia \\
 March 2016 - April 2019
 

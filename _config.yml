@@ -32,16 +32,14 @@ show_downloads: true
 permalink: none
 emptyArray: []
 collections:
-  - resume_sections
+  resume_sections: {}
+  resumes:
+    output: true
+    permalink: /resume/:basename/
 exclude:
   - state-cdk
   - comments-solid
   - comments-service
-defaults:
-  - scope:
-      path: "resume"
-    values:
-      permalink: /resume/:basename/
 
 # Build settings
 markdown: kramdown

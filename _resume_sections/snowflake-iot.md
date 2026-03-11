@@ -3,7 +3,7 @@ class: company
 ---
 
 {:.company-info}
-- ![Snowflake Logo](images/snowflake.svg)
+- ![Snowflake Logo](/resume/images/snowflake.svg)
 - Seattle, USA \\
 May 2023 - August 2024
 

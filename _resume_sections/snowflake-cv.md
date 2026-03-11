@@ -2,7 +2,7 @@
 class: company
 ---
 {:.company-info}
-- ![Snowflake Logo](images/snowflake.svg)
+- ![Snowflake Logo](/resume/images/snowflake.svg)
 - [ Snowflake Computing](https://www.snowflake.com) \\
 Snowflake is a leading cloud data warehouse which provides a SaaS solution to store, analyze, and share data.
 

@@ -2,7 +2,7 @@
 class: company
 ---
 {:.company-info}
-- ![DiUS Logo](images/dius.png)
+- ![DiUS Logo](/resume/images/dius.png)
 - [http://www.dius.com.au](http://www.dius.com.au) \\
 DiUS is an Agile consulting business which focuses on delivering products for its customers in a collaborative, iterative and build-measure-learn way.
 

@@ -2,7 +2,7 @@
 class: company
 ---
 {:.company-info}
-- ![RateCity Logo](images/ratecity.png)
+- ![RateCity Logo](/resume/images/ratecity.png)
 - Sydney, Australia \\
 January 2015 - March 2016
 

@@ -2,7 +2,7 @@
 header: Other
 ---
 {:.company-info}
-- ![Random Hacks of Kindness Logo](images/rhok.png)
+- ![Random Hacks of Kindness Logo](/resume/images/rhok.png)
 - Sydney, Australia \\
 2011 - 2016
 

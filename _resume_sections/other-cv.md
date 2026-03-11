@@ -5,7 +5,7 @@ header: Other
 ### Founding Member and Organizer of Random Hacks of Kindness Australia
 
 {:.company-info}
-- ![Random Hacks of Kindness Logo](images/rhok.png)
+- ![Random Hacks of Kindness Logo](/resume/images/rhok.png)
 - Random Hacks of Kindness is a hackathon for social good that brings together volunteer developers and tech-savvy do-gooders to work with charities, community groups and social enterprises.
 
 {:.location-date}

@@ -2,7 +2,7 @@
 class: company
 ---
 {:.company-info}
-- ![Qantas Logo](images/qantas.png)
+- ![Qantas Logo](/resume/images/qantas.png)
 - [http://www.qantas.com](http://www.qantas.com) \\
  Qantas is Australia's leading domestic and international airline.
 

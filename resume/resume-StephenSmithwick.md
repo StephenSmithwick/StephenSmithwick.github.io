@@ -1,7 +1,7 @@
 ---
 layout: resume
 title: Stephen Smithwick
-last_edit: 2025-10-14
+last_edit: 2026-03-04
 sections:
   - profile
   - snowflake

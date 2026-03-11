@@ -2,7 +2,7 @@
 class: company
 ---
 {:.company-info}
-- ![Amazon Logo](images/amazon.png)
+- ![Amazon Logo](/resume/images/amazon.png)
 - Seattle, USA \\
 May 2019 - March 2023
 

@@ -1,20 +1,20 @@
 ---
 layout: page
-title: "Resume Variants"
+title: "Resumes"
 ---
 
 <div class="home">
     <ul class="blog-list">
-        {% for page in site.pages %}{% if page.layout == 'resume' %}
+        {% for resume in site.pages %}{% if resume.layout == 'resume' %}
         <li>
             <span class="title">
-                <a href="{{ page.url | prepend: site.baseurl }}" >
-                    {{ page.title }}
+                <a href="{{ resume.url | prepend: site.baseurl }}" >
+                    {{ resume.title }}
                 </a>
-                <span class="category">{{ page.categories }}</span>
+                <span class="category">{{ resume.categories }}</span>
             </span>
             <span class="edit">
-                {% if page.last_edit %} edited: {{page.last_edit | date: "%b
+                {% if resume.last_edit %} edited: {{resume.last_edit | date: "%b
                 %-d, %Y"}} {% endif %}
             </span>
         </li>

@@ -60,6 +60,16 @@ post-needs-work target="all": && (post-stats "needs-work")
         echo; \
     fi
 
+# Review details about all resume variants including last commit date
+resume-review:
+    @ for file in $(ls resume); do \
+        printf "%-40s$(git log --date=short -1 --format="%cd" -- resume/$file)\n" "$file"; \
+        for section in $(awk '/sections:/ {f=1} f && /^[[:space:]]*- / {print $2}' resume/$file); do \
+            printf " - %-20s$(git log -1 --date=short --format="%cd" -- _resume_sections/$section.md)\n" "$section"; \
+        done \
+    done
+
+
 # move comments-app into jekyll and update references
 install-comments-app: build-comments-app
     #! /bin/bash

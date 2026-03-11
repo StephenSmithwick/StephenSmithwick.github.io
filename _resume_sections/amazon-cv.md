@@ -2,7 +2,7 @@
 class: company
 ---
 {:.company-info}
-- ![Amazon Logo](images/amazon.png)
+- ![Amazon Logo](/resume/images/amazon.png)
 - [Kindle Direct Publishing](https://kdp.amazon.com/) operates a subscription based marketplace to give readers unlimited access to books by participating authors \\
 [AWS](https://aws.amazon.com/) is the leading cloud computing platform which provides S3 the ubiquitious storage service with high availability and durability (11 9's)
 
