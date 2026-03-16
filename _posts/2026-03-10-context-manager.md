@@ -6,9 +6,8 @@ published: true
 # last_edit:
 plugins: mermaid
 ---
-I've been desinging with some LLM collaboration an agent context memory manager for use with the Agent I'm building.
 
-# Design Document
+I've been desinging with some LLM collaboration an agent context memory manager for use with the Agent I'm building.
 
 ## Project Overview
 
@@ -20,16 +19,12 @@ I've been desinging with some LLM collaboration an agent context memory manager 
 
 **Invariant:** The daemon never deletes or mutates stored content. All state evolution occurs through append-only events.
 
----
-
 ## System Architecture
 
 - **Communication:** IPC via UNIX sockets / standard streams using a JSON-Lines (JSONL) protocol. Framing markers guard against partial reads on mid-write crashes.
 - **Data Format:** Strictly adheres to the standard LLM message interface (`role`, `content`, `tool_calls`), extended with `memory_in` and `memory_out` sideband fields.
 - **Inference Dependency:** Exactly one local ONNX model — `all-MiniLM-L6-v2` (~90MB) for chunk embedding. No main LLM involvement in memory operations. No network calls.
 - **Safety/Logging:** All internal daemon logging uses `stderr` (`eprintln!`) to prevent corruption of the JSONL data stream.
-
----
 
 ## Memory Layers Overview
 
@@ -42,8 +37,6 @@ The daemon manages two active memory layers. These are logical roles, not a stor
 
 Retrieval is stateless — there is no in-memory promoted set, no frequency index, and no derived state beyond the superseded set that requires reconciliation at startup.
 
----
-
 ## WAL-Style Append-Only Semantics
 
 The Episodic Store is an **append-only log**. Entries are never mutated in place. Corrections — deprecations, updates, utility adjustments — are written as new log entries with the same logical chunk ID but a higher `canonical_id`.
@@ -55,8 +48,6 @@ Consequences:
 - **Sealed segments are truly immutable.** No in-place writes ever occur on sealed segment files or their HNSW indexes.
 - **Crash recovery is trivial.** The log is always consistent; only partial writes at the tail of the active segment require recovery.
 - **Full audit history is preserved.** Deprecated or updated content remains in the log and is recoverable.
-
----
 
 ## The Superseded Set
 
@@ -82,15 +73,11 @@ memory/
     # no superseded.bin — always derived from the log at startup
 ```
 
----
-
 ## Physical Compaction — Optional Maintenance Only
 
 With HNSW indexes and the superseded set handling correctness and performance, physical compaction — rewriting segment files to remove superseded entries — is **not a required correctness mechanism**. It is an optional maintenance operation that reduces HNSW index size when the superseded rate within a segment becomes large enough to meaningfully affect search cost.
 
 HNSW search scales as O(log N) in indexed vectors. A segment with a 40% superseded rate searches a graph roughly 1.7× larger than a fully compacted equivalent — a modest constant factor, not a pathological degradation. Physical compaction is deliberately out of scope for v1.
-
----
 
 ## Topic Scoping
 
@@ -100,8 +87,6 @@ Every message is scoped to a **topic** — a named, fully isolated Episodic Stor
 - `related_topic_ids` allows read-only retrieval from additional topics in the same turn.
 - **Topics are created implicitly** on first use.
 
----
-
 ## Cross-Topic Corrections — Passive Adoption
 
 Corrections referencing chunks from a `related_topic_id` are handled passively. The daemon appends the correction directly to the current topic's active log using the existing chunk ID. Because the current topic's entry carries a higher `canonical_id`, it naturally shadows the related topic's version at retrieval time via the superseded set.
@@ -110,8 +95,6 @@ Corrections referencing chunks from a `related_topic_id` are handled passively. 
 - Source topic is never modified.
 - Lineage is implicit: the source topic still holds the original entry under the same chunk ID.
 - A correction on a cross-topic chunk applies only within the current topic's context.
-
----
 
 ## Hot Buffer
 
@@ -125,8 +108,6 @@ An in-memory rolling buffer of the raw conversation. Tracks tokens using `tiktok
 |---|---|
 | **Soft** (e.g. 3,500 tokens) | Background compaction — no user-visible delay |
 | **Hard** (e.g. 4,000 tokens) | Stop-the-world — safety backstop only |
-
----
 
 ## Episodic Store
 
@@ -182,8 +163,6 @@ struct SegmentMeta {
 
 `canonical_id_range` is used only during superseded set construction at startup, to determine scan order when resolving which entry for a given chunk ID is authoritative. It is not used to gate similarity search.
 
----
-
 ## Utility Multiplier
 
 The `utility_multiplier` is the sole mechanism by which external callers influence retrieval priority. It is adjusted via `Helpful` and `Unhelpful` corrections using **logarithmic steps** — each correction multiplies or divides by a constant ratio `r`, giving every step the same relative effect regardless of current value.
@@ -238,8 +217,6 @@ The asymmetry between ceiling (10 steps up) and floor (4 steps down) is intentio
 
 In log space, `Helpful` and `Unhelpful` are perfectly symmetric — the same number of opposing corrections exactly cancels, returning the multiplier to its prior value regardless of where it sits. This is not true of linear steps near clamp boundaries.
 
----
-
 ## Retrieval Scoring
 
 ```rust
@@ -251,8 +228,6 @@ fn retrieval_score(chunk: &Chunk, query_cosine: f32) -> f32 {
 Simple, transparent, and entirely driven by embedding similarity and explicit caller feedback. No frequency tracking, no decay, no internal heuristics.
 
 The `max(0.0)` clamp is load-bearing. Cosine similarity ranges $[-1, 1]$ — a negative value indicates semantic opposition or orthogonality. Without the clamp, a soft-pinned chunk (high `utility_multiplier`) against an opposed query would produce a large negative score, violently forcing it to the bottom of the rankings rather than simply not surfacing it. Clamping at `0.0` ensures a chunk scores at worst neutral, never actively penalised by its own amplification.
-
----
 
 ## Recall Budget and Retrieval Scaling
 
@@ -277,8 +252,6 @@ These figures apply to **linear scan of the active segment only**. Sealed segmen
 **Sealed segments (HNSW fan-out):** Each sealed segment is queried independently via its HNSW index. Queries fan out in parallel across all sealed segments. Searching 20 segments of 5,000 entries each is substantially cheaper than a linear scan of 100,000 entries, and the searches are embarrassingly parallel.
 
 The recall budget therefore applies primarily to the HNSW fan-out latency sum. As the corpus grows, if total retrieval latency exceeds the recall budget despite parallelism tuning, the prescribed path is a **merged HNSW index** over the N oldest sealed segments — reducing fan-out count at the cost of a more complex rebuild process. This is deferred to a future iteration.
-
----
 
 ## Just-in-Time (JIT) Context Injection
 
@@ -339,8 +312,6 @@ These IDs are echoed in `MemoryOut.injected_chunks` and are the stable reference
 
 The daemon emits `context_pressure` when retrieved content exceeds a configurable fraction of the budget (default: 0.8). It emits `context_overflow` when the budget is exceeded and clipping has occurred. Both thresholds are configurable constants.
 
----
-
 ## Token-Aware Compaction (Ingestion)
 
 When the Hot Buffer hits the soft token threshold:
@@ -360,8 +331,6 @@ When the Hot Buffer hits the soft token threshold:
 6. Appends new chunks to `active.bin` with `utility_multiplier: 1.0`.
 7. If `active.bin` reaches the seal threshold, seals the segment and builds its HNSW index.
 8. Remaining newest messages roll over into the buffer.
-
----
 
 ## MetaObject: MemoryIn & MemoryOut
 
@@ -398,8 +367,6 @@ type CorrectiveAction =
 
 **Validation:** All `chunk_id` values are verified against recently injected chunks before action. Unrecognised or already-deprecated IDs emit a `correction_failed` signal and are discarded.
 
----
-
 ### MemoryOut (Daemon → LLM/Agent)
 
 ```typescript
@@ -429,8 +396,6 @@ interface Signal {
 
 **Back-pressure intent:** `context_pressure` fires before clipping occurs, giving clients the opportunity to act preventively — `fill_ratio` of `0.8` means 80% of the budget is consumed and clipping is imminent. `context_overflow` fires when clipping has already occurred; `fill_ratio` above `1.0` indicates how far over budget the available content was (e.g. `1.35` = 35% over). The natural response to either signal is `Unhelpful` corrections against low-value chunks in `injected_chunks`, driving their multipliers down and freeing injection budget on future turns. The daemon continues operating normally regardless of whether the caller acts.
 
----
-
 ## Key Flow — Sequence Diagrams
 
 ### Flow 1 — Normal Retrieval Turn
@@ -456,8 +421,6 @@ sequenceDiagram
     A->>U: LLM response
 ```
 
----
-
 ### Flow 2 — Update (Replace or Consolidate)
 
 ```mermaid
@@ -481,8 +444,6 @@ sequenceDiagram
     ES-->>D: OK
 ```
 
----
-
 ### Flow 3 — Helpful / Unhelpful
 
 ```mermaid
@@ -501,8 +462,6 @@ sequenceDiagram
     D->>ES: Append new entry for d4e5: utility_multiplier /= 1.5
     D->>D: Add old a1b2, d4e5 entries to superseded set
 ```
-
----
 
 ### Flow 4 — Cross-Topic Correction (Passive Adoption)
 
@@ -525,8 +484,6 @@ sequenceDiagram
     Note over ES_cur: proj-y now shadows proj-x's a3f9 at retrieval
 ```
 
----
-
 ### Flow 5 — Segment Seal and HNSW Build
 
 ```mermaid
@@ -542,8 +499,6 @@ sequenceDiagram
     D->>ES: Open new active.bin
     Note over D: seg_0007.hnsw never modified after this point
 ```
-
----
 
 ### Flow 6 — Back Pressure
 
@@ -566,8 +521,6 @@ sequenceDiagram
     A->>D: }
 ```
 
----
-
 ## Future Roadmap
 
 | Item | Notes |
@@ -582,8 +535,6 @@ sequenceDiagram
 | **Subtask nesting** | `parent_task_id` reserved in meta schema; no schema break required |
 | **Monitoring tooling** | Segment-level metrics capturable at seal time; dashboarding deferred until corpus size warrants it |
 | **Pointer chunks for adoption** | Lightweight alternative to appending full entries for cross-topic corrections; deferred until adoption volume is a measurable concern |
-
----
 
 ## Deliberately Out of Scope (v1)
 
