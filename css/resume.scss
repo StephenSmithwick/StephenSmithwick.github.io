@@ -39,6 +39,7 @@ $on-palm: 800px;
 $on-laptop: 1000px;
 $spacing-unit: 1em;
 @import "site_nav", "icons", url(fonts/open_sans.css);
+@import url(fonts/fira_code.css);
 
 body {
     font-size: 0.28cm;

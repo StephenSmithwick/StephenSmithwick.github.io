@@ -1,15 +1,18 @@
 /**
  * Site header
  */
+$header-color: #fff;
+$header-background: #b3ccf3;
+
 .site-header {
-    border-bottom: 5px solid $grey-color-dark;
+    border-radius: 0.5em 0.5em 0 0;
     border-top: 1px solid $grey-color-light;
     min-height: 112px;
     padding: 0 $spacing-unit;
 
     // Positioning context for the mobile navigation icon
     position: sticky;
-    background-color: #b3ccf3;
+    background-color: $header-background;
     background-image:
         url("../images/pikes_peak.jpg"), url("../images/pikes_peak_tail.jpg");
     background-repeat: no-repeat, repeat-x;
@@ -19,18 +22,19 @@
 }
 
 .site-title {
-    font-size: 26px;
+    font-family: Fira Code VF;
+    font-size: 32px;
     line-height: 56px;
-    margin-left: 70px;
-    letter-spacing: -1px;
+    margin-left: 60px;
     margin-bottom: 0;
     float: left;
 
     &,
     &:visited,
     &:hover {
-        color: $darker-blue;
+        color: $header-color;
         text-decoration: none;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
     }
 }
 
@@ -43,14 +47,29 @@
     }
 
     .page-link {
-        color: $text-color;
         line-height: $base-line-height;
 
-        @media (min-width: $on-palm) {
-            &:not(:first-child) {
-                border-left: 1px solid $dark-blue;
-                padding-left: 0.25em;
+        &,
+        &:visited,
+        &:hover {
+            color: $header-color;
+            text-decoration: none;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+            svg {
+                filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.6));
             }
+        }
+    }
+    button.page-link {
+        background-color: $dark-blue;
+        border-radius: 0.5em;
+    }
+
+    @media (min-width: $on-palm) {
+        .page-link + .page-link::before {
+            padding: 0 0.5em;
+            content: "|";
+            text-decoration: none;
         }
     }
 
@@ -58,7 +77,7 @@
         position: absolute;
         top: 9px;
         right: 30px;
-        background-color: $background-color;
+        background-color: $dark-blue;
         border: 1px solid $grey-color-dark;
         border-radius: 5px;
         text-align: right;
@@ -73,12 +92,9 @@
             text-align: center;
 
             > svg {
+                color: $header-color;
                 width: 18px;
                 height: 15px;
-
-                path {
-                    fill: $grey-color-dark;
-                }
             }
         }
 
