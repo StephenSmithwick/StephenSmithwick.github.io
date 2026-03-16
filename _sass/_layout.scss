@@ -1,3 +1,6 @@
+$paper-lines: rgba(0, 191, 255, 0.5);
+$paper-margin: rgba(245, 150, 230, 0.5);
+
 header,
 footer {
     a {
@@ -115,8 +118,8 @@ ul.leetcode > li.grid {
 
 .home {
     margin-left: $spacing-unit;
-    padding: 0 0.25em;
-    border-left: 2px solid #ebb6d9;
+    padding: 0 1em;
+    border-left: 2px solid $paper-margin;
 
     .rss-subscribe {
         display: flex;
@@ -138,6 +141,32 @@ ul.leetcode > li.grid {
         }
         justify-self: end;
     }
+
+    #category-choice {
+        appearance: none;
+        background-color: rgba(250, 250, 245, 0.95);
+        background-image:
+            url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>'),
+            repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 0, 0, 0.02) 2px,
+                rgba(0, 0, 0, 0.02) 4px
+            );
+        background-repeat: no-repeat, repeat;
+        background-position:
+            right 8px center,
+            top left;
+        color: #333;
+        font-family: inherit;
+        font-size: 0.9rem;
+        padding: 4px 28px 4px 8px;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 0;
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.04);
+        cursor: pointer;
+    }
 }
 
 .home .blog-list {
@@ -146,12 +175,12 @@ ul.leetcode > li.grid {
     padding-bottom: 1em;
 
     > li:first-child {
-        border-top: 1.9px solid #26bae2;
+        border-top: 1px solid $paper-lines;
     }
     > li {
         display: grid;
         grid-template-columns: 65% 20% 15%;
-        border-bottom: 1.9px solid #26bae2;
+        border-bottom: 1px solid $paper-lines;
         margin-left: -$spacing-unit;
         padding-left: $spacing-unit;
         align-items: end;
@@ -165,6 +194,10 @@ ul.leetcode > li.grid {
 
         .title {
             grid-column: 1;
+            white-space: nowrap;
+            overflow-x: clip;
+            text-overflow: ellipsis;
+
             a {
                 text-decoration: none;
             }

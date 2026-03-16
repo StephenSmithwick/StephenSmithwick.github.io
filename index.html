@@ -6,7 +6,7 @@ layout: default
     <div class="header">
         <h2 class="title">Posts</h2>
         <span class="category">
-            <label for="categories">Category :</label>
+            <label for="categories">Category:</label>
             <select name="categories" id="category-choice">
                 <option value="all" selected>all</option>
                 {% assign categories = site.categories | sort %} {% for category
@@ -23,6 +23,7 @@ layout: default
         {% for post in site.posts %}
         <li class="{{ post.categories }}">
             <span class="title">
+                <span class="category">{{ post.categories }}</span>
                 <a
                     class="post-link"
                     href="{{ post.url | prepend: site.baseurl }}"
@@ -30,7 +31,6 @@ layout: default
                 >
                     {{ post.title }}
                 </a>
-                <span class="category">{{ post.categories }}</span>
             </span>
             <span class="edit">
                 {% if post.last_edit %} edited: {{post.last_edit | date: "%b
