@@ -40,13 +40,14 @@ footer {
  * Site footer
  */
 .site-footer {
+    font-family: Fira Code VF;
     padding: $spacing-unit;
     background-color: $dark-blue;
     color: $paper;
 }
 
 .footer-heading {
-    font-size: 18px;
+    font-size: 14px;
     margin-bottom: $spacing-unit / 2;
 }
 
