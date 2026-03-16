@@ -259,23 +259,35 @@ details {
     text-align: right;
 }
 
-.post > .header > .title {
-    font-size: 42px;
-    letter-spacing: -1px;
-    line-height: 1;
+.post > .header {
+    display: grid;
+    grid-template-columns: auto fit-content(10em);
+    align-items: baseline;
+    & > .title {
+        grid-column: 1;
+        font-size: 42px;
+        letter-spacing: -1px;
+        line-height: 1;
 
-    @include media-query($on-laptop) {
-        font-size: 36px;
-    }
+        @include media-query($on-laptop) {
+            font-size: 36px;
+        }
 
-    a {
-        margin-left: -1.25em;
-        color: $dark-blue;
-        &:hover {
-            text-decoration: none;
-            color: $mid-blue;
+        a {
+            margin-left: -1.25em;
+            color: $dark-blue;
+            &:hover {
+                text-decoration: none;
+                color: $mid-blue;
+            }
         }
     }
+    & > .meta {
+        grid-column: 2;
+        vertical-align: baseline;
+    }
+    border-bottom: $mid-blue solid 1px;
+    margin-bottom: 1em;
 }
 
 .post > .content {
