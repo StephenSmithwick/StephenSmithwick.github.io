@@ -9,8 +9,7 @@ layout: default
             <label for="categories">Category:</label>
             <select name="categories" id="category-choice">
                 <option value="all" selected>all</option>
-                {% assign categories = site.categories | sort %} {% for category
-                in categories %}
+                {% assign categories = site.categories | sort %} {% for category in categories %}
                 <option value="{{ category.first }}">
                     {{ category.first }}
                 </option>
@@ -33,8 +32,7 @@ layout: default
                 </a>
             </span>
             <span class="edit">
-                {% if post.last_edit %} edited: {{post.last_edit | date: "%b
-                %-d, %Y"}} {% endif %}
+                {% if post.last_edit %} edited: {{post.last_edit | date: "%b %-d, %Y"}} {% endif %}
             </span>
             <span class="date"> {{ post.date | date: "%b %-d, %Y" }} </span>
         </li>
