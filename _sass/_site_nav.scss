@@ -66,6 +66,9 @@ $header-background: #b3ccf3;
     button.page-link {
         background-color: $dark-blue;
         border-radius: 0.5em;
+        line-height: 0.8em;
+        padding: 0.2em 1em;
+        margin-right: 5em;
     }
 
     @media (min-width: $on-palm) {
