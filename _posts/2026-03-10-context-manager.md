@@ -1,23 +1,24 @@
 ---
 layout: post
-title:  Semantic Memory Daemon
+title:  Semantic Memory Daemon - Design Document (v6)
 categories: ml
 published: true
-# last_edit:
+last_edit: 2026-03-22
 plugins: mermaid
 ---
 
-I've been desinging with some LLM collaboration an agent context memory manager for use with the Agent I'm building.
+I've been designing with some LLM collaboration an agent context memory manager for use with the Agent I'm building.
 
 ## Project Overview
 
-**Goal:** A long-running, local Rust daemon acting as transparent memory middleware for a AI agent. It manages an "Infinite Context Window" for local LLMs (llama.cpp) by combining an append-only segmented log with per-segment HNSW indexes for fast, correct semantic retrieval.
+**Goal:** A long-running, local Rust daemon acting as transparent memory middleware for a TypeScript AI agent. It manages an "Infinite Context Window" for local LLMs (llama.cpp) by combining an append-only segmented log with per-segment HNSW indexes for fast, correct semantic retrieval.
 
 **Core Philosophy:** The daemon sits transparently between the agent and the LLM, managing memory implicitly. It is intentionally simple and fast — it does not perform inference beyond embedding. All semantic judgments (contradiction detection, relevance assessment) are the responsibility of external callers who communicate back via the correction mechanism. The daemon is correctable, not intelligent.
 
 **Simplicity Priority:** Client interface simplicity is the highest goal, followed by internal implementation simplicity. Changes that complicate the client interface are not justified by internal gains.
 
 **Invariant:** The daemon never deletes or mutates stored content. All state evolution occurs through append-only events.
+
 
 ## System Architecture
 
@@ -26,16 +27,19 @@ I've been desinging with some LLM collaboration an agent context memory manager 
 - **Inference Dependency:** Exactly one local ONNX model — `all-MiniLM-L6-v2` (~90MB) for chunk embedding. No main LLM involvement in memory operations. No network calls.
 - **Safety/Logging:** All internal daemon logging uses `stderr` (`eprintln!`) to prevent corruption of the JSONL data stream.
 
+
 ## Memory Layers Overview
 
-The daemon manages two active memory layers. These are logical roles, not a storage hierarchy — the terms "tier" and "level" are intentionally avoided to prevent confusion with WAL storage concepts.
+The daemon manages two active memory layers plus a Tool Store per agent. These are logical roles, not a storage hierarchy — the terms "tier" and "level" are intentionally avoided to prevent confusion with WAL storage concepts.
 
 | Layer | Name | Storage | Purpose |
 |---|---|---|---|
 | **Hot Buffer** | Rolling Buffer | In-process RAM | Live conversation window; compacted into the Episodic Store when full |
 | **Episodic Store** | Segmented Append-Only Log | Binary segment files + HNSW indexes on disk | The sole source of truth; all chunks, all corrections, full history |
+| **Tool Store** | Append-Only Tool Log | Flat binary file + HNSW index on disk | Tool definitions per agent; semantically retrieved to fill the tool budget each turn |
 
 Retrieval is stateless — there is no in-memory promoted set, no frequency index, and no derived state beyond the superseded set that requires reconciliation at startup.
+
 
 ## WAL-Style Append-Only Semantics
 
@@ -48,6 +52,7 @@ Consequences:
 - **Sealed segments are truly immutable.** No in-place writes ever occur on sealed segment files or their HNSW indexes.
 - **Crash recovery is trivial.** The log is always consistent; only partial writes at the tail of the active segment require recovery.
 - **Full audit history is preserved.** Deprecated or updated content remains in the log and is recoverable.
+
 
 ## The Superseded Set
 
@@ -71,13 +76,19 @@ memory/
     active.bin         # current write target; linear scan only
     active.meta
     # no superseded.bin — always derived from the log at startup
+  tools/
+    {agent_id}/
+      tools.bin        # append-only tool definitions; raw OpenAI tool spec preserved verbatim
+      tools.hnsw       # rebuilt asynchronously when tools change
 ```
+
 
 ## Physical Compaction — Optional Maintenance Only
 
 With HNSW indexes and the superseded set handling correctness and performance, physical compaction — rewriting segment files to remove superseded entries — is **not a required correctness mechanism**. It is an optional maintenance operation that reduces HNSW index size when the superseded rate within a segment becomes large enough to meaningfully affect search cost.
 
 HNSW search scales as O(log N) in indexed vectors. A segment with a 40% superseded rate searches a graph roughly 1.7× larger than a fully compacted equivalent — a modest constant factor, not a pathological degradation. Physical compaction is deliberately out of scope for v1.
+
 
 ## Topic Scoping
 
@@ -86,6 +97,8 @@ Every message is scoped to a **topic** — a named, fully isolated Episodic Stor
 - `topic_id` is optional. If absent, the daemon routes to the reserved `"default"` topic.
 - `related_topic_ids` allows read-only retrieval from additional topics in the same turn.
 - **Topics are created implicitly** on first use.
+- **A leading underscore is reserved for daemon use** — `topic_id` and `agent_id` values beginning with `_` are reserved for internal daemon purposes and must not be used by external callers. Client-supplied values starting with `_` are rejected with a `correction_failed` signal.
+
 
 ## Cross-Topic Corrections — Passive Adoption
 
@@ -95,6 +108,7 @@ Corrections referencing chunks from a `related_topic_id` are handled passively. 
 - Source topic is never modified.
 - Lineage is implicit: the source topic still holds the original entry under the same chunk ID.
 - A correction on a cross-topic chunk applies only within the current topic's context.
+
 
 ## Hot Buffer
 
@@ -108,6 +122,7 @@ An in-memory rolling buffer of the raw conversation. Tracks tokens using `tiktok
 |---|---|
 | **Soft** (e.g. 3,500 tokens) | Background compaction — no user-visible delay |
 | **Hard** (e.g. 4,000 tokens) | Stop-the-world — safety backstop only |
+
 
 ## Episodic Store
 
@@ -163,6 +178,7 @@ struct SegmentMeta {
 
 `canonical_id_range` is used only during superseded set construction at startup, to determine scan order when resolving which entry for a given chunk ID is authoritative. It is not used to gate similarity search.
 
+
 ## Utility Multiplier
 
 The `utility_multiplier` is the sole mechanism by which external callers influence retrieval priority. It is adjusted via `Helpful` and `Unhelpful` corrections using **logarithmic steps** — each correction multiplies or divides by a constant ratio `r`, giving every step the same relative effect regardless of current value.
@@ -217,6 +233,7 @@ The asymmetry between ceiling (10 steps up) and floor (4 steps down) is intentio
 
 In log space, `Helpful` and `Unhelpful` are perfectly symmetric — the same number of opposing corrections exactly cancels, returning the multiplier to its prior value regardless of where it sits. This is not true of linear steps near clamp boundaries.
 
+
 ## Retrieval Scoring
 
 ```rust
@@ -228,6 +245,7 @@ fn retrieval_score(chunk: &Chunk, query_cosine: f32) -> f32 {
 Simple, transparent, and entirely driven by embedding similarity and explicit caller feedback. No frequency tracking, no decay, no internal heuristics.
 
 The `max(0.0)` clamp is load-bearing. Cosine similarity ranges $[-1, 1]$ — a negative value indicates semantic opposition or orthogonality. Without the clamp, a soft-pinned chunk (high `utility_multiplier`) against an opposed query would produce a large negative score, violently forcing it to the bottom of the rankings rather than simply not surfacing it. Clamping at `0.0` ensures a chunk scores at worst neutral, never actively penalised by its own amplification.
+
 
 ## Recall Budget and Retrieval Scaling
 
@@ -252,6 +270,7 @@ These figures apply to **linear scan of the active segment only**. Sealed segmen
 **Sealed segments (HNSW fan-out):** Each sealed segment is queried independently via its HNSW index. Queries fan out in parallel across all sealed segments. Searching 20 segments of 5,000 entries each is substantially cheaper than a linear scan of 100,000 entries, and the searches are embarrassingly parallel.
 
 The recall budget therefore applies primarily to the HNSW fan-out latency sum. As the corpus grows, if total retrieval latency exceeds the recall budget despite parallelism tuning, the prescribed path is a **merged HNSW index** over the N oldest sealed segments — reducing fan-out count at the cost of a more complex rebuild process. This is deferred to a future iteration.
+
 
 ## Just-in-Time (JIT) Context Injection
 
@@ -312,6 +331,7 @@ These IDs are echoed in `MemoryOut.injected_chunks` and are the stable reference
 
 The daemon emits `context_pressure` when retrieved content exceeds a configurable fraction of the budget (default: 0.8). It emits `context_overflow` when the budget is exceeded and clipping has occurred. Both thresholds are configurable constants.
 
+
 ## Token-Aware Compaction (Ingestion)
 
 When the Hot Buffer hits the soft token threshold:
@@ -332,6 +352,53 @@ When the Hot Buffer hits the soft token threshold:
 7. If `active.bin` reaches the seal threshold, seals the segment and builds its HNSW index.
 8. Remaining newest messages roll over into the buffer.
 
+
+## Tool Store
+
+The Tool Store provides semantic retrieval of tool definitions, narrowing a potentially large tool registry down to a small relevant set per turn. It is scoped per agent — tool utility signals from one agent do not affect retrieval for another.
+
+### Design Decisions
+
+**No chunking.** A tool definition is an atomic unit of meaning. Chunking would break the semantic coherence of the combined embedding and offer no retrieval benefit for objects this small.
+
+**Raw spec preserved verbatim.** The full OpenAI tool spec JSON is stored as-is. Versioning is handled by the append-only model — a new definition with the same tool name and a higher `canonical_id` supersedes the old one. If the spec includes a version field, it is preserved in the stored record.
+
+**Embedding strategy.** The embedding is computed once over a single concatenated string: `"{name}: {description}. Parameters: {param_summary}"` where `param_summary` is a flattened representation of parameter names and types. Including parameters in the embedding ensures a query like "send an email with an attachment" embeds close to a tool whose parameters include `attachment`, even if the description alone wouldn't surface it.
+
+**HNSW rebuild is async.** New tool definitions are infrequent relative to messages. The HNSW index is rebuilt asynchronously after any change — the penalty for a small tool corpus is negligible, and async keeps the ingestion path simple and consistent with message handling.
+
+**Tool superseded set.** A per-agent in-memory `HashSet<Uuid>` of superseded tool IDs, rebuilt from `tools.bin` at startup using the same newest-to-oldest scan as the conversation superseded set.
+
+### Tool Data Model
+
+```rust
+struct ToolDefinition {
+    id: Uuid,                      // stable logical identity
+    canonical_id: u64,             // monotonic; highest canonical_id for a given id wins
+    name: String,                  // tool name; used as the natural key for supersession
+    raw_spec: String,              // verbatim OpenAI tool spec JSON
+    embedding: Vec<f32>,           // derived from "{name}: {description}. Parameters: {param_summary}"
+    status: ToolStatus,
+    utility_multiplier: f32,       // default 1.0; same logarithmic model as chunks
+}
+
+enum ToolStatus {
+    Active,
+    Deprecated,
+}
+```
+
+### Tool Budget and Reserved Tools
+
+The agent specifies a tool budget and a set of reserved tool names in `MemoryIn`. Reserved tools are always injected regardless of semantic score — they are not competing for slots. The tool budget applies only to the retrieved (non-reserved) set.
+
+> ⚠️ **Revisit note:** Treating reserved tools as additive to the budget (rather than consuming slots from it) is the simpler implementation. If this produces unexpectedly large tool contexts in practice, revisit in a future iteration.
+
+### Utility Multiplier for Tools
+
+`Helpful` and `Unhelpful` corrections on tool IDs use the same logarithmic multiplier model as chunks — same `r`, same ceiling (`r^10`), same floor (`r^-4`). An agent that repeatedly finds a tool useful signals that via `Helpful`; the daemon surfaces it more aggressively in future turns regardless of query similarity.
+
+
 ## MetaObject: MemoryIn & MemoryOut
 
 Every message passing through the daemon carries a structured sideband alongside the conversational content.
@@ -343,6 +410,19 @@ interface MemoryIn {
   topic_id?: string;             // defaults to "default" if absent
   related_topic_ids?: string[];  // read-only retrieval sources
   corrections?: Correction[];
+  tools?: ToolRegistration[];    // optional; push new or updated tool definitions to the daemon
+  tool_context?: ToolContext;    // optional; configure tool retrieval for this turn
+}
+
+interface ToolRegistration {
+  agent_id: string;
+  spec: object;                  // verbatim OpenAI tool spec; daemon stores raw and derives embedding
+}
+
+interface ToolContext {
+  agent_id: string;
+  reserved_tool_names?: string[]; // always injected; not scored; additive to retrieved set
+  tool_budget?: number;           // max retrieved (non-reserved) tools to inject; default 5
 }
 
 interface Correction {
@@ -365,13 +445,15 @@ type CorrectiveAction =
 
 **Correction routing:** All corrections follow the same code path regardless of whether the chunk originated in the current topic or a related topic. The daemon appends to the current topic's active log using the existing chunk ID. The higher `canonical_id` shadows the source topic's version via the superseded set.
 
-**Validation:** All `chunk_id` values are verified against recently injected chunks before action. Unrecognised or already-deprecated IDs emit a `correction_failed` signal and are discarded.
+**Validation:** All `chunk_id` values are verified against recently injected chunks and tools before action. Unrecognised or already-deprecated IDs emit a `correction_failed` signal and are discarded.
+
 
 ### MemoryOut (Daemon → LLM/Agent)
 
 ```typescript
 interface MemoryOut {
   injected_chunks: InjectedChunk[];  // all chunks placed in context this turn
+  injected_tools?: InjectedTool[];   // present when tool_context was supplied in MemoryIn
   signals?: Signal[];                // absent when everything fits cleanly
 }
 
@@ -379,6 +461,12 @@ interface InjectedChunk {
   id: string;            // stable chunk ID; use in Correction.chunk_ids
   topic_id: string;      // source topic (may differ from session topic for cross-topic chunks)
   canonical_id: number;  // chronological position within source topic
+}
+
+interface InjectedTool {
+  id: string;            // stable tool ID; use in Correction.chunk_ids for Helpful/Unhelpful
+  name: string;
+  reserved: boolean;     // true if agent-specified via reserved_tool_names; false if daemon-retrieved
 }
 
 type SignalType =
@@ -396,6 +484,7 @@ interface Signal {
 
 **Back-pressure intent:** `context_pressure` fires before clipping occurs, giving clients the opportunity to act preventively — `fill_ratio` of `0.8` means 80% of the budget is consumed and clipping is imminent. `context_overflow` fires when clipping has already occurred; `fill_ratio` above `1.0` indicates how far over budget the available content was (e.g. `1.35` = 35% over). The natural response to either signal is `Unhelpful` corrections against low-value chunks in `injected_chunks`, driving their multipliers down and freeing injection budget on future turns. The daemon continues operating normally regardless of whether the caller acts.
 
+
 ## Key Flow — Sequence Diagrams
 
 ### Flow 1 — Normal Retrieval Turn
@@ -404,9 +493,12 @@ interface Signal {
 sequenceDiagram
     participant U as User
     participant A as Agent
+    box Grey MemoryDaemon
     participant D as Daemon
     participant E as Embed Model (ONNX)
     participant ES as Episodic Store
+    end
+    participant L as LLM
 
     U->>A: "How should we handle caching?"
     A->>D: Forward message + MemoryIn { topic_id: "proj-x" }
@@ -418,8 +510,11 @@ sequenceDiagram
     D->>D: Score → sort → re-sort by canonical_id
     D->>A: Inject context + user query
     Note over D,A: MemoryOut carries injected_chunks with stable IDs
-    A->>U: LLM response
+    A->>L: Agent send message to LLM with conversation as Dameon included
+    L->>A: Entire LLM response
+    A->>U: response
 ```
+
 
 ### Flow 2 — Update (Replace or Consolidate)
 
@@ -429,20 +524,14 @@ sequenceDiagram
     participant D as Daemon
     participant ES as Episodic Store
 
-    Note over A: LLM consolidates two stale chunks
-    A->>D: MemoryIn {
-    A->>D:   corrections: [{
-    A->>D:     chunk_ids: ["b2e1", "c3f4"],
-    A->>D:     action: "Update",
-    A->>D:     reason: "Consolidating session storage decision",
-    A->>D:     content: "Use PostgreSQL for session storage with 24h TTL"
-    A->>D:   }]
-    A->>D: }
+    Note left of A: LLM consolidates two stale chunks:<br/>MemoryIn corrections: Update<br/>chunk_ids: [b2e1, c3f4]<br/>content: "Use PostgreSQL for session storage with 24h TTL"
+    A->>D: MemoryIn (Update: b2e1, c3f4)
     D->>ES: Append Deprecated entries for b2e1, c3f4
     D->>ES: Append new Active chunk with content, re-embedded
     D->>D: Add b2e1, c3f4 to superseded set
     ES-->>D: OK
 ```
+
 
 ### Flow 3 — Helpful / Unhelpful
 
@@ -452,16 +541,13 @@ sequenceDiagram
     participant D as Daemon
     participant ES as Episodic Store
 
-    A->>D: MemoryIn {
-    A->>D:   corrections: [
-    A->>D:     { chunk_ids: ["a1b2"], action: "Helpful",   reason: "Directly answered query" },
-    A->>D:     { chunk_ids: ["d4e5"], action: "Unhelpful", reason: "Unrelated to current task" }
-    A->>D:   ]
-    A->>D: }
+    Note left of A: MemoryIn corrections:<br/>Helpful: [a1b2] — Directly answered query<br/>Unhelpful: [d4e5] — Unrelated to current task
+    A->>D: MemoryIn (Helpful: a1b2, Unhelpful: d4e5)
     D->>ES: Append new entry for a1b2: utility_multiplier *= 1.5
     D->>ES: Append new entry for d4e5: utility_multiplier /= 1.5
     D->>D: Add old a1b2, d4e5 entries to superseded set
 ```
+
 
 ### Flow 4 — Cross-Topic Correction (Passive Adoption)
 
@@ -472,17 +558,14 @@ sequenceDiagram
     participant ES_ref as Episodic Store (proj-x)
     participant ES_cur as Episodic Store (proj-y)
 
-    Note over A: chunk "a3f9" was injected from related topic "proj-x"
-    A->>D: MemoryIn {
-    A->>D:   topic_id: "proj-y",
-    A->>D:   related_topic_ids: ["proj-x"],
-    A->>D:   corrections: [{ chunk_ids: ["a3f9"], action: "Unhelpful", reason: "..." }]
-    A->>D: }
+    Note left of A: chunk "a3f9" injected from related topic "proj-x"<br/>MemoryIn: topic_id: proj-y<br/>related_topic_ids: [proj-x]<br/>corrections: Unhelpful [a3f9]
+    A->>D: MemoryIn (Unhelpful: a3f9, topic: proj-y)
     D->>ES_cur: Append new entry for a3f9: utility_multiplier /= 1.5
     D->>D: Add proj-x's a3f9 to proj-y's superseded set
     Note over ES_ref: proj-x unchanged
     Note over ES_cur: proj-y now shadows proj-x's a3f9 at retrieval
 ```
+
 
 ### Flow 5 — Segment Seal and HNSW Build
 
@@ -500,6 +583,7 @@ sequenceDiagram
     Note over D: seg_0007.hnsw never modified after this point
 ```
 
+
 ### Flow 6 — Back Pressure
 
 ```mermaid
@@ -507,19 +591,36 @@ sequenceDiagram
     participant A as Agent
     participant D as Daemon
 
-    D->>A: MemoryOut {
-    D->>A:   signals: [{
-    D->>A:     type: "context_overflow",
-    D->>A:     fill_ratio: 1.35
-    D->>A:   }]
-    D->>A: }
-    Note over A: Agent responds to back-pressure
-    A->>D: MemoryIn {
-    A->>D:   corrections: [
-    A->>D:     { chunk_ids: ["c9f1", "d4a2"], action: "Unhelpful", reason: "low relevance" }
-    A->>D:   ]
-    A->>D: }
+    Note right of D: MemoryOut signal:<br/>context_overflow, fill_ratio: 1.35
+    D->>A: MemoryOut (context_overflow: 1.35)
+    Note left of A: Agent responds to back-pressure:<br/>Unhelpful [c9f1, d4a2] — low relevance
+    A->>D: MemoryIn (Unhelpful: c9f1, d4a2)
 ```
+
+
+### Flow 7 — Tool Registration and Retrieval
+
+```mermaid
+sequenceDiagram
+    participant A as Agent
+    participant D as Daemon
+    participant E as Embed Model (ONNX)
+    participant TS as Tool Store
+
+    Note left of A: MemoryIn: push tools for agent-1<br/>tools: [search_web, send_email]<br/>tool_context: reserved=[search_web], budget=3
+    A->>D: MemoryIn (register: search_web, send_email)
+    D->>E: Embed "search_web: ... Parameters: ..." for each new tool
+    E-->>D: embeddings
+    D->>TS: Append tool definitions to tools.bin
+    D->>D: Schedule async HNSW rebuild for agent-1
+    D->>E: Embed current query
+    E-->>D: query_embedding
+    D->>TS: HNSW search tools for agent-1 (excluding reserved, excluding superseded)
+    TS-->>D: Top-3 retrieved tools by score
+    Note right of D: MemoryOut injected_tools:<br/>search_web (reserved)<br/>send_email (retrieved)<br/>read_file (retrieved)
+    D->>A: MemoryOut (tools: search_web, send_email, read_file)
+```
+
 
 ## Future Roadmap
 
@@ -535,6 +636,9 @@ sequenceDiagram
 | **Subtask nesting** | `parent_task_id` reserved in meta schema; no schema break required |
 | **Monitoring tooling** | Segment-level metrics capturable at seal time; dashboarding deferred until corpus size warrants it |
 | **Pointer chunks for adoption** | Lightweight alternative to appending full entries for cross-topic corrections; deferred until adoption volume is a measurable concern |
+| **Tool budget slot counting** | Reserved tools currently additive to retrieved budget; revisit if large reserved sets produce unexpectedly large tool contexts |
+| **Daemon-reserved namespace usage** | The `_` prefix reservation allows future daemon-internal topics and agents (e.g. `_memory`, `_tools`) without requiring any structural change |
+
 
 ## Deliberately Out of Scope (v1)
 
@@ -552,3 +656,34 @@ sequenceDiagram
 | Auto-correction of any kind | All state changes require explicit correction from external caller |
 | Cloud/remote LLM | Fully local by design |
 | LLM tool-calling for memory ops | Core philosophy: implicit middleware over explicit tool calls |
+
+## Changelog
+
+### v6
+- Added Tool Store: per-agent append-only tool log with HNSW index, semantic retrieval against query embedding, and reserved/retrieved tool budget model
+- Added `tools` and `tool_context` fields to `MemoryIn`; added `injected_tools` to `MemoryOut`
+- Added reserved namespace convention: `topic_id` and `agent_id` values with a leading `_` are reserved for daemon-internal use; client-supplied values starting with `_` are rejected
+- Added Flow 7: Tool Registration and Retrieval sequence diagram
+
+### v5
+- Replaced NLI model and explicit pinning with logarithmic `utility_multiplier` (`r = 1.5`, ceiling `r^10 ≈ 57.7`, floor `r^-4 ≈ 0.20`)
+- Removed Promoted Set and all frequency-tracking fields; reads are now fully stateless beyond the superseded set
+- Introduced HNSW per-segment indexes built at seal time; replaced early-exit linear scan with parallel HNSW fan-out over sealed segments + linear scan of active segment
+- Removed physical compaction as a correctness requirement; superseded set handles stale entry filtering
+- Merged `Forget` into `Update` with empty content — three corrective actions: `Update`, `Helpful`, `Unhelpful`
+- Replaced `promoted_context_clipped` / `episodic_context_clipped` signals with `context_pressure` (pre-clip warning, `fill_ratio` 0.0–1.0) and `context_overflow` (post-clip, `fill_ratio` > 1.0)
+- Applied cosine clamp `query_cosine.max(0.0)` in retrieval scoring to prevent negative scores on soft-pinned chunks
+- Removed MMR deduplication phase; ingestion deduplication threshold tightened to cosine >= 0.99
+- Added semantic chunking (embedding-based boundary detection) as preferred ingestion strategy with fixed-window fallback
+- Removed "Agentia" branding; replaced with "agent" throughout
+- Added document invariant: "The daemon never deletes or mutates stored content"
+- Removed Tier numbering; layers renamed Hot Buffer, Episodic Store, Promoted Set (Promoted Set subsequently removed)
+- Removed Tier 3 abstractive consolidation from scope
+
+### v4 (prior design)
+- NLI model dual-role: pin candidate scoring and neighbour contradiction detection
+- Promoted Set as stateful in-memory index with frequency-based promotion scoring
+- Centroid-based segment pre-filter (subsequently removed within v4 as mathematically unsound)
+- Explicit `Pinned` chunk status and user-confirmation pinning flow
+- Escape Hatch mechanism for surfacing contradictions before LLM call
+- `ChunkType` classification (considered and dropped within v4)
