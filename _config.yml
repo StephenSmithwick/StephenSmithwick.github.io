@@ -21,8 +21,8 @@ playground_urls:
   blob: "https://github.com/StephenSmithwick/playground/blob/main"
   tree: "https://github.com/StephenSmithwick/playground/tree/main"
 comments:
-  app_url: "https://stephen-smithwick-github-io-comment.vercel.app"
-  # app_url: "http://localhost:3000"
+  # app_url: "https://stephen-smithwick-github-io-comment.vercel.app"
+  app_url: "http://localhost:3000"
 github_username: StephenSmithwick
 linkedin:
   name: Stephen Smithwick
