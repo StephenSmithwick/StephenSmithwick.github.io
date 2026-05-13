@@ -196,6 +196,7 @@ pre:not(.mermaid) {
 .code-title {
     &:has(+ div) {
         margin: 0;
+        padding-left: 1rem;
         background-color: $light-blue;
         background: linear-gradient(
             $light-blue 10%,
@@ -203,20 +204,18 @@ pre:not(.mermaid) {
             $light-blue 90%
         );
         border: 2px solid $light-blue;
-        border-radius: 2px 2px 0 0;
-        border-bottom: 0;
+        border-radius: 0.5em 0.5em 0 0;
     }
 
-    & > strong {
-        background-color: $background-color;
-        margin-left: 0.25rem;
-        padding: 0.1rem 0.5rem;
-        border-radius: 0.5rem;
+    code + code::before {
+        padding: 0 0.5ch 0 0.5ch;
+        content: "❯";
+        color: $dark-blue;
     }
 
     & + div pre {
-        border: 2px $light-blue solid;
-        border-radius: 0px;
+        border-radius: 0 0 0.5em 0.5em;
+        clip-path: none;
     }
 }
 
